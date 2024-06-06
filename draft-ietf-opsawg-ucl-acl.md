@@ -492,6 +492,7 @@ RADIUS packet.
 
 The User-Access-Group-ID Attribute is structured as follows:
 
+   {: vspace="0"}
    Type
    : TBA1
 
