@@ -150,7 +150,8 @@ informative:
 
    Please apply the following replacements:
 
-   * XXXX --> the assigned RFC number for this draft
+   * XXXX --> the assigned RFC number for this document
+   * SSSS --> the assigned RFC number for {{!I-D.ietf-netmod-schedule-yang}}
    * 2023-01-19 --> the actual date of the publication of this document
 
 # Conventions and Definitions
@@ -263,8 +264,8 @@ informative:
 
       A PEP exposes a NETCONF interface {{!RFC6241}} to an SDN controller.
 
-   {{arch}} provides the overall architecture and procedure for policy-
-   based access control management.
+   {{arch}} provides the overall architecture and procedure for
+   policy-based access control management.
 
 ~~~~
                                          .------------.
@@ -461,52 +462,50 @@ informative:
 
 # User Access Control Group ID RADIUS Attribute {#sec-radius}
 
-   The User-Access-Group-ID RADIUS attribute is
-   defined with a globally unique name.  The definition of the attribute
-   follows the guidelines in {{Section 2.7.1 of !RFC6929}}.  This attribute
-   is used to indicate the user group ID to be used by the NAS.  When
-   the User-Access-Group-ID RADIUS attribute is present in the RADIUS
-   Access-Accept, the system applies the related access control to the
-   users after it authenticates.
+The User-Access-Group-ID RADIUS attribute is
+defined with a globally unique name. The definition of the attribute
+follows the guidelines in {{Section 2.7.1 of !RFC6929}}.  This attribute
+is used to indicate the user group ID to be used by the NAS.  When
+the User-Access-Group-ID RADIUS attribute is present in the RADIUS
+Access-Accept, the system applies the related access control to the
+users after it authenticates.
 
-   The User-Access-Group-ID Attribute is of type "string" as defined in
-   {{Section 3.5 of !RFC8044}}.
+The User-Access-Group-ID Attribute is of type "string" as defined in
+{{Section 3.5 of !RFC8044}}.
 
-   The User-Access-Group-ID Attribute MAY appear in a RADIUS Access-
-   Accept packet.  It MAY also appear in a RADIUS Access-Request packet
-   as a hint to the RADIUS server to indicate a preference.  However,
-   the server is not required to honor such a preference. If more than
-   one instance of the User-Access-Group-ID Attribute appears in a RADIUS
-   Access-Accept packet, this means that the user is a member of many groups.
+The User-Access-Group-ID Attribute MAY appear in a RADIUS
+Access-Accept packet.  It MAY also appear in a RADIUS Access-Request packet
+as a hint to the RADIUS server to indicate a preference.  However,
+the server is not required to honor such a preference. If more than
+one instance of the User-Access-Group-ID Attribute appears in a RADIUS
+Access-Accept packet, this means that the user is a member of many groups.
 
-   The User-Access-Group-ID Attribute MAY appear in a RADIUS CoA-Request
-   packet.
+The User-Access-Group-ID Attribute MAY appear in a RADIUS CoA-Request
+packet.
 
-   The User-Access-Group-ID Attribute MAY appear in a RADIUS Accounting-
-   Request packet. Specifically, this may be used by a NAS to acknowledge that the attribute
-   was received in the RADIUS Access-Request and the NAS is enforcing that policy.
+The User-Access-Group-ID Attribute MAY appear in a RADIUS Accounting-Request
+packet. Specifically, this may be used by a NAS to acknowledge that the attribute
+was received in the RADIUS Access-Request and the NAS is enforcing that policy.
 
-   The User-Access-Group-ID Attribute MUST NOT appear in any other
-   RADIUS packet.
+The User-Access-Group-ID Attribute MUST NOT appear in any other
+RADIUS packet.
 
-   The User-Access-Group-ID Attribute is structured as follows:
+The User-Access-Group-ID Attribute is structured as follows:
 
-~~~~
    Type
-     TBA1
+   : TBA1
 
    Length
-     This field indicates the total length, in octets, of all fields of
-     this attribute, including the Type, Length, Extended-Type, and the
-     "Value". The Length MUST be at most 67 octets.
+   : This field indicates the total length, in octets, of all fields of
+   this attribute, including the Type, Length, Extended-Type, and the
+   "Value".
+   : The Length MUST be at most 67 octets.
 
    Data Type
-     string ({{Section 3.5 of !RFC8044}})
+   : string ({{Section 3.5 of !RFC8044}})
 
    Value
-      This field contains the user group ID.
-~~~~
-
+   : This field contains the user group ID.
 
 #  RADIUS Attributes
 
