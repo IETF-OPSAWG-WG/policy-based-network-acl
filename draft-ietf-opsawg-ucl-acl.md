@@ -69,7 +69,8 @@ informative:
    of the mapping between a user group identifier and a set of IP/MAC addresses
    to enforce policy-based network access control.
 
-   In addition, the document defines a RADIUS attribute that is used to
+   In addition, the document defines a Remote Authentication Dial-in
+   User Service (RADIUS) attribute that is used to
    communicate the user group identifier as part of identification and
    authorization information.
 
@@ -86,7 +87,7 @@ informative:
    for large-scale enterprises compared to conventional network access management approaches.
    Examples of such challenges are listed below:
 
-   *  Endpoints do not have a stable IP address.  For example, Wireless
+   *  Endpoints do not have stable IP addresses.  For example, Wireless
       LAN (WLAN) and VPN clients, as well as back-end Virtual Machine
       (VM)-based servers, can move; their IP addresses could change as a
       result.  This means that relying on IP/transport fields (e.g., the
@@ -135,7 +136,7 @@ informative:
    The document does not specify how to map the policy group identifiers
    to dedicated fields (e.g.,  Group Based Policy (GBP) discussed in {{Section 6.2.3 of ?I-D.ietf-nvo3-encap}}).
 
-   The YANG data models in this document conform to the Network
+   The YANG data model in this document conforms to the Network
    Management Datastore Architecture (NMDA) defined in {{!RFC8342}}.
 
 ## Editorial Note (To be removed by RFC Editor)
@@ -310,7 +311,7 @@ informative:
       AAA server has been appropriately configured to store user credentials,
       e.g., user name, password, group information, and other user attributes.
       This document does not restrict what authentication method is used. Administrators
-      may refer to, e.g., {{Section 7.3 of ?I-D.dekok-radext-deprecating-radius}}
+      may refer to, e.g., {{Section 7.4 of ?I-D.ietf-radext-deprecating-radius}}
       for authentication method recommendations.
       If the authentication request succeeds, the user is placed in a
       user group the identity of which is returned to the network access server
@@ -414,7 +415,7 @@ informative:
 
 ##  The UCL Extension to the ACL Model
 
-   This module specifies an extension to the "ietf-access-control-list" model {{!RFC8519}}. This extension adds
+   This module specifies an extension to the "ietf-access-control-list" module {{!RFC8519}}. This extension adds
    endpoint groups so that an endpoint group identifier can be matched upon, and also
    enable access control policy activation based on date and time conditions.
 
@@ -449,8 +450,8 @@ informative:
 
 ##  The "ietf-ucl-acl" YANG Module {#sec-UCL}
 
-   This module imports types and groupings defined in the "ietf-schedule" YANG
-   module in {{!I-D.ietf-netmod-schedule-yang}}. It also augments the "ietf-access-control-list" module defined in {{!RFC8519}}.
+   This module imports types and groupings defined in the "ietf-schedule" module
+   {{!I-D.ietf-netmod-schedule-yang}}. It also augments the "ietf-access-control-list" module {{!RFC8519}}.
 
 ~~~~
 <CODE BEGINS> file "ietf-ucl-acl@2023-01-19.yang"
@@ -626,9 +627,9 @@ This section uses the template described in {{Section 3.7 of ?I-D.ietf-netmod-rf
 
 ~~~~
         name:               ietf-ucl-acl
-        namespace:          urn:ietf:params:xml:ns:yang:ietf-ucl-acl
         prefix:             uacl
-        maintained by IANA: N
+        namespace:          urn:ietf:params:xml:ns:yang:ietf-ucl-acl
+        maintained by IANA? N
         reference:          RFC XXXX
 ~~~~
 
@@ -693,7 +694,7 @@ This section uses the template described in {{Section 3.7 of ?I-D.ietf-netmod-rf
 
 ## Configuring PEPs Using Address-based ACLs {#PEP-acl}
 
-   The section illustrates an example of configuring a PEP using
+   The section describes an example of configuring a PEP using
    IP address based ACL. IP address based access control policies could
    be applied to the PEP that may not understand the group information,
    e.g., firewall.
@@ -720,46 +721,6 @@ This section uses the template described in {{Section 3.7 of ?I-D.ietf-netmod-rf
 {::include-fold ./examples/PEP-acl-ipv6.xml}
 ~~~~
 {: #ex-PEP-acl-ipv6 title="Example of PEP Configuration (IPv6)"}
-
-# Changes between Revisions
-
-  v02 - v03
-
-*  List endpoint-groups definition under acls and examples update to reflect the latest module
-
-*  Add contact info in the UCL module
-
-  v01 - v02
-
-*  Tree overview and examples update to reflect the latest schedule module
-
-*  Clarify why we define endpoint group ID as string
-
-*  Exclude the mapping of string to tagging mechanism from the document scope
-
-*  Add implementation considerations section to discuss the deployment scenarios and possible tradeoff
-
-*  Add application group, define endpoint group type as "identityref" in YANG data model
-
-*  Editorial changes, e.g., remove the NACL definition, fix long lines.
-
-  v00 - v01
-
-  *  Change the document title and add a reference to "policy"
-
-  *  Split the definition of schedule YANG module into a seperate document
-
-  *  Add reference to draft-dekok-radext-deprecating-radius for authentication method recommendations
-
-  *  Change endpoint group-id as a string, and fix related examples accordingly
-
-  *  Use typedef to ease leafref of the node
-
-  *  Tweaks to the RADIUS section and add a restriction to the length based on comments from RADEXT
-
-  *  Add IPv6 examples
-
-  *  Editorial changes
 
 # Acknowledgments
 {:numbered="false"}
