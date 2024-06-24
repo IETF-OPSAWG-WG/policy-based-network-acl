@@ -13,26 +13,29 @@ module: ietf-ucl-acl
     +--rw effective-schedule {uacl:schedule}?
        +--rw (schedule-type)?
           +--:(period)
-          |  +--rw period-start?           yang:date-and-time
-          |  +--rw time-zone-identifier?   sys:timezone-name
+          |  +--rw period-description?       string
+          |  +--rw period-start              yang:date-and-time
+          |  +--rw time-zone-identifier?     sys:timezone-name
           |  +--rw (period-type)?
           |     +--:(explicit)
-          |     |  +--rw period-end?       yang:date-and-time
+          |     |  +--rw period-end?         yang:date-and-time
           |     +--:(duration)
-          |        +--rw duration?         duration
+          |        +--rw duration?           duration
           +--:(recurrence) {schedule:icalendar-recurrence-supported}?
              +--rw recurrence-first
              |  +--rw date-time-start?        yang:date-and-time
              |  +--rw duration?               duration
              |  +--rw time-zone-identifier?   sys:timezone-name
-             +--rw frequency               identityref
-             +--rw interval?               uint32
              +--rw (recurrence-bound)?
              |  +--:(until)
-             |  |  +--rw until?            yang:date-and-time
+             |  |  +--rw until?              yang:date-and-time
              |  +--:(count)
-             |     +--rw count?            uint32
+             |     +--rw count?              uint32
+             +--rw recurrence-description?   string
+             +--rw frequency                 identityref
+             +--rw interval?                 uint32
              +--rw period* [period-start]
+             |  +--rw period-description?     string
              |  +--rw period-start            yang:date-and-time
              |  +--rw time-zone-identifier?   sys:timezone-name
              |  +--rw (period-type)?
@@ -40,16 +43,16 @@ module: ietf-ucl-acl
              |     |  +--rw period-end?       yang:date-and-time
              |     +--:(duration)
              |        +--rw duration?         duration
-             +--rw bysecond*               uint32
-             +--rw byminute*               uint32
-             +--rw byhour*                 uint32
+             +--rw bysecond*                 uint32
+             +--rw byminute*                 uint32
+             +--rw byhour*                   uint32
              +--rw byday* [weekday]
              |  +--rw direction*   int32
              |  +--rw weekday      schedule:weekday
-             +--rw bymonthday*             int32
-             +--rw byyearday*              int32
-             +--rw byyearweek*             int32
-             +--rw byyearmonth*            uint32
-             +--rw bysetpos*               int32
-             +--rw workweek-start?         schedule:weekday
-             +--rw exception-dates*        yang:date-and-time
+             +--rw bymonthday*               int32
+             +--rw byyearday*                int32
+             +--rw byyearweek*               int32
+             +--rw byyearmonth*              uint32
+             +--rw bysetpos*                 int32
+             +--rw workweek-start?           schedule:weekday
+             +--rw exception-dates*          yang:date-and-time
