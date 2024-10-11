@@ -407,7 +407,7 @@ informative:
    {{ag-example}} shows an example of how application-group definitions may be characterized.
 
    | Group Name | Group ID | Group Description |
-   | Audio/Video Streaming  |   baz-70   |  Audio/Video conferecing application |
+   | Audio/Video Streaming  |   baz-70   |  Audio/Video conferencing application |
    | Instant messaging |   baz-80   | Messaging application |
    | document collaboration |  baz-90  | Real-time document editing application |
    {: #ag-example title='Application-Group Example'}
@@ -428,11 +428,11 @@ informative:
 {: #ucl-tree title="UCL Extension" artwork-align="center"}
 
    The first part of the data model augments the "acl" list in the
-   "ietf-access-control-list" model {{!RFC8519}} with a "endpoint-groups" container
+   "ietf-access-control-list" model {{!RFC8519}} with an "endpoint-groups" container
    having a list of "endpoint group" inside, each entry has a "group-id" that uniquely
    identifies the endpoint group and a "group-type" parameter to specify the endpoint group type.
 
-> "group-id" is defined as a string rather than uint to accommodate deployments which require some identification hierarchy within a domain. Such a hierarchy is meant to ease coordination within an administrative domain. There might be cases where a domain needs to tag packets with the group they belong to. The tagging does not need to mirror exactly the "group id" used to populate the policy. How the "group-id" string is mapped to the tagging or field in the packet header in encapsulation scenario is outside the scope of this document. Augmentation may be considered in the future to cover encapsulation considerations.
+> "group-id" is defined as a string rather than unsignedd integer (e.g., uint32) to accommodate deployments which require some identification hierarchy within a domain. Such a hierarchy is meant to ease coordination within an administrative domain. There might be cases where a domain needs to tag packets with the group they belong to. The tagging does not need to mirror exactly the "group id" used to populate the policy. How the "group-id" string is mapped to the tagging or field in the packet header in encapsulation scenario is outside the scope of this document. Augmentation may be considered in the future to cover encapsulation considerations.
 
    The second part of the data model augments the "matches" container in the IETF
    ACL model {{!RFC8519}} so that a source and/or destination endpoint group index
@@ -542,7 +542,7 @@ Notation for {{rad-att}}:
    While it eliminates the need for an SDN controller to interact frequently
    with the PEPs for reasons like the user's context of network connection change
    or VM/application migration, dedicated hardware/software support might be needed
-   for PEPs to understand the endpoint group identifier. In scenrios where the NAS
+   for PEPs to understand the endpoint group identifier. In scenarios where the NAS
    behaves as the PEP which acquires the source and/or destination endpoint group
    ID from the AAA server, ACL policy enforcement based on the group identity without
    being encapsulated into packet headers might affect the forwarding performance.
@@ -649,7 +649,7 @@ Notation for {{rad-att}}:
 
 ## Configuring the Controller Using Group based ACL {#controller-ucl}
 
-   Let's consider an organization that would like to restrict the access of R&D
+   Let's consider an organization that would like to manage the access of R&D
    employees that bring personally owned devices (BYOD) into the workplace.
 
    The access requirements are as follows:
