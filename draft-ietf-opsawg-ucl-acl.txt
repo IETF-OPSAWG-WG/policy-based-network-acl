@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 27 December 2024                              M. Boucadair, Ed.
+Expires: 14 April 2025                                 M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                            25 June 2024
+                                                         11 October 2024
 
 
  A YANG Data Model and RADIUS Extension for Policy-based Network Access
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 December 2024.
+   This Internet-Draft will expire on 14 April 2025.
 
 Copyright Notice
 
@@ -501,64 +501,64 @@ Table of Contents
 
    Figure 2 provides the tree structure of the "ietf-ucl-acl" module.
 
-   module: ietf-ucl-acl
+     module: ietf-ucl-acl
 
-     augment /acl:acls:
-       +--rw endpoint-groups {uacl:group}?
-          +--rw endpoint-group* [group-id]
-             +--rw group-id      string
-             +--rw group-type?   identityref
-     augment /acl:acls/acl:acl/acl:aces/acl:ace/acl:matches:
-       +--rw endpoint-group {uacl:match-on-group}?
-          +--rw source-group-id?        group-id-reference
-          +--rw destination-group-id?   group-id-reference
-     augment /acl:acls/acl:acl/acl:aces/acl:ace:
-       +--rw effective-schedule {uacl:schedule}?
-          +--rw (schedule-type)?
-             +--:(period)
-             |  +--rw period-description?       string
-             |  +--rw period-start              yang:date-and-time
-             |  +--rw time-zone-identifier?     sys:timezone-name
-             |  +--rw (period-type)?
-             |     +--:(explicit)
-             |     |  +--rw period-end?         yang:date-and-time
-             |     +--:(duration)
-             |        +--rw duration?           duration
-             +--:(recurrence) {schedule:icalendar-recurrence-supported}?
-                +--rw recurrence-first
-                |  +--rw date-time-start?        yang:date-and-time
-                |  +--rw duration?               duration
-                |  +--rw time-zone-identifier?   sys:timezone-name
-                +--rw (recurrence-bound)?
-                |  +--:(until)
-                |  |  +--rw until?              yang:date-and-time
-                |  +--:(count)
-                |     +--rw count?              uint32
-                +--rw recurrence-description?   string
-                +--rw frequency                 identityref
-                +--rw interval?                 uint32
-                +--rw period* [period-start]
-                |  +--rw period-description?     string
-                |  +--rw period-start            yang:date-and-time
-                |  +--rw time-zone-identifier?   sys:timezone-name
-                |  +--rw (period-type)?
-                |     +--:(explicit)
-                |     |  +--rw period-end?       yang:date-and-time
-                |     +--:(duration)
-                |        +--rw duration?         duration
-                +--rw bysecond*                 uint32
-                +--rw byminute*                 uint32
-                +--rw byhour*                   uint32
-                +--rw byday* [weekday]
-                |  +--rw direction*   int32
-                |  +--rw weekday      schedule:weekday
-                +--rw bymonthday*               int32
-                +--rw byyearday*                int32
-                +--rw byyearweek*               int32
-                +--rw byyearmonth*              uint32
-                +--rw bysetpos*                 int32
-                +--rw workweek-start?           schedule:weekday
-                +--rw exception-dates*          yang:date-and-time
+       augment /acl:acls:
+         +--rw endpoint-groups {uacl:group}?
+            +--rw endpoint-group* [group-id]
+               +--rw group-id      string
+               +--rw group-type?   identityref
+       augment /acl:acls/acl:acl/acl:aces/acl:ace/acl:matches:
+         +--rw endpoint-group {uacl:match-on-group}?
+            +--rw source-group-id?        group-id-reference
+            +--rw destination-group-id?   group-id-reference
+       augment /acl:acls/acl:acl/acl:aces/acl:ace:
+         +--rw effective-schedule {uacl:schedule}?
+            +--rw (schedule-type)?
+               +--:(period)
+               |  +--rw period-description?       string
+               |  +--rw period-start              yang:date-and-time
+               |  +--rw time-zone-identifier?     sys:timezone-name
+               |  +--rw (period-type)?
+               |     +--:(explicit)
+               |     |  +--rw period-end?         yang:date-and-time
+               |     +--:(duration)
+               |        +--rw duration?           duration
+               +--:(recurrence) {schedule:icalendar-recurrence}?
+                  +--rw recurrence-first
+                  |  +--rw start-time?             yang:date-and-time
+                  |  +--rw duration?               duration
+                  |  +--rw time-zone-identifier?   sys:timezone-name
+                  +--rw (recurrence-end)?
+                  |  +--:(until)
+                  |  |  +--rw until?              yang:date-and-time
+                  |  +--:(count)
+                  |     +--rw count?              uint32
+                  +--rw recurrence-description?   string
+                  +--rw frequency                 identityref
+                  +--rw interval?                 uint32
+                  +--rw period* [period-start]
+                  |  +--rw period-description?     string
+                  |  +--rw period-start            yang:date-and-time
+                  |  +--rw time-zone-identifier?   sys:timezone-name
+                  |  +--rw (period-type)?
+                  |     +--:(explicit)
+                  |     |  +--rw period-end?       yang:date-and-time
+                  |     +--:(duration)
+                  |        +--rw duration?         duration
+                  +--rw bysecond*                 uint32
+                  +--rw byminute*                 uint32
+                  +--rw byhour*                   uint32
+                  +--rw byday* [weekday]
+                  |  +--rw direction*   int32
+                  |  +--rw weekday      schedule:weekday
+                  +--rw bymonthday*               int32
+                  +--rw byyearday*                int32
+                  +--rw byyearweek*               int32
+                  +--rw byyearmonth*              uint32
+                  +--rw bysetpos*                 int32
+                  +--rw workweek-start?           schedule:weekday
+                  +--rw exception-dates*          yang:date-and-time
 
                           Figure 2: UCL Extension
 
@@ -935,7 +935,7 @@ Table of Contents
                uses schedule:period-of-time;
            }
            case recurrence {
-             if-feature "schedule:icalendar-recurrence-supported";
+             if-feature "schedule:icalendar-recurrence";
              description
                "The ACE takes effect based on a recurrence rule.";
              uses schedule:icalendar-recurrence;
@@ -1156,9 +1156,9 @@ Table of Contents
    [I-D.ietf-netmod-schedule-yang]
               Ma, Q., Wu, Q., Boucadair, M., and D. King, "A Common YANG
               Data Model for Scheduling", Work in Progress, Internet-
-              Draft, draft-ietf-netmod-schedule-yang-01, 27 April 2024,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
-              schedule-yang-01>.
+              Draft, draft-ietf-netmod-schedule-yang-03, 10 October
+              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              netmod-schedule-yang-03>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1245,9 +1245,9 @@ Table of Contents
               Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
               Authors and Reviewers of Documents Containing YANG Data
               Models", Work in Progress, Internet-Draft, draft-ietf-
-              netmod-rfc8407bis-12, 21 June 2024,
+              netmod-rfc8407bis-17, 27 September 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
-              rfc8407bis-12>.
+              rfc8407bis-17>.
 
    [I-D.ietf-nvo3-encap]
               Boutros, S. and D. E. Eastlake, "Network Virtualization
@@ -1259,9 +1259,9 @@ Table of Contents
    [I-D.ietf-radext-deprecating-radius]
               DeKok, A., "Deprecating Insecure Practices in RADIUS",
               Work in Progress, Internet-Draft, draft-ietf-radext-
-              deprecating-radius-01, 29 April 2024,
+              deprecating-radius-03, 7 August 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-radext-
-              deprecating-radius-01>.
+              deprecating-radius-03>.
 
    [I-D.smith-vxlan-group-policy]
               Smith, M. and L. Kreeger, "VXLAN Group Policy Option",
@@ -1361,7 +1361,6 @@ A.1.  Configuring the Controller Using Group based ACL
    =============== NOTE: '\' line wrapping per RFC 8792 ================
 
    <?xml version="1.0" encoding="utf-8"?>
-
    <acls xmlns="urn:ietf:params:xml:ns:yang:ietf-access-control-list"
          xmlns:uacl="urn:ietf:params:xml:ns:yang:ietf-ucl-acl">
        <endpoint-groups
@@ -1399,7 +1398,7 @@ A.1.  Configuring the Controller Using Group based ACL
                                                                 ucl-acl"
              xmlns:schedule="urn:ietf:params:xml:ns:yang:ietf-schedule">
              <recurrence-first>
-               <date-time-start>2025-01-01T08:00:00Z</date-time-start>
+               <start-time>2025-01-01T08:00:00Z</start-time>
                <duration>PT10:00:00</duration>
              </recurrence-first>
              <frequency>schedule:daily</frequency>
@@ -1500,7 +1499,7 @@ A.2.  Configuring a PEP Using Group-based ACL
                                                                 ucl-acl"
              xmlns:schedule="urn:ietf:params:xml:ns:yang:ietf-schedule">
              <recurrence-first>
-               <date-time-start>2025-01-01T08:00:00Z</date-time-start>
+               <start-time>2025-01-01T08:00:00Z</start-time>
                <duration>PT10:00:00</duration>
              </recurrence-first>
              <frequency>schedule:daily</frequency>
@@ -1570,7 +1569,6 @@ A.3.  Configuring PEPs Using Address-based ACLs
    =============== NOTE: '\' line wrapping per RFC 8792 ================
 
    <?xml version="1.0" encoding="utf-8"?>
-
    <acls xmlns="urn:ietf:params:xml:ns:yang:ietf-access-control-list">
      <acl>
        <name>sample-group-acl</name>
@@ -1592,7 +1590,7 @@ A.3.  Configuring PEPs Using Address-based ACLs
                                                                 ucl-acl"
              xmlns:schedule="urn:ietf:params:xml:ns:yang:ietf-schedule">
              <recurrence-first>
-               <date-time-start>2025-01-01T08:00:00Z</date-time-start>
+               <start-time>2025-01-01T08:00:00Z</start-time>
                <duration>PT10:00:00</duration>
              </recurrence-first>
              <frequency>schedule:daily</frequency>
@@ -1663,7 +1661,7 @@ A.3.  Configuring PEPs Using Address-based ACLs
                                                                 ucl-acl"
              xmlns:schedule="urn:ietf:params:xml:ns:yang:ietf-schedule">
              <recurrence-first>
-               <date-time-start>2025-01-01T08:00:00Z</date-time-start>
+               <start-time>2025-01-01T08:00:00Z</start-time>
                <duration>PT10:00:00</duration>
              </recurrence-first>
              <frequency>schedule:daily</frequency>
