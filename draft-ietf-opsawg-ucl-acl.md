@@ -558,7 +558,7 @@ Notation for {{rad-att}}:
 
    The "ietf-ucl-acl" YANG module defines a data model
    that is designed to be accessed via YANG-based management protocols such
-   as NETCONF {{!RFC6241}} and RESTCONF {{!RFC8040}}. These protocols have to
+   as NETCONF {{?RFC6241}} and RESTCONF {{?RFC8040}}. These protocols have to
    use a secure transport layer (e.g., SSH {{?RFC4252}}, TLS {{?RFC8446}}, and
    QUIC {{?RFC9000}}) and have to use mutual authentication.
 
