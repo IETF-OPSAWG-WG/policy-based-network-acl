@@ -17,7 +17,7 @@
         <effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"
           xmlns:schedule="urn:ietf:params:xml:ns:yang:ietf-schedule">
           <recurrence-first>
-            <date-time-start>2025-01-01T08:00:00Z</date-time-start>
+            <start-time>2025-01-01T08:00:00Z</start-time>
             <duration>PT10:00:00</duration>
           </recurrence-first>
           <frequency>schedule:daily</frequency>
@@ -41,4 +41,3 @@
     </aces>
   </acl>
 </acls>
-

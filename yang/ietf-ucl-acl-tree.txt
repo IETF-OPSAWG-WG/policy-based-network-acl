@@ -21,12 +21,12 @@ module: ietf-ucl-acl
           |     |  +--rw period-end?         yang:date-and-time
           |     +--:(duration)
           |        +--rw duration?           duration
-          +--:(recurrence) {schedule:icalendar-recurrence-supported}?
+          +--:(recurrence) {schedule:icalendar-recurrence}?
              +--rw recurrence-first
-             |  +--rw date-time-start?        yang:date-and-time
+             |  +--rw start-time?             yang:date-and-time
              |  +--rw duration?               duration
              |  +--rw time-zone-identifier?   sys:timezone-name
-             +--rw (recurrence-bound)?
+             +--rw (recurrence-end)?
              |  +--:(until)
              |  |  +--rw until?              yang:date-and-time
              |  +--:(count)
