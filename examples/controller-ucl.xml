@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <acls xmlns="urn:ietf:params:xml:ns:yang:ietf-access-control-list"
       xmlns:uacl="urn:ietf:params:xml:ns:yang:ietf-ucl-acl">
     <endpoint-groups
@@ -14,7 +13,7 @@
       </endpoint-group>
       <endpoint-group>
         <group-id>finance server</group-id>
-        <group-type>device-group</group-type>          
+        <group-type>device-group</group-type>
       </endpoint-group>
     </endpoint-groups>
     <acl>
@@ -36,7 +35,7 @@
         <effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"
           xmlns:schedule="urn:ietf:params:xml:ns:yang:ietf-schedule">
           <recurrence-first>
-            <date-time-start>2025-01-01T08:00:00Z</date-time-start>
+            <start-time>2025-01-01T08:00:00Z</start-time>
             <duration>PT10:00:00</duration>
           </recurrence-first>
           <frequency>schedule:daily</frequency>
@@ -77,4 +76,3 @@
     </aces>
   </acl>
 </acls>
-
