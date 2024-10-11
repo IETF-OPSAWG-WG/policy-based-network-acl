@@ -134,7 +134,7 @@ informative:
    {{?I-D.ietf-madinas-use-cases}}.
 
    The document does not specify how to map the policy group identifiers
-   to dedicated fields (e.g.,  Group Based Policy (GBP) discussed in {{Section 6.2.3 of ?I-D.ietf-nvo3-encap}}).
+   to dedicated fields (e.g.,  Group Based Policy (GBP) discussed in {{Section 6.2.3 of ?RFC9638}}).
 
    The YANG data model in this document conforms to the Network
    Management Datastore Architecture (NMDA) defined in {{!RFC8342}}.
@@ -258,7 +258,7 @@ informative:
       required PEPs.  Another deployment scenario may require that PEPs map incoming packets to their
       associated source and/or destination endpoint-group IDs, and acts upon
       the endpoint-group ID based ACL policies (e.g., a group identifier may be carried in packet headers such as discussed in
-      {{Section 6.2.3 of ?I-D.ietf-nvo3-encap}}). More details are provided in {{implement-considerations}}.
+      {{Section 6.2.3 of ?RFC9638}}). More details are provided in {{implement-considerations}}.
 
       Multiple PEPs may be involved in a network.
 
@@ -554,28 +554,27 @@ Notation for {{rad-att}}:
 
 ##  YANG
 
-This section uses the template described in {{Section 3.7 of ?I-D.ietf-netmod-rfc8407bis}}.
+   This section is modeled after the template described in {{Section 3.7 of ?I-D.ietf-netmod-rfc8407bis}}.
 
-   The YANG modules specified in this document defines schema for data
-   that is designed to be accessed via network management protocols such
-   as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}.  The lowest NETCONF layer
-   is the secure transport layer, and the mandatory-to-implement secure
-   transport is Secure Shell (SSH) {{!RFC6242}}.  The lowest RESTCONF layer
-   is HTTPS, and the mandatory-to-implement secure transport is TLS
-   {{!RFC8446}}.
+   The "ietf-ucl-acl" YANG module defines a data model
+   that is designed to be accessed via YANG-based management protocols such
+   as NETCONF {{!RFC6241}} and RESTCONF {{!RFC8040}}. These protocols have to
+   use a secure transport layer (e.g., SSH {{?RFC4252}}, TLS {{?RFC8446}}, and
+   QUIC {{?RFC9000}}) and have to use mutual authentication.
 
    The Network Configuration Access Control Model (NACM) {{!RFC8341}}
    provides the means to restrict access for particular NETCONF or
    RESTCONF users to a preconfigured subset of all available NETCONF or
    RESTCONF protocol operations and content.
 
-   There are a number of data nodes defined in the "ietf-ucl-acl" YANG module that are
-   writable, creatable, and deletable (i.e., config true, which is the
+   There are a number of data nodes defined in this YANG module that are
+   writable/creatable/deletable (i.e., "config true", which is the
    default).  These data nodes may be considered sensitive or vulnerable
-   in some network environments. Write operations (e.g., edit-config) and delete
-   operations to these data nodes without proper protection or authentication can
-   have a negative effect on network operations. Specifically,
-   the following subtrees and data nodes have particular sensitivities/vulnerabilities:
+   in some network environments.  Write operations (e.g., edit-config)
+   and delete operations to these data nodes without proper protection
+   or authentication can have a negative effect on network operations.
+   Specifically, the following subtrees and data nodes have particular
+   sensitivities/vulnerabilities:
 
    * /acl:acls/uacl:endpoint-groups/uacl:endpoint-group:
    : This list specifies all the endpoint group entries. Unauthorized write access to this
@@ -589,13 +588,14 @@ This section uses the template described in {{Section 3.7 of ?I-D.ietf-netmod-rf
      modify the group identity so as to permit access that should not be
      permitted, or deny access that should be permitted.
 
-  Some of the readable data nodes in the "ietf-ucl-acl" YANG module may
-  be considered sensitive or vulnerable in some network environments. It
-  is thus important to control read access (e.g., via get, get-config,
-  or notification) to these data nodes.  Specifically,
-  the following subtrees and data nodes have particular sensitivities/vulnerabilities:
+     Some of the readable data nodes in this YANG module may be considered
+     sensitive or vulnerable in some network environments.  It is thus
+     important to control read access (e.g., via get, get-config, or
+     notification) to these data nodes. Specifically, the following
+     subtrees and data nodes have particular sensitivities/
+     vulnerabilities:
 
-   * /acl:acls/acl:acl/acl:aces/acl:ace/uacl:time-range:
+   * /acl:acls/acl:acl/acl:aces/acl:ace/uacl:effective-schedule:
   : This subtree specifies when the access control entry rules are in effect. An
     unauthorized read access of the list will allow the attacker to determine
     which rules are in effect, to better craft an attack.
