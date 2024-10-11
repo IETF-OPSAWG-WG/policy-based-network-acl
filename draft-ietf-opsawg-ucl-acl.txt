@@ -171,7 +171,7 @@ Table of Contents
 
    The document does not specify how to map the policy group identifiers
    to dedicated fields (e.g., Group Based Policy (GBP) discussed in
-   Section 6.2.3 of [I-D.ietf-nvo3-encap]).
+   Section 6.2.3 of [RFC9638]).
 
    The YANG data model in this document conforms to the Network
    Management Datastore Architecture (NMDA) defined in [RFC8342].
@@ -315,8 +315,8 @@ Table of Contents
       their associated source and/or destination endpoint-group IDs, and
       acts upon the endpoint-group ID based ACL policies (e.g., a group
       identifier may be carried in packet headers such as discussed in
-      Section 6.2.3 of [I-D.ietf-nvo3-encap]).  More details are
-      provided in Section 9.
+      Section 6.2.3 of [RFC9638]).  More details are provided in
+      Section 9.
 
       Multiple PEPs may be involved in a network.
 
@@ -1055,30 +1055,28 @@ Table of Contents
 
 10.1.  YANG
 
-   This section uses the template described in Section 3.7 of
-   [I-D.ietf-netmod-rfc8407bis].
+   This section is modeled after the template described in Section 3.7
+   of [I-D.ietf-netmod-rfc8407bis].
 
-   The YANG modules specified in this document defines schema for data
-   that is designed to be accessed via network management protocols such
-   as NETCONF [RFC6241] or RESTCONF [RFC8040].  The lowest NETCONF layer
-   is the secure transport layer, and the mandatory-to-implement secure
-   transport is Secure Shell (SSH) [RFC6242].  The lowest RESTCONF layer
-   is HTTPS, and the mandatory-to-implement secure transport is TLS
-   [RFC8446].
+   The "ietf-ucl-acl" YANG module defines a data model that is designed
+   to be accessed via YANG-based management protocols such as NETCONF
+   [RFC6241] and RESTCONF [RFC8040].  These protocols have to use a
+   secure transport layer (e.g., SSH [RFC4252], TLS [RFC8446], and QUIC
+   [RFC9000]) and have to use mutual authentication.
 
    The Network Configuration Access Control Model (NACM) [RFC8341]
    provides the means to restrict access for particular NETCONF or
    RESTCONF users to a preconfigured subset of all available NETCONF or
    RESTCONF protocol operations and content.
 
-   There are a number of data nodes defined in the "ietf-ucl-acl" YANG
-   module that are writable, creatable, and deletable (i.e., config
-   true, which is the default).  These data nodes may be considered
-   sensitive or vulnerable in some network environments.  Write
-   operations (e.g., edit-config) and delete operations to these data
-   nodes without proper protection or authentication can have a negative
-   effect on network operations.  Specifically, the following subtrees
-   and data nodes have particular sensitivities/vulnerabilities:
+   There are a number of data nodes defined in this YANG module that are
+   writable/creatable/deletable (i.e., "config true", which is the
+   default).  These data nodes may be considered sensitive or vulnerable
+   in some network environments.  Write operations (e.g., edit-config)
+   and delete operations to these data nodes without proper protection
+   or authentication can have a negative effect on network operations.
+   Specifically, the following subtrees and data nodes have particular
+   sensitivities/vulnerabilities:
 
    *  /acl:acls/uacl:endpoint-groups/uacl:endpoint-group:  This list
          specifies all the endpoint group entries.  Unauthorized write
@@ -1094,18 +1092,18 @@ Table of Contents
          identity so as to permit access that should not be permitted,
          or deny access that should be permitted.
 
-   Some of the readable data nodes in the "ietf-ucl-acl" YANG module may
-   be considered sensitive or vulnerable in some network environments.
-   It is thus important to control read access (e.g., via get, get-
-   config, or notification) to these data nodes.  Specifically, the
-   following subtrees and data nodes have particular sensitivities/
-   vulnerabilities:
+      Some of the readable data nodes in this YANG module may be
+      considered sensitive or vulnerable in some network environments.
+      It is thus important to control read access (e.g., via get, get-
+      config, or notification) to these data nodes.  Specifically, the
+      following subtrees and data nodes have particular sensitivities/
+      vulnerabilities:
 
-   *  /acl:acls/acl:acl/acl:aces/acl:ace/uacl:time-range:  This subtree
-         specifies when the access control entry rules are in effect.
-         An unauthorized read access of the list will allow the attacker
-         to determine which rules are in effect, to better craft an
-         attack.
+   *  /acl:acls/acl:acl/acl:aces/acl:ace/uacl:effective-schedule:  This 
+         subtree specifies when the access control entry rules are in
+         effect.  An unauthorized read access of the list will allow the
+         attacker to determine which rules are in effect, to better
+         craft an attack.
 
 10.2.  RADIUS
 
@@ -1184,18 +1182,10 @@ Table of Contents
               (NETCONF)", RFC 6241, DOI 10.17487/RFC6241, June 2011,
               <https://www.rfc-editor.org/rfc/rfc6241>.
 
-   [RFC6242]  Wasserman, M., "Using the NETCONF Protocol over Secure
-              Shell (SSH)", RFC 6242, DOI 10.17487/RFC6242, June 2011,
-              <https://www.rfc-editor.org/rfc/rfc6242>.
-
    [RFC6929]  DeKok, A. and A. Lior, "Remote Authentication Dial In User
               Service (RADIUS) Protocol Extensions", RFC 6929,
               DOI 10.17487/RFC6929, April 2013,
               <https://www.rfc-editor.org/rfc/rfc6929>.
-
-   [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
-              Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
-              <https://www.rfc-editor.org/rfc/rfc8040>.
 
    [RFC8044]  DeKok, A., "Data Types in RADIUS", RFC 8044,
               DOI 10.17487/RFC8044, January 2017,
@@ -1214,10 +1204,6 @@ Table of Contents
               and R. Wilton, "Network Management Datastore Architecture
               (NMDA)", RFC 8342, DOI 10.17487/RFC8342, March 2018,
               <https://www.rfc-editor.org/rfc/rfc8342>.
-
-   [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
-              Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
-              <https://www.rfc-editor.org/rfc/rfc8446>.
 
    [RFC8519]  Jethanandani, M., Agarwal, S., Huang, L., and D. Blair,
               "YANG Data Model for Network Access Control Lists (ACLs)",
@@ -1248,13 +1234,6 @@ Table of Contents
               netmod-rfc8407bis-17, 27 September 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
               rfc8407bis-17>.
-
-   [I-D.ietf-nvo3-encap]
-              Boutros, S. and D. E. Eastlake, "Network Virtualization
-              Overlays (NVO3) Encapsulation Considerations", Work in
-              Progress, Internet-Draft, draft-ietf-nvo3-encap-12, 19
-              February 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-nvo3-encap-12>.
 
    [I-D.ietf-radext-deprecating-radius]
               DeKok, A., "Deprecating Insecure Practices in RADIUS",
@@ -1311,6 +1290,10 @@ Table of Contents
               DOI 10.17487/RFC3539, June 2003,
               <https://www.rfc-editor.org/rfc/rfc3539>.
 
+   [RFC4252]  Ylonen, T. and C. Lonvick, Ed., "The Secure Shell (SSH)
+              Authentication Protocol", RFC 4252, DOI 10.17487/RFC4252,
+              January 2006, <https://www.rfc-editor.org/rfc/rfc4252>.
+
    [RFC6614]  Winter, S., McCauley, M., Venaas, S., and K. Wierenga,
               "Transport Layer Security (TLS) Encryption for RADIUS",
               RFC 6614, DOI 10.17487/RFC6614, May 2012,
@@ -1331,9 +1314,27 @@ Table of Contents
               DOI 10.17487/RFC7542, May 2015,
               <https://www.rfc-editor.org/rfc/rfc7542>.
 
+   [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
+              Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
+              <https://www.rfc-editor.org/rfc/rfc8040>.
+
    [RFC8340]  Bjorklund, M. and L. Berger, Ed., "YANG Tree Diagrams",
               BCP 215, RFC 8340, DOI 10.17487/RFC8340, March 2018,
               <https://www.rfc-editor.org/rfc/rfc8340>.
+
+   [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
+              Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
+              <https://www.rfc-editor.org/rfc/rfc8446>.
+
+   [RFC9000]  Iyengar, J., Ed. and M. Thomson, Ed., "QUIC: A UDP-Based
+              Multiplexed and Secure Transport", RFC 9000,
+              DOI 10.17487/RFC9000, May 2021,
+              <https://www.rfc-editor.org/rfc/rfc9000>.
+
+   [RFC9638]  Boutros, S. and D. Eastlake 3rd, Ed., "Network
+              Virtualization over Layer 3 (NVO3) Encapsulation
+              Considerations", RFC 9638, DOI 10.17487/RFC9638, September
+              2024, <https://www.rfc-editor.org/rfc/rfc9638>.
 
 Appendix A.  Examples Usage
 
