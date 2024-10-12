@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 14 April 2025                                 M. Boucadair, Ed.
+Expires: 15 April 2025                                 M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                         11 October 2024
+                                                         12 October 2024
 
 
  A YANG Data Model and RADIUS Extension for Policy-based Network Access
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 April 2025.
+   This Internet-Draft will expire on 15 April 2025.
 
 Copyright Notice
 
@@ -476,19 +476,19 @@ Table of Contents
    Table 3 shows an example of how application-group definitions may be
    characterized.
 
-      +=======================+==========+=========================+
-      | Group Name            | Group ID | Group Description       |
-      +=======================+==========+=========================+
-      | Audio/Video Streaming | baz-70   | Audio/Video conferecing |
-      |                       |          | application             |
-      +-----------------------+----------+-------------------------+
-      | Instant messaging     | baz-80   | Messaging application   |
-      +-----------------------+----------+-------------------------+
-      | document              | baz-90   | Real-time document      |
-      | collaboration         |          | editing application     |
-      +-----------------------+----------+-------------------------+
+      +=======================+==========+==========================+
+      | Group Name            | Group ID | Group Description        |
+      +=======================+==========+==========================+
+      | Audio/Video Streaming | baz-70   | Audio/Video conferencing |
+      |                       |          | application              |
+      +-----------------------+----------+--------------------------+
+      | Instant messaging     | baz-80   | Messaging application    |
+      +-----------------------+----------+--------------------------+
+      | document              | baz-90   | Real-time document       |
+      | collaboration         |          | editing application      |
+      +-----------------------+----------+--------------------------+
 
-                    Table 3: Application-Group Example
+                     Table 3: Application-Group Example
 
 5.  Modules Overview
 
@@ -563,21 +563,22 @@ Table of Contents
                           Figure 2: UCL Extension
 
    The first part of the data model augments the "acl" list in the
-   "ietf-access-control-list" model [RFC8519] with a "endpoint-groups"
+   "ietf-access-control-list" model [RFC8519] with an "endpoint-groups"
    container having a list of "endpoint group" inside, each entry has a
    "group-id" that uniquely identifies the endpoint group and a "group-
    type" parameter to specify the endpoint group type.
 
-      "group-id" is defined as a string rather than uint to accommodate
-      deployments which require some identification hierarchy within a
-      domain.  Such a hierarchy is meant to ease coordination within an
-      administrative domain.  There might be cases where a domain needs
-      to tag packets with the group they belong to.  The tagging does
-      not need to mirror exactly the "group id" used to populate the
-      policy.  How the "group-id" string is mapped to the tagging or
-      field in the packet header in encapsulation scenario is outside
-      the scope of this document.  Augmentation may be considered in the
-      future to cover encapsulation considerations.
+      "group-id" is defined as a string rather than unsigned integer
+      (e.g., uint32) to accommodate deployments which require some
+      identification hierarchy within a domain.  Such a hierarchy is
+      meant to ease coordination within an administrative domain.  There
+      might be cases where a domain needs to tag packets with the group
+      they belong to.  The tagging does not need to mirror exactly the
+      "group id" used to populate the policy.  How the "group-id" string
+      is mapped to the tagging or field in the packet header in
+      encapsulation scenario is outside the scope of this document.
+      Augmentation may be considered in the future to cover
+      encapsulation considerations.
 
    The second part of the data model augments the "matches" container in
    the IETF ACL model [RFC8519] so that a source and/or destination
@@ -1042,7 +1043,7 @@ Table of Contents
    interact frequently with the PEPs for reasons like the user's context
    of network connection change or VM/application migration, dedicated
    hardware/software support might be needed for PEPs to understand the
-   endpoint group identifier.  In scenrios where the NAS behaves as the
+   endpoint group identifier.  In scenarios where the NAS behaves as the
    PEP which acquires the source and/or destination endpoint group ID
    from the AAA server, ACL policy enforcement based on the group
    identity without being encapsulated into packet headers might affect
@@ -1231,9 +1232,9 @@ Table of Contents
               Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
               Authors and Reviewers of Documents Containing YANG Data
               Models", Work in Progress, Internet-Draft, draft-ietf-
-              netmod-rfc8407bis-17, 27 September 2024,
+              netmod-rfc8407bis-18, 11 October 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
-              rfc8407bis-17>.
+              rfc8407bis-18>.
 
    [I-D.ietf-radext-deprecating-radius]
               DeKok, A., "Deprecating Insecure Practices in RADIUS",
@@ -1340,7 +1341,7 @@ Appendix A.  Examples Usage
 
 A.1.  Configuring the Controller Using Group based ACL
 
-   Let's consider an organization that would like to restrict the access
+   Let's consider an organization that would like to manage the access
    of R&D employees that bring personally owned devices (BYOD) into the
    workplace.
 
