@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 15 April 2025                                 M. Boucadair, Ed.
+Expires: 12 September 2025                             M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                         12 October 2024
+                                                           11 March 2025
 
 
  A YANG Data Model and RADIUS Extension for Policy-based Network Access
@@ -57,11 +57,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 April 2025.
+   This Internet-Draft will expire on 12 September 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1155,9 +1155,9 @@ Table of Contents
    [I-D.ietf-netmod-schedule-yang]
               Ma, Q., Wu, Q., Boucadair, M., and D. King, "A Common YANG
               Data Model for Scheduling", Work in Progress, Internet-
-              Draft, draft-ietf-netmod-schedule-yang-03, 10 October
-              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              netmod-schedule-yang-03>.
+              Draft, draft-ietf-netmod-schedule-yang-04, 7 February
+              2025, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              netmod-schedule-yang-04>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1214,34 +1214,34 @@ Table of Contents
 12.2.  Informative References
 
    [I-D.ietf-madinas-use-cases]
-              Henry, J. and Y. Lee, "Randomized and Changing MAC Address
-              Use Cases", Work in Progress, Internet-Draft, draft-ietf-
-              madinas-use-cases-10, 23 June 2024,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-madinas-
-              use-cases-10>.
+              Henry, J. and Y. Lee, "Randomized and Changing MAC
+              Address: Context, Network Impacts, and Use Cases", Work in
+              Progress, Internet-Draft, draft-ietf-madinas-use-cases-19,
+              20 December 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-madinas-use-cases-19>.
 
    [I-D.ietf-netmod-acl-extensions]
               de Dios, O. G., Barguil, S., Boucadair, M., and Q. Wu,
               "Extensions to the Access Control Lists (ACLs) YANG
               Model", Work in Progress, Internet-Draft, draft-ietf-
-              netmod-acl-extensions-10, 29 May 2024,
+              netmod-acl-extensions-15, 27 February 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
-              acl-extensions-10>.
+              acl-extensions-15>.
 
    [I-D.ietf-netmod-rfc8407bis]
               Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
               Authors and Reviewers of Documents Containing YANG Data
               Models", Work in Progress, Internet-Draft, draft-ietf-
-              netmod-rfc8407bis-18, 11 October 2024,
+              netmod-rfc8407bis-22, 14 January 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
-              rfc8407bis-18>.
+              rfc8407bis-22>.
 
    [I-D.ietf-radext-deprecating-radius]
               DeKok, A., "Deprecating Insecure Practices in RADIUS",
               Work in Progress, Internet-Draft, draft-ietf-radext-
-              deprecating-radius-03, 7 August 2024,
+              deprecating-radius-05, 26 November 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-radext-
-              deprecating-radius-03>.
+              deprecating-radius-05>.
 
    [I-D.smith-vxlan-group-policy]
               Smith, M. and L. Kreeger, "VXLAN Group Policy Option",
