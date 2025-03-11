@@ -193,7 +193,7 @@ Table of Contents
    *  SSSS --> the assigned RFC number for
       [I-D.ietf-netmod-schedule-yang]
 
-   *  2023-01-19 --> the actual date of the publication of this document
+   *  2025-03-11 --> the actual date of the publication of this document
 
 2.  Conventions and Definitions
 
@@ -399,7 +399,7 @@ Table of Contents
    (e.g., source IP address, geolocation data, time of day, or device
    certificate).  It uses an identifier (user group ID) to represent the
    collective identity of a group of users.  Users may be moved to
-   different user-groups if their composite attributes, environment,
+   different user groups if their composite attributes, environment,
    and/or local enterprise policy change.
 
    A user is authenticated, and classified at the AAA server, and
@@ -439,13 +439,13 @@ Table of Contents
 
 4.2.2.  Device Group
 
-   The device-group ID is an identifier that represents the collective
+   The device group ID is an identifier that represents the collective
    identity of a group of enterprise end devices.  An enterprise device
    could be a server that hosts applications or software that deliver
    services to enterprise users.  It could also be an enterprise IoT
-   device that serve a limited purpose, e.g., a printer that allows
+   device that serves a limited purpose, e.g., a printer that allows
    users to scan, print and send emails.  Table 2 shows an example of
-   how device-group definitions may be characterized.
+   how device group definitions may be characterized.
 
         +==================+==========+===========================+
         | Group Name       | Group ID | Group Description         |
@@ -457,7 +457,7 @@ Table of Contents
         | Printer Resource | bar-60   | Printer resources         |
         +------------------+----------+---------------------------+
 
-                       Table 2: Device-Group Example
+                       Table 2: Device Group Example
 
    Users accessing an enterprise device should be strictly controlled.
    Matching abstract device group ID instead of specified addresses in
@@ -473,7 +473,7 @@ Table of Contents
    multiple devices/VMs/containers, the abstraction of application group
    eases the process of application migration.  For example, the policy
    does not depend on the transport coordinates (i.e., 5-tuple).
-   Table 3 shows an example of how application-group definitions may be
+   Table 3 shows an example of how application group definitions may be
    characterized.
 
       +=======================+==========+==========================+
@@ -488,7 +488,7 @@ Table of Contents
       | collaboration         |          | editing application      |
       +-----------------------+----------+--------------------------+
 
-                     Table 3: Application-Group Example
+                     Table 3: Application Group Example
 
 5.  Modules Overview
 
@@ -602,7 +602,7 @@ Table of Contents
    schedule" module [I-D.ietf-netmod-schedule-yang].  It also augments
    the "ietf-access-control-list" module [RFC8519].
 
-   <CODE BEGINS> file "ietf-ucl-acl@2023-01-19.yang"
+   <CODE BEGINS> file "ietf-ucl-acl@2025-03-11.yang"
    module ietf-ucl-acl {
      yang-version 1.1;
      namespace "urn:ietf:params:xml:ns:yang:ietf-ucl-acl";
@@ -639,7 +639,7 @@ Table of Contents
         module and is meant to ensure consistent enforcement of ACL
         policies based on the group identity.
 
-        Copyright (c) 2024 IETF Trust and the persons identified
+        Copyright (c) 2025 IETF Trust and the persons identified
         as authors of the code. All rights reserved.
 
         Redistribution and use in source and binary forms, with
@@ -653,7 +653,7 @@ Table of Contents
         (https://www.rfc-editor.org/info/rfcXXXX); see the RFC
         itself for full legal notices.";
 
-     revision 2023-01-19 {
+     revision 2025-03-11 {
        description
          "Initial revision.";
        reference
