@@ -152,7 +152,7 @@ informative:
 
    * XXXX --> the assigned RFC number for this document
    * SSSS --> the assigned RFC number for {{!I-D.ietf-netmod-schedule-yang}}
-   * 2023-01-19 --> the actual date of the publication of this document
+   * 2025-03-11 --> the actual date of the publication of this document
 
 # Conventions and Definitions
 
@@ -344,7 +344,7 @@ informative:
    The user group is determined by a set of predefined policy criteria
    (e.g., source IP address, geolocation data, time of day, or device certificate).
    It uses an identifier (user group ID) to represent the collective identity of
-   a group of users. Users may be moved to different user-groups if their
+   a group of users. Users may be moved to different user groups if their
    composite attributes, environment, and/or local enterprise policy change.
 
 
@@ -378,19 +378,19 @@ informative:
 
 ###  Device Group
 
-   The device-group ID is an identifier that represents the collective
+   The device group ID is an identifier that represents the collective
    identity of a group of enterprise end devices.  An enterprise device
    could be a server that hosts applications or software that deliver
    services to enterprise users.  It could also be an enterprise IoT
-   device that serve a limited purpose, e.g., a printer that allows
+   device that serves a limited purpose, e.g., a printer that allows
    users to scan, print and send emails. {{dg-example}} shows an example
-   of how device-group definitions may be characterized.
+   of how device group definitions may be characterized.
 
    | Group Name | Group ID | Group Description |
    | Workflow   |   bar-40     |  Workflow  resource servers   |
    | R&D Resource |   bar-50     | R&D resource servers |
    |Printer Resource|   bar-60     | Printer resources |
-   {: #dg-example title='Device-Group Example'}
+   {: #dg-example title='Device Group Example'}
 
    Users accessing an enterprise device should be strictly controlled.
    Matching abstract device group ID instead of specified addresses in
@@ -404,13 +404,13 @@ informative:
    applied to the applications and device. A single application may need to run on
    multiple devices/VMs/containers, the abstraction of application group eases the
    process of application migration. For example, the policy does not depend on the transport coordinates (i.e., 5-tuple).
-   {{ag-example}} shows an example of how application-group definitions may be characterized.
+   {{ag-example}} shows an example of how application group definitions may be characterized.
 
    | Group Name | Group ID | Group Description |
    | Audio/Video Streaming  |   baz-70   |  Audio/Video conferencing application |
    | Instant messaging |   baz-80   | Messaging application |
    | document collaboration |  baz-90  | Real-time document editing application |
-   {: #ag-example title='Application-Group Example'}
+   {: #ag-example title='Application Group Example'}
 
 #  Modules Overview
 
@@ -455,7 +455,7 @@ informative:
    {{!I-D.ietf-netmod-schedule-yang}}. It also augments the "ietf-access-control-list" module {{!RFC8519}}.
 
 ~~~~
-<CODE BEGINS> file "ietf-ucl-acl@2023-01-19.yang"
+<CODE BEGINS> file "ietf-ucl-acl@2025-03-11.yang"
 {::include ./yang/ietf-ucl-acl.yang}
 <CODE ENDS>
 ~~~~
