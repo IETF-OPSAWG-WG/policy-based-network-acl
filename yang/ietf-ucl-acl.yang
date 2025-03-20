@@ -163,10 +163,11 @@ module ietf-ucl-acl {
     base uacl:group-acl-type;
     description
       "An ACL that contains a mix of entries that match on fields
-       in the IPv4 header, IPv6 header, and endpoint group identities,
-       which can represent the collective identity of a group of
-       authenticated users, end devices, or applications. Matching 
-       on Layer 4 header fields may also exist in the ACEs.";
+       in the IPv4 header, IPv6 header, and endpoint group
+       identities, which can represent the collective identity of a
+       group of authenticated users, end devices, or applications.
+       Matching on Layer 4 header fields may also exist in the
+       ACEs.";
   }
   
   identity mixed-eth-group-type {

@@ -188,7 +188,7 @@ informative:
 #  Sample Usage
 
    Access to some networks (e.g., enterprise networks) requires to
-   recognize the users’ identities no matter how, where, and when they
+   recognize the users' identities no matter how, where, and when they
    connect to the network resources.  Then, the network maps the
    (connecting) users to their access authorization rights.  Such rights
    are defined following local policies.  As discussed in {{intro}},
@@ -692,6 +692,13 @@ Notation for {{rad-att}}:
 ~~~~
 {: #ex-PEP-ucl title="Example of PEP Configuration"}
 
+   {{ex-PEP-ucl-ipv6}} shows an example of the same policy but with a destination IPv6 prefix.
+
+~~~~
+{::include-fold ./examples/PEP-ucl-ipv6.xml}
+~~~~
+{: #ex-PEP-ucl-ipv6 title="Example of PEP Configuration (ipv6)"}
+
 ## Configuring PEPs Using Address-based ACLs {#PEP-acl}
 
    The section describes an example of configuring a PEP using
@@ -700,7 +707,7 @@ Notation for {{rad-att}}:
    e.g., firewall.
 
    Assume an employee in the R&D department accesses the network
-   wirelessly from a non-corporate laptop using IP address 192.0.2.10.
+   wirelessly from a non-corporate laptop.
    The SDN controller associates the user group to which the employee
    belongs with the user address according to step 1 to 4 in {{overview}}.
 
