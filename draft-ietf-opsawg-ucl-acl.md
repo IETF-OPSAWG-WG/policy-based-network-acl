@@ -188,7 +188,7 @@ informative:
 #  Sample Usage
 
    Access to some networks (e.g., enterprise networks) requires to
-   recognize the users’ identities no matter how, where, and when they
+   recognize the users' identities no matter how, where, and when they
    connect to the network resources.  Then, the network maps the
    (connecting) users to their access authorization rights.  Such rights
    are defined following local policies.  As discussed in {{intro}},
