@@ -14,8 +14,8 @@
     </endpoint-group>
   </endpoint-groups>
   <acl>
-    <name>sample-ucl-ipv4</name>
-    <type>uacl:mixed-ipv4-group-type</type>
+    <name>sample-ucl-ipv6</name>
+    <type>uacl:mixed-ipv6-group-type</type>
     <aces>
       <ace>
         <name>rule1</name>
@@ -61,7 +61,7 @@
             <source-group-id>R&amp;D BYOD</source-group-id>
           </endpoint-group>
           <ipv4>
-            <destination-ipv4-network>203.0.113.1/24</destination-ipv4-network>
+            <destination-ipv6-network>2001:db8:1234::/64</destination-ipv6-network>
           </ipv4>
         </matches>
         <actions>
