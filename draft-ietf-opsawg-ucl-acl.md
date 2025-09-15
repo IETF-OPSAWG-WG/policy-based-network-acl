@@ -574,7 +574,7 @@ Notation for {{rad-att}}:
    operations (e.g., edit-config) and delete operations to these data
    nodes without proper protection or authentication can have a negative
    effect on network operations.  The following subtrees and data nodes
-   have particular sensitivities/vulnerabilities:   
+   have particular sensitivities/vulnerabilities:
 
    * /acl:acls/uacl:endpoint-groups/uacl:endpoint-group:
    : This list specifies all the endpoint group entries. Unauthorized write access to this
