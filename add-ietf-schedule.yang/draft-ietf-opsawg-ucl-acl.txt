@@ -933,13 +933,13 @@ Table of Contents
          choice schedule-type {
            description
              "Choice based on the type of the time range.";
-           case period {
+           container period {
              description
                "The ACE takes effect based on a precise period of
                 time.";
                uses schedule:period-of-time;
            }
-           case recurrence {
+           container recurrence {
              if-feature "schedule:icalendar-recurrence";
              description
                "The ACE takes effect based on a recurrence rule.";
