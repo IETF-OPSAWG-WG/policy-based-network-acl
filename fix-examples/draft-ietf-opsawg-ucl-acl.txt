@@ -91,7 +91,7 @@ Table of Contents
      6.1.  The "ietf-ucl-acl" YANG Module
    7.  User Access Control Group ID RADIUS Attribute
    8.  RADIUS Attributes
-   9.  Implementation Considerations
+   9.  Deployment Considerations
    10. Security Considerations
      10.1.  YANG
      10.2.  RADIUS
@@ -1032,7 +1032,7 @@ Table of Contents
    0+  Zero or more instances of this attribute MAY be present in
       packet.
 
-9.  Implementation Considerations
+9.  Deployment Considerations
 
    The UCL model can be implemented in different ways.
 
@@ -1356,13 +1356,13 @@ A.1.  Configuring the Controller Using Group based ACL
 
    *  Permit traffic from R&D BYOD of employees, destined to R&D
       employees' devices every work day from 8:00:00 to 18:00:00 UTC,
-      starting in January 1st, 2025.
+      starting in January 1st, 2026.
 
    *  Deny traffic from R&D BYOD of employees, destined to finance
       servers located in the enterprise DC network starting at 8:30:00
-      of January 20, 2025 with an offset of -08:00 from UTC (Pacific
+      of January 20, 2026 with an offset of -08:00 from UTC (Pacific
       Standard Time) and ending at 18:00:00 in Pacific Standard Time on
-      December 31, 2025.
+      December 31, 2026.
 
    The example shown in Figure 3 illustrates the configuration of an SDN
    controller using the group-based ACL:
