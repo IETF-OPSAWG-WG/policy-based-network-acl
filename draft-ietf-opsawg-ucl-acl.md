@@ -267,7 +267,7 @@ informative:
    {{arch}} provides the overall architecture and procedure for
    policy-based access control management.
 
-~~~~
+~~~~ aasvg
                                          .------------.
                                          |Orchestrator|
                                          '------+-----'
