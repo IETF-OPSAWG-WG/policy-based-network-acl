@@ -20,25 +20,25 @@
    communicate the user group identifier as part of identification and
    authorization information. 
     " name="description">
-<meta content="xml2rfc 3.28.0" name="generator">
+<meta content="xml2rfc 3.30.1" name="generator">
 <meta content="ACL" name="keyword">
 <meta content="Policy-based" name="keyword">
 <meta content="BYOD" name="keyword">
 <meta content="Access control" name="keyword">
 <meta content="draft-ietf-opsawg-ucl-acl-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.28.0
-    Python 3.12.9
+  xml2rfc 3.30.1
+    Python 3.12.11
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
-    Jinja2 3.1.5
-    lxml 5.3.0
-    platformdirs 4.3.6
+    Jinja2 3.1.6
+    lxml 5.3.1
+    platformdirs 4.4.0
     pycountry 24.6.1
     PyYAML 6.0.2
-    requests 2.32.3
-    setuptools 70.3.0
+    requests 2.32.5
+    setuptools 80.9.0
     wcwidth 0.2.13
 -->
 <link href="draft-ietf-opsawg-ucl-acl.xml" rel="alternate" type="application/rfc+xml">
@@ -1058,11 +1058,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">A Policy-based Network Access Control</td>
-<td class="right">March 2025</td>
+<td class="right">September 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ma, et al.</td>
-<td class="center">Expires 12 September 2025</td>
+<td class="center">Expires 19 March 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1075,12 +1075,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-opsawg-ucl-acl-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-03-11" class="published">11 March 2025</time>
+<time datetime="2025-09-15" class="published">15 September 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-09-12">12 September 2025</time></dd>
+<dd class="expires"><time datetime="2026-03-19">19 March 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1147,7 +1147,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 12 September 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 19 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1375,7 +1375,7 @@ entitlement to the network.<a href="#section-1-2.2.1" class="pilcrow">¶</a></p>
             <p id="section-1.1-4.2.1">SSSS --&gt; the assigned RFC number for <span>[<a href="#I-D.ietf-netmod-schedule-yang" class="cite xref">I-D.ietf-netmod-schedule-yang</a>]</span><a href="#section-1.1-4.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-1.1-4.3">
-            <p id="section-1.1-4.3.1">2023-01-19 --&gt; the actual date of the publication of this document<a href="#section-1.1-4.3.1" class="pilcrow">¶</a></p>
+            <p id="section-1.1-4.3.1">2025-03-11 --&gt; the actual date of the publication of this document<a href="#section-1.1-4.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1443,7 +1443,7 @@ by the enterprise. An application is a software program used for a specific serv
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-sample-usage" class="section-name selfRef">Sample Usage</a>
       </h2>
 <p id="section-3-1">Access to some networks (e.g., enterprise networks) requires to
-   recognize the users’ identities no matter how, where, and when they
+   recognize the users' identities no matter how, where, and when they
    connect to the network resources.  Then, the network maps the
    (connecting) users to their access authorization rights.  Such rights
    are defined following local policies.  As discussed in <a href="#intro" class="auto internal xref">Section 1</a>,
@@ -1588,7 +1588,7 @@ using a protocol such as RADIUS <span>[<a href="#RFC2865" class="cite xref">RFC2
 AAA server has been appropriately configured to store user credentials,
 e.g., user name, password, group information, and other user attributes.
 This document does not restrict what authentication method is used. Administrators
-may refer to, e.g., <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-radext-deprecating-radius-05#section-7.4" class="relref">Section 7.4</a> of [<a href="#I-D.ietf-radext-deprecating-radius" class="cite xref">I-D.ietf-radext-deprecating-radius</a>]</span>
+may refer to, e.g., <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-radext-deprecating-radius-07#section-7.4" class="relref">Section 7.4</a> of [<a href="#I-D.ietf-radext-deprecating-radius" class="cite xref">I-D.ietf-radext-deprecating-radius</a>]</span>
 for authentication method recommendations.
 If the authentication request succeeds, the user is placed in a
 user group the identity of which is returned to the network access server
@@ -1634,7 +1634,7 @@ the PEP. <a href="#PEP-ucl" class="auto internal xref">Appendix A.2</a> and <a h
 <p id="section-4.2.1-1">The user group is determined by a set of predefined policy criteria
    (e.g., source IP address, geolocation data, time of day, or device certificate).
    It uses an identifier (user group ID) to represent the collective identity of
-   a group of users. Users may be moved to different user-groups if their
+   a group of users. Users may be moved to different user groups if their
    composite attributes, environment, and/or local enterprise policy change.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
 <p id="section-4.2.1-2">A user is authenticated, and classified at the AAA server, and
    assigned to a user group.  A user's group membership may change as
@@ -1699,18 +1699,18 @@ the PEP. <a href="#PEP-ucl" class="auto internal xref">Appendix A.2</a> and <a h
           <h4 id="name-device-group">
 <a href="#section-4.2.2" class="section-number selfRef">4.2.2. </a><a href="#name-device-group" class="section-name selfRef">Device Group</a>
           </h4>
-<p id="section-4.2.2-1">The device-group ID is an identifier that represents the collective
+<p id="section-4.2.2-1">The device group ID is an identifier that represents the collective
    identity of a group of enterprise end devices.  An enterprise device
    could be a server that hosts applications or software that deliver
    services to enterprise users.  It could also be an enterprise IoT
-   device that serve a limited purpose, e.g., a printer that allows
+   device that serves a limited purpose, e.g., a printer that allows
    users to scan, print and send emails. <a href="#dg-example" class="auto internal xref">Table 2</a> shows an example
-   of how device-group definitions may be characterized.<a href="#section-4.2.2-1" class="pilcrow">¶</a></p>
+   of how device group definitions may be characterized.<a href="#section-4.2.2-1" class="pilcrow">¶</a></p>
 <span id="name-device-group-example"></span><div id="dg-example">
 <table class="center" id="table-2">
             <caption>
 <a href="#table-2" class="selfRef">Table 2</a>:
-<a href="#name-device-group-example" class="selfRef">Device-Group Example</a>
+<a href="#name-device-group-example" class="selfRef">Device Group Example</a>
             </caption>
 <thead>
               <tr>
@@ -1754,12 +1754,12 @@ the PEP. <a href="#PEP-ucl" class="auto internal xref">Appendix A.2</a> and <a h
    applied to the applications and device. A single application may need to run on
    multiple devices/VMs/containers, the abstraction of application group eases the
    process of application migration. For example, the policy does not depend on the transport coordinates (i.e., 5-tuple).
-   <a href="#ag-example" class="auto internal xref">Table 3</a> shows an example of how application-group definitions may be characterized.<a href="#section-4.2.3-1" class="pilcrow">¶</a></p>
+   <a href="#ag-example" class="auto internal xref">Table 3</a> shows an example of how application group definitions may be characterized.<a href="#section-4.2.3-1" class="pilcrow">¶</a></p>
 <span id="name-application-group-example"></span><div id="ag-example">
 <table class="center" id="table-3">
             <caption>
 <a href="#table-3" class="selfRef">Table 3</a>:
-<a href="#name-application-group-example" class="selfRef">Application-Group Example</a>
+<a href="#name-application-group-example" class="selfRef">Application Group Example</a>
             </caption>
 <thead>
               <tr>
@@ -1911,7 +1911,7 @@ module: ietf-ucl-acl
 <p id="section-6.1-1">This module imports types and groupings defined in the "ietf-schedule" module
    <span>[<a href="#I-D.ietf-netmod-schedule-yang" class="cite xref">I-D.ietf-netmod-schedule-yang</a>]</span>. It also augments the "ietf-access-control-list" module <span>[<a href="#RFC8519" class="cite xref">RFC8519</a>]</span>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
 <div class="breakable sourcecode" id="section-6.1-2">
-<pre>&lt;CODE BEGINS&gt; file "ietf-ucl-acl@2023-01-19.yang"
+<pre>&lt;CODE BEGINS&gt; file "ietf-ucl-acl@2025-03-11.yang"
 
 module ietf-ucl-acl {
   yang-version 1.1;
@@ -1949,7 +1949,7 @@ module ietf-ucl-acl {
      module and is meant to ensure consistent enforcement of ACL
      policies based on the group identity.
 
-     Copyright (c) 2024 IETF Trust and the persons identified
+     Copyright (c) 2025 IETF Trust and the persons identified
      as authors of the code. All rights reserved.
 
      Redistribution and use in source and binary forms, with
@@ -1959,11 +1959,14 @@ module ietf-ucl-acl {
      Legal Provisions Relating to IETF Documents
      (https://trustee.ietf.org/license-info).
 
-     This version of this YANG module is part of RFC XXXX
-     (https://www.rfc-editor.org/info/rfcXXXX); see the RFC
-     itself for full legal notices.";
+     All revisions of IETF and IANA published modules can be found
+     at the YANG Parameters registry group
+     (https://www.iana.org/assignments/yang-parameters).
 
-  revision 2023-01-19 {
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices.";
+
+  revision 2025-03-11 {
     description
       "Initial revision.";
     reference
@@ -2078,10 +2081,11 @@ module ietf-ucl-acl {
     base uacl:group-acl-type;
     description
       "An ACL that contains a mix of entries that match on fields
-       in the IPv4 header, IPv6 header, and endpoint group identities,
-       which can represent the collective identity of a group of
-       authenticated users, end devices, or applications. Matching
-       on Layer 4 header fields may also exist in the ACEs.";
+       in the IPv4 header, IPv6 header, and endpoint group
+       identities, which can represent the collective identity of a
+       group of authenticated users, end devices, or applications.
+       Matching on Layer 4 header fields may also exist in the
+       ACEs.";
   }
 
   identity mixed-eth-group-type {
@@ -2418,7 +2422,7 @@ RADIUS packet.<a href="#section-7-6" class="pilcrow">¶</a></p>
         <h3 id="name-yang">
 <a href="#section-10.1" class="section-number selfRef">10.1. </a><a href="#name-yang" class="section-name selfRef">YANG</a>
         </h3>
-<p id="section-10.1-1">This section is modeled after the template described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-22#section-3.7" class="relref">Section 3.7</a> of [<a href="#I-D.ietf-netmod-rfc8407bis" class="cite xref">I-D.ietf-netmod-rfc8407bis</a>]</span>.<a href="#section-10.1-1" class="pilcrow">¶</a></p>
+<p id="section-10.1-1">This section is modeled after the template described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-28#section-3.7" class="relref">Section 3.7</a> of [<a href="#I-D.ietf-netmod-rfc8407bis" class="cite xref">I-D.ietf-netmod-rfc8407bis</a>]</span>.<a href="#section-10.1-1" class="pilcrow">¶</a></p>
 <p id="section-10.1-2">The "ietf-ucl-acl" YANG module defines a data model
    that is designed to be accessed via YANG-based management protocols such
    as NETCONF <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> and RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. These protocols have to
@@ -2575,7 +2579,7 @@ which rules are in effect, to better craft an attack.<a href="#section-10.1-5.3.
 <dl class="references">
 <dt id="I-D.ietf-netmod-schedule-yang">[I-D.ietf-netmod-schedule-yang]</dt>
         <dd>
-<span class="refAuthor">Ma, Q.</span>, <span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Boucadair, M.</span>, and <span class="refAuthor">D. King</span>, <span class="refTitle">"A Common YANG Data Model for Scheduling"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netmod-schedule-yang-04</span>, <time datetime="2025-02-07" class="refDate">7 February 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-schedule-yang-04">https://datatracker.ietf.org/doc/html/draft-ietf-netmod-schedule-yang-04</a>&gt;</span>. </dd>
+<span class="refAuthor">Ma, Q.</span>, <span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Boucadair, M.</span>, and <span class="refAuthor">D. King</span>, <span class="refTitle">"A Common YANG Data Model for Scheduling"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netmod-schedule-yang-10</span>, <time datetime="2025-08-07" class="refDate">7 August 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-schedule-yang-10">https://datatracker.ietf.org/doc/html/draft-ietf-netmod-schedule-yang-10</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -2636,15 +2640,15 @@ which rules are in effect, to better craft an attack.<a href="#section-10.1-5.3.
 <dd class="break"></dd>
 <dt id="I-D.ietf-netmod-acl-extensions">[I-D.ietf-netmod-acl-extensions]</dt>
         <dd>
-<span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, <span class="refAuthor">Boucadair, M.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Extensions to the Access Control Lists (ACLs) YANG Model"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netmod-acl-extensions-15</span>, <time datetime="2025-02-27" class="refDate">27 February 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-acl-extensions-15">https://datatracker.ietf.org/doc/html/draft-ietf-netmod-acl-extensions-15</a>&gt;</span>. </dd>
+<span class="refAuthor">de Dios, O. G.</span>, <span class="refAuthor">Barguil, S.</span>, <span class="refAuthor">Boucadair, M.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Extensions to the Access Control Lists (ACLs) YANG Model"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netmod-acl-extensions-17</span>, <time datetime="2025-04-03" class="refDate">3 April 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-acl-extensions-17">https://datatracker.ietf.org/doc/html/draft-ietf-netmod-acl-extensions-17</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-netmod-rfc8407bis">[I-D.ietf-netmod-rfc8407bis]</dt>
         <dd>
-<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Boucadair, M.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Guidelines for Authors and Reviewers of Documents Containing YANG Data Models"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netmod-rfc8407bis-22</span>, <time datetime="2025-01-14" class="refDate">14 January 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-22">https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-22</a>&gt;</span>. </dd>
+<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Boucadair, M.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Guidelines for Authors and Reviewers of Documents Containing YANG Data Models"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netmod-rfc8407bis-28</span>, <time datetime="2025-06-05" class="refDate">5 June 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-28">https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-28</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-radext-deprecating-radius">[I-D.ietf-radext-deprecating-radius]</dt>
         <dd>
-<span class="refAuthor">DeKok, A.</span>, <span class="refTitle">"Deprecating Insecure Practices in RADIUS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-radext-deprecating-radius-05</span>, <time datetime="2024-11-26" class="refDate">26 November 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-radext-deprecating-radius-05">https://datatracker.ietf.org/doc/html/draft-ietf-radext-deprecating-radius-05</a>&gt;</span>. </dd>
+<span class="refAuthor">DeKok, A.</span>, <span class="refTitle">"Deprecating Insecure Practices in RADIUS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-radext-deprecating-radius-07</span>, <time datetime="2025-08-27" class="refDate">27 August 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-radext-deprecating-radius-07">https://datatracker.ietf.org/doc/html/draft-ietf-radext-deprecating-radius-07</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.smith-vxlan-group-policy">[I-D.smith-vxlan-group-policy]</dt>
         <dd>
@@ -2884,7 +2888,7 @@ at 18:00:00 in Pacific Standard Time on December 31, 2025.<a href="#appendix-A.1
     &lt;/endpoint-group&gt;
   &lt;/endpoint-groups&gt;
   &lt;acl&gt;
-    &lt;name&gt;sample-group-acl&lt;/name&gt;
+    &lt;name&gt;sample-ucl-ipv4&lt;/name&gt;
     &lt;type&gt;uacl:mixed-ipv4-group-type&lt;/type&gt;
     &lt;aces&gt;
       &lt;ace&gt;
@@ -2948,11 +2952,103 @@ at 18:00:00 in Pacific Standard Time on December 31, 2025.<a href="#appendix-A.1
     &lt;/aces&gt;
   &lt;/acl&gt;
 &lt;/acls&gt;
-
 </pre>
 </div>
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
 <a href="#name-example-of-pep-configuratio" class="selfRef">Example of PEP Configuration</a>
+          </figcaption></figure>
+</div>
+<p id="appendix-A.2-5"><a href="#ex-PEP-ucl-ipv6" class="auto internal xref">Figure 5</a> shows an example of the same policy but with a destination IPv6 prefix.<a href="#appendix-A.2-5" class="pilcrow">¶</a></p>
+<span id="name-example-of-pep-configuration"></span><div id="ex-PEP-ucl-ipv6">
+<figure id="figure-5">
+          <div class="alignLeft art-text artwork" id="appendix-A.2-6.1">
+<pre>
+=============== NOTE: '\' line wrapping per RFC 8792 ================
+
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;acls xmlns="urn:ietf:params:xml:ns:yang:ietf-access-control-list"
+      xmlns:uacl="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
+  &lt;endpoint-groups
+      xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
+    &lt;endpoint-group&gt;
+      &lt;group-id&gt;R&amp;amp;D&lt;/group-id&gt;
+      &lt;group-type&gt;user-group&lt;/group-type&gt;
+    &lt;/endpoint-group&gt;
+    &lt;endpoint-group&gt;
+      &lt;group-id&gt;R&amp;amp;D BYOD&lt;/group-id&gt;
+      &lt;group-type&gt;user-group&lt;/group-type&gt;
+    &lt;/endpoint-group&gt;
+  &lt;/endpoint-groups&gt;
+  &lt;acl&gt;
+    &lt;name&gt;sample-ucl-ipv6&lt;/name&gt;
+    &lt;type&gt;uacl:mixed-ipv6-group-type&lt;/type&gt;
+    &lt;aces&gt;
+      &lt;ace&gt;
+        &lt;name&gt;rule1&lt;/name&gt;
+        &lt;matches&gt;
+          &lt;endpoint-group
+            xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
+            &lt;source-group-id&gt;R&amp;amp;D BYOD&lt;/source-group-id&gt;
+            &lt;destination-group-id&gt;R&amp;amp;D&lt;/destination-group-id&gt;
+          &lt;/endpoint-group&gt;
+        &lt;/matches&gt;
+        &lt;actions&gt;
+          &lt;forwarding&gt;accept&lt;/forwarding&gt;
+        &lt;/actions&gt;
+        &lt;effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
+                                                             ucl-acl"
+          xmlns:schedule="urn:ietf:params:xml:ns:yang:ietf-schedule"&gt;
+          &lt;recurrence-first&gt;
+            &lt;start-time&gt;2025-01-01T08:00:00Z&lt;/start-time&gt;
+            &lt;duration&gt;PT10:00:00&lt;/duration&gt;
+          &lt;/recurrence-first&gt;
+          &lt;frequency&gt;schedule:daily&lt;/frequency&gt;
+          &lt;byday&gt;
+            &lt;weekday&gt;monday&lt;/weekday&gt;
+          &lt;/byday&gt;
+          &lt;byday&gt;
+            &lt;weekday&gt;tuesday&lt;/weekday&gt;
+          &lt;/byday&gt;
+          &lt;byday&gt;
+            &lt;weekday&gt;wednesday&lt;/weekday&gt;
+          &lt;/byday&gt;
+          &lt;byday&gt;
+            &lt;weekday&gt;thursday&lt;/weekday&gt;
+          &lt;/byday&gt;
+          &lt;byday&gt;
+            &lt;weekday&gt;friday&lt;/weekday&gt;
+          &lt;/byday&gt;
+        &lt;/effective-schedule&gt;
+      &lt;/ace&gt;
+      &lt;ace&gt;
+        &lt;name&gt;rule2&lt;/name&gt;
+        &lt;matches&gt;
+          &lt;endpoint-group
+            xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
+            &lt;source-group-id&gt;R&amp;amp;D BYOD&lt;/source-group-id&gt;
+          &lt;/endpoint-group&gt;
+          &lt;ipv4&gt;
+            &lt;destination-ipv6-network&gt;2001:db8:1234::/64&lt;/\
+                                            destination-ipv6-network&gt;
+          &lt;/ipv4&gt;
+        &lt;/matches&gt;
+        &lt;actions&gt;
+          &lt;forwarding&gt;reject&lt;/forwarding&gt;
+        &lt;/actions&gt;
+        &lt;effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
+                                                            ucl-acl"&gt;
+          &lt;period-start&gt;2025-01-20T08:30:00-08:00&lt;/period-start&gt;
+          &lt;period-end&gt;2025-12-31T18:00:00-08:00&lt;/period-end&gt;
+        &lt;/effective-schedule&gt;
+      &lt;/ace&gt;
+    &lt;/aces&gt;
+  &lt;/acl&gt;
+&lt;/acls&gt;
+</pre>
+</div>
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
+<a href="#name-example-of-pep-configuration" class="selfRef">Example of PEP Configuration (ipv6)</a>
           </figcaption></figure>
 </div>
 </section>
@@ -2967,16 +3063,16 @@ at 18:00:00 in Pacific Standard Time on December 31, 2025.<a href="#appendix-A.1
    be applied to the PEP that may not understand the group information,
    e.g., firewall.<a href="#appendix-A.3-1" class="pilcrow">¶</a></p>
 <p id="appendix-A.3-2">Assume an employee in the R&amp;D department accesses the network
-   wirelessly from a non-corporate laptop using IP address 192.0.2.10.
+   wirelessly from a non-corporate laptop.
    The SDN controller associates the user group to which the employee
    belongs with the user address according to step 1 to 4 in <a href="#overview" class="auto internal xref">Section 4.1</a>.<a href="#appendix-A.3-2" class="pilcrow">¶</a></p>
 <p id="appendix-A.3-3">Assume the mapping between device group ID and IP addresses is
-   predefined or acquired via device authentication. <a href="#ex-PEP-acl" class="auto internal xref">Figure 5</a>
+   predefined or acquired via device authentication. <a href="#ex-PEP-acl" class="auto internal xref">Figure 6</a>
    shows an IPv4 address based ACL configuration delivered from
    the controller to the PEP. This example is consistent with the example
    presented in <a href="#controller-ucl" class="auto internal xref">Appendix A.1</a>.<a href="#appendix-A.3-3" class="pilcrow">¶</a></p>
-<span id="name-example-of-pep-configuration"></span><div id="ex-PEP-acl">
-<figure id="figure-5">
+<span id="name-example-of-pep-configuration-2"></span><div id="ex-PEP-acl">
+<figure id="figure-6">
           <div class="alignLeft art-text artwork" id="appendix-A.3-4.1">
 <pre>
 =============== NOTE: '\' line wrapping per RFC 8792 ================
@@ -2984,7 +3080,7 @@ at 18:00:00 in Pacific Standard Time on December 31, 2025.<a href="#appendix-A.1
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;acls xmlns="urn:ietf:params:xml:ns:yang:ietf-access-control-list"&gt;
   &lt;acl&gt;
-    &lt;name&gt;sample-group-acl&lt;/name&gt;
+    &lt;name&gt;sample-acl-ipv4&lt;/name&gt;
     &lt;type&gt;ipv4-acl-type&lt;/type&gt;
     &lt;aces&gt;
       &lt;ace&gt;
@@ -3047,13 +3143,13 @@ at 18:00:00 in Pacific Standard Time on December 31, 2025.<a href="#appendix-A.1
 &lt;/acls&gt;
 </pre>
 </div>
-<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
-<a href="#name-example-of-pep-configuration" class="selfRef">Example of PEP Configuration</a>
+<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
+<a href="#name-example-of-pep-configuration-2" class="selfRef">Example of PEP Configuration</a>
           </figcaption></figure>
 </div>
-<p id="appendix-A.3-5"><a href="#ex-PEP-acl-ipv6" class="auto internal xref">Figure 6</a> shows an example of the same policy but with a destination IPv6 prefix.<a href="#appendix-A.3-5" class="pilcrow">¶</a></p>
+<p id="appendix-A.3-5"><a href="#ex-PEP-acl-ipv6" class="auto internal xref">Figure 7</a> shows an example of the same policy but with a destination IPv6 prefix.<a href="#appendix-A.3-5" class="pilcrow">¶</a></p>
 <span id="name-example-of-pep-configuration-"></span><div id="ex-PEP-acl-ipv6">
-<figure id="figure-6">
+<figure id="figure-7">
           <div class="alignLeft art-text artwork" id="appendix-A.3-6.1">
 <pre>
 =============== NOTE: '\' line wrapping per RFC 8792 ================
@@ -3061,15 +3157,17 @@ at 18:00:00 in Pacific Standard Time on December 31, 2025.<a href="#appendix-A.1
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;acls xmlns="urn:ietf:params:xml:ns:yang:ietf-access-control-list"&gt;
   &lt;acl&gt;
-    &lt;name&gt;another-sample-but-with-ipv6&lt;/name&gt;
+    &lt;name&gt;sample-acl-ipv6&lt;/name&gt;
     &lt;type&gt;ipv6-acl-type&lt;/type&gt;
     &lt;aces&gt;
       &lt;ace&gt;
         &lt;name&gt;rule1&lt;/name&gt;
         &lt;matches&gt;
           &lt;ipv6&gt;
-            &lt;destination-ipv6-network&gt;2001:db8::/64&lt;/destination-\
+            &lt;destination-ipv6-network&gt;2001:db8::1/64&lt;/destination-\
                                                         ipv6-network&gt;
+            &lt;source-ipv6-network&gt;2001:db8::2:1/64&lt;/source-ipv6-\
+                                                             network&gt;
           &lt;/ipv6&gt;
         &lt;/matches&gt;
         &lt;actions&gt;
@@ -3100,12 +3198,32 @@ at 18:00:00 in Pacific Standard Time on December 31, 2025.<a href="#appendix-A.1
           &lt;/byday&gt;
         &lt;/effective-schedule&gt;
       &lt;/ace&gt;
+      &lt;ace&gt;
+        &lt;name&gt;rule2&lt;/name&gt;
+        &lt;matches&gt;
+          &lt;ipv6&gt;
+            &lt;destination-ipv6-network&gt;2001:db8:1234::/64&lt;/\
+                                            destination-ipv6-network&gt;
+            &lt;source-ipv6-network&gt;2001:db8::2:1/64&lt;/source-ipv6-\
+                                                             network&gt;
+          &lt;/ipv4&gt;
+        &lt;/matches&gt;
+        &lt;actions&gt;
+          &lt;forwarding&gt;reject&lt;/forwarding&gt;
+        &lt;/actions&gt;
+        &lt;effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
+                                                            ucl-acl"&gt;
+          &lt;period-start&gt;2025-01-20T08:30:00-08:00&lt;/period-start&gt;
+          &lt;period-end&gt;2025-12-31T18:00:00-08:00&lt;/period-end&gt;
+        &lt;/effective-schedule&gt;
+      &lt;/ace&gt;
+    &lt;/aces&gt;
     &lt;/aces&gt;
   &lt;/acl&gt;
 &lt;/acls&gt;
 </pre>
 </div>
-<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
+<figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
 <a href="#name-example-of-pep-configuration-" class="selfRef">Example of PEP Configuration (IPv6)</a>
           </figcaption></figure>
 </div>
