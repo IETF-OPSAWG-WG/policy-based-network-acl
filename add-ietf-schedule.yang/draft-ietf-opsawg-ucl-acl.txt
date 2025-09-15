@@ -501,64 +501,66 @@ Table of Contents
 
    Figure 2 provides the tree structure of the "ietf-ucl-acl" module.
 
-     module: ietf-ucl-acl
+    module: ietf-ucl-acl
 
-       augment /acl:acls:
-         +--rw endpoint-groups {uacl:group}?
-            +--rw endpoint-group* [group-id]
-               +--rw group-id      string
-               +--rw group-type?   identityref
-       augment /acl:acls/acl:acl/acl:aces/acl:ace/acl:matches:
-         +--rw endpoint-group {uacl:match-on-group}?
-            +--rw source-group-id?        group-id-reference
-            +--rw destination-group-id?   group-id-reference
-       augment /acl:acls/acl:acl/acl:aces/acl:ace:
-         +--rw effective-schedule {uacl:schedule}?
-            +--rw (schedule-type)?
-               +--:(period)
-               |  +--rw period-description?       string
-               |  +--rw period-start              yang:date-and-time
-               |  +--rw time-zone-identifier?     sys:timezone-name
-               |  +--rw (period-type)?
-               |     +--:(explicit)
-               |     |  +--rw period-end?         yang:date-and-time
-               |     +--:(duration)
-               |        +--rw duration?           duration
-               +--:(recurrence) {schedule:icalendar-recurrence}?
-                  +--rw recurrence-first
-                  |  +--rw start-time?             yang:date-and-time
-                  |  +--rw duration?               duration
-                  |  +--rw time-zone-identifier?   sys:timezone-name
-                  +--rw (recurrence-end)?
-                  |  +--:(until)
-                  |  |  +--rw until?              yang:date-and-time
-                  |  +--:(count)
-                  |     +--rw count?              uint32
-                  +--rw recurrence-description?   string
-                  +--rw frequency                 identityref
-                  +--rw interval?                 uint32
-                  +--rw period* [period-start]
-                  |  +--rw period-description?     string
-                  |  +--rw period-start            yang:date-and-time
-                  |  +--rw time-zone-identifier?   sys:timezone-name
-                  |  +--rw (period-type)?
-                  |     +--:(explicit)
-                  |     |  +--rw period-end?       yang:date-and-time
-                  |     +--:(duration)
-                  |        +--rw duration?         duration
-                  +--rw bysecond*                 uint32
-                  +--rw byminute*                 uint32
-                  +--rw byhour*                   uint32
-                  +--rw byday* [weekday]
-                  |  +--rw direction*   int32
-                  |  +--rw weekday      schedule:weekday
-                  +--rw bymonthday*               int32
-                  +--rw byyearday*                int32
-                  +--rw byyearweek*               int32
-                  +--rw byyearmonth*              uint32
-                  +--rw bysetpos*                 int32
-                  +--rw workweek-start?           schedule:weekday
-                  +--rw exception-dates*          yang:date-and-time
+      augment /acl:acls:
+        +--rw endpoint-groups {uacl:group}?
+           +--rw endpoint-group* [group-id]
+              +--rw group-id      string
+              +--rw group-type?   identityref
+      augment /acl:acls/acl:acl/acl:aces/acl:ace/acl:matches:
+        +--rw endpoint-group {uacl:match-on-group}?
+           +--rw source-group-id?        group-id-reference
+           +--rw destination-group-id?   group-id-reference
+      augment /acl:acls/acl:acl/acl:aces/acl:ace:
+        +--rw effective-schedule {uacl:schedule}?
+           +--rw (schedule-type)?
+              +--:(period)
+              |  +--rw period
+              |     +--rw period-description?     string
+              |     +--rw period-start            yang:date-and-time
+              |     +--rw time-zone-identifier?   sys:timezone-name
+              |     +--rw (period-type)?
+              |        +--:(explicit)
+              |        |  +--rw period-end?       yang:date-and-time
+              |        +--:(duration)
+              |           +--rw duration?         duration
+              +--:(recurrence)
+                 +--rw recurrence {schedule:icalendar-recurrence}?
+                    +--rw recurrence-first
+                    |  +--rw start-time?             yang:date-and-time
+                    |  +--rw duration?               duration
+                    |  +--rw time-zone-identifier?   sys:timezone-name
+                    +--rw (recurrence-end)?
+                    |  +--:(until)
+                    |  |  +--rw until?              yang:date-and-time
+                    |  +--:(count)
+                    |     +--rw count?              uint32
+                    +--rw recurrence-description?   string
+                    +--rw frequency                 identityref
+                    +--rw interval?                 uint32
+                    +--rw period* [period-start]
+                    |  +--rw period-description?     string
+                    |  +--rw period-start            yang:date-and-time
+                    |  +--rw time-zone-identifier?   sys:timezone-name
+                    |  +--rw (period-type)?
+                    |     +--:(explicit)
+                    |     |  +--rw period-end?       yang:date-and-time
+                    |     +--:(duration)
+                    |        +--rw duration?         duration
+                    +--rw bysecond*                 uint32
+                    +--rw byminute*                 uint32
+                    +--rw byhour*                   uint32
+                    +--rw byday* [weekday]
+                    |  +--rw direction*   int32
+                    |  +--rw weekday      schedule:weekday
+                    +--rw bymonthday*               int32
+                    +--rw byyearday*                int32
+                    +--rw byyearweek*               int32
+                    +--rw byyearmonth*              uint32
+                    +--rw bysetpos*                 int32
+                    +--rw workweek-start?           schedule:weekday
+                    +--rw exception-dates*          yang:date-and-time
 
                           Figure 2: UCL Extension
 
