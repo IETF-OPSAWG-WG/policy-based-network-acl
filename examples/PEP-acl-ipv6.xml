@@ -53,8 +53,10 @@
           <forwarding>reject</forwarding>
         </actions>
         <effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl">
-          <period-start>2026-01-20T08:30:00-08:00</period-start>
-          <period-end>2026-12-31T18:00:00-08:00</period-end>
+          <period>
+            <period-start>2026-01-20T08:30:00-08:00</period-start>
+            <period-end>2026-12-31T18:00:00-08:00</period-end>
+          </period>
         </effective-schedule>
       </ace>
     </aces>      
