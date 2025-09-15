@@ -558,9 +558,9 @@ Notation for {{rad-att}}:
 
    The "ietf-ucl-acl" YANG module defines a data model
    that is designed to be accessed via YANG-based management protocols such
-   as NETCONF {{?RFC6241}} and RESTCONF {{?RFC8040}}. These protocols have to
-   use a secure transport layer (e.g., SSH {{?RFC4252}}, TLS {{?RFC8446}}, and
-   QUIC {{?RFC9000}}) and have to use mutual authentication.
+   as NETCONF {{?RFC6241}} and RESTCONF {{?RFC8040}}. These YANG-based management
+   protocols (1) have to use a secure transport layer (e.g., SSH {{?RFC4252}}, TLS {{?RFC8446}}, and
+   QUIC {{?RFC9000}}) and (2) have to use mutual authentication.
 
    The Network Configuration Access Control Model (NACM) {{!RFC8341}}
    provides the means to restrict access for particular NETCONF or
@@ -569,12 +569,12 @@ Notation for {{rad-att}}:
 
    There are a number of data nodes defined in this YANG module that are
    writable/creatable/deletable (i.e., "config true", which is the
-   default).  These data nodes may be considered sensitive or vulnerable
-   in some network environments.  Write operations (e.g., edit-config)
-   and delete operations to these data nodes without proper protection
-   or authentication can have a negative effect on network operations.
-   Specifically, the following subtrees and data nodes have particular
-   sensitivities/vulnerabilities:
+   default).  All writable data nodes are likely to be sensitive or
+   vulnerable in some network environments.  Write
+   operations (e.g., edit-config) and delete operations to these data
+   nodes without proper protection or authentication can have a negative
+   effect on network operations.  The following subtrees and data nodes
+   have particular sensitivities/vulnerabilities:
 
    * /acl:acls/uacl:endpoint-groups/uacl:endpoint-group:
    : This list specifies all the endpoint group entries. Unauthorized write access to this
@@ -596,9 +596,9 @@ Notation for {{rad-att}}:
      vulnerabilities:
 
    * /acl:acls/acl:acl/acl:aces/acl:ace/uacl:effective-schedule:
-  : This subtree specifies when the access control entry rules are in effect. An
-    unauthorized read access of the list will allow the attacker to determine
-    which rules are in effect, to better craft an attack.
+   : This subtree specifies when the access control entry rules are in effect. An
+     unauthorized read access of the list will allow the attacker to determine
+     which rules are in effect, to better craft an attack.
 
 
 ##  RADIUS
