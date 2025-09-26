@@ -2,16 +2,16 @@
 
 This is the working area for the OPSAWG Internet-Draft, "A Policy-based Network Access Control".
 
-* [Editor's Copy](https://boucadair.github.io/policy-based-network-acl/#go.draft-ietf-opsawg-ucl-acl.html)
+* [Editor's Copy](https://IETF-OPSAWG-WG.github.io/policy-based-network-acl/#go.draft-ietf-opsawg-ucl-acl.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-opsawg-ucl-acl)
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-ietf-opsawg-ucl-acl)
-* [Compare Editor's Copy to Individual Draft](https://boucadair.github.io/policy-based-network-acl/#go.draft-ietf-opsawg-ucl-acl.diff)
+* [Compare Editor's Copy to Individual Draft](https://IETF-OPSAWG-WG.github.io/policy-based-network-acl/#go.draft-ietf-opsawg-ucl-acl.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/boucadair/policy-based-network-acl/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/IETF-OPSAWG-WG/policy-based-network-acl/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
