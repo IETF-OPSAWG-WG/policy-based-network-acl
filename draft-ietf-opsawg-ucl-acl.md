@@ -500,7 +500,7 @@ The User-Access-Group-ID Attribute is structured as follows:
    : This field indicates the total length, in octets, of all fields of
    this attribute, including the Type, Length, Extended-Type, and the
    "Value".
-   : The Length MUST be at most 67 octets. That is, the maximum allowed length for the string in the value field is 64 octets.
+   : The Length MUST be at most 67 octets. The maximum length is 67 octets to accommodate the maximum group ID of 64 octets plus one octet for type, one octet for length, and one octet for Extended-Length.
 
    Data Type
    : string ({{Section 3.5 of !RFC8044}})
