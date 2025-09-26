@@ -1000,7 +1000,7 @@ Table of Contents
   
       The Length MUST be at most 67 octets.  The maximum length is 67
       octets to accommodate the maximum group ID of 64 octets plus one
-      octet for type, one octet for length, and one octet for Extended-
+      octet for Type, one octet for Length, and one octet for Extended-
       Length.
 
    Data Type
