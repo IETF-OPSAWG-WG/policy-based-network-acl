@@ -383,7 +383,7 @@ Table of Contents
    Step 4:  Either the AAA server or the NAS notifies an SDN controller
       of the mapping between the user group ID and related common packet
       header attributes (e.g., IP/MAC address).  The exact details of
-      how such notification is made is out the scope of this
+      how such notification is made are out the scope of this
       specification.
 
    Step 5:  Either group or IP/MAC address based access control policies
