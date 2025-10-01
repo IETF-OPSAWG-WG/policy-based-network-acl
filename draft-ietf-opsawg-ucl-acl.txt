@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 19 March 2026                                 M. Boucadair, Ed.
+Expires: 4 April 2026                                  M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                       15 September 2025
+                                                          1 October 2025
 
 
  A YANG Data Model and RADIUS Extension for Policy-based Network Access
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 March 2026.
+   This Internet-Draft will expire on 4 April 2026.
 
 Copyright Notice
 
@@ -382,7 +382,9 @@ Table of Contents
 
    Step 4:  Either the AAA server or the NAS notifies an SDN controller
       of the mapping between the user group ID and related common packet
-      header attributes (e.g., IP/MAC address).
+      header attributes (e.g., IP/MAC address).  The exact details of
+      how such notification is made are out the scope of this
+      specification.
 
    Step 5:  Either group or IP/MAC address based access control policies
       are maintained on relevant PEPs under the SDN controller's
@@ -996,7 +998,10 @@ Table of Contents
       "Value".
 
   
-      The Length MUST be at most 67 octets.
+      The Length MUST be at most 67 octets.  The maximum length is 67
+      octets to accommodate the maximum group ID of 64 octets plus one
+      octet for Type, one octet for Length, and one octet for Extended-
+      Length.
 
    Data Type
       string (Section 3.5 of [RFC8044])
