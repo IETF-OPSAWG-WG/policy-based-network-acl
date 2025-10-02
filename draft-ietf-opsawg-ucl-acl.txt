@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 4 April 2026                                  M. Boucadair, Ed.
+Expires: 5 April 2026                                  M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                          1 October 2025
+                                                          2 October 2025
 
 
  A YANG Data Model and RADIUS Extension for Policy-based Network Access
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 April 2026.
+   This Internet-Draft will expire on 5 April 2026.
 
 Copyright Notice
 
@@ -137,7 +137,7 @@ Table of Contents
       versus personal device), device's security posture, etc.  This
       means that the network needs to recognize the users' identity and
       their current context, and map the users to their correct access
-      entitlement to the network.
+      grant to the network.
 
    This document defines a YANG data model (Section 6.1) for policy-
    based network access control, which extends the IETF Access Control
@@ -259,7 +259,7 @@ Table of Contents
    access to specific internal or external resources during work hours,
    while another policy is adopted during off-hours and weekends.  A
    network administrator may also require to enforce traffic shaping
-   (Section 2.3.3.3 of [RFC2475]) and policing ( Section 2.3.3.4 of
+   (Section 2.3.3.3 of [RFC2475]) and policing (Section 2.3.3.4 of
    [RFC2475]) during peak hours in order not to affect other data
    services.
 
@@ -277,7 +277,7 @@ Table of Contents
       any other access to resources that can be hosted and offered by a
       network.
 
-   *  A software-defined networking (SDN) [RFC7149] [RFC7426] controller
+   *  A Software-Defined Networking (SDN) [RFC7149] [RFC7426] controller
       which is responsible for maintaining endpoint-group based ACLs and
       mapping the endpoint-group to the associated attributes
       information (e.g., IP/MAC address).  An SDN controller also
@@ -369,16 +369,15 @@ Table of Contents
       authentication method is used.  Administrators may refer to, e.g.,
       Section 7.4 of [I-D.ietf-radext-deprecating-radius] for
       authentication method recommendations.  If the authentication
-      request succeeds, the user is placed in a user group the identity
-      of which is returned to the network access server as the
-      authentication result (see Section 7).  If the authentication
-      fails, the user is not assigned any user group, which also means
-      that the user has no access; or the user is assigned a special
-      group with very limited access permissions for the network (as a
-      function of the local policy).  ACLs are enforced so that flows
-      from that IP address are discarded (or rate-limited) by the
-      network.  In some implementations, AAA server can be integrated
-      with an SDN controller.
+      request succeeds, the user is placed in a user group with the
+      identity returned to the NAS as the authentication result (see
+      Section 7).  If the authentication fails, the user is not assigned
+      any user group, which also means that the user has no access; or
+      the user is assigned a special group with very limited access
+      permissions for the network (as a function of the local policy).
+      ACLs are enforced so that flows from that IP address are discarded
+      (or rate-limited) by the network.  In some implementations, the
+      AAA server can be integrated with an SDN controller.
 
    Step 4:  Either the AAA server or the NAS notifies an SDN controller
       of the mapping between the user group ID and related common packet
@@ -631,7 +630,7 @@ Table of Contents
         WG List: <mailto:opsawg@ietf.org>
 
         Editor:   Qiufang Ma
-                  <mailto:maqiufang1@huawei.com
+                  <mailto:maqiufang1@huawei.com>
         Author:   Qin Wu
                   <mailto:bill.wu@huawei.com>
         Editor:   Mohamed Boucadair
