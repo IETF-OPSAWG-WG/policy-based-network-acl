@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 4 April 2026                                  M. Boucadair, Ed.
+Expires: 5 April 2026                                  M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                          1 October 2025
+                                                          2 October 2025
 
 
  A YANG Data Model and RADIUS Extension for Policy-based Network Access
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 April 2026.
+   This Internet-Draft will expire on 5 April 2026.
 
 Copyright Notice
 
@@ -630,7 +630,7 @@ Table of Contents
         WG List: <mailto:opsawg@ietf.org>
 
         Editor:   Qiufang Ma
-                  <mailto:maqiufang1@huawei.com
+                  <mailto:maqiufang1@huawei.com>
         Author:   Qin Wu
                   <mailto:bill.wu@huawei.com>
         Editor:   Mohamed Boucadair
