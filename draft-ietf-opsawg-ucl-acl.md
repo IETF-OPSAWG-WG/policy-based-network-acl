@@ -102,10 +102,10 @@ informative:
       network access might be granted based upon criteria such as users'
       access location, source network reputation, users' role, time-of-
       day, type of network device used (e.g., corporate issued device
-      versus personal device), device's security posture, etc.  This
+      versus personal device), device's security posture, etc. This
       means that the network needs to recognize the users' identity and their
       current context, and map the users to their correct access
-      entitlement to the network.
+      grant to the network.
 
    This document defines a YANG data model ({{sec-UCL}}) for policy-based network access control,
    which extends the IETF Access Control Lists (ACLs) module defined in {{!RFC8519}}.
@@ -209,8 +209,8 @@ informative:
    internal or external resources during work hours,
    while another policy is adopted during off-hours and weekends.  A
    network administrator may also require to enforce traffic shaping
-   ({{Section 2.3.3.3 of ?RFC2475}}) and policing (
-   {{Section 2.3.3.4 of ?RFC2475}}) during peak hours in order not to affect other data
+   ({{Section 2.3.3.3 of ?RFC2475}}) and policing
+   ({{Section 2.3.3.4 of ?RFC2475}}) during peak hours in order not to affect other data
    services.
 
 #  Policy-based Network Access Control
@@ -225,7 +225,7 @@ informative:
       including security policies.  The service may be connectivity or
       any other access to resources that can be hosted and offered by a network.
 
-   *  A software-defined networking (SDN) {{?RFC7149}} {{?RFC7426}} controller which is
+   *  A Software-Defined Networking (SDN) {{?RFC7149}} {{?RFC7426}} controller which is
       responsible for maintaining endpoint-group based ACLs and mapping the
       endpoint-group to the associated attributes information (e.g., IP/MAC address).
       An SDN controller also behaves as a Policy Decision Point (PDP) {{?RFC3198}}
@@ -315,7 +315,7 @@ informative:
       may refer to, e.g., {{Section 7.4 of ?I-D.ietf-radext-deprecating-radius}}
       for authentication method recommendations.
       If the authentication request succeeds, the user is placed in a
-      user group the identity of which is returned to the network access server
+      user group with the identity returned to the NAS
       as the authentication result (see {{sec-radius}}).
       If the authentication fails, the user is not assigned any user
       group, which also means that the user has no access; or the user
@@ -323,7 +323,7 @@ informative:
       for the network (as a function of the local policy). ACLs are
       enforced so that flows from that IP address are discarded
       (or rate-limited) by the network.
-      In some implementations, AAA server can be integrated with an SDN controller.
+      In some implementations, the AAA server can be integrated with an SDN controller.
 
    Step 4:
    :  Either the AAA server or the NAS notifies an SDN controller
@@ -346,7 +346,6 @@ informative:
    It uses an identifier (user group ID) to represent the collective identity of
    a group of users. Users may be moved to different user groups if their
    composite attributes, environment, and/or local enterprise policy change.
-
 
    A user is authenticated, and classified at the AAA server, and
    assigned to a user group.  A user's group membership may change as
