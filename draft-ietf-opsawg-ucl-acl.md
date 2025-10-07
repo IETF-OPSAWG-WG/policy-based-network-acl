@@ -408,9 +408,9 @@ informative:
    | document collaboration |  baz-90  | Real-time document editing application |
    {: #ag-example title='Application Group Example'}
 
-#  Modules Overview
+# The UCL Extension to the ACL Module
 
-##  The UCL Extension to the ACL Model
+##   Module Overview
 
    This module specifies an extension to the "ietf-access-control-list" module {{!RFC8519}}. This extension adds
    endpoint groups so that an endpoint group identifier can be matched upon, and also
@@ -440,13 +440,10 @@ informative:
    which reuse "recurrence" and "period" groupings defined in the "ietf-schedule"
    YANG module in {{!I-D.ietf-netmod-schedule-yang}}, respectively.
 
-
-#  YANG Modules
-
 ##  The "ietf-ucl-acl" YANG Module {#sec-UCL}
 
    This module imports types and groupings defined in the "ietf-schedule" module
-   {{!I-D.ietf-netmod-schedule-yang}}. It also augments the "ietf-access-control-list" module {{!RFC8519}}.
+   {{!I-D.ietf-netmod-schedule-yang}}. It also augments the "ietf-access-control-list" module ({{Section 4.1 of !RFC8519}}).
 
 ~~~~
 <CODE BEGINS> file "ietf-ucl-acl@2025-03-11.yang"
@@ -522,17 +519,17 @@ Notation for {{rad-att}}:
    0+
    : Zero or more instances of this attribute MAY be present in packet.
 
-# Deployment Considerations {#implement-considerations}
+# Operational Considerations {#implement-considerations}
 
    The UCL model can be implemented in different ways.
 
-   In some cases, the UCL model is implemented at the network/administrative domain
+   In some cases, the UCL data model is implemented at the network/administrative domain
    level with an SDN controller maintaining the dynamical mapping from endpoint
    group ID to IP/transport fields (e.g., the 5-tuple) and programing the PEPs with
    IP address/5-tuple based ACLs. In such cases, PEPs do not require to implement
    specific logic (including hardware) compared to the enforcement of conventional ACLs.
 
-   It is possible for the UCL model to be implemented at the network device level.
+   It is possible for the UCL data model to be implemented at the device level.
    While it eliminates the need for an SDN controller to interact frequently
    with the PEPs for reasons like the user's context of network connection change
    or VM/application migration, dedicated hardware/software support might be needed
