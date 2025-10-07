@@ -637,9 +637,10 @@ Table of Contents
         Author:   Daniel King
                   <mailto:d.king@lancaster.ac.uk>";
      description
-       "This YANG module augments the IETF access control lists (ACLs)
-        module and is meant to ensure consistent enforcement of ACL
-        policies based on the group identity.
+       "The User group based Control List (UCL) YANG module augments
+        the IETF access control lists (ACLs) module and is meant to
+        ensure consistent enforcement of ACL policies based on
+         the group identity.
 
         Copyright (c) 2025 IETF Trust and the persons identified
         as authors of the code. All rights reserved.
