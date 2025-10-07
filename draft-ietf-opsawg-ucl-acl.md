@@ -677,12 +677,16 @@ Notation for {{rad-att}}:
    source endpoint and the destination endpoint users. Another case for
    a PEP enforcing a group-based ACL is to obtain the group identity of
    the source endpoint directly from the packet field
-   {{?I-D.smith-vxlan-group-policy}}. This example does not intend to be exhaustive.
+   {{?I-D.smith-vxlan-group-policy}}.
 
    Assume the mapping between device group ID and IP addresses is
    predefined or acquired via device authentication. {{ex-PEP-ucl}}
    shows the ACL configuration delivered from the controller to the PEP. This
    example is consistent with the example presented in {{controller-ucl}}.
+
+   The examples in this section do not intend to be exhaustive. In particular, explicit
+   IP addresses ("destination-ipv4-network" or "destination-ipv6-network") are provided only for one single rule to illustrate
+   how the mapping between a group ID and IP addresses is translated into an ACL rule entry.
 
 ~~~~
 {::include-fold ./examples/PEP-ucl.xml}
