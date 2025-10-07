@@ -136,9 +136,6 @@ informative:
    The document does not specify how to map the policy group identifiers
    to dedicated fields (e.g.,  Group Based Policy (GBP) discussed in {{Section 6.2.3 of ?RFC9638}}).
 
-   The YANG data model in this document conforms to the Network
-   Management Datastore Architecture (NMDA) defined in {{!RFC8342}}.
-
 ## Editorial Note (To be removed by RFC Editor)
 
    Note to the RFC Editor: This section is to be removed prior to publication.
