@@ -173,9 +173,6 @@ Table of Contents
    to dedicated fields (e.g., Group Based Policy (GBP) discussed in
    Section 6.2.3 of [RFC9638]).
 
-   The YANG data model in this document conforms to the Network
-   Management Datastore Architecture (NMDA) defined in [RFC8342].
-
 1.1.  Editorial Note (To be removed by RFC Editor)
 
    Note to the RFC Editor: This section is to be removed prior to
@@ -1211,11 +1208,6 @@ Table of Contents
               Access Control Model", STD 91, RFC 8341,
               DOI 10.17487/RFC8341, March 2018,
               <https://www.rfc-editor.org/rfc/rfc8341>.
-
-   [RFC8342]  Bjorklund, M., Schoenwaelder, J., Shafer, P., Watsen, K.,
-              and R. Wilton, "Network Management Datastore Architecture
-              (NMDA)", RFC 8342, DOI 10.17487/RFC8342, March 2018,
-              <https://www.rfc-editor.org/rfc/rfc8342>.
 
    [RFC8519]  Jethanandani, M., Agarwal, S., Huang, L., and D. Blair,
               "YANG Data Model for Network Access Control Lists (ACLs)",
