@@ -85,22 +85,21 @@ Table of Contents
        4.2.1.  User Group
        4.2.2.  Device Group
        4.2.3.  Application Group
-   5.  Modules Overview
-     5.1.  The UCL Extension to the ACL Model
-   6.  YANG Modules
-     6.1.  The "ietf-ucl-acl" YANG Module
-   7.  User Access Control Group ID RADIUS Attribute
-   8.  RADIUS Attributes
-   9.  Deployment Considerations
-   10. Security Considerations
+   5.  The UCL Extension to the ACL Module
+     5.1.  Module Overview
+     5.2.  The "ietf-ucl-acl" YANG Module
+   6.  User Access Control Group ID RADIUS Attribute
+   7.  RADIUS Attributes
+   8.  Operational Considerations
+   9.  Security Considerations
+     9.1.  YANG
+     9.2.  RADIUS
+   10. IANA Considerations
      10.1.  YANG
      10.2.  RADIUS
-   11. IANA Considerations
-     11.1.  YANG
-     11.2.  RADIUS
-   12. References
-     12.1.  Normative References
-     12.2.  Informative References
+   11. References
+     11.1.  Normative References
+     11.2.  Informative References
    Appendix A.  Examples Usage
      A.1.  Configuring the Controller Using Group based ACL
      A.2.  Configuring a PEP Using Group-based ACL
@@ -139,7 +138,7 @@ Table of Contents
       their current context, and map the users to their correct access
       grant to the network.
 
-   This document defines a YANG data model (Section 6.1) for policy-
+   This document defines a YANG data model (Section 5.2) for policy-
    based network access control, which extends the IETF Access Control
    Lists (ACLs) module defined in [RFC8519].  This module can be used to
    ensure consistent enforcement of ACL policies based on the group
@@ -149,7 +148,7 @@ Table of Contents
    can be defined at network/administrative domain level
    [I-D.ietf-netmod-acl-extensions].  To allow for all applications of
    ACLs, the YANG module for policy-based network ACL defined in
-   Section 6.1 does not limit how it can be used.
+   Section 5.2 does not limit how it can be used.
 
    This document also defines a mechanism to establish a mapping between
    (1) the user group identifier (ID) and (2) common IP packet header
@@ -159,7 +158,7 @@ Table of Contents
    Additionally, the document defines a Remote Authentication Dial-in
    User Service (RADIUS) [RFC2865] attribute that is used to communicate
    the user group identifier as part of identification and authorization
-   information (Section 7).
+   information (Section 6).
 
    Although the document cites MAC addresses as an example in some
    sections, the document does not make assumptions about which
@@ -292,7 +291,7 @@ Table of Contents
       authentication using protocols like RADIUS [RFC2865].  When access
       is granted, the AAA server provides the group identifier (group
       ID) to which the user belongs when the user first logs onto the
-      network.  A new RADIUS attribute is defined in Section 7 for this
+      network.  A new RADIUS attribute is defined in Section 6 for this
       purpose.
 
    *  The AAA server provides a collection of authentication,
@@ -313,7 +312,7 @@ Table of Contents
       acts upon the endpoint-group ID based ACL policies (e.g., a group
       identifier may be carried in packet headers such as discussed in
       Section 6.2.3 of [RFC9638]).  More details are provided in
-      Section 9.
+      Section 8.
 
       Multiple PEPs may be involved in a network.
 
@@ -353,7 +352,7 @@ Table of Contents
 
    Step 1:  Administrators (or a service orchestrator) configure an SDN
       controller with network-level ACLs using the YANG module defined
-      in Section 6.1.  An example is provided in Appendix A.1.
+      in Section 5.2.  An example is provided in Appendix A.1.
 
    Step 2:  When a user first logs onto the network, they are required
       to be authenticated (e.g., using user name and password) at the
@@ -369,7 +368,7 @@ Table of Contents
       authentication method recommendations.  If the authentication
       request succeeds, the user is placed in a user group with the
       identity returned to the NAS as the authentication result (see
-      Section 7).  If the authentication fails, the user is not assigned
+      Section 6).  If the authentication fails, the user is not assigned
       any user group, which also means that the user has no access; or
       the user is assigned a special group with very limited access
       permissions for the network (as a function of the local policy).
@@ -489,9 +488,9 @@ Table of Contents
 
                      Table 3: Application Group Example
 
-5.  Modules Overview
+5.  The UCL Extension to the ACL Module
 
-5.1.  The UCL Extension to the ACL Model
+5.1.  Module Overview
 
    This module specifies an extension to the "ietf-access-control-list"
    module [RFC8519].  This extension adds endpoint groups so that an
@@ -593,13 +592,11 @@ Table of Contents
    "recurrence" and "period" groupings defined in the "ietf-schedule"
    YANG module in [I-D.ietf-netmod-schedule-yang], respectively.
 
-6.  YANG Modules
-
-6.1.  The "ietf-ucl-acl" YANG Module
+5.2.  The "ietf-ucl-acl" YANG Module
 
    This module imports types and groupings defined in the "ietf-
    schedule" module [I-D.ietf-netmod-schedule-yang].  It also augments
-   the "ietf-access-control-list" module [RFC8519].
+   the "ietf-access-control-list" module (Section 4.1 of [RFC8519]).
 
    <CODE BEGINS> file "ietf-ucl-acl@2025-03-11.yang"
    module ietf-ucl-acl {
@@ -951,7 +948,7 @@ Table of Contents
    }
    <CODE ENDS>
 
-7.  User Access Control Group ID RADIUS Attribute
+6.  User Access Control Group ID RADIUS Attribute
 
    The User-Access-Group-ID RADIUS attribute is defined with a globally
    unique name.  The definition of the attribute follows the guidelines
@@ -1005,7 +1002,7 @@ Table of Contents
    Value
       This field contains the user group ID.
 
-8.  RADIUS Attributes
+7.  RADIUS Attributes
 
    Table 4 provides a guide as what type of RADIUS packets that may
    contain User-Access-Group-ID Attribute, and in what quantity.
@@ -1033,11 +1030,11 @@ Table of Contents
    0+  Zero or more instances of this attribute MAY be present in
       packet.
 
-9.  Deployment Considerations
+8.  Operational Considerations
 
    The UCL model can be implemented in different ways.
 
-   In some cases, the UCL model is implemented at the network/
+   In some cases, the UCL data model is implemented at the network/
    administrative domain level with an SDN controller maintaining the
    dynamical mapping from endpoint group ID to IP/transport fields
    (e.g., the 5-tuple) and programing the PEPs with IP address/5-tuple
@@ -1045,8 +1042,8 @@ Table of Contents
    logic (including hardware) compared to the enforcement of
    conventional ACLs.
 
-   It is possible for the UCL model to be implemented at the network
-   device level.  While it eliminates the need for an SDN controller to
+   It is possible for the UCL data model to be implemented at the device
+   level.  While it eliminates the need for an SDN controller to
    interact frequently with the PEPs for reasons like the user's context
    of network connection change or VM/application migration, dedicated
    hardware/software support might be needed for PEPs to understand the
@@ -1059,9 +1056,9 @@ Table of Contents
    complexity of implementation) carefully.  Such assessment is out of
    scope of this document.
 
-10.  Security Considerations
+9.  Security Considerations
 
-10.1.  YANG
+9.1.  YANG
 
    This section is modeled after the template described in Section 3.7
    of [I-D.ietf-netmod-rfc8407bis].
@@ -1114,7 +1111,7 @@ Table of Contents
          attacker to determine which rules are in effect, to better
          craft an attack.
 
-10.2.  RADIUS
+9.2.  RADIUS
 
    RADIUS-related security considerations are discussed in [RFC2865].
 
@@ -1123,9 +1120,9 @@ Table of Contents
    optionally secured by IPsec or Transport Layer Security (TLS)
    [RFC6614].
 
-11.  IANA Considerations
+10.  IANA Considerations
 
-11.1.  YANG
+10.1.  YANG
 
    This document registers the following URIs in the "IETF XML Registry"
    [RFC3688].
@@ -1143,7 +1140,7 @@ Table of Contents
            maintained by IANA? N
            reference:          RFC XXXX
 
-11.2.  RADIUS
+10.2.  RADIUS
 
    This document requests IANA to assign a new RADIUS attribute type
    from the IANA registry "Radius Attribute Types" [RADIUS-Types]:
@@ -1156,9 +1153,9 @@ Table of Contents
 
                         Table 5: RADIUS Attribute
 
-12.  References
+11.  References
 
-12.1.  Normative References
+11.1.  Normative References
 
    [I-D.ietf-netmod-schedule-yang]
               Ma, Q., Wu, Q., Boucadair, M., and D. King, "A Common YANG
@@ -1214,7 +1211,7 @@ Table of Contents
               RFC 8519, DOI 10.17487/RFC8519, March 2019,
               <https://www.rfc-editor.org/rfc/rfc8519>.
 
-12.2.  Informative References
+11.2.  Informative References
 
    [I-D.ietf-netmod-acl-extensions]
               de Dios, O. G., Barguil, S., Boucadair, M., and Q. Wu,
