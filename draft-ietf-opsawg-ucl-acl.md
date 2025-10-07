@@ -131,7 +131,7 @@ informative:
    These examples should not be considered as recommendations. Readers should be
    aware that MAC-based ACLs can be bypassed by flushing out the MAC address.
    Other implications related to the change of MAC addresses are discussed in
-   {{?I-D.ietf-madinas-use-cases}}.
+   {{?RFC9797}}.
 
    The document does not specify how to map the policy group identifiers
    to dedicated fields (e.g.,  Group Based Policy (GBP) discussed in {{Section 6.2.3 of ?RFC9638}}).
