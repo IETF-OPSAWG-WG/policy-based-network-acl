@@ -217,7 +217,7 @@ informative:
 
 ##  Overview {#overview}
 
-   The architecture of a system that provides real-time and consistent
+   An architecture example of a system that provides real-time and consistent
    enforcement of access control policies is shown in {{arch}}. This architecture
    includes the following functional entities and interfaces:
 
@@ -262,7 +262,7 @@ informative:
 
       Multiple PEPs may be involved in a network.
 
-      A PEP exposes a NETCONF interface {{!RFC6241}} to an SDN controller.
+      A PEP exposes a YANG-based interface (e.g., NETCONF {{!RFC6241}}) to an SDN controller.
 
    {{arch}} provides the overall architecture and procedure for
    policy-based access control management.
@@ -292,7 +292,7 @@ informative:
                            |                      PEP                  |
                            '-------------------------------------------'
 ~~~~
-{: #arch title="An Architecture for Group-based Policy Management" artwork-align="center"}
+{: #arch title="A Sample Architecture for Group-based Policy Management" artwork-align="center"}
 
    In reference to {{arch}}, the following typical flow is experienced:
 
@@ -302,7 +302,7 @@ informative:
       in {{sec-UCL}}. An example is provided in {{controller-ucl}}.
 
    Step 2:
-   :  When a user first logs onto the network, he/she is
+   :  When a user first logs onto the network, they are
       required to be authenticated (e.g., using user name and password)
       at the NAS.
 
@@ -426,24 +426,22 @@ informative:
 ~~~~
 {: #ucl-tree title="UCL Extension" artwork-align="center"}
 
-   The first part of the data model augments the "acl" list in the
-   "ietf-access-control-list" model {{!RFC8519}} with an "endpoint-groups" container
+   The first part of the "ietf-ucl-acl" module augments the "acl" list in the
+   "ietf-access-control-list" module {{!RFC8519}} with an "endpoint-groups" container
    having a list of "endpoint group" inside, each entry has a "group-id" that uniquely
    identifies the endpoint group and a "group-type" parameter to specify the endpoint group type.
 
 > "group-id" is defined as a string rather than unsigned integer (e.g., uint32) to accommodate deployments which require some identification hierarchy within a domain. Such a hierarchy is meant to ease coordination within an administrative domain. There might be cases where a domain needs to tag packets with the group they belong to. The tagging does not need to mirror exactly the "group id" used to populate the policy. How the "group-id" string is mapped to the tagging or field in the packet header in encapsulation scenario is outside the scope of this document. Augmentation may be considered in the future to cover encapsulation considerations.
 
-   The second part of the data model augments the "matches" container in the IETF
-   ACL model {{!RFC8519}} so that a source and/or destination endpoint group index
+   The second part of the "ietf-ucl-acl" module augments the "matches" container in the
+   "ietf-access-control-list" module {{!RFC8519}} so that a source and/or destination endpoint group index
    can be referenced as the match criteria.
 
-   The third part of the data model augments the "ace" list in the "ietf-access-control-list"
-   model {{!RFC8519}} with date and time specific parameters to allow ACE to be
+   The third part of the module augments the "ace" list in the "ietf-access-control-list"
+   module {{!RFC8519}} with date and time specific parameters to allow ACE to be
    activated based on a date/time condition. Two types of time range are defined,
    which reuse "recurrence" and "period" groupings defined in the "ietf-schedule"
-   YANG module in {{!I-D.ietf-netmod-schedule-yang}}, respectively. Note that the data model augments the definition of
-   "recurrence" grouping with a "duration" data node to specify the duration of
-   time for each occurrence the policy activation is triggered.
+   YANG module in {{!I-D.ietf-netmod-schedule-yang}}, respectively.
 
 
 #  YANG Modules
@@ -745,3 +743,5 @@ Notation for {{rad-att}}:
    The authors would like to thank Joe Clarke, Bill Fenner, Benoit
    Claise, Rob Wilton, David Somers-Harris, Alan Dekok, and Heikki Vatiainen for their valuable comments
    and great input to this work.
+
+   Thanks to Dhruv Dhody for the OPSDIR review.
