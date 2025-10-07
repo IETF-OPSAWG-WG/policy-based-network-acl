@@ -267,10 +267,10 @@ Table of Contents
 
 4.1.  Overview
 
-   The architecture of a system that provides real-time and consistent
-   enforcement of access control policies is shown in Figure 1.  This
-   architecture includes the following functional entities and
-   interfaces:
+   An architecture example of a system that provides real-time and
+   consistent enforcement of access control policies is shown in
+   Figure 1.  This architecture includes the following functional
+   entities and interfaces:
 
    *  A service orchestrator which coordinates the overall service,
       including security policies.  The service may be connectivity or
@@ -320,7 +320,8 @@ Table of Contents
 
       Multiple PEPs may be involved in a network.
 
-      A PEP exposes a NETCONF interface [RFC6241] to an SDN controller.
+      A PEP exposes a YANG-based interface (e.g., NETCONF [RFC6241]) to
+      an SDN controller.
 
    Figure 1 provides the overall architecture and procedure for policy-
    based access control management.
@@ -349,7 +350,7 @@ Table of Contents
                            |                      PEP                  |
                            '-------------------------------------------'
 
-     Figure 1: An Architecture for Group-based Policy Management
+  Figure 1: A Sample Architecture for Group-based Policy Management
 
    In reference to Figure 1, the following typical flow is experienced:
 
@@ -357,7 +358,7 @@ Table of Contents
       controller with network-level ACLs using the YANG module defined
       in Section 6.1.  An example is provided in Appendix A.1.
 
-   Step 2:  When a user first logs onto the network, he/she is required
+   Step 2:  When a user first logs onto the network, they are required
       to be authenticated (e.g., using user name and password) at the
       NAS.
 
@@ -565,11 +566,11 @@ Table of Contents
 
                           Figure 2: UCL Extension
 
-   The first part of the data model augments the "acl" list in the
-   "ietf-access-control-list" model [RFC8519] with an "endpoint-groups"
-   container having a list of "endpoint group" inside, each entry has a
-   "group-id" that uniquely identifies the endpoint group and a "group-
-   type" parameter to specify the endpoint group type.
+   The first part of the "ietf-ucl-acl" module augments the "acl" list
+   in the "ietf-access-control-list" module [RFC8519] with an "endpoint-
+   groups" container having a list of "endpoint group" inside, each
+   entry has a "group-id" that uniquely identifies the endpoint group
+   and a "group-type" parameter to specify the endpoint group type.
 
       "group-id" is defined as a string rather than unsigned integer
       (e.g., uint32) to accommodate deployments which require some
@@ -583,19 +584,17 @@ Table of Contents
       Augmentation may be considered in the future to cover
       encapsulation considerations.
 
-   The second part of the data model augments the "matches" container in
-   the IETF ACL model [RFC8519] so that a source and/or destination
-   endpoint group index can be referenced as the match criteria.
+   The second part of the "ietf-ucl-acl" module augments the "matches"
+   container in the "ietf-access-control-list" module [RFC8519] so that
+   a source and/or destination endpoint group index can be referenced as
+   the match criteria.
 
-   The third part of the data model augments the "ace" list in the
-   "ietf-access-control-list" model [RFC8519] with date and time
-   specific parameters to allow ACE to be activated based on a date/time
+   The third part of the module augments the "ace" list in the "ietf-
+   access-control-list" module [RFC8519] with date and time specific
+   parameters to allow ACE to be activated based on a date/time
    condition.  Two types of time range are defined, which reuse
    "recurrence" and "period" groupings defined in the "ietf-schedule"
-   YANG module in [I-D.ietf-netmod-schedule-yang], respectively.  Note
-   that the data model augments the definition of "recurrence" grouping
-   with a "duration" data node to specify the duration of time for each
-   occurrence the policy activation is triggered.
+   YANG module in [I-D.ietf-netmod-schedule-yang], respectively.
 
 6.  YANG Modules
 
@@ -1846,6 +1845,8 @@ Acknowledgments
    The authors would like to thank Joe Clarke, Bill Fenner, Benoit
    Claise, Rob Wilton, David Somers-Harris, Alan Dekok, and Heikki
    Vatiainen for their valuable comments and great input to this work.
+
+   Thanks to Dhruv Dhody for the OPSDIR review.
 
 Authors' Addresses
 
