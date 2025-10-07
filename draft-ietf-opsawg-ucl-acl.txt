@@ -1802,7 +1802,7 @@ A.3.  Configuring PEPs Using Address-based ACLs
                <byday>
                  <weekday>friday</weekday>
                </byday>
-             <recurrence>
+             </recurrence>
            </effective-schedule>
          </ace>
          <ace>
@@ -1813,7 +1813,7 @@ A.3.  Configuring PEPs Using Address-based ACLs
                                                destination-ipv6-network>
                <source-ipv6-network>2001:db8::2:1/64</source-ipv6-\
                                                                 network>
-             </ipv4>
+             </ipv6>
            </matches>
            <actions>
              <forwarding>reject</forwarding>
@@ -1826,7 +1826,6 @@ A.3.  Configuring PEPs Using Address-based ACLs
              </period>
            </effective-schedule>
          </ace>
-       </aces>
        </aces>
      </acl>
    </acls>
