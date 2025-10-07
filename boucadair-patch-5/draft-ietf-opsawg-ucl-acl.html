@@ -1354,8 +1354,6 @@ grant to the network.<a href="#section-1-2.2.1" class="pilcrow">¶</a></p>
    <span>[<a href="#RFC9797" class="cite xref">RFC9797</a>]</span>.<a href="#section-1-7" class="pilcrow">¶</a></p>
 <p id="section-1-8">The document does not specify how to map the policy group identifiers
    to dedicated fields (e.g.,  Group Based Policy (GBP) discussed in <span><a href="https://rfc-editor.org/rfc/rfc9638#section-6.2.3" class="relref">Section 6.2.3</a> of [<a href="#RFC9638" class="cite xref">RFC9638</a>]</span>).<a href="#section-1-8" class="pilcrow">¶</a></p>
-<p id="section-1-9">The YANG data model in this document conforms to the Network
-   Management Datastore Architecture (NMDA) defined in <span>[<a href="#RFC8342" class="cite xref">RFC8342</a>]</span>.<a href="#section-1-9" class="pilcrow">¶</a></p>
 <div id="editorial-note-to-be-removed-by-rfc-editor">
 <section id="section-1.1">
         <h3 id="name-editorial-note-to-be-remove">
@@ -2674,10 +2672,6 @@ which rules are in effect, to better craft an attack.<a href="#section-10.1-5.3.
         <dd>
 <span class="refAuthor">Bierman, A.</span> and <span class="refAuthor">M. Bjorklund</span>, <span class="refTitle">"Network Configuration Access Control Model"</span>, <span class="seriesInfo">STD 91</span>, <span class="seriesInfo">RFC 8341</span>, <span class="seriesInfo">DOI 10.17487/RFC8341</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8341">https://www.rfc-editor.org/rfc/rfc8341</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="RFC8342">[RFC8342]</dt>
-        <dd>
-<span class="refAuthor">Bjorklund, M.</span>, <span class="refAuthor">Schoenwaelder, J.</span>, <span class="refAuthor">Shafer, P.</span>, <span class="refAuthor">Watsen, K.</span>, and <span class="refAuthor">R. Wilton</span>, <span class="refTitle">"Network Management Datastore Architecture (NMDA)"</span>, <span class="seriesInfo">RFC 8342</span>, <span class="seriesInfo">DOI 10.17487/RFC8342</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8342">https://www.rfc-editor.org/rfc/rfc8342</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC8519">[RFC8519]</dt>
       <dd>
 <span class="refAuthor">Jethanandani, M.</span>, <span class="refAuthor">Agarwal, S.</span>, <span class="refAuthor">Huang, L.</span>, and <span class="refAuthor">D. Blair</span>, <span class="refTitle">"YANG Data Model for Network Access Control Lists (ACLs)"</span>, <span class="seriesInfo">RFC 8519</span>, <span class="seriesInfo">DOI 10.17487/RFC8519</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8519">https://www.rfc-editor.org/rfc/rfc8519</a>&gt;</span>. </dd>
@@ -3281,7 +3275,7 @@ at 18:00:00 in Pacific Standard Time on December 31, 2026.<a href="#appendix-A.1
             &lt;byday&gt;
               &lt;weekday&gt;friday&lt;/weekday&gt;
             &lt;/byday&gt;
-          &lt;recurrence&gt;
+          &lt;/recurrence&gt;
         &lt;/effective-schedule&gt;
       &lt;/ace&gt;
       &lt;ace&gt;
@@ -3292,7 +3286,7 @@ at 18:00:00 in Pacific Standard Time on December 31, 2026.<a href="#appendix-A.1
                                             destination-ipv6-network&gt;
             &lt;source-ipv6-network&gt;2001:db8::2:1/64&lt;/source-ipv6-\
                                                              network&gt;
-          &lt;/ipv4&gt;
+          &lt;/ipv6&gt;
         &lt;/matches&gt;
         &lt;actions&gt;
           &lt;forwarding&gt;reject&lt;/forwarding&gt;
@@ -3305,7 +3299,6 @@ at 18:00:00 in Pacific Standard Time on December 31, 2026.<a href="#appendix-A.1
           &lt;/period&gt;
         &lt;/effective-schedule&gt;
       &lt;/ace&gt;
-    &lt;/aces&gt;
     &lt;/aces&gt;
   &lt;/acl&gt;
 &lt;/acls&gt;
@@ -3326,16 +3319,16 @@ at 18:00:00 in Pacific Standard Time on December 31, 2026.<a href="#appendix-A.1
       </h2>
 <p id="appendix-B-1">This work has benefited from the discussions of User-group-based
    Security Policy over the years.  In particular, <span>[<a href="#I-D.you-i2nsf-user-group-based-policy" class="cite xref">I-D.you-i2nsf-user-group-based-policy</a>]</span>
-   and <span>[<a href="#I-D.yizhou-anima-ip-to-access-control-groups" class="cite xref">I-D.yizhou-anima-ip-to-access-control-groups</a>]</span> provide mechanisms to
+   and <span>[<a href="#I-D.yizhou-anima-ip-to-access-control-groups" class="cite xref">I-D.yizhou-anima-ip-to-access-control-groups</a>]</span> provided mechanisms to
    establish a mapping between the IP address/prefix of users and access
    control group IDs.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 <p id="appendix-B-2">Jianjie You, Myo Zarny, Christian Jacquenet, Mohamed Boucadair, and
    Yizhou Li contributed to an earlier version of <span>[<a href="#I-D.you-i2nsf-user-group-based-policy" class="cite xref">I-D.you-i2nsf-user-group-based-policy</a>]</span>.
-   We would like to thank the authors of that draft on modern network access
+   We would like to thank the authors of that Internet-Draft on modern network access
    control mechanisms for material that assisted in thinking about this document.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
-<p id="appendix-B-3">The authors would like to thank Joe Clarke, Bill Fenner, Benoit
-   Claise, Rob Wilton, David Somers-Harris, Alan Dekok, and Heikki Vatiainen for their valuable comments
-   and great input to this work.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
+<p id="appendix-B-3">Thanks to Joe Clarke, Bill Fenner, Benoît Claise, Rob Wilton, David Somers-Harris,
+   Alan Dekok, Heikki Vatiainen, Wen Xiang, Wei Wang, Hongwei Li, and Jensen Zhang for
+   their review and comments.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
 <p id="appendix-B-4">Thanks to Dhruv Dhody for the OPSDIR review.<a href="#appendix-B-4" class="pilcrow">¶</a></p>
 </section>
 </div>

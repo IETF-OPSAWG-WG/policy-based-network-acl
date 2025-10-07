@@ -173,9 +173,6 @@ Table of Contents
    to dedicated fields (e.g., Group Based Policy (GBP) discussed in
    Section 6.2.3 of [RFC9638]).
 
-   The YANG data model in this document conforms to the Network
-   Management Datastore Architecture (NMDA) defined in [RFC8342].
-
 1.1.  Editorial Note (To be removed by RFC Editor)
 
    Note to the RFC Editor: This section is to be removed prior to
@@ -1212,11 +1209,6 @@ Table of Contents
               DOI 10.17487/RFC8341, March 2018,
               <https://www.rfc-editor.org/rfc/rfc8341>.
 
-   [RFC8342]  Bjorklund, M., Schoenwaelder, J., Shafer, P., Watsen, K.,
-              and R. Wilton, "Network Management Datastore Architecture
-              (NMDA)", RFC 8342, DOI 10.17487/RFC8342, March 2018,
-              <https://www.rfc-editor.org/rfc/rfc8342>.
-
    [RFC8519]  Jethanandani, M., Agarwal, S., Huang, L., and D. Blair,
               "YANG Data Model for Network Access Control Lists (ACLs)",
               RFC 8519, DOI 10.17487/RFC8519, March 2019,
@@ -1802,7 +1794,7 @@ A.3.  Configuring PEPs Using Address-based ACLs
                <byday>
                  <weekday>friday</weekday>
                </byday>
-             <recurrence>
+             </recurrence>
            </effective-schedule>
          </ace>
          <ace>
@@ -1813,7 +1805,7 @@ A.3.  Configuring PEPs Using Address-based ACLs
                                                destination-ipv6-network>
                <source-ipv6-network>2001:db8::2:1/64</source-ipv6-\
                                                                 network>
-             </ipv4>
+             </ipv6>
            </matches>
            <actions>
              <forwarding>reject</forwarding>
@@ -1827,7 +1819,6 @@ A.3.  Configuring PEPs Using Address-based ACLs
            </effective-schedule>
          </ace>
        </aces>
-       </aces>
      </acl>
    </acls>
 
@@ -1838,19 +1829,20 @@ Acknowledgments
    This work has benefited from the discussions of User-group-based
    Security Policy over the years.  In particular,
    [I-D.you-i2nsf-user-group-based-policy] and
-   [I-D.yizhou-anima-ip-to-access-control-groups] provide mechanisms to
+   [I-D.yizhou-anima-ip-to-access-control-groups] provided mechanisms to
    establish a mapping between the IP address/prefix of users and access
    control group IDs.
 
    Jianjie You, Myo Zarny, Christian Jacquenet, Mohamed Boucadair, and
    Yizhou Li contributed to an earlier version of
    [I-D.you-i2nsf-user-group-based-policy].  We would like to thank the
-   authors of that draft on modern network access control mechanisms for
-   material that assisted in thinking about this document.
+   authors of that Internet-Draft on modern network access control
+   mechanisms for material that assisted in thinking about this
+   document.
 
-   The authors would like to thank Joe Clarke, Bill Fenner, Benoit
-   Claise, Rob Wilton, David Somers-Harris, Alan Dekok, and Heikki
-   Vatiainen for their valuable comments and great input to this work.
+   Thanks to Joe Clarke, Bill Fenner, Benoît Claise, Rob Wilton, David
+   Somers-Harris, Alan Dekok, Heikki Vatiainen, Wen Xiang, Wei Wang,
+   Hongwei Li, and Jensen Zhang for their review and comments.
 
    Thanks to Dhruv Dhody for the OPSDIR review.
 
