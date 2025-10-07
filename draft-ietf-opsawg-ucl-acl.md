@@ -732,17 +732,17 @@ Notation for {{rad-att}}:
 
    This work has benefited from the discussions of User-group-based
    Security Policy over the years.  In particular, {{?I-D.you-i2nsf-user-group-based-policy}}
-   and {{?I-D.yizhou-anima-ip-to-access-control-groups}} provide mechanisms to
+   and {{?I-D.yizhou-anima-ip-to-access-control-groups}} provided mechanisms to
    establish a mapping between the IP address/prefix of users and access
    control group IDs.
 
    Jianjie You, Myo Zarny, Christian Jacquenet, Mohamed Boucadair, and
    Yizhou Li contributed to an earlier version of {{?I-D.you-i2nsf-user-group-based-policy}}.
-   We would like to thank the authors of that draft on modern network access
+   We would like to thank the authors of that Internet-Draft on modern network access
    control mechanisms for material that assisted in thinking about this document.
 
-   The authors would like to thank Joe Clarke, Bill Fenner, Benoit
-   Claise, Rob Wilton, David Somers-Harris, Alan Dekok, and Heikki Vatiainen for their valuable comments
-   and great input to this work.
+   Thanks to Joe Clarke, Bill Fenner, Benoît Claise, Rob Wilton, David Somers-Harris,
+   Alan Dekok, Heikki Vatiainen, Wen Xiang, Wei Wang, Hongwei Li, and Jensen Zhang for
+   their review and comments.
 
    Thanks to Dhruv Dhody for the OPSDIR review.
