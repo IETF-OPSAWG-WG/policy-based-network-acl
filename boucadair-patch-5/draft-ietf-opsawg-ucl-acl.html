@@ -2924,14 +2924,17 @@ at 18:00:00 in Pacific Standard Time on December 31, 2026.<a href="#appendix-A.1
    source endpoint and the destination endpoint users. Another case for
    a PEP enforcing a group-based ACL is to obtain the group identity of
    the source endpoint directly from the packet field
-   <span>[<a href="#I-D.smith-vxlan-group-policy" class="cite xref">I-D.smith-vxlan-group-policy</a>]</span>. This example does not intend to be exhaustive.<a href="#appendix-A.2-2" class="pilcrow">¶</a></p>
+   <span>[<a href="#I-D.smith-vxlan-group-policy" class="cite xref">I-D.smith-vxlan-group-policy</a>]</span>.<a href="#appendix-A.2-2" class="pilcrow">¶</a></p>
 <p id="appendix-A.2-3">Assume the mapping between device group ID and IP addresses is
    predefined or acquired via device authentication. <a href="#ex-PEP-ucl" class="auto internal xref">Figure 4</a>
    shows the ACL configuration delivered from the controller to the PEP. This
    example is consistent with the example presented in <a href="#controller-ucl" class="auto internal xref">Appendix A.1</a>.<a href="#appendix-A.2-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-4">The examples in this section do not intend to be exhaustive. In particular, explicit
+   IP addresses ("destination-ipv4-network" or "destination-ipv6-network") are provided only for one single rule to illustrate
+   how the mapping between a group ID and IP addresses is translated into an ACL rule entry.<a href="#appendix-A.2-4" class="pilcrow">¶</a></p>
 <span id="name-example-of-pep-configuratio"></span><div id="ex-PEP-ucl">
 <figure id="figure-4">
-          <div class="alignLeft art-text artwork" id="appendix-A.2-4.1">
+          <div class="alignLeft art-text artwork" id="appendix-A.2-5.1">
 <pre>
 =============== NOTE: '\' line wrapping per RFC 8792 ================
 
@@ -3027,10 +3030,10 @@ at 18:00:00 in Pacific Standard Time on December 31, 2026.<a href="#appendix-A.1
 <a href="#name-example-of-pep-configuratio" class="selfRef">Example of PEP Configuration</a>
           </figcaption></figure>
 </div>
-<p id="appendix-A.2-5"><a href="#ex-PEP-ucl-ipv6" class="auto internal xref">Figure 5</a> shows an example of the same policy but with a destination IPv6 prefix.<a href="#appendix-A.2-5" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-6"><a href="#ex-PEP-ucl-ipv6" class="auto internal xref">Figure 5</a> shows an example of the same policy but with a destination IPv6 prefix.<a href="#appendix-A.2-6" class="pilcrow">¶</a></p>
 <span id="name-example-of-pep-configuration"></span><div id="ex-PEP-ucl-ipv6">
 <figure id="figure-5">
-          <div class="alignLeft art-text artwork" id="appendix-A.2-6.1">
+          <div class="alignLeft art-text artwork" id="appendix-A.2-7.1">
 <pre>
 =============== NOTE: '\' line wrapping per RFC 8792 ================
 
