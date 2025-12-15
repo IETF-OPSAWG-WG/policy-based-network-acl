@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 19 March 2026                                 M. Boucadair, Ed.
+Expires: 18 June 2026                                  M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                       15 September 2025
+                                                        15 December 2025
 
 
  A YANG Data Model and RADIUS Extension for Policy-based Network Access
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 March 2026.
+   This Internet-Draft will expire on 18 June 2026.
 
 Copyright Notice
 
@@ -85,22 +85,21 @@ Table of Contents
        4.2.1.  User Group
        4.2.2.  Device Group
        4.2.3.  Application Group
-   5.  Modules Overview
-     5.1.  The UCL Extension to the ACL Model
-   6.  YANG Modules
-     6.1.  The "ietf-ucl-acl" YANG Module
-   7.  User Access Control Group ID RADIUS Attribute
-   8.  RADIUS Attributes
-   9.  Deployment Considerations
-   10. Security Considerations
+   5.  The UCL Extension to the ACL Module
+     5.1.  Module Overview
+     5.2.  The "ietf-ucl-acl" YANG Module
+   6.  User Access Control Group ID RADIUS Attribute
+   7.  RADIUS Attributes
+   8.  Operational Considerations
+   9.  Security Considerations
+     9.1.  YANG
+     9.2.  RADIUS
+   10. IANA Considerations
      10.1.  YANG
      10.2.  RADIUS
-   11. IANA Considerations
-     11.1.  YANG
-     11.2.  RADIUS
-   12. References
-     12.1.  Normative References
-     12.2.  Informative References
+   11. References
+     11.1.  Normative References
+     11.2.  Informative References
    Appendix A.  Examples Usage
      A.1.  Configuring the Controller Using Group based ACL
      A.2.  Configuring a PEP Using Group-based ACL
@@ -137,9 +136,9 @@ Table of Contents
       versus personal device), device's security posture, etc.  This
       means that the network needs to recognize the users' identity and
       their current context, and map the users to their correct access
-      entitlement to the network.
+      grant to the network.
 
-   This document defines a YANG data model (Section 6.1) for policy-
+   This document defines a YANG data model (Section 5.2) for policy-
    based network access control, which extends the IETF Access Control
    Lists (ACLs) module defined in [RFC8519].  This module can be used to
    ensure consistent enforcement of ACL policies based on the group
@@ -149,7 +148,7 @@ Table of Contents
    can be defined at network/administrative domain level
    [I-D.ietf-netmod-acl-extensions].  To allow for all applications of
    ACLs, the YANG module for policy-based network ACL defined in
-   Section 6.1 does not limit how it can be used.
+   Section 5.2 does not limit how it can be used.
 
    This document also defines a mechanism to establish a mapping between
    (1) the user group identifier (ID) and (2) common IP packet header
@@ -159,7 +158,7 @@ Table of Contents
    Additionally, the document defines a Remote Authentication Dial-in
    User Service (RADIUS) [RFC2865] attribute that is used to communicate
    the user group identifier as part of identification and authorization
-   information (Section 7).
+   information (Section 6).
 
    Although the document cites MAC addresses as an example in some
    sections, the document does not make assumptions about which
@@ -167,14 +166,11 @@ Table of Contents
    considered as recommendations.  Readers should be aware that MAC-
    based ACLs can be bypassed by flushing out the MAC address.  Other
    implications related to the change of MAC addresses are discussed in
-   [I-D.ietf-madinas-use-cases].
+   [RFC9797].
 
    The document does not specify how to map the policy group identifiers
    to dedicated fields (e.g., Group Based Policy (GBP) discussed in
    Section 6.2.3 of [RFC9638]).
-
-   The YANG data model in this document conforms to the Network
-   Management Datastore Architecture (NMDA) defined in [RFC8342].
 
 1.1.  Editorial Note (To be removed by RFC Editor)
 
@@ -259,7 +255,7 @@ Table of Contents
    access to specific internal or external resources during work hours,
    while another policy is adopted during off-hours and weekends.  A
    network administrator may also require to enforce traffic shaping
-   (Section 2.3.3.3 of [RFC2475]) and policing ( Section 2.3.3.4 of
+   (Section 2.3.3.3 of [RFC2475]) and policing (Section 2.3.3.4 of
    [RFC2475]) during peak hours in order not to affect other data
    services.
 
@@ -267,17 +263,17 @@ Table of Contents
 
 4.1.  Overview
 
-   The architecture of a system that provides real-time and consistent
-   enforcement of access control policies is shown in Figure 1.  This
-   architecture includes the following functional entities and
-   interfaces:
+   An architecture example of a system that provides real-time and
+   consistent enforcement of access control policies is shown in
+   Figure 1.  This architecture includes the following functional
+   entities and interfaces:
 
    *  A service orchestrator which coordinates the overall service,
       including security policies.  The service may be connectivity or
       any other access to resources that can be hosted and offered by a
       network.
 
-   *  A software-defined networking (SDN) [RFC7149] [RFC7426] controller
+   *  A Software-Defined Networking (SDN) [RFC7149] [RFC7426] controller
       which is responsible for maintaining endpoint-group based ACLs and
       mapping the endpoint-group to the associated attributes
       information (e.g., IP/MAC address).  An SDN controller also
@@ -295,7 +291,7 @@ Table of Contents
       authentication using protocols like RADIUS [RFC2865].  When access
       is granted, the AAA server provides the group identifier (group
       ID) to which the user belongs when the user first logs onto the
-      network.  A new RADIUS attribute is defined in Section 7 for this
+      network.  A new RADIUS attribute is defined in Section 6 for this
       purpose.
 
    *  The AAA server provides a collection of authentication,
@@ -316,48 +312,49 @@ Table of Contents
       acts upon the endpoint-group ID based ACL policies (e.g., a group
       identifier may be carried in packet headers such as discussed in
       Section 6.2.3 of [RFC9638]).  More details are provided in
-      Section 9.
+      Section 8.
 
       Multiple PEPs may be involved in a network.
 
-      A PEP exposes a NETCONF interface [RFC6241] to an SDN controller.
+      A PEP exposes a YANG-based interface (e.g., NETCONF [RFC6241]) to
+      an SDN controller.
 
    Figure 1 provides the overall architecture and procedure for policy-
    based access control management.
 
-                                          .------------.
-                                          |Orchestrator|
-                                          '------+-----'
-        Service                                  | (Step 1)
-       --------------------------------------------------------
-                                                 |
-        Network                                  |
-                                  (Step 4)       |
-        .-------.        .--------.     .--------+-----------.
-        |User #1+--+     | AAA    |     |    SDN Controller  |
-        '-------'  |     | Server +-----+        (PDP)       |
-                   |     '----+---'     '--------+-----------'
-                   |          |                  |
-                   |          |           +------+--------+(Step 5)
-         (Step 2)  |          |(Step 3)   |               |
-                   |          |           |               |
-                   |        .-+-----------+---------------+------------.
-                   |        | .----------------------. .--------------.|
-        .-------.  +--------+ | Network Access Server| |firewall, etc.||
-        |User #2+-----------+ |       (NAS)          | '--------------'|
-        '-------'           | '----------------------'                 |
-                            |                     (PEP)                |
-                            '------------------------------------------'
+                                         .------------.
+                                         |Orchestrator|
+                                         '------+-----'
+       Service                                  | (Step 1)
+      ------------------------------------------)-------------
+       Network                                  |
+                                 Step 4         |
+       .-------.        .--------.     .--------+--------.
+       |User #1+--+     |  AAA   |     | SDN Controller  |
+       '-------'  |     | Server +-----+      PDP        |
+                  |     '----+---'     '--------+--------'
+                  |          |                  |
+                  |          |           +------+--------+  Step 5
+         Step 2   |          | Step 3    |               |
+                  |          |           |               |
+                  |        .-+-----------+---------------+-------------.
+                  +--------+                                           |
+                           | .----------------------. .--------------. |
+       .-------.           | | Network Access Server| |Firewall, etc.| |
+       |User #2+-----------+ |       (NAS)          | '--------------' |
+       '-------'           | '----------------------'                  |
+                           |                      PEP                  |
+                           '-------------------------------------------'
 
-      Figure 1: An Architecture for Group-based Policy Management
+  Figure 1: A Sample Architecture for Group-based Policy Management
 
    In reference to Figure 1, the following typical flow is experienced:
 
    Step 1:  Administrators (or a service orchestrator) configure an SDN
       controller with network-level ACLs using the YANG module defined
-      in Section 6.1.  An example is provided in Appendix A.1.
+      in Section 5.2.  An example is provided in Appendix A.1.
 
-   Step 2:  When a user first logs onto the network, he/she is required
+   Step 2:  When a user first logs onto the network, they are required
       to be authenticated (e.g., using user name and password) at the
       NAS.
 
@@ -369,20 +366,21 @@ Table of Contents
       authentication method is used.  Administrators may refer to, e.g.,
       Section 7.4 of [I-D.ietf-radext-deprecating-radius] for
       authentication method recommendations.  If the authentication
-      request succeeds, the user is placed in a user group the identity
-      of which is returned to the network access server as the
-      authentication result (see Section 7).  If the authentication
-      fails, the user is not assigned any user group, which also means
-      that the user has no access; or the user is assigned a special
-      group with very limited access permissions for the network (as a
-      function of the local policy).  ACLs are enforced so that flows
-      from that IP address are discarded (or rate-limited) by the
-      network.  In some implementations, AAA server can be integrated
-      with an SDN controller.
+      request succeeds, the user is placed in a user group with the
+      identity returned to the NAS as the authentication result (see
+      Section 6).  If the authentication fails, the user is not assigned
+      any user group, which also means that the user has no access; or
+      the user is assigned a special group with very limited access
+      permissions for the network (as a function of the local policy).
+      ACLs are enforced so that flows from that IP address are discarded
+      (or rate-limited) by the network.  In some implementations, the
+      AAA server can be integrated with an SDN controller.
 
    Step 4:  Either the AAA server or the NAS notifies an SDN controller
       of the mapping between the user group ID and related common packet
-      header attributes (e.g., IP/MAC address).
+      header attributes (e.g., IP/MAC address).  The exact details of
+      how such notification is made are out the scope of this
+      specification.
 
    Step 5:  Either group or IP/MAC address based access control policies
       are maintained on relevant PEPs under the SDN controller's
@@ -490,9 +488,9 @@ Table of Contents
 
                      Table 3: Application Group Example
 
-5.  Modules Overview
+5.  The UCL Extension to the ACL Module
 
-5.1.  The UCL Extension to the ACL Model
+5.1.  Module Overview
 
    This module specifies an extension to the "ietf-access-control-list"
    module [RFC8519].  This extension adds endpoint groups so that an
@@ -564,11 +562,11 @@ Table of Contents
 
                           Figure 2: UCL Extension
 
-   The first part of the data model augments the "acl" list in the
-   "ietf-access-control-list" model [RFC8519] with an "endpoint-groups"
-   container having a list of "endpoint group" inside, each entry has a
-   "group-id" that uniquely identifies the endpoint group and a "group-
-   type" parameter to specify the endpoint group type.
+   The first part of the "ietf-ucl-acl" module augments the "acl" list
+   in the "ietf-access-control-list" module [RFC8519] with an "endpoint-
+   groups" container having a list of "endpoint group" inside, each
+   entry has a "group-id" that uniquely identifies the endpoint group
+   and a "group-type" parameter to specify the endpoint group type.
 
       "group-id" is defined as a string rather than unsigned integer
       (e.g., uint32) to accommodate deployments which require some
@@ -582,27 +580,23 @@ Table of Contents
       Augmentation may be considered in the future to cover
       encapsulation considerations.
 
-   The second part of the data model augments the "matches" container in
-   the IETF ACL model [RFC8519] so that a source and/or destination
-   endpoint group index can be referenced as the match criteria.
+   The second part of the "ietf-ucl-acl" module augments the "matches"
+   container in the "ietf-access-control-list" module [RFC8519] so that
+   a source and/or destination endpoint group index can be referenced as
+   the match criteria.
 
-   The third part of the data model augments the "ace" list in the
-   "ietf-access-control-list" model [RFC8519] with date and time
-   specific parameters to allow ACE to be activated based on a date/time
+   The third part of the module augments the "ace" list in the "ietf-
+   access-control-list" module [RFC8519] with date and time specific
+   parameters to allow ACE to be activated based on a date/time
    condition.  Two types of time range are defined, which reuse
    "recurrence" and "period" groupings defined in the "ietf-schedule"
-   YANG module in [I-D.ietf-netmod-schedule-yang], respectively.  Note
-   that the data model augments the definition of "recurrence" grouping
-   with a "duration" data node to specify the duration of time for each
-   occurrence the policy activation is triggered.
+   YANG module in [I-D.ietf-netmod-schedule-yang], respectively.
 
-6.  YANG Modules
-
-6.1.  The "ietf-ucl-acl" YANG Module
+5.2.  The "ietf-ucl-acl" YANG Module
 
    This module imports types and groupings defined in the "ietf-
    schedule" module [I-D.ietf-netmod-schedule-yang].  It also augments
-   the "ietf-access-control-list" module [RFC8519].
+   the "ietf-access-control-list" module (Section 4.1 of [RFC8519]).
 
    <CODE BEGINS> file "ietf-ucl-acl@2025-03-11.yang"
    module ietf-ucl-acl {
@@ -629,7 +623,7 @@ Table of Contents
         WG List: <mailto:opsawg@ietf.org>
 
         Editor:   Qiufang Ma
-                  <mailto:maqiufang1@huawei.com
+                  <mailto:maqiufang1@huawei.com>
         Author:   Qin Wu
                   <mailto:bill.wu@huawei.com>
         Editor:   Mohamed Boucadair
@@ -637,9 +631,10 @@ Table of Contents
         Author:   Daniel King
                   <mailto:d.king@lancaster.ac.uk>";
      description
-       "This YANG module augments the IETF access control lists (ACLs)
-        module and is meant to ensure consistent enforcement of ACL
-        policies based on the group identity.
+       "The User group based Control List (UCL) YANG module augments
+        the IETF access control lists (ACLs) module and is meant to
+        ensure consistent enforcement of ACL policies based on
+         the group identity.
 
         Copyright (c) 2025 IETF Trust and the persons identified
         as authors of the code. All rights reserved.
@@ -953,7 +948,7 @@ Table of Contents
    }
    <CODE ENDS>
 
-7.  User Access Control Group ID RADIUS Attribute
+6.  User Access Control Group ID RADIUS Attribute
 
    The User-Access-Group-ID RADIUS attribute is defined with a globally
    unique name.  The definition of the attribute follows the guidelines
@@ -996,7 +991,10 @@ Table of Contents
       "Value".
 
   
-      The Length MUST be at most 67 octets.
+      The Length MUST be at most 67 octets.  The maximum length is 67
+      octets to accommodate the maximum group ID of 64 octets plus one
+      octet for Type, one octet for Length, and one octet for Extended-
+      Length.
 
    Data Type
       string (Section 3.5 of [RFC8044])
@@ -1004,7 +1002,7 @@ Table of Contents
    Value
       This field contains the user group ID.
 
-8.  RADIUS Attributes
+7.  RADIUS Attributes
 
    Table 4 provides a guide as what type of RADIUS packets that may
    contain User-Access-Group-ID Attribute, and in what quantity.
@@ -1032,11 +1030,11 @@ Table of Contents
    0+  Zero or more instances of this attribute MAY be present in
       packet.
 
-9.  Deployment Considerations
+8.  Operational Considerations
 
    The UCL model can be implemented in different ways.
 
-   In some cases, the UCL model is implemented at the network/
+   In some cases, the UCL data model is implemented at the network/
    administrative domain level with an SDN controller maintaining the
    dynamical mapping from endpoint group ID to IP/transport fields
    (e.g., the 5-tuple) and programing the PEPs with IP address/5-tuple
@@ -1044,8 +1042,8 @@ Table of Contents
    logic (including hardware) compared to the enforcement of
    conventional ACLs.
 
-   It is possible for the UCL model to be implemented at the network
-   device level.  While it eliminates the need for an SDN controller to
+   It is possible for the UCL data model to be implemented at the device
+   level.  While it eliminates the need for an SDN controller to
    interact frequently with the PEPs for reasons like the user's context
    of network connection change or VM/application migration, dedicated
    hardware/software support might be needed for PEPs to understand the
@@ -1058,9 +1056,9 @@ Table of Contents
    complexity of implementation) carefully.  Such assessment is out of
    scope of this document.
 
-10.  Security Considerations
+9.  Security Considerations
 
-10.1.  YANG
+9.1.  YANG
 
    This section is modeled after the template described in Section 3.7
    of [I-D.ietf-netmod-rfc8407bis].
@@ -1113,7 +1111,7 @@ Table of Contents
          attacker to determine which rules are in effect, to better
          craft an attack.
 
-10.2.  RADIUS
+9.2.  RADIUS
 
    RADIUS-related security considerations are discussed in [RFC2865].
 
@@ -1122,9 +1120,9 @@ Table of Contents
    optionally secured by IPsec or Transport Layer Security (TLS)
    [RFC6614].
 
-11.  IANA Considerations
+10.  IANA Considerations
 
-11.1.  YANG
+10.1.  YANG
 
    This document registers the following URIs in the "IETF XML Registry"
    [RFC3688].
@@ -1142,7 +1140,7 @@ Table of Contents
            maintained by IANA? N
            reference:          RFC XXXX
 
-11.2.  RADIUS
+10.2.  RADIUS
 
    This document requests IANA to assign a new RADIUS attribute type
    from the IANA registry "Radius Attribute Types" [RADIUS-Types]:
@@ -1155,9 +1153,9 @@ Table of Contents
 
                         Table 5: RADIUS Attribute
 
-12.  References
+11.  References
 
-12.1.  Normative References
+11.1.  Normative References
 
    [I-D.ietf-netmod-schedule-yang]
               Ma, Q., Wu, Q., Boucadair, M., and D. King, "A Common YANG
@@ -1208,24 +1206,12 @@ Table of Contents
               DOI 10.17487/RFC8341, March 2018,
               <https://www.rfc-editor.org/rfc/rfc8341>.
 
-   [RFC8342]  Bjorklund, M., Schoenwaelder, J., Shafer, P., Watsen, K.,
-              and R. Wilton, "Network Management Datastore Architecture
-              (NMDA)", RFC 8342, DOI 10.17487/RFC8342, March 2018,
-              <https://www.rfc-editor.org/rfc/rfc8342>.
-
    [RFC8519]  Jethanandani, M., Agarwal, S., Huang, L., and D. Blair,
               "YANG Data Model for Network Access Control Lists (ACLs)",
               RFC 8519, DOI 10.17487/RFC8519, March 2019,
               <https://www.rfc-editor.org/rfc/rfc8519>.
 
-12.2.  Informative References
-
-   [I-D.ietf-madinas-use-cases]
-              Henry, J. and Y. Lee, "Randomized and Changing MAC
-              Address: Context, Network Impacts, and Use Cases", Work in
-              Progress, Internet-Draft, draft-ietf-madinas-use-cases-19,
-              20 December 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-madinas-use-cases-19>.
+11.2.  Informative References
 
    [I-D.ietf-netmod-acl-extensions]
               de Dios, O. G., Barguil, S., Boucadair, M., and Q. Wu,
@@ -1246,9 +1232,9 @@ Table of Contents
    [I-D.ietf-radext-deprecating-radius]
               DeKok, A., "Deprecating Insecure Practices in RADIUS",
               Work in Progress, Internet-Draft, draft-ietf-radext-
-              deprecating-radius-07, 27 August 2025,
+              deprecating-radius-08, 6 November 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-radext-
-              deprecating-radius-07>.
+              deprecating-radius-08>.
 
    [I-D.smith-vxlan-group-policy]
               Smith, M. and L. Kreeger, "VXLAN Group Policy Option",
@@ -1343,6 +1329,11 @@ Table of Contents
               Virtualization over Layer 3 (NVO3) Encapsulation
               Considerations", RFC 9638, DOI 10.17487/RFC9638, September
               2024, <https://www.rfc-editor.org/rfc/rfc9638>.
+
+   [RFC9797]  Henry, J. and Y. Lee, "Randomized and Changing Media
+              Access Control (MAC) Addresses: Context, Network Impacts,
+              and Use Cases", RFC 9797, DOI 10.17487/RFC9797, June 2025,
+              <https://www.rfc-editor.org/rfc/rfc9797>.
 
 Appendix A.  Examples Usage
 
@@ -1445,8 +1436,10 @@ A.1.  Configuring the Controller Using Group based ACL
            </actions>
            <effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
                                                                ucl-acl">
-             <period-start>2026-01-20T08:30:00-08:00</period-start>
-             <period-end>2026-12-31T18:00:00-08:00</period-end>
+             <period>
+               <period-start>2026-01-20T08:30:00-08:00</period-start>
+               <period-end>2026-12-31T18:00:00-08:00</period-end>
+             </period>
            </effective-schedule>
          </ace>
        </aces>
@@ -1465,13 +1458,18 @@ A.2.  Configuring a PEP Using Group-based ACL
    source endpoint and the destination endpoint users.  Another case for
    a PEP enforcing a group-based ACL is to obtain the group identity of
    the source endpoint directly from the packet field
-   [I-D.smith-vxlan-group-policy].  This example does not intend to be
-   exhaustive.
+   [I-D.smith-vxlan-group-policy].
 
    Assume the mapping between device group ID and IP addresses is
    predefined or acquired via device authentication.  Figure 4 shows the
    ACL configuration delivered from the controller to the PEP.  This
    example is consistent with the example presented in Appendix A.1.
+
+   The examples in this section do not intend to be exhaustive.  In
+   particular, explicit IP addresses ("destination-ipv4-network" or
+   "destination-ipv6-network") are provided only for one single rule to
+   illustrate how the mapping between a group ID and IP addresses is
+   translated into an ACL rule entry.
 
    =============== NOTE: '\' line wrapping per RFC 8792 ================
 
@@ -1550,8 +1548,10 @@ A.2.  Configuring a PEP Using Group-based ACL
            </actions>
            <effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
                                                                ucl-acl">
-             <period-start>2026-01-20T08:30:00-08:00</period-start>
-             <period-end>2026-12-31T18:00:00-08:00</period-end>
+             <period>
+               <period-start>2026-01-20T08:30:00-08:00</period-start>
+               <period-end>2026-12-31T18:00:00-08:00</period-end>
+             </period>
            </effective-schedule>
          </ace>
        </aces>
@@ -1640,8 +1640,10 @@ A.2.  Configuring a PEP Using Group-based ACL
            </actions>
            <effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
                                                                ucl-acl">
-             <period-start>2026-01-20T08:30:00-08:00</period-start>
-             <period-end>2026-12-31T18:00:00-08:00</period-end>
+             <period>
+               <period-start>2026-01-20T08:30:00-08:00</period-start>
+               <period-end>2026-12-31T18:00:00-08:00</period-end>
+             </period>
            </effective-schedule>
          </ace>
        </aces>
@@ -1729,8 +1731,10 @@ A.3.  Configuring PEPs Using Address-based ACLs
            </actions>
            <effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
                                                                ucl-acl">
-             <period-start>2026-01-20T08:30:00-08:00</period-start>
-             <period-end>2026-12-31T18:00:00-08:00</period-end>
+             <period>
+               <period-start>2026-01-20T08:30:00-08:00</period-start>
+               <period-end>2026-12-31T18:00:00-08:00</period-end>
+             </period>
            </effective-schedule>
          </ace>
        </aces>
@@ -1787,7 +1791,7 @@ A.3.  Configuring PEPs Using Address-based ACLs
                <byday>
                  <weekday>friday</weekday>
                </byday>
-             <recurrence>
+             </recurrence>
            </effective-schedule>
          </ace>
          <ace>
@@ -1798,18 +1802,19 @@ A.3.  Configuring PEPs Using Address-based ACLs
                                                destination-ipv6-network>
                <source-ipv6-network>2001:db8::2:1/64</source-ipv6-\
                                                                 network>
-             </ipv4>
+             </ipv6>
            </matches>
            <actions>
              <forwarding>reject</forwarding>
            </actions>
            <effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
                                                                ucl-acl">
-             <period-start>2026-01-20T08:30:00-08:00</period-start>
-             <period-end>2026-12-31T18:00:00-08:00</period-end>
+             <period>
+               <period-start>2026-01-20T08:30:00-08:00</period-start>
+               <period-end>2026-12-31T18:00:00-08:00</period-end>
+             </period>
            </effective-schedule>
          </ace>
-       </aces>
        </aces>
      </acl>
    </acls>
@@ -1821,19 +1826,22 @@ Acknowledgments
    This work has benefited from the discussions of User-group-based
    Security Policy over the years.  In particular,
    [I-D.you-i2nsf-user-group-based-policy] and
-   [I-D.yizhou-anima-ip-to-access-control-groups] provide mechanisms to
+   [I-D.yizhou-anima-ip-to-access-control-groups] provided mechanisms to
    establish a mapping between the IP address/prefix of users and access
    control group IDs.
 
    Jianjie You, Myo Zarny, Christian Jacquenet, Mohamed Boucadair, and
    Yizhou Li contributed to an earlier version of
    [I-D.you-i2nsf-user-group-based-policy].  We would like to thank the
-   authors of that draft on modern network access control mechanisms for
-   material that assisted in thinking about this document.
+   authors of that Internet-Draft on modern network access control
+   mechanisms for material that assisted in thinking about this
+   document.
 
-   The authors would like to thank Joe Clarke, Bill Fenner, Benoit
-   Claise, Rob Wilton, David Somers-Harris, Alan Dekok, and Heikki
-   Vatiainen for their valuable comments and great input to this work.
+   Thanks to Joe Clarke, Bill Fenner, Benoît Claise, Rob Wilton, David
+   Somers-Harris, Alan Dekok, Heikki Vatiainen, Wen Xiang, Wei Wang,
+   Hongwei Li, and Jensen Zhang for their review and comments.
+
+   Thanks to Dhruv Dhody for the OPSDIR review.
 
 Authors' Addresses
 
