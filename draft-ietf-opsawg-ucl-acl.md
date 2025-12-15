@@ -445,7 +445,7 @@ informative:
    This module imports types and groupings defined in the "ietf-schedule" module
    {{!I-D.ietf-netmod-schedule-yang}}. It also augments the "ietf-access-control-list" module ({{Section 4.1 of !RFC8519}}).
 
-~~~~
+~~~~ yang
 <CODE BEGINS> file "ietf-ucl-acl@2025-03-11.yang"
 {::include ./yang/ietf-ucl-acl.yang}
 <CODE ENDS>
@@ -656,8 +656,8 @@ Notation for {{rad-att}}:
    The example shown in {{ex-controller-ucl}} illustrates the configuration of an SDN controller
    using the group-based ACL:
 
-~~~~
-{::include-fold ./examples/controller-ucl.xml}
+~~~~ json
+{::include-fold ./examples/valid-controller-ucl.json}
 ~~~~
 {: #ex-controller-ucl title="Example of UCL Configuration"}
 
@@ -682,15 +682,15 @@ Notation for {{rad-att}}:
    IP addresses ("destination-ipv4-network" or "destination-ipv6-network") are provided only for one single rule to illustrate
    how the mapping between a group ID and IP addresses is translated into an ACL rule entry.
 
-~~~~
-{::include-fold ./examples/PEP-ucl.xml}
+~~~~ json
+{::include-fold ./examples/valid-PEP-ucl.json}
 ~~~~
 {: #ex-PEP-ucl title="Example of PEP Configuration"}
 
    {{ex-PEP-ucl-ipv6}} shows an example of the same policy but with a destination IPv6 prefix.
 
-~~~~
-{::include-fold ./examples/PEP-ucl-ipv6.xml}
+~~~~ json
+{::include-fold ./examples/valid-PEP-ucl-ipv6.json}
 ~~~~
 {: #ex-PEP-ucl-ipv6 title="Example of PEP Configuration (ipv6)"}
 
@@ -712,15 +712,15 @@ Notation for {{rad-att}}:
    the controller to the PEP. This example is consistent with the example
    presented in {{controller-ucl}}.
 
-~~~~
-{::include-fold ./examples/PEP-acl.xml}
+~~~~ json
+{::include-fold ./examples/valid-PEP-acl.json}
 ~~~~
 {: #ex-PEP-acl title="Example of PEP Configuration"}
 
 {{ex-PEP-acl-ipv6}} shows an example of the same policy but with a destination IPv6 prefix.
 
-~~~~
-{::include-fold ./examples/PEP-acl-ipv6.xml}
+~~~~ json
+{::include-fold ./examples/valid-PEP-acl-ipv6.json}
 ~~~~
 {: #ex-PEP-acl-ipv6 title="Example of PEP Configuration (IPv6)"}
 

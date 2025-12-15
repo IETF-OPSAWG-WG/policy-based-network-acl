@@ -1,0 +1,86 @@
+{
+  "ietf-access-control-list:acls": {
+    "ietf-ucl-acl:endpoint-groups": {
+      "endpoint-group": [
+        {
+          "group-id": "R&D",
+          "group-type": "ietf-ucl-acl:user-group"
+        },
+        {
+          "group-id": "R&D BYOD",
+          "group-type": "ietf-ucl-acl:user-group"
+        },
+        {
+          "group-id": "finance server",
+          "group-type": "ietf-ucl-acl:device-group"
+        }
+      ]
+    },
+    "acl": [
+      {
+        "name": "sample-group-acl",
+        "type": "ietf-ucl-acl:group-acl-type",
+        "aces": {
+          "ace": [
+            {
+              "name": "rule1",
+              "matches": {
+                "ietf-ucl-acl:endpoint-group": {
+                  "source-group-id": "R&D BYOD",
+                  "destination-group-id": "R&D"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:accept"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "recurrence": {
+                  "recurrence-first": {
+                    "start-time": "2026-01-01T08:00:00Z",
+                    "duration": "PT10:00:00"
+                  },
+                  "frequency": "ietf-schedule:daily",
+                  "byday": [
+                    {
+                      "weekday": "monday"
+                    },
+                    {
+                      "weekday": "tuesday"
+                    },
+                    {
+                      "weekday": "wednesday"
+                    },
+                    {
+                      "weekday": "thursday"
+                    },
+                    {
+                      "weekday": "friday"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "rule2",
+              "matches": {
+                "ietf-ucl-acl:endpoint-group": {
+                  "source-group-id": "R&D BYOD",
+                  "destination-group-id": "finance server"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:reject"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "period": {
+                  "period-start": "2026-01-20T08:30:00-08:00",
+                  "period-end": "2026-12-31T18:00:00-08:00"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

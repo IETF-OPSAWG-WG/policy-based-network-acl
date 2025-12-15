@@ -1,0 +1,84 @@
+{
+  "ietf-access-control-list:acls": {
+    "ietf-ucl-acl:endpoint-groups": {
+      "endpoint-group": [
+        {
+          "group-id": "R&D",
+          "group-type": "ietf-ucl-acl:user-group"
+        },
+        {
+          "group-id": "R&D BYOD",
+          "group-type": "ietf-ucl-acl:user-group"
+        }
+      ]
+    },
+    "acl": [
+      {
+        "name": "sample-ucl-ipv4",
+        "type": "ietf-ucl-acl:mixed-ipv4-group-type",
+        "aces": {
+          "ace": [
+            {
+              "name": "rule1",
+              "matches": {
+                "ietf-ucl-acl:endpoint-group": {
+                  "source-group-id": "R&D BYOD",
+                  "destination-group-id": "R&D"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:accept"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "recurrence": {
+                  "recurrence-first": {
+                    "start-time": "2026-01-01T08:00:00Z",
+                    "duration": "PT10:00:00"
+                  },
+                  "frequency": "ietf-schedule:daily",
+                  "byday": [
+                    {
+                      "weekday": "monday"
+                    },
+                    {
+                      "weekday": "tuesday"
+                    },
+                    {
+                      "weekday": "wednesday"
+                    },
+                    {
+                      "weekday": "thursday"
+                    },
+                    {
+                      "weekday": "friday"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "rule2",
+              "matches": {
+                "ietf-ucl-acl:endpoint-group": {
+                  "source-group-id": "R&D BYOD"
+                },
+                "ipv4": {
+                  "destination-ipv4-network": "203.0.113.1/24"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:reject"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "period": {
+                  "period-start": "2026-01-20T08:30:00-08:00",
+                  "period-end": "2026-12-31T18:00:00-08:00"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
