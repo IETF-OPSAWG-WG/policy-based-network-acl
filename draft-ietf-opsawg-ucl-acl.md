@@ -348,7 +348,7 @@ informative:
    assigned to a user group.  A user's group membership may change as
    aspects of the user change.  For example, if the user group
    membership is determined solely by the source IP address, then a
-   given user's group ID will change when the user moves to a new
+   given user's group ID will change when the user is assigned a new
    IP address that falls outside of the range of addresses of the
    previous user group.
 
