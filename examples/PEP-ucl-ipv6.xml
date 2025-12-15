@@ -62,9 +62,9 @@
             xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl">
             <source-group-id>R&amp;D BYOD</source-group-id>
           </endpoint-group>
-          <ipv4>
+          <ipv6>
             <destination-ipv6-network>2001:db8:1234::/64</destination-ipv6-network>
-          </ipv4>
+          </ipv6>
         </matches>
         <actions>
           <forwarding>reject</forwarding>
@@ -79,5 +79,6 @@
     </aces>
   </acl>
 </acls>
+
 
 
