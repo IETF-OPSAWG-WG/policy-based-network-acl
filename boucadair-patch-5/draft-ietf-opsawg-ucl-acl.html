@@ -1951,9 +1951,9 @@ module: ietf-ucl-acl
         </h3>
 <p id="section-5.2-1">This module imports types and groupings defined in the "ietf-schedule" module
    <span>[<a href="#I-D.ietf-netmod-schedule-yang" class="cite xref">I-D.ietf-netmod-schedule-yang</a>]</span>. It also augments the "ietf-access-control-list" module (<span><a href="https://rfc-editor.org/rfc/rfc8519#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC8519" class="cite xref">RFC8519</a>]</span>).<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-<div class="breakable sourcecode" id="section-5.2-2">
-<pre>&lt;CODE BEGINS&gt; file "ietf-ucl-acl@2025-03-11.yang"
-
+<div class="breakable lang-yang sourcecode" id="section-5.2-2">
+<pre>
+&lt;CODE BEGINS&gt; file "ietf-ucl-acl@2025-03-11.yang"
 module ietf-ucl-acl {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-ucl-acl";
@@ -2301,8 +2301,8 @@ module ietf-ucl-acl {
     }
   }
 }
-
-&lt;CODE ENDS&gt;</pre><a href="#section-5.2-2" class="pilcrow">¶</a>
+&lt;CODE ENDS&gt;
+</pre><a href="#section-5.2-2" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -2386,7 +2386,7 @@ RADIUS packet.<a href="#section-6-6" class="pilcrow">¶</a></p>
             <th class="text-left" rowspan="1" colspan="1">Access-Request</th>
             <th class="text-left" rowspan="1" colspan="1">Access-Accept</th>
             <th class="text-left" rowspan="1" colspan="1">Access-Reject</th>
-            <th class="text-left" rowspan="1" colspan="1">Challenge</th>
+            <th class="text-left" rowspan="1" colspan="1">Access-Challenge</th>
             <th class="text-left" rowspan="1" colspan="1">Attribute</th>
           </tr>
         </thead>
@@ -2794,97 +2794,94 @@ at 18:00:00 in Pacific Standard Time on December 31, 2026.<a href="#appendix-A.1
    using the group-based ACL:<a href="#appendix-A.1-4" class="pilcrow">¶</a></p>
 <span id="name-example-of-ucl-configuratio"></span><div id="ex-controller-ucl">
 <figure id="figure-3">
-          <div class="alignLeft art-text artwork" id="appendix-A.1-5.1">
+          <div class="breakable lang-json sourcecode" id="appendix-A.1-5.1">
 <pre>
-=============== NOTE: '\' line wrapping per RFC 8792 ================
-
-&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;acls xmlns="urn:ietf:params:xml:ns:yang:ietf-access-control-list"
-      xmlns:uacl="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
-    &lt;endpoint-groups
-      xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
-      &lt;endpoint-group&gt;
-        &lt;group-id&gt;R&amp;amp;D&lt;/group-id&gt;
-        &lt;group-type&gt;user-group&lt;/group-type&gt;
-      &lt;/endpoint-group&gt;
-      &lt;endpoint-group&gt;
-        &lt;group-id&gt;R&amp;amp;D BYOD&lt;/group-id&gt;
-        &lt;group-type&gt;user-group&lt;/group-type&gt;
-      &lt;/endpoint-group&gt;
-      &lt;endpoint-group&gt;
-        &lt;group-id&gt;finance server&lt;/group-id&gt;
-        &lt;group-type&gt;device-group&lt;/group-type&gt;
-      &lt;/endpoint-group&gt;
-    &lt;/endpoint-groups&gt;
-    &lt;acl&gt;
-    &lt;name&gt;sample-group-acl&lt;/name&gt;
-    &lt;type&gt;uacl:group-acl-type&lt;/type&gt;
-    &lt;aces&gt;
-      &lt;ace&gt;
-        &lt;name&gt;rule1&lt;/name&gt;
-        &lt;matches&gt;
-          &lt;endpoint-group
-            xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
-            &lt;source-group-id&gt;R&amp;amp;D BYOD&lt;/source-group-id&gt;
-            &lt;destination-group-id&gt;R&amp;amp;D&lt;/destination-group-id&gt;
-          &lt;/endpoint-group&gt;
-        &lt;/matches&gt;
-        &lt;actions&gt;
-          &lt;forwarding&gt;accept&lt;/forwarding&gt;
-        &lt;/actions&gt;
-        &lt;effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
-                                                             ucl-acl"
-          xmlns:schedule="urn:ietf:params:xml:ns:yang:ietf-schedule"&gt;
-          &lt;recurrence&gt;
-            &lt;recurrence-first&gt;
-              &lt;start-time&gt;2026-01-01T08:00:00Z&lt;/start-time&gt;
-              &lt;duration&gt;PT10:00:00&lt;/duration&gt;
-            &lt;/recurrence-first&gt;
-            &lt;frequency&gt;schedule:daily&lt;/frequency&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;monday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;tuesday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;wednesday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;thursday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;friday&lt;/weekday&gt;
-            &lt;/byday&gt;
-          &lt;/recurrence&gt;
-        &lt;/effective-schedule&gt;
-      &lt;/ace&gt;
-      &lt;ace&gt;
-        &lt;name&gt;rule2&lt;/name&gt;
-        &lt;matches&gt;
-          &lt;endpoint-group
-            xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
-            &lt;source-group-id&gt;R&amp;amp;D BYOD&lt;/source-group-id&gt;
-            &lt;destination-group-id&gt;finance server&lt;/destination-group-\
-                                                                  id&gt;
-          &lt;/endpoint-group&gt;
-        &lt;/matches&gt;
-        &lt;actions&gt;
-          &lt;forwarding&gt;reject&lt;/forwarding&gt;
-        &lt;/actions&gt;
-        &lt;effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
-                                                            ucl-acl"&gt;
-          &lt;period&gt;
-            &lt;period-start&gt;2026-01-20T08:30:00-08:00&lt;/period-start&gt;
-            &lt;period-end&gt;2026-12-31T18:00:00-08:00&lt;/period-end&gt;
-          &lt;/period&gt;
-        &lt;/effective-schedule&gt;
-      &lt;/ace&gt;
-    &lt;/aces&gt;
-  &lt;/acl&gt;
-&lt;/acls&gt;
-
-
+{
+  "ietf-access-control-list:acls": {
+    "ietf-ucl-acl:endpoint-groups": {
+      "endpoint-group": [
+        {
+          "group-id": "R&amp;D",
+          "group-type": "ietf-ucl-acl:user-group"
+        },
+        {
+          "group-id": "R&amp;D BYOD",
+          "group-type": "ietf-ucl-acl:user-group"
+        },
+        {
+          "group-id": "finance server",
+          "group-type": "ietf-ucl-acl:device-group"
+        }
+      ]
+    },
+    "acl": [
+      {
+        "name": "sample-group-acl",
+        "type": "ietf-ucl-acl:group-acl-type",
+        "aces": {
+          "ace": [
+            {
+              "name": "rule1",
+              "matches": {
+                "ietf-ucl-acl:endpoint-group": {
+                  "source-group-id": "R&amp;D BYOD",
+                  "destination-group-id": "R&amp;D"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:accept"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "recurrence": {
+                  "recurrence-first": {
+                    "start-time": "2026-01-01T08:00:00Z",
+                    "duration": "PT10:00:00"
+                  },
+                  "frequency": "ietf-schedule:daily",
+                  "byday": [
+                    {
+                      "weekday": "monday"
+                    },
+                    {
+                      "weekday": "tuesday"
+                    },
+                    {
+                      "weekday": "wednesday"
+                    },
+                    {
+                      "weekday": "thursday"
+                    },
+                    {
+                      "weekday": "friday"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "rule2",
+              "matches": {
+                "ietf-ucl-acl:endpoint-group": {
+                  "source-group-id": "R&amp;D BYOD",
+                  "destination-group-id": "finance server"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:reject"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "period": {
+                  "period-start": "2026-01-20T08:30:00-08:00",
+                  "period-end": "2026-12-31T18:00:00-08:00"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
 </pre>
 </div>
 <figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
@@ -2915,96 +2912,92 @@ at 18:00:00 in Pacific Standard Time on December 31, 2026.<a href="#appendix-A.1
    how the mapping between a group ID and IP addresses is translated into an ACL rule entry.<a href="#appendix-A.2-4" class="pilcrow">¶</a></p>
 <span id="name-example-of-pep-configuratio"></span><div id="ex-PEP-ucl">
 <figure id="figure-4">
-          <div class="alignLeft art-text artwork" id="appendix-A.2-5.1">
+          <div class="breakable lang-json sourcecode" id="appendix-A.2-5.1">
 <pre>
-=============== NOTE: '\' line wrapping per RFC 8792 ================
-
-&lt;?xml version="1.0" encoding="utf-8"?&gt;
-
-&lt;acls xmlns="urn:ietf:params:xml:ns:yang:ietf-access-control-list"
-      xmlns:uacl="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
-  &lt;endpoint-groups
-      xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
-    &lt;endpoint-group&gt;
-      &lt;group-id&gt;R&amp;amp;D&lt;/group-id&gt;
-      &lt;group-type&gt;user-group&lt;/group-type&gt;
-    &lt;/endpoint-group&gt;
-    &lt;endpoint-group&gt;
-      &lt;group-id&gt;R&amp;amp;D BYOD&lt;/group-id&gt;
-      &lt;group-type&gt;user-group&lt;/group-type&gt;
-    &lt;/endpoint-group&gt;
-  &lt;/endpoint-groups&gt;
-  &lt;acl&gt;
-    &lt;name&gt;sample-ucl-ipv4&lt;/name&gt;
-    &lt;type&gt;uacl:mixed-ipv4-group-type&lt;/type&gt;
-    &lt;aces&gt;
-      &lt;ace&gt;
-        &lt;name&gt;rule1&lt;/name&gt;
-        &lt;matches&gt;
-          &lt;endpoint-group
-            xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
-            &lt;source-group-id&gt;R&amp;amp;D BYOD&lt;/source-group-id&gt;
-            &lt;destination-group-id&gt;R&amp;amp;D&lt;/destination-group-id&gt;
-          &lt;/endpoint-group&gt;
-        &lt;/matches&gt;
-        &lt;actions&gt;
-          &lt;forwarding&gt;accept&lt;/forwarding&gt;
-        &lt;/actions&gt;
-        &lt;effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
-                                                             ucl-acl"
-          xmlns:schedule="urn:ietf:params:xml:ns:yang:ietf-schedule"&gt;
-          &lt;recurrence&gt;
-            &lt;recurrence-first&gt;
-              &lt;start-time&gt;2026-01-01T08:00:00Z&lt;/start-time&gt;
-              &lt;duration&gt;PT10:00:00&lt;/duration&gt;
-            &lt;/recurrence-first&gt;
-            &lt;frequency&gt;schedule:daily&lt;/frequency&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;monday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;tuesday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;wednesday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;thursday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;friday&lt;/weekday&gt;
-            &lt;/byday&gt;
-          &lt;/recurrence&gt;
-        &lt;/effective-schedule&gt;
-      &lt;/ace&gt;
-      &lt;ace&gt;
-        &lt;name&gt;rule2&lt;/name&gt;
-        &lt;matches&gt;
-          &lt;endpoint-group
-            xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
-            &lt;source-group-id&gt;R&amp;amp;D BYOD&lt;/source-group-id&gt;
-          &lt;/endpoint-group&gt;
-          &lt;ipv4&gt;
-            &lt;destination-ipv4-network&gt;203.0.113.1/24&lt;/destination-\
-                                                        ipv4-network&gt;
-          &lt;/ipv4&gt;
-        &lt;/matches&gt;
-        &lt;actions&gt;
-          &lt;forwarding&gt;reject&lt;/forwarding&gt;
-        &lt;/actions&gt;
-        &lt;effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
-                                                            ucl-acl"&gt;
-          &lt;period&gt;
-            &lt;period-start&gt;2026-01-20T08:30:00-08:00&lt;/period-start&gt;
-            &lt;period-end&gt;2026-12-31T18:00:00-08:00&lt;/period-end&gt;
-          &lt;/period&gt;
-        &lt;/effective-schedule&gt;
-      &lt;/ace&gt;
-    &lt;/aces&gt;
-  &lt;/acl&gt;
-&lt;/acls&gt;
-
-
+{
+  "ietf-access-control-list:acls": {
+    "ietf-ucl-acl:endpoint-groups": {
+      "endpoint-group": [
+        {
+          "group-id": "R&amp;D",
+          "group-type": "ietf-ucl-acl:user-group"
+        },
+        {
+          "group-id": "R&amp;D BYOD",
+          "group-type": "ietf-ucl-acl:user-group"
+        }
+      ]
+    },
+    "acl": [
+      {
+        "name": "sample-ucl-ipv4",
+        "type": "ietf-ucl-acl:mixed-ipv4-group-type",
+        "aces": {
+          "ace": [
+            {
+              "name": "rule1",
+              "matches": {
+                "ietf-ucl-acl:endpoint-group": {
+                  "source-group-id": "R&amp;D BYOD",
+                  "destination-group-id": "R&amp;D"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:accept"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "recurrence": {
+                  "recurrence-first": {
+                    "start-time": "2026-01-01T08:00:00Z",
+                    "duration": "PT10:00:00"
+                  },
+                  "frequency": "ietf-schedule:daily",
+                  "byday": [
+                    {
+                      "weekday": "monday"
+                    },
+                    {
+                      "weekday": "tuesday"
+                    },
+                    {
+                      "weekday": "wednesday"
+                    },
+                    {
+                      "weekday": "thursday"
+                    },
+                    {
+                      "weekday": "friday"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "rule2",
+              "matches": {
+                "ietf-ucl-acl:endpoint-group": {
+                  "source-group-id": "R&amp;D BYOD"
+                },
+                "ipv4": {
+                  "destination-ipv4-network": "203.0.113.1/24"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:reject"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "period": {
+                  "period-start": "2026-01-20T08:30:00-08:00",
+                  "period-end": "2026-12-31T18:00:00-08:00"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
 </pre>
 </div>
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
@@ -3014,97 +3007,92 @@ at 18:00:00 in Pacific Standard Time on December 31, 2026.<a href="#appendix-A.1
 <p id="appendix-A.2-6"><a href="#ex-PEP-ucl-ipv6" class="auto internal xref">Figure 5</a> shows an example of the same policy but with a destination IPv6 prefix.<a href="#appendix-A.2-6" class="pilcrow">¶</a></p>
 <span id="name-example-of-pep-configuration"></span><div id="ex-PEP-ucl-ipv6">
 <figure id="figure-5">
-          <div class="alignLeft art-text artwork" id="appendix-A.2-7.1">
+          <div class="breakable lang-json sourcecode" id="appendix-A.2-7.1">
 <pre>
-=============== NOTE: '\' line wrapping per RFC 8792 ================
-
-&lt;?xml version="1.0" encoding="utf-8"?&gt;
-
-&lt;acls xmlns="urn:ietf:params:xml:ns:yang:ietf-access-control-list"
-      xmlns:uacl="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
-  &lt;endpoint-groups
-      xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
-    &lt;endpoint-group&gt;
-      &lt;group-id&gt;R&amp;amp;D&lt;/group-id&gt;
-      &lt;group-type&gt;user-group&lt;/group-type&gt;
-    &lt;/endpoint-group&gt;
-    &lt;endpoint-group&gt;
-      &lt;group-id&gt;R&amp;amp;D BYOD&lt;/group-id&gt;
-      &lt;group-type&gt;user-group&lt;/group-type&gt;
-    &lt;/endpoint-group&gt;
-  &lt;/endpoint-groups&gt;
-  &lt;acl&gt;
-    &lt;name&gt;sample-ucl-ipv6&lt;/name&gt;
-    &lt;type&gt;uacl:mixed-ipv6-group-type&lt;/type&gt;
-    &lt;aces&gt;
-      &lt;ace&gt;
-        &lt;name&gt;rule1&lt;/name&gt;
-        &lt;matches&gt;
-          &lt;endpoint-group
-            xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
-            &lt;source-group-id&gt;R&amp;amp;D BYOD&lt;/source-group-id&gt;
-            &lt;destination-group-id&gt;R&amp;amp;D&lt;/destination-group-id&gt;
-          &lt;/endpoint-group&gt;
-        &lt;/matches&gt;
-        &lt;actions&gt;
-          &lt;forwarding&gt;accept&lt;/forwarding&gt;
-        &lt;/actions&gt;
-        &lt;effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
-                                                             ucl-acl"
-          xmlns:schedule="urn:ietf:params:xml:ns:yang:ietf-schedule"&gt;
-          &lt;recurrence&gt;
-            &lt;recurrence-first&gt;
-              &lt;start-time&gt;2026-01-01T08:00:00Z&lt;/start-time&gt;
-              &lt;duration&gt;PT10:00:00&lt;/duration&gt;
-            &lt;/recurrence-first&gt;
-            &lt;frequency&gt;schedule:daily&lt;/frequency&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;monday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;tuesday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;wednesday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;thursday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;friday&lt;/weekday&gt;
-            &lt;/byday&gt;
-          &lt;/recurrence&gt;
-        &lt;/effective-schedule&gt;
-      &lt;/ace&gt;
-      &lt;ace&gt;
-        &lt;name&gt;rule2&lt;/name&gt;
-        &lt;matches&gt;
-          &lt;endpoint-group
-            xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl"&gt;
-            &lt;source-group-id&gt;R&amp;amp;D BYOD&lt;/source-group-id&gt;
-          &lt;/endpoint-group&gt;
-          &lt;ipv6&gt;
-            &lt;destination-ipv6-network&gt;2001:db8:1234::/64&lt;/\
-                                            destination-ipv6-network&gt;
-          &lt;/ipv6&gt;
-        &lt;/matches&gt;
-        &lt;actions&gt;
-          &lt;forwarding&gt;reject&lt;/forwarding&gt;
-        &lt;/actions&gt;
-        &lt;effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
-                                                            ucl-acl"&gt;
-          &lt;period&gt;
-            &lt;period-start&gt;2026-01-20T08:30:00-08:00&lt;/period-start&gt;
-            &lt;period-end&gt;2026-12-31T18:00:00-08:00&lt;/period-end&gt;
-          &lt;/period&gt;
-        &lt;/effective-schedule&gt;
-      &lt;/ace&gt;
-    &lt;/aces&gt;
-  &lt;/acl&gt;
-&lt;/acls&gt;
-
-
-
+{
+  "ietf-access-control-list:acls": {
+    "ietf-ucl-acl:endpoint-groups": {
+      "endpoint-group": [
+        {
+          "group-id": "R&amp;D",
+          "group-type": "ietf-ucl-acl:user-group"
+        },
+        {
+          "group-id": "R&amp;D BYOD",
+          "group-type": "ietf-ucl-acl:user-group"
+        }
+      ]
+    },
+    "acl": [
+      {
+        "name": "sample-ucl-ipv6",
+        "type": "ietf-ucl-acl:mixed-ipv6-group-type",
+        "aces": {
+          "ace": [
+            {
+              "name": "rule1",
+              "matches": {
+                "ietf-ucl-acl:endpoint-group": {
+                  "source-group-id": "R&amp;D BYOD",
+                  "destination-group-id": "R&amp;D"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:accept"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "recurrence": {
+                  "recurrence-first": {
+                    "start-time": "2026-01-01T08:00:00Z",
+                    "duration": "PT10:00:00"
+                  },
+                  "frequency": "ietf-schedule:daily",
+                  "byday": [
+                    {
+                      "weekday": "monday"
+                    },
+                    {
+                      "weekday": "tuesday"
+                    },
+                    {
+                      "weekday": "wednesday"
+                    },
+                    {
+                      "weekday": "thursday"
+                    },
+                    {
+                      "weekday": "friday"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "rule2",
+              "matches": {
+                "ietf-ucl-acl:endpoint-group": {
+                  "source-group-id": "R&amp;D BYOD"
+                },
+                "ipv6": {
+                  "destination-ipv6-network": "2001:db8:1234::/64"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:reject"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "period": {
+                  "period-start": "2026-01-20T08:30:00-08:00",
+                  "period-end": "2026-12-31T18:00:00-08:00"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
 </pre>
 </div>
 <figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
@@ -3133,80 +3121,78 @@ at 18:00:00 in Pacific Standard Time on December 31, 2026.<a href="#appendix-A.1
    presented in <a href="#controller-ucl" class="auto internal xref">Appendix A.1</a>.<a href="#appendix-A.3-3" class="pilcrow">¶</a></p>
 <span id="name-example-of-pep-configuration-2"></span><div id="ex-PEP-acl">
 <figure id="figure-6">
-          <div class="alignLeft art-text artwork" id="appendix-A.3-4.1">
+          <div class="breakable lang-json sourcecode" id="appendix-A.3-4.1">
 <pre>
-=============== NOTE: '\' line wrapping per RFC 8792 ================
-
-&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;acls xmlns="urn:ietf:params:xml:ns:yang:ietf-access-control-list"&gt;
-  &lt;acl&gt;
-    &lt;name&gt;sample-acl-ipv4&lt;/name&gt;
-    &lt;type&gt;ipv4-acl-type&lt;/type&gt;
-    &lt;aces&gt;
-      &lt;ace&gt;
-        &lt;name&gt;rule1&lt;/name&gt;
-        &lt;matches&gt;
-          &lt;ipv4&gt;
-            &lt;destination-ipv4-network&gt;192.168.2.1/24&lt;/destination-\
-                                                        ipv4-network&gt;
-            &lt;source-ipv4-network&gt;192.168.1.1/24&lt;/source-ipv4-network&gt;
-          &lt;/ipv4&gt;
-        &lt;/matches&gt;
-        &lt;actions&gt;
-          &lt;forwarding&gt;accept&lt;/forwarding&gt;
-        &lt;/actions&gt;
-        &lt;effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
-                                                             ucl-acl"
-          xmlns:schedule="urn:ietf:params:xml:ns:yang:ietf-schedule"&gt;
-          &lt;recurrence&gt;
-            &lt;recurrence-first&gt;
-              &lt;start-time&gt;2026-01-01T08:00:00Z&lt;/start-time&gt;
-              &lt;duration&gt;PT10:00:00&lt;/duration&gt;
-            &lt;/recurrence-first&gt;
-            &lt;frequency&gt;schedule:daily&lt;/frequency&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;monday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;tuesday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;wednesday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;thursday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;friday&lt;/weekday&gt;
-            &lt;/byday&gt;
-          &lt;/recurrence&gt;
-        &lt;/effective-schedule&gt;
-      &lt;/ace&gt;
-      &lt;ace&gt;
-        &lt;name&gt;rule2&lt;/name&gt;
-        &lt;matches&gt;
-          &lt;ipv4&gt;
-            &lt;destination-ipv4-network&gt;203.0.113.1/24&lt;/destination-\
-                                                        ipv4-network&gt;
-            &lt;source-ipv4-network&gt;192.168.1.1/24&lt;/source-ipv4-network&gt;
-          &lt;/ipv4&gt;
-        &lt;/matches&gt;
-        &lt;actions&gt;
-          &lt;forwarding&gt;reject&lt;/forwarding&gt;
-        &lt;/actions&gt;
-        &lt;effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
-                                                            ucl-acl"&gt;
-          &lt;period&gt;
-            &lt;period-start&gt;2026-01-20T08:30:00-08:00&lt;/period-start&gt;
-            &lt;period-end&gt;2026-12-31T18:00:00-08:00&lt;/period-end&gt;
-          &lt;/period&gt;
-        &lt;/effective-schedule&gt;
-      &lt;/ace&gt;
-    &lt;/aces&gt;
-  &lt;/acl&gt;
-&lt;/acls&gt;
-
-
+{
+  "ietf-access-control-list:acls": {
+    "acl": [
+      {
+        "name": "sample-acl-ipv4",
+        "type": "ietf-access-control-list:ipv4-acl-type",
+        "aces": {
+          "ace": [
+            {
+              "name": "rule1",
+              "matches": {
+                "ipv4": {
+                  "destination-ipv4-network": "192.168.2.1/24",
+                  "source-ipv4-network": "192.168.1.1/24"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:accept"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "recurrence": {
+                  "recurrence-first": {
+                    "start-time": "2026-01-01T08:00:00Z",
+                    "duration": "PT10:00:00"
+                  },
+                  "frequency": "ietf-schedule:daily",
+                  "byday": [
+                    {
+                      "weekday": "monday"
+                    },
+                    {
+                      "weekday": "tuesday"
+                    },
+                    {
+                      "weekday": "wednesday"
+                    },
+                    {
+                      "weekday": "thursday"
+                    },
+                    {
+                      "weekday": "friday"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "rule2",
+              "matches": {
+                "ipv4": {
+                  "destination-ipv4-network": "203.0.113.1/24",
+                  "source-ipv4-network": "192.168.1.1/24"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:reject"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "period": {
+                  "period-start": "2026-01-20T08:30:00-08:00",
+                  "period-end": "2026-12-31T18:00:00-08:00"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
 </pre>
 </div>
 <figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
@@ -3216,80 +3202,78 @@ at 18:00:00 in Pacific Standard Time on December 31, 2026.<a href="#appendix-A.1
 <p id="appendix-A.3-5"><a href="#ex-PEP-acl-ipv6" class="auto internal xref">Figure 7</a> shows an example of the same policy but with a destination IPv6 prefix.<a href="#appendix-A.3-5" class="pilcrow">¶</a></p>
 <span id="name-example-of-pep-configuration-"></span><div id="ex-PEP-acl-ipv6">
 <figure id="figure-7">
-          <div class="alignLeft art-text artwork" id="appendix-A.3-6.1">
+          <div class="breakable lang-json sourcecode" id="appendix-A.3-6.1">
 <pre>
-=============== NOTE: '\' line wrapping per RFC 8792 ================
-
-&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;acls xmlns="urn:ietf:params:xml:ns:yang:ietf-access-control-list"&gt;
-  &lt;acl&gt;
-    &lt;name&gt;sample-acl-ipv6&lt;/name&gt;
-    &lt;type&gt;ipv6-acl-type&lt;/type&gt;
-    &lt;aces&gt;
-      &lt;ace&gt;
-        &lt;name&gt;rule1&lt;/name&gt;
-        &lt;matches&gt;
-          &lt;ipv6&gt;
-            &lt;destination-ipv6-network&gt;2001:db8::1/64&lt;/destination-\
-                                                        ipv6-network&gt;
-            &lt;source-ipv6-network&gt;2001:db8::2:1/64&lt;/source-ipv6-\
-                                                             network&gt;
-          &lt;/ipv6&gt;
-        &lt;/matches&gt;
-        &lt;actions&gt;
-          &lt;forwarding&gt;accept&lt;/forwarding&gt;
-        &lt;/actions&gt;
-        &lt;effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
-                                                             ucl-acl"
-          xmlns:schedule="urn:ietf:params:xml:ns:yang:ietf-schedule"&gt;
-          &lt;recurrence&gt;
-            &lt;recurrence-first&gt;
-              &lt;start-time&gt;2026-01-01T08:00:00Z&lt;/start-time&gt;
-              &lt;duration&gt;PT10:00:00&lt;/duration&gt;
-            &lt;/recurrence-first&gt;
-            &lt;frequency&gt;schedule:daily&lt;/frequency&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;monday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;tuesday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;wednesday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;thursday&lt;/weekday&gt;
-            &lt;/byday&gt;
-            &lt;byday&gt;
-              &lt;weekday&gt;friday&lt;/weekday&gt;
-            &lt;/byday&gt;
-          &lt;/recurrence&gt;
-        &lt;/effective-schedule&gt;
-      &lt;/ace&gt;
-      &lt;ace&gt;
-        &lt;name&gt;rule2&lt;/name&gt;
-        &lt;matches&gt;
-          &lt;ipv6&gt;
-            &lt;destination-ipv6-network&gt;2001:db8:1234::/64&lt;/\
-                                            destination-ipv6-network&gt;
-            &lt;source-ipv6-network&gt;2001:db8::2:1/64&lt;/source-ipv6-\
-                                                             network&gt;
-          &lt;/ipv6&gt;
-        &lt;/matches&gt;
-        &lt;actions&gt;
-          &lt;forwarding&gt;reject&lt;/forwarding&gt;
-        &lt;/actions&gt;
-        &lt;effective-schedule xmlns="urn:ietf:params:xml:ns:yang:ietf-\
-                                                            ucl-acl"&gt;
-          &lt;period&gt;
-            &lt;period-start&gt;2026-01-20T08:30:00-08:00&lt;/period-start&gt;
-            &lt;period-end&gt;2026-12-31T18:00:00-08:00&lt;/period-end&gt;
-          &lt;/period&gt;
-        &lt;/effective-schedule&gt;
-      &lt;/ace&gt;
-    &lt;/aces&gt;
-  &lt;/acl&gt;
-&lt;/acls&gt;
+{
+  "ietf-access-control-list:acls": {
+    "acl": [
+      {
+        "name": "sample-acl-ipv6",
+        "type": "ietf-access-control-list:ipv6-acl-type",
+        "aces": {
+          "ace": [
+            {
+              "name": "rule1",
+              "matches": {
+                "ipv6": {
+                  "destination-ipv6-network": "2001:db8::1/64",
+                  "source-ipv6-network": "2001:db8::2:1/64"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:accept"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "recurrence": {
+                  "recurrence-first": {
+                    "start-time": "2026-01-01T08:00:00Z",
+                    "duration": "PT10:00:00"
+                  },
+                  "frequency": "ietf-schedule:daily",
+                  "byday": [
+                    {
+                      "weekday": "monday"
+                    },
+                    {
+                      "weekday": "tuesday"
+                    },
+                    {
+                      "weekday": "wednesday"
+                    },
+                    {
+                      "weekday": "thursday"
+                    },
+                    {
+                      "weekday": "friday"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "rule2",
+              "matches": {
+                "ipv6": {
+                  "destination-ipv6-network": "2001:db8:1234::/64",
+                  "source-ipv6-network": "2001:db8::2:1/64"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:reject"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "period": {
+                  "period-start": "2026-01-20T08:30:00-08:00",
+                  "period-end": "2026-12-31T18:00:00-08:00"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
 </pre>
 </div>
 <figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
