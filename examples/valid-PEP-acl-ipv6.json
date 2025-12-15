@@ -1,0 +1,70 @@
+{
+  "ietf-access-control-list:acls": {
+    "acl": [
+      {
+        "name": "sample-acl-ipv6",
+        "type": "ietf-access-control-list:ipv6-acl-type",
+        "aces": {
+          "ace": [
+            {
+              "name": "rule1",
+              "matches": {
+                "ipv6": {
+                  "destination-ipv6-network": "2001:db8::1/64",
+                  "source-ipv6-network": "2001:db8::2:1/64"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:accept"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "recurrence": {
+                  "recurrence-first": {
+                    "start-time": "2026-01-01T08:00:00Z",
+                    "duration": "PT10:00:00"
+                  },
+                  "frequency": "ietf-schedule:daily",
+                  "byday": [
+                    {
+                      "weekday": "monday"
+                    },
+                    {
+                      "weekday": "tuesday"
+                    },
+                    {
+                      "weekday": "wednesday"
+                    },
+                    {
+                      "weekday": "thursday"
+                    },
+                    {
+                      "weekday": "friday"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "rule2",
+              "matches": {
+                "ipv6": {
+                  "destination-ipv6-network": "2001:db8:1234::/64",
+                  "source-ipv6-network": "2001:db8::2:1/64"
+                }
+              },
+              "actions": {
+                "forwarding": "ietf-access-control-list:reject"
+              },
+              "ietf-ucl-acl:effective-schedule": {
+                "period": {
+                  "period-start": "2026-01-20T08:30:00-08:00",
+                  "period-end": "2026-12-31T18:00:00-08:00"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
