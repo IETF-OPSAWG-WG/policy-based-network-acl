@@ -114,7 +114,7 @@ informative:
 
    The ACL concept has been generalized to be device-nonspecific, and can be
    defined at network/administrative domain level {{?I-D.ietf-netmod-acl-extensions}}. To
-   allow for all applications of ACLs, the YANG module for policy-based network
+   allow for all  ACL applications, the YANG module for policy-based network
    ACL defined in {{sec-UCL}} does not limit how it can be used.
 
    This document also defines a mechanism to establish a mapping between (1) the
@@ -158,29 +158,45 @@ informative:
    The meanings of the symbols in tree diagrams are defined in
    {{?RFC8340}}.
 
-   The document uses the following definition in {{?RFC3198}}:
+   The document uses the following term defined in {{?RFC3198}}:
 
    * policy
 
-   The document uses the following definitions and acronyms defined in {{!RFC8519}}:
+   The document uses the following terms defined in {{!RFC8519}}:
 
    * Access Control Entry (ACE)
 
    * Access Control List (ACL)
 
-   The following definitions and acronyms are used throughout this document:
+   The following definitions are used throughout this document:
 
-   * User group based Control List (UCL) model:
-   : A YANG data model for policy-based network access
-     control that specifies an extension to the "ietf-access-control-list" model {{!RFC8519}}.
-     It allows policy enforcement based on the group identity, which can be used
-     both at the network device level and at the network/administrative domain level.
+   * Application group:
+   : A collection of applications that share a common access control policies. Refer to {{sec-ag}}.
+
+   * device group:
+   : A collection of devices that share a common access control policies. Refer to {{sec-dg}}.
 
    * Endpoint:
-   : refers to an end-user, host device, or application that actually connects to a network.
-     An end-user is defined as a person. A host device provides compute, memory,
-     storage and networking capabilities and connects to the network without any user intervention. Host devices refer to servers, IoTs and other devices owned
-     by the enterprise. An application is a software program used for a specific service.
+   : Refers to an end-user, host device, or application that actually connects to a network.
+   : An end-user is defined as a person.
+   : A host device provides compute, memory, storage, and networking capabilities and connects to a network. Host devices may be servers, Internet of Things (IoT) devices, etc.
+   : An application is a software program used for a specific service.
+
+   * Endpoint group:
+   : Refers to a group of users, devices, or applications that share a common access control policies.
+
+   * User group:
+   : A group of users who will be assigned the same network access policy. Refer to {{sec-ug}}.
+
+   * User group identifier:
+   : An identifier used to represent the collective identity of
+   a user group.
+
+   * User group based Control List (UCL) data model:
+   : A YANG data model for policy-based network access
+     control that specifies an extension to the "ietf-access-control-list" module {{!RFC8519}}.
+     It allows policy enforcement based on a group identifier, which can be used
+     both at the network device level and at the network/administrative domain level.
 
 #  Sample Usage
 
@@ -312,7 +328,7 @@ informative:
       may refer to, e.g., {{Section 7.4 of ?I-D.ietf-radext-deprecating-radius}}
       for authentication method recommendations.
       If the authentication request succeeds, the user is placed in a
-      user group with the identity returned to the NAS
+      user group with the identifier returned to the NAS
       as the authentication result (see {{sec-radius}}).
       If the authentication fails, the user is not assigned any user
       group, which also means that the user has no access; or the user
@@ -336,7 +352,7 @@ informative:
 
 ##  Endpoint Group
 
-###  User Group
+###  User Group {#sec-ug}
 
    The user group is determined by a set of predefined policy criteria
    (e.g., source IP address, geolocation data, time of day, or device certificate).
@@ -372,7 +388,7 @@ informative:
 | VIP        |   foo-30 |  VIP employees                 |
 {: #ug-example title='User Group Example'}
 
-###  Device Group
+###  Device Group {#sec-dg}
 
    The device group ID is an identifier that represents the collective
    identity of a group of enterprise end devices.  An enterprise device
@@ -393,7 +409,7 @@ informative:
    ACL polices helps shield the consequences of address change (e.g.,
    back-end VM-based server migration).
 
-### Application Group
+### Application Group {#sec-ag}
 
    An application group is a collection of applications that share a common access control policies.
    A device may run multiple applications, and different policies might need to be
