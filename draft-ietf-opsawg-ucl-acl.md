@@ -171,7 +171,7 @@ informative:
    The following definitions are used throughout this document:
 
    * Application group:
-   : A collection of applications that share a common access control policies. Refer to {{sec-ag}}.
+   : A collection of applications that share a common access control policies. Refer to {{sec-ag}} for more details.
 
    * device group:
    : A collection of devices that share a common access control policies. Refer to {{sec-dg}}.
