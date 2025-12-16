@@ -190,7 +190,7 @@ informative:
 
    * Endpoint group identifier:
    : An identifier used to represent the collective identity of
-   a user group.
+   an endpoint group. An endpoint group may include a user group, device group, or application group.
 
    * User group based Control List (UCL) data model:
    : A YANG data model for policy-based network access
