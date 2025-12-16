@@ -174,7 +174,7 @@ informative:
    : A collection of applications that share a common access control policies. Refer to {{sec-ag}} for more details.
 
    * device group:
-   : A collection of devices that share a common access control policies. Refer to {{sec-dg}}.
+   : A collection of devices that share a common access control policies. Refer to {{sec-dg}} for more details.
 
    * Endpoint:
    : Refers to an end-user, host device, or application that actually connects to a network.
