@@ -186,7 +186,7 @@ informative:
    : Refers to a group of users, devices, or applications that share a common access control policies.
 
    * User group:
-   : A group of users who will be assigned the same network access policy. Refer to {{sec-ug}}.
+   : A group of users who will be assigned the same network access policy. Refer to {{sec-ug}} for more details.
 
    * Endpoint group identifier:
    : An identifier used to represent the collective identity of
