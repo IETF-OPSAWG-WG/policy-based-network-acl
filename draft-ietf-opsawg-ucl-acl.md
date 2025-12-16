@@ -505,7 +505,7 @@ The User-Access-Group-ID Attribute is structured as follows:
    that may contain User-Access-Group-ID Attribute, and in what
    quantity.
 
-|Access-Request	|Access-Accept	|Access-Reject	|Challenge	| Attribute     |
+|Access-Request	|Access-Accept	|Access-Reject	|Access-Challenge	| Attribute     |
 | 0+            |  0+          | 0            |    0     | User-Access-Group-ID     |
 |Accounting-Request|	CoA-Request|	CoA-ACK	|CoA-NACK		| Attribute     |
 |    0+            | 0+         | 0       | 0        | User-Access-Group-ID     |
