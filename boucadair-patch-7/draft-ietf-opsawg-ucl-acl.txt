@@ -237,7 +237,8 @@ Table of Contents
          applications that share a common access control policies.
 
    *  User group:  A group of users who will be assigned the same
-         network access policy.  Refer to Section 4.2.1.
+         network access policy.  Refer to Section 4.2.1 for more
+         details.
 
    *  Endpoint group identifier:  An identifier used to represent the
          collective identity of an endpoint group.  An endpoint group
