@@ -219,7 +219,7 @@ Table of Contents
          more details.
 
    *  device group:  A collection of devices that share a common access
-         control policies.  Refer to Section 4.2.2.
+         control policies.  Refer to Section 4.2.2 for more details.
 
    *  Endpoint:  Refers to an end-user, host device, or application that
          actually connects to a network.
