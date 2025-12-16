@@ -215,7 +215,8 @@ Table of Contents
    The following definitions are used throughout this document:
 
    *  Application group:  A collection of applications that share a
-         common access control policies.  Refer to Section 4.2.3.
+         common access control policies.  Refer to Section 4.2.3 for
+         more details.
 
    *  device group:  A collection of devices that share a common access
          control policies.  Refer to Section 4.2.2.
@@ -239,7 +240,8 @@ Table of Contents
          network access policy.  Refer to Section 4.2.1.
 
    *  Endpoint group identifier:  An identifier used to represent the
-         collective identity of a user group.
+         collective identity of an endpoint group.  An endpoint group
+         may include a user group, device group, or application group.
 
    *  User group based Control List (UCL) data model:  A YANG data model
          for policy-based network access control that specifies an
