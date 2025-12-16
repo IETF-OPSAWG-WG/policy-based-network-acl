@@ -188,7 +188,7 @@ informative:
    * User group:
    : A group of users who will be assigned the same network access policy. Refer to {{sec-ug}}.
 
-   * User group identifier:
+   * Endpoint group identifier:
    : An identifier used to represent the collective identity of
    a user group.
 
