@@ -96,15 +96,15 @@ informative:
       enough to accommodate endpoints with volatile IP addresses.
 
    *  With the massive adoption of teleworking, there is a need to
-      apply different security policies to the same set of users under
+      apply different security policies to the same set of endpoints under
       different circumstances (e.g., prevent relaying attacks against a
       local attachment point to the enterprise network).  For example,
       network access might be granted based upon criteria such as users'
       access location, source network reputation, users' role, time-of-
       day, type of network device used (e.g., corporate issued device
       versus personal device), device's security posture, etc. This
-      means that the network needs to recognize the users' identity and their
-      current context, and map the users to their correct access
+      means that the network needs to recognize the endpoints' identity and their
+      current context, and map the endpoints to their correct access
       grant to the network.
 
    This document defines a YANG data model ({{sec-UCL}}) for policy-based network access control,
@@ -117,9 +117,10 @@ informative:
    allow for all applications of ACLs, the YANG module for policy-based network
    ACL defined in {{sec-UCL}} does not limit how it can be used.
 
-   This document also defines a mechanism to establish a mapping between (1) the
+   Take user group for example, this document also defines a mechanism to establish a mapping between (1) the
    user group identifier (ID) and (2) common IP packet header fields and other
    encapsulating packet data (e.g., MAC address) to execute the policy-based access control.
+   The similar mechanism can be applied to other endpoint group types, e.g., device group and application group.
 
    Additionally, the document defines a Remote Authentication Dial-in
    User Service (RADIUS) {{!RFC2865}} attribute that is used to
@@ -134,7 +135,8 @@ informative:
    {{?RFC9797}}.
 
    The document does not specify how to map the policy group identifiers
-   to dedicated fields (e.g.,  Group Based Policy (GBP) discussed in {{Section 6.2.3 of ?RFC9638}}).
+   to dedicated fields, Group-Based Policy (GBP) discussed in {{Section 6.2.3 of ?RFC9638}}
+   provides an example of how that may be achieved.
 
 ## Editorial Note (To be removed by RFC Editor)
 
@@ -185,15 +187,15 @@ informative:
 #  Sample Usage
 
    Access to some networks (e.g., enterprise networks) requires to
-   recognize the users' identities no matter how, where, and when they
+   recognize the endpoints' identities no matter how, where, and when they
    connect to the network resources.  Then, the network maps the
-   (connecting) users to their access authorization rights.  Such rights
+   (connecting) endpoints to their access authorization rights.  Such rights
    are defined following local policies.  As discussed in {{intro}},
-   because (1) there is a large number of users and (2) a user may have different
+   because (1) there is a large number of connecting endpoints and (2) an endpoint may have different
    source IP addresses in different network segments,
    deploying a network access control policy for each IP address or
    network segment is a heavy workload.  An alternate approach is to
-   configure endpoint groups to classify users and enterprise devices
+   configure endpoint groups to classify users, enterprise devices and applications
    and associate ACLs with endpoint groups so that endpoints in each
    group can share a group of ACL rules.  This approach greatly reduces
    the workload of the administrators and optimizes the ACL resources.
@@ -215,7 +217,9 @@ informative:
 ##  Overview {#overview}
 
    An architecture example of a system that provides real-time and consistent
-   enforcement of access control policies is shown in {{arch}}. This architecture
+   enforcement of access control policies is shown in {{arch}}. This architecture illustrates
+   a user-centric flow. Similar flow applies to policy management based on other endpoint group types, such as device or application groups, though the
+   authentication mechanisms and group identifier provisioning may differ.
    includes the following functional entities and interfaces:
 
    *  A service orchestrator which coordinates the overall service,
@@ -224,7 +228,7 @@ informative:
 
    *  A Software-Defined Networking (SDN) {{?RFC7149}} {{?RFC7426}} controller which is
       responsible for maintaining endpoint-group based ACLs and mapping the
-      endpoint-group to the associated attributes information (e.g., IP/MAC address).
+      endpoint group to the associated attributes information (e.g., IP/MAC address).
       An SDN controller also behaves as a Policy Decision Point (PDP) {{?RFC3198}}
       and pushes the required access control policies to relevant Policy
       Enforcement Points (PEPs) {{?RFC3198}}.  A PDP is also known as
@@ -264,7 +268,7 @@ informative:
    {{arch}} provides the overall architecture and procedure for
    policy-based access control management.
 
-~~~~ aasvg
+~~~~
                                          .------------.
                                          |Orchestrator|
                                          '------+-----'
@@ -289,7 +293,7 @@ informative:
                            |                      PEP                  |
                            '-------------------------------------------'
 ~~~~
-{: #arch title="A Sample Architecture for Group-based Policy Management" artwork-align="center"}
+{: #arch title="A Sample Architecture for User Group-based Policy Management" artwork-align="center"}
 
    In reference to {{arch}}, the following typical flow is experienced:
 
