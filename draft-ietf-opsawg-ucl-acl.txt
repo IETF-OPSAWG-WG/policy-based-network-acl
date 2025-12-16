@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 18 June 2026                                  M. Boucadair, Ed.
+Expires: 19 June 2026                                  M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                        15 December 2025
+                                                        16 December 2025
 
 
  A YANG Data Model and RADIUS Extension for Policy-based Network Access
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 June 2026.
+   This Internet-Draft will expire on 19 June 2026.
 
 Copyright Notice
 
@@ -1008,8 +1008,8 @@ Table of Contents
    contain User-Access-Group-ID Attribute, and in what quantity.
 
      +================+=========+=========+===========+==============+
-     | Access-Request | Access- | Access- | Challenge | Attribute    |
-     |                | Accept  | Reject  |           |              |
+     | Access-Request | Access- | Access- | Access-   | Attribute    |
+     |                | Accept  | Reject  | Challenge |              |
      +================+=========+=========+===========+==============+
      | 0+             | 0+      | 0       | 0         | User-Access- |
      |                |         |         |           | Group-ID     |
