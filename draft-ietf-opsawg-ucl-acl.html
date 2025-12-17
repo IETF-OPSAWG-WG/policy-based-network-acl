@@ -1331,7 +1331,7 @@ grant to the network.<a href="#section-1-2.2.1" class="pilcrow">¶</a></p>
    based on the group identity.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">The ACL concept has been generalized to be device-nonspecific, and can be
    defined at network/administrative domain level <span>[<a href="#I-D.ietf-netmod-acl-extensions" class="cite xref">I-D.ietf-netmod-acl-extensions</a>]</span>. To
-   allow for all applications of ACLs, the YANG module for policy-based network
+   allow for all  ACL applications, the YANG module for policy-based network
    ACL defined in <a href="#sec-UCL" class="auto internal xref">Section 5.2</a> does not limit how it can be used.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">Take user group for example, this document also defines a mechanism to establish a mapping between (1) the
    user group identifier (ID) and (2) common IP packet header fields and other
@@ -1387,13 +1387,13 @@ described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</s
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">The meanings of the symbols in tree diagrams are defined in
    <span>[<a href="#RFC8340" class="cite xref">RFC8340</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
-<p id="section-2-3">The document uses the following definition in <span>[<a href="#RFC3198" class="cite xref">RFC3198</a>]</span>:<a href="#section-2-3" class="pilcrow">¶</a></p>
+<p id="section-2-3">The document uses the following term defined in <span>[<a href="#RFC3198" class="cite xref">RFC3198</a>]</span>:<a href="#section-2-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2-4.1">
           <p id="section-2-4.1.1">policy<a href="#section-2-4.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-2-5">The document uses the following definitions and acronyms defined in <span>[<a href="#RFC8519" class="cite xref">RFC8519</a>]</span>:<a href="#section-2-5" class="pilcrow">¶</a></p>
+<p id="section-2-5">The document uses the following terms defined in <span>[<a href="#RFC8519" class="cite xref">RFC8519</a>]</span>:<a href="#section-2-5" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2-6.1">
           <p id="section-2-6.1.1">Access Control Entry (ACE)<a href="#section-2-6.1.1" class="pilcrow">¶</a></p>
@@ -1402,28 +1402,86 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
           <p id="section-2-6.2.1">Access Control List (ACL)<a href="#section-2-6.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-2-7">The following definitions and acronyms are used throughout this document:<a href="#section-2-7" class="pilcrow">¶</a></p>
+<p id="section-2-7">The following definitions are used throughout this document:<a href="#section-2-7" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2-8.1">
           <span class="break"></span><dl class="dlParallel" id="section-2-8.1.1">
-            <dt id="section-2-8.1.1.1">User group based Control List (UCL) model:</dt>
+            <dt id="section-2-8.1.1.1">Application group:</dt>
             <dd style="margin-left: 1.5em" id="section-2-8.1.1.2">
-              <p id="section-2-8.1.1.2.1">A YANG data model for policy-based network access
-control that specifies an extension to the "ietf-access-control-list" model <span>[<a href="#RFC8519" class="cite xref">RFC8519</a>]</span>.
-It allows policy enforcement based on the group identity, which can be used
-both at the network device level and at the network/administrative domain level.<a href="#section-2-8.1.1.2.1" class="pilcrow">¶</a></p>
+              <p id="section-2-8.1.1.2.1">A collection of applications that share a common access control policies. Refer to <a href="#sec-ag" class="auto internal xref">Section 4.2.3</a> for more details.<a href="#section-2-8.1.1.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
 </li>
         <li class="normal" id="section-2-8.2">
           <span class="break"></span><dl class="dlParallel" id="section-2-8.2.1">
-            <dt id="section-2-8.2.1.1">Endpoint:</dt>
+            <dt id="section-2-8.2.1.1">device group:</dt>
             <dd style="margin-left: 1.5em" id="section-2-8.2.1.2">
-              <p id="section-2-8.2.1.2.1">refers to an end-user, host device, or application that actually connects to a network.
-An end-user is defined as a person. A host device provides compute, memory,
-storage and networking capabilities and connects to the network without any user intervention. Host devices refer to servers, IoTs and other devices owned
-by the enterprise. An application is a software program used for a specific service.<a href="#section-2-8.2.1.2.1" class="pilcrow">¶</a></p>
+              <p id="section-2-8.2.1.2.1">A collection of devices that share a common access control policies. Refer to <a href="#sec-dg" class="auto internal xref">Section 4.2.2</a> for more details.<a href="#section-2-8.2.1.2.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+</dl>
+</li>
+        <li class="normal" id="section-2-8.3">
+          <span class="break"></span><dl class="dlParallel" id="section-2-8.3.1">
+            <dt id="section-2-8.3.1.1">Endpoint:</dt>
+            <dd style="margin-left: 1.5em" id="section-2-8.3.1.2">
+              <p id="section-2-8.3.1.2.1">Refers to an end-user, host device, or application that actually connects to a network.<a href="#section-2-8.3.1.2.1" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-2-8.3.1.3"></dt>
+            <dd style="margin-left: 1.5em" id="section-2-8.3.1.4">
+              <p id="section-2-8.3.1.4.1">An end-user is defined as a person.<a href="#section-2-8.3.1.4.1" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-2-8.3.1.5"></dt>
+            <dd style="margin-left: 1.5em" id="section-2-8.3.1.6">
+              <p id="section-2-8.3.1.6.1">A host device provides compute, memory, storage, and networking capabilities and connects to a network. Host devices may be servers, Internet of Things (IoT) devices, etc.<a href="#section-2-8.3.1.6.1" class="pilcrow">¶</a></p>
+</dd>
+            <dd class="break"></dd>
+<dt id="section-2-8.3.1.7"></dt>
+            <dd style="margin-left: 1.5em" id="section-2-8.3.1.8">
+              <p id="section-2-8.3.1.8.1">An application is a software program used for a specific service.<a href="#section-2-8.3.1.8.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+</dl>
+</li>
+        <li class="normal" id="section-2-8.4">
+          <span class="break"></span><dl class="dlParallel" id="section-2-8.4.1">
+            <dt id="section-2-8.4.1.1">Endpoint group:</dt>
+            <dd style="margin-left: 1.5em" id="section-2-8.4.1.2">
+              <p id="section-2-8.4.1.2.1">Refers to a group of users, devices, or applications that share a common access control policies.<a href="#section-2-8.4.1.2.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+</dl>
+</li>
+        <li class="normal" id="section-2-8.5">
+          <span class="break"></span><dl class="dlParallel" id="section-2-8.5.1">
+            <dt id="section-2-8.5.1.1">User group:</dt>
+            <dd style="margin-left: 1.5em" id="section-2-8.5.1.2">
+              <p id="section-2-8.5.1.2.1">A group of users who will be assigned the same network access policy. Refer to <a href="#sec-ug" class="auto internal xref">Section 4.2.1</a> for more details.<a href="#section-2-8.5.1.2.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+</dl>
+</li>
+        <li class="normal" id="section-2-8.6">
+          <span class="break"></span><dl class="dlParallel" id="section-2-8.6.1">
+            <dt id="section-2-8.6.1.1">Endpoint group identifier:</dt>
+            <dd style="margin-left: 1.5em" id="section-2-8.6.1.2">
+              <p id="section-2-8.6.1.2.1">An identifier used to represent the collective identity of
+   an endpoint group. An endpoint group may include a user group, device group, or application group.<a href="#section-2-8.6.1.2.1" class="pilcrow">¶</a></p>
+</dd>
+          <dd class="break"></dd>
+</dl>
+</li>
+        <li class="normal" id="section-2-8.7">
+          <span class="break"></span><dl class="dlParallel" id="section-2-8.7.1">
+            <dt id="section-2-8.7.1.1">User group based Control List (UCL) data model:</dt>
+            <dd style="margin-left: 1.5em" id="section-2-8.7.1.2">
+              <p id="section-2-8.7.1.2.1">A YANG data model for policy-based network access
+control that specifies an extension to the "ietf-access-control-list" module <span>[<a href="#RFC8519" class="cite xref">RFC8519</a>]</span>.
+It allows policy enforcement based on a group identifier, which can be used
+both at the network device level and at the network/administrative domain level.<a href="#section-2-8.7.1.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 </dl>
@@ -1643,7 +1701,7 @@ This document does not restrict what authentication method is used. Administrato
 may refer to, e.g., <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-radext-deprecating-radius-08#section-7.4" class="relref">Section 7.4</a> of [<a href="#I-D.ietf-radext-deprecating-radius" class="cite xref">I-D.ietf-radext-deprecating-radius</a>]</span>
 for authentication method recommendations.
 If the authentication request succeeds, the user is placed in a
-user group with the identity returned to the NAS
+user group with the identifier returned to the NAS
 as the authentication result (see <a href="#sec-radius" class="auto internal xref">Section 6</a>).
 If the authentication fails, the user is not assigned any user
 group, which also means that the user has no access; or the user
@@ -1678,7 +1736,7 @@ the PEP. <a href="#PEP-ucl" class="auto internal xref">Appendix A.2</a> and <a h
         <h3 id="name-endpoint-group">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-endpoint-group" class="section-name selfRef">Endpoint Group</a>
         </h3>
-<div id="user-group">
+<div id="sec-ug">
 <section id="section-4.2.1">
           <h4 id="name-user-group">
 <a href="#section-4.2.1" class="section-number selfRef">4.2.1. </a><a href="#name-user-group" class="section-name selfRef">User Group</a>
@@ -1746,7 +1804,7 @@ the PEP. <a href="#PEP-ucl" class="auto internal xref">Appendix A.2</a> and <a h
 </div>
 </section>
 </div>
-<div id="device-group">
+<div id="sec-dg">
 <section id="section-4.2.2">
           <h4 id="name-device-group">
 <a href="#section-4.2.2" class="section-number selfRef">4.2.2. </a><a href="#name-device-group" class="section-name selfRef">Device Group</a>
@@ -1796,7 +1854,7 @@ the PEP. <a href="#PEP-ucl" class="auto internal xref">Appendix A.2</a> and <a h
    back-end VM-based server migration).<a href="#section-4.2.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="application-group">
+<div id="sec-ag">
 <section id="section-4.2.3">
           <h4 id="name-application-group">
 <a href="#section-4.2.3" class="section-number selfRef">4.2.3. </a><a href="#name-application-group" class="section-name selfRef">Application Group</a>
