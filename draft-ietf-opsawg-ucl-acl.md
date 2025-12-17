@@ -348,7 +348,7 @@ informative:
       the PEP. {{PEP-ucl}} and {{PEP-acl}} elaborate on each case.
 
   Similar flow applies to policy management based on other endpoint group types, such as device or application groups,
-  expect that the mapping between the group ID and related common packet
+  except that the mapping between the group ID and related common packet
   header attributes (e.g., IP/MAC address) may be maintained on the controller based on inventory or application registry.
 
 {{implement-considerations}} provides additional operational considerations.
