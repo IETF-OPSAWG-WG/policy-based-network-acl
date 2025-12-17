@@ -335,7 +335,7 @@ informative:
       user group with the identifier returned to the NAS
       as the authentication result (see {{sec-radius}}).
       If the authentication fails, the user is not assigned any user
-      group, which also means that the user has no access; or the user
+      group, which also means that the user has no access (i.e., return an Access-Reject); or the user
       is assigned a special group with very limited access permissions
       for the network (as a function of the local policy). ACLs are
       enforced so that flows from that IP address are discarded
