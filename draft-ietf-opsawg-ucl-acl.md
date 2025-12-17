@@ -349,7 +349,7 @@ informative:
 
   Similar flow applies to policy management based on other endpoint group types, such as device or application groups,
   except that the mapping between the group ID and related common packet
-  header attributes (e.g., IP/MAC address) may be maintained on the controller based on inventory or application registry.
+  header attributes (e.g., IP/MAC address) may be maintained on the SDN controller based on inventory or application registry.
 
 {{implement-considerations}} provides additional operational considerations.
 
@@ -484,10 +484,13 @@ informative:
 
 # User Access Control Group ID RADIUS Attribute {#sec-radius}
 
-The User-Access-Group-ID RADIUS attribute which is designed for user-centric access control scenarios where network access is triggered by user authentication, is
+This section defines a User-Access-Group-ID RADIUS attribute which is designed for user-centric access control scenarios where network access is triggered by user authentication and used to indicate the user group ID to be used by the NAS.
+For other endpoint group type, such as device group or application group, the identifiers are typically pre-provisioned
+on the SDN controller based on inventory or application registry.
+
+The User-Access-Group-ID RADIUS attribute is
 defined with a globally unique name. The definition of the attribute
-follows the guidelines in {{Section 2.7.1 of !RFC6929}}.  This attribute
-is used to indicate the user group ID to be used by the NAS.  When
+follows the guidelines in {{Section 2.7.1 of !RFC6929}}. When
 the User-Access-Group-ID RADIUS attribute is present in the RADIUS
 Access-Accept, the system applies the related access control to the
 users after it authenticates.
