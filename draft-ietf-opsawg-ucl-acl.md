@@ -65,11 +65,11 @@ informative:
 
    This document defines a YANG data model for policy-based network access
    control, which provides consistent and efficient enforcement of
-   network access control policies based on group identity.  Moreover, this document defines a mechanism to ease the maintenance
-   of the mapping between a user group identifier and a set of IP/MAC addresses
-   to enforce policy-based network access control.
+   network access control policies based on group identity.
 
-   In addition, the document defines a Remote Authentication Dial-in
+   Specifically in scenarios where network access is triggered by user authentication, this document defines a mechanism to ease the maintenance
+   of the mapping between a user group identifier and a set of IP/MAC addresses
+   to enforce policy-based network access control. Moreover, the document defines a Remote Authentication Dial-in
    User Service (RADIUS) attribute that is used to
    communicate the user group identifier as part of identification and
    authorization information.
@@ -117,11 +117,9 @@ informative:
    allow for all  ACL applications, the YANG module for policy-based network
    ACL defined in {{sec-UCL}} does not limit how it can be used.
 
-   Take user group for example, this document also defines a mechanism to establish a mapping between (1) the
+   Specifically in scenarios where network access is triggered by user authentication, this document also defines a mechanism to establish a mapping between (1) the
    user group identifier (ID) and (2) common IP packet header fields and other
    encapsulating packet data (e.g., MAC address) to execute the policy-based access control.
-   A similar mechanism can be applied to other endpoint group types, e.g., device group and application group.
-
    Additionally, the document defines a Remote Authentication Dial-in
    User Service (RADIUS) {{!RFC2865}} attribute that is used to
    communicate the user group identifier as part of identification and
@@ -231,9 +229,7 @@ informative:
 
    An architecture example of a system that provides real-time and consistent
    enforcement of access control policies is shown in {{arch}}. This architecture illustrates
-   a user-centric flow. Similar flow applies to policy management based on other endpoint group types, such as device or application groups, though the
-   authentication mechanisms and group identifier provisioning may differ.
-   The architecture includes the following functional entities and interfaces:
+   a user-centric flow, which includes the following functional entities and interfaces:
 
    *  A service orchestrator which coordinates the overall service,
       including security policies.  The service may be connectivity or
@@ -350,6 +346,10 @@ informative:
       Whether the PEP enforces the group or IP/MAC address based ACL is
       implementation specific. Both types of ACL policy may exist on
       the PEP. {{PEP-ucl}} and {{PEP-acl}} elaborate on each case.
+
+  Similar flow applies to policy management based on other endpoint group types, such as device or application groups,
+  expect that the mapping between the group ID and related common packet
+  header attributes (e.g., IP/MAC address) may be maintained on the controller based on inventory or application registry.
 
 {{implement-considerations}} provides additional operational considerations.
 
@@ -484,7 +484,7 @@ informative:
 
 # User Access Control Group ID RADIUS Attribute {#sec-radius}
 
-The User-Access-Group-ID RADIUS attribute is
+The User-Access-Group-ID RADIUS attribute which is designed for user-centric access control scenarios where network access is triggered by user authentication, is
 defined with a globally unique name. The definition of the attribute
 follows the guidelines in {{Section 2.7.1 of !RFC6929}}.  This attribute
 is used to indicate the user group ID to be used by the NAS.  When
