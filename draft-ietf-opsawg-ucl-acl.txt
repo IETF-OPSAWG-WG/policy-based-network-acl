@@ -338,8 +338,7 @@ Table of Contents
       their associated source and/or destination endpoint-group IDs, and
       acts upon the endpoint-group ID based ACL policies (e.g., a group
       identifier may be carried in packet headers such as discussed in
-      Section 6.2.3 of [RFC9638]).  More details are provided in
-      Section 8.
+      Section 6.2.3 of [RFC9638]).
 
       Multiple PEPs may be involved in a network.
 
@@ -417,6 +416,8 @@ Table of Contents
       based ACL is implementation specific.  Both types of ACL policy
       may exist on the PEP.  Appendix A.2 and Appendix A.3 elaborate on
       each case.
+
+   Section 8 provides additional operational considerations.
 
 4.2.  Endpoint Group
 
