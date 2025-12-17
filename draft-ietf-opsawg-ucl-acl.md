@@ -64,7 +64,7 @@ informative:
 --- abstract
 
    This document defines a YANG data model for policy-based network access
-   control, which provides consistent and efficient enforcement of
+   control, which provides enforcement of
    network access control policies based on group identity.
 
    Specifically in scenarios where network access is triggered by user authentication, this document defines a mechanism to ease the maintenance
