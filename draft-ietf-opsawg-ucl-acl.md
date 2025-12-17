@@ -275,7 +275,7 @@ informative:
       required PEPs.  Another deployment scenario may require that PEPs map incoming packets to their
       associated source and/or destination endpoint-group IDs, and acts upon
       the endpoint-group ID based ACL policies (e.g., a group identifier may be carried in packet headers such as discussed in
-      {{Section 6.2.3 of ?RFC9638}}). More details are provided in {{implement-considerations}}.
+      {{Section 6.2.3 of ?RFC9638}}).
 
       Multiple PEPs may be involved in a network.
 
@@ -353,6 +353,8 @@ informative:
       Whether the PEP enforces the group or IP/MAC address based ACL is
       implementation specific. Both types of ACL policy may exist on
       the PEP. {{PEP-ucl}} and {{PEP-acl}} elaborate on each case.
+
+{{implement-considerations}} provides additional operational considerations.
 
 ##  Endpoint Group
 
