@@ -120,7 +120,7 @@ informative:
    Take user group for example, this document also defines a mechanism to establish a mapping between (1) the
    user group identifier (ID) and (2) common IP packet header fields and other
    encapsulating packet data (e.g., MAC address) to execute the policy-based access control.
-   The similar mechanism can be applied to other endpoint group types, e.g., device group and application group.
+   A similar mechanism can be applied to other endpoint group types, e.g., device group and application group.
 
    Additionally, the document defines a Remote Authentication Dial-in
    User Service (RADIUS) {{!RFC2865}} attribute that is used to
@@ -268,7 +268,7 @@ informative:
    {{arch}} provides the overall architecture and procedure for
    policy-based access control management.
 
-~~~~
+~~~~ aasvg
                                          .------------.
                                          |Orchestrator|
                                          '------+-----'
