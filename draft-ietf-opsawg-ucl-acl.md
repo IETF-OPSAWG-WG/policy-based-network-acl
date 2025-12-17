@@ -349,7 +349,7 @@ informative:
 
   Similar flow applies to policy management based on other endpoint group types, such as device or application groups,
   except that the mapping between the group ID and related common packet
-  header attributes (e.g., IP/MAC address) may be maintained on the SDN controller based on inventory or application registry.
+  header attributes (e.g., IP/MAC address) may be maintained on the SDN controller based on inventory or application registry. Particularly, the use of RADIUS exchanges is not required in such cases ({{sec-radius}})
 
 {{implement-considerations}} provides additional operational considerations.
 
