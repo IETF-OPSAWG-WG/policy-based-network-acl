@@ -397,12 +397,13 @@ Table of Contents
       request succeeds, the user is placed in a user group with the
       identifier returned to the NAS as the authentication result (see
       Section 6).  If the authentication fails, the user is not assigned
-      any user group, which also means that the user has no access; or
-      the user is assigned a special group with very limited access
-      permissions for the network (as a function of the local policy).
-      ACLs are enforced so that flows from that IP address are discarded
-      (or rate-limited) by the network.  In some implementations, the
-      AAA server can be integrated with an SDN controller.
+      any user group, which also means that the user has no access
+      (i.e., return an Access-Reject); or the user is assigned a special
+      group with very limited access permissions for the network (as a
+      function of the local policy).  ACLs are enforced so that flows
+      from that IP address are discarded (or rate-limited) by the
+      network.  In some implementations, the AAA server can be
+      integrated with an SDN controller.
 
    Step 4:  Either the AAA server or the NAS notifies an SDN controller
       of the mapping between the user group ID and related common packet
