@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 19 June 2026                                  M. Boucadair, Ed.
+Expires: 20 June 2026                                  M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                        16 December 2025
+                                                        17 December 2025
 
 
  A YANG Data Model and RADIUS Extension for Policy-based Network Access
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 June 2026.
+   This Internet-Draft will expire on 20 June 2026.
 
 Copyright Notice
 
@@ -404,7 +404,7 @@ Table of Contents
    assigned to a user group.  A user's group membership may change as
    aspects of the user change.  For example, if the user group
    membership is determined solely by the source IP address, then a
-   given user's group ID will change when the user moves to a new IP
+   given user's group ID will change when the user is assigned a new IP
    address that falls outside of the range of addresses of the previous
    user group.
 
