@@ -485,7 +485,7 @@ informative:
 # User Access Control Group ID RADIUS Attribute {#sec-radius}
 
 This section defines a User-Access-Group-ID RADIUS attribute which is designed for user-centric access control scenarios where network access is triggered by user authentication and used to indicate the user group ID to be used by the NAS.
-For other endpoint group type, such as device group or application group, the identifiers are typically pre-provisioned
+For other endpoint group types, such as device group or application group, the identifiers are typically pre-provisioned
 on the SDN controller based on inventory or application registry.
 
 The User-Access-Group-ID RADIUS attribute is
