@@ -149,7 +149,7 @@ informative:
 
    * XXXX --> the assigned RFC number for this document
    * SSSS --> the assigned RFC number for {{!I-D.ietf-netmod-schedule-yang}}
-   * 2025-03-11 --> the actual date of the publication of this document
+   * 2026-01-12 --> the actual date of the publication of this document
 
 # Conventions and Definitions
 
@@ -477,7 +477,7 @@ informative:
    {{!I-D.ietf-netmod-schedule-yang}}. It also augments the "ietf-access-control-list" module ({{Section 4.1 of !RFC8519}}).
 
 ~~~~ yang
-<CODE BEGINS> file "ietf-ucl-acl@2025-03-11.yang"
+<CODE BEGINS> file "ietf-ucl-acl@2026-01-12.yang"
 {::include ./yang/ietf-ucl-acl.yang}
 <CODE ENDS>
 ~~~~
