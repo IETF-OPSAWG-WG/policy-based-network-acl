@@ -577,7 +577,7 @@ Notation for {{rad-att}}:
    to the network vs. the complexity of implementation) carefully. Such assessment
    is out of scope of this document.
 
-## Installation
+## Hardware/Software Implications
 
    Some nodes may not have built-in capabilities to enforce group-based match policies.
    Hardware or software upgrades may be required to support such feature by involved PEPs.
