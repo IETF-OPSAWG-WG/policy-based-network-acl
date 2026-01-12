@@ -58,7 +58,7 @@ informative:
      author:
        -
          organization: "IANA"
-     target: http://www.iana.org/assignments/radius-types
+     target: https://www.iana.org/assignments/radius-types
      date: false
 
 --- abstract
