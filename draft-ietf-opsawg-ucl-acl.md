@@ -555,6 +555,8 @@ Notation for {{rad-att}}:
 
 # Operational Considerations {#implement-considerations}
 
+## Deployment Options
+
    The UCL model can be implemented in different ways.
 
    In some cases, the UCL data model is implemented at the network/administrative domain
@@ -574,6 +576,19 @@ Notation for {{rad-att}}:
    Implementations need to evaluate the operational tradeoff (flexibility brought
    to the network vs. the complexity of implementation) carefully. Such assessment
    is out of scope of this document.
+
+## Installation
+
+   Some nodes may not have built-in capabilities to enforce group-based match policies.
+   Hardware or software upgrades may be required to support such feature by involved PEPs.
+
+## Mapping Consistency
+
+   The specification requires that adequate setup is put in place to map a Group ID to packets
+   fields, typically managed by a controller. Special care should be taken
+   to ensure that such mapping is appropriately enforced when distinct
+   mechanisms (RADIUS, etc.) are supported in network.
+
 
 # Security Considerations
 
