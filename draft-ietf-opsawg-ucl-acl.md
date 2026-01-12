@@ -579,7 +579,7 @@ Notation for {{rad-att}}:
 
 ## Hardware/Software Implications
 
-   Some nodes may not have built-in capabilities to enforce group-based match policies.
+   Some devices may not have built-in capabilities to enforce group-based match policies.
    Hardware or software upgrades may be required to support such feature by involved PEPs.
 
 ## Mapping Consistency
