@@ -1382,7 +1382,7 @@ grant to the network.<a href="#section-1-2.2.1" class="pilcrow">¶</a></p>
             <p id="section-1.1-4.2.1">SSSS --&gt; the assigned RFC number for <span>[<a href="#I-D.ietf-netmod-schedule-yang" class="cite xref">I-D.ietf-netmod-schedule-yang</a>]</span><a href="#section-1.1-4.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-1.1-4.3">
-            <p id="section-1.1-4.3.1">2025-03-11 --&gt; the actual date of the publication of this document<a href="#section-1.1-4.3.1" class="pilcrow">¶</a></p>
+            <p id="section-1.1-4.3.1">2026-01-12 --&gt; the actual date of the publication of this document<a href="#section-1.1-4.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1553,7 +1553,7 @@ is defined in <a href="#sec-radius" class="auto internal xref">Section 6</a> for
             <p id="section-4.1-2.4.1">The AAA server provides a collection of authentication, authorization,
 and accounting functions. The AAA server is responsible for centralized user
 information management. The AAA server is preconfigured with user
-credentials (e.g., user name and password), possible group identities
+credentials (e.g., username and password), possible group identities
 and related user attributes (users may be divided into different
 groups based on different user attributes).<a href="#section-4.1-2.4.1" class="pilcrow">¶</a></p>
 </li>
@@ -1676,7 +1676,7 @@ in <a href="#sec-UCL" class="auto internal xref">Section 5.2</a>. An example is 
 <dt id="section-4.1-6.3">Step 2:</dt>
           <dd style="margin-left: 1.5em" id="section-4.1-6.4">
             <p id="section-4.1-6.4.1">When a user first logs onto the network, they are
-required to be authenticated (e.g., using user name and password)
+required to be authenticated (e.g., using username and password)
 at the NAS.<a href="#section-4.1-6.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
@@ -1685,7 +1685,7 @@ at the NAS.<a href="#section-4.1-6.4.1" class="pilcrow">¶</a></p>
             <p id="section-4.1-6.6.1">The authentication request is then relayed to the AAA server
 using a protocol such as RADIUS <span>[<a href="#RFC2865" class="cite xref">RFC2865</a>]</span>. It is assumed that the
 AAA server has been appropriately configured to store user credentials,
-e.g., user name, password, group information, and other user attributes.
+e.g., username, password, group information, and other user attributes.
 This document does not restrict what authentication method is used. Administrators
 may refer to, e.g., <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-radext-deprecating-radius-08#section-7.4" class="relref">Section 7.4</a> of [<a href="#I-D.ietf-radext-deprecating-radius" class="cite xref">I-D.ietf-radext-deprecating-radius</a>]</span>
 for authentication method recommendations.
@@ -1933,16 +1933,16 @@ the PEP. <a href="#PEP-ucl" class="auto internal xref">Appendix A.2</a> and <a h
 module: ietf-ucl-acl
 
   augment /acl:acls:
-    +--rw endpoint-groups {uacl:group}?
+    +--rw endpoint-groups {ucl:group}?
        +--rw endpoint-group* [group-id]
           +--rw group-id      string
           +--rw group-type?   identityref
   augment /acl:acls/acl:acl/acl:aces/acl:ace/acl:matches:
-    +--rw endpoint-group {uacl:match-on-group}?
+    +--rw endpoint-group {ucl:match-on-group}?
        +--rw source-group-id?        group-id-reference
        +--rw destination-group-id?   group-id-reference
   augment /acl:acls/acl:acl/acl:aces/acl:ace:
-    +--rw effective-schedule {uacl:schedule}?
+    +--rw effective-schedule {ucl:schedule}?
        +--rw (schedule-type)?
           +--:(period)
           |  +--rw period
@@ -2024,11 +2024,11 @@ module: ietf-ucl-acl
    <span>[<a href="#I-D.ietf-netmod-schedule-yang" class="cite xref">I-D.ietf-netmod-schedule-yang</a>]</span>. It also augments the "ietf-access-control-list" module (<span><a href="https://rfc-editor.org/rfc/rfc8519#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC8519" class="cite xref">RFC8519</a>]</span>).<a href="#section-5.2-1" class="pilcrow">¶</a></p>
 <div class="breakable lang-yang sourcecode" id="section-5.2-2">
 <pre>
-&lt;CODE BEGINS&gt; file "ietf-ucl-acl@2025-03-11.yang"
+&lt;CODE BEGINS&gt; file "ietf-ucl-acl@2026-01-12.yang"
 module ietf-ucl-acl {
   yang-version 1.1;
   namespace "urn:ietf:params:xml:ns:yang:ietf-ucl-acl";
-  prefix uacl;
+  prefix ucl;
 
   import ietf-access-control-list {
     prefix acl;
@@ -2062,7 +2062,7 @@ module ietf-ucl-acl {
      ensure consistent enforcement of ACL policies based on
       the group identity.
 
-     Copyright (c) 2025 IETF Trust and the persons identified
+     Copyright (c) 2026 IETF Trust and the persons identified
      as authors of the code. All rights reserved.
 
      Redistribution and use in source and binary forms, with
@@ -2079,7 +2079,7 @@ module ietf-ucl-acl {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision 2025-03-11 {
+  revision 2026-01-12 {
     description
       "Initial revision.";
     reference
@@ -2098,53 +2098,53 @@ module ietf-ucl-acl {
   }
 
   feature group {
-    if-feature "uacl:match-on-group";
+    if-feature "ucl:match-on-group";
     description
       "Indicates support of group-based ACLs.";
   }
 
   feature mixed-ipv4-group {
-    if-feature "acl:match-on-ipv4 and uacl:match-on-group";
+    if-feature "acl:match-on-ipv4 and ucl:match-on-group";
     description
       "IPv4 and group ACL combinations supported.";
   }
 
   feature mixed-ipv6-group {
-    if-feature "acl:match-on-ipv6 and uacl:match-on-group";
+    if-feature "acl:match-on-ipv6 and ucl:match-on-group";
     description
       "IPv6 and group ACL combinations supported.";
   }
 
   feature mixed-ipv4-ipv6-group {
     if-feature "acl:match-on-ipv4 and acl:match-on-ipv6 and "
-             + "uacl:match-on-group";
+             + "ucl:match-on-group";
     description
       "IPv4, IPv6, and group ACL combinations supported.";
   }
 
   feature mixed-eth-group {
-    if-feature "acl:match-on-eth and uacl:match-on-group";
+    if-feature "acl:match-on-eth and ucl:match-on-group";
     description
       "Eth and group ACL combinations supported.";
   }
 
   feature mixed-eth-ipv4-group {
     if-feature "acl:match-on-eth and acl:match-on-ipv4 and "
-             + "uacl:match-on-group";
+             + "ucl:match-on-group";
     description
       "Eth, IPv4, and group ACL combinations supported.";
   }
 
   feature mixed-eth-ipv6-group {
     if-feature "acl:match-on-eth and acl:match-on-ipv6 and "
-             + "uacl:match-on-group";
+             + "ucl:match-on-group";
     description
       "Eth, IPv6, and group ACL combinations supported.";
   }
 
   feature mixed-eth-ipv4-ipv6-group {
     if-feature "acl:match-on-eth and acl:match-on-ipv4 and "
-             + "acl:match-on-ipv6 and uacl:match-on-group";
+             + "acl:match-on-ipv6 and ucl:match-on-group";
     description
       "Eth, IPv4, IPv6, and group ACL combinations supported.";
   }
@@ -2166,7 +2166,7 @@ module ietf-ucl-acl {
   identity mixed-ipv4-group-type {
     if-feature "mixed-ipv4-group";
     base acl:ipv4-acl-type;
-    base uacl:group-acl-type;
+    base ucl:group-acl-type;
     description
       "An ACL that contains a mix of entries that match on fields
        in the IPv4 header and endpoint group identities, which can
@@ -2178,7 +2178,7 @@ module ietf-ucl-acl {
   identity mixed-ipv6-group-type {
     if-feature "mixed-ipv6-group";
     base acl:ipv6-acl-type;
-    base uacl:group-acl-type;
+    base ucl:group-acl-type;
     description
       "An ACL that contains a mix of entries that match on fields
        in the IPv6 header and endpoint group identities, which can
@@ -2191,7 +2191,7 @@ module ietf-ucl-acl {
     if-feature "mixed-ipv4-ipv6-group";
     base acl:ipv4-acl-type;
     base acl:ipv6-acl-type;
-    base uacl:group-acl-type;
+    base ucl:group-acl-type;
     description
       "An ACL that contains a mix of entries that match on fields
        in the IPv4 header, IPv6 header, and endpoint group
@@ -2204,7 +2204,7 @@ module ietf-ucl-acl {
   identity mixed-eth-group-type {
     if-feature "mixed-eth-group";
     base acl:eth-acl-type;
-    base uacl:group-acl-type;
+    base ucl:group-acl-type;
     description
       "An ACL that contains a mix of entries that match on fields
        in the Ethernet header and endpoint group identities,
@@ -2217,7 +2217,7 @@ module ietf-ucl-acl {
     if-feature "mixed-eth-ipv4-group";
     base acl:eth-acl-type;
     base acl:ipv4-acl-type;
-    base uacl:group-acl-type;
+    base ucl:group-acl-type;
     description
       "An ACL that contains a mix of entries that match on fields
        in the Ethernet header, IPv4 header, and endpoint group
@@ -2231,7 +2231,7 @@ module ietf-ucl-acl {
     if-feature "mixed-eth-ipv6-group";
     base acl:eth-acl-type;
     base acl:ipv6-acl-type;
-    base uacl:group-acl-type;
+    base ucl:group-acl-type;
     description
       "An ACL that contains a mix of entries that match on fields
        in the Ethernet header, IPv6 header, and endpoint group
@@ -2246,7 +2246,7 @@ module ietf-ucl-acl {
     base acl:eth-acl-type;
     base acl:ipv4-acl-type;
     base acl:ipv6-acl-type;
-    base uacl:group-acl-type;
+    base ucl:group-acl-type;
     description
       "An ACL that contains a mix of entries that match on fields
        in the Ethernet header, IPv4 header, IPv6 header, and endpoint
@@ -2262,34 +2262,34 @@ module ietf-ucl-acl {
   }
 
   identity user-group {
-    base uacl:endpoint-group-type;
+    base ucl:endpoint-group-type;
     description
       "Identity for the user endpoint group.";
   }
 
   identity device-group {
-    base uacl:endpoint-group-type;
+    base ucl:endpoint-group-type;
     description
       "Identity for the device endpoint group.";
   }
 
   identity application-group {
-    base uacl:endpoint-group-type;
+    base ucl:endpoint-group-type;
     description
       "Identity for the application endpoint group.";
   }
 
   typedef group-id-reference {
     type leafref {
-      path "/acl:acls/uacl:endpoint-groups"
-         + "/uacl:endpoint-group/uacl:group-id";
+      path "/acl:acls/ucl:endpoint-groups"
+         + "/ucl:endpoint-group/ucl:group-id";
     }
     description
       "Defines a reference to a group identifier.";
   }
 
   augment "/acl:acls" {
-    if-feature "uacl:group";
+    if-feature "ucl:group";
     description
       "Adds a container for endpoint group definition.";
     container endpoint-groups {
@@ -2319,13 +2319,13 @@ module ietf-ucl-acl {
   }
 
   augment "/acl:acls/acl:acl/acl:aces/acl:ace/acl:matches" {
-    if-feature "uacl:match-on-group";
+    if-feature "ucl:match-on-group";
     description
       "Specifies how a source and/or destination endpoint group
        index can be referenced as the match criteria in the ACEs.";
     container endpoint-group {
       when "derived-from-or-self(/acl:acls/acl:acl/acl:type, "
-         + "'uacl:group-acl-type')";
+         + "'ucl:group-acl-type')";
       description
         "Adds new match types.";
       leaf source-group-id {
@@ -2342,7 +2342,7 @@ module ietf-ucl-acl {
   }
 
   augment "/acl:acls/acl:acl/acl:aces/acl:ace" {
-    if-feature "uacl:schedule";
+    if-feature "ucl:schedule";
     description
       "Adds schedule parameters to allow the ACE to take effect
        based on date and time.";
@@ -2585,7 +2585,7 @@ RADIUS packet.<a href="#section-6-7" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-9.1-5.1">
             <span class="break"></span><dl class="dlParallel" id="section-9.1-5.1.1">
-              <dt id="section-9.1-5.1.1.1">/acl:acls/uacl:endpoint-groups/uacl:endpoint-group:</dt>
+              <dt id="section-9.1-5.1.1.1">/acl:acls/ucl:endpoint-groups/ucl:endpoint-group:</dt>
               <dd style="margin-left: 1.5em" id="section-9.1-5.1.1.2">
                 <p id="section-9.1-5.1.1.2.1">This list specifies all the endpoint group entries. Unauthorized write access to this
 list can allow intruders to modify the entries so as to forge an endpoint
@@ -2597,7 +2597,7 @@ which could be used to craft an attack.<a href="#section-9.1-5.1.1.2.1" class="p
 </li>
           <li class="normal" id="section-9.1-5.2">
             <span class="break"></span><dl class="dlParallel" id="section-9.1-5.2.1">
-              <dt id="section-9.1-5.2.1.1">/acl:acls/acl:acl/acl:aces/acl:ace/acl:matches/uacl:endpoint-group:</dt>
+              <dt id="section-9.1-5.2.1.1">/acl:acls/acl:acl/acl:aces/acl:ace/acl:matches/ucl:endpoint-group:</dt>
               <dd style="margin-left: 1.5em" id="section-9.1-5.2.1.2">
                 <p id="section-9.1-5.2.1.2.1">This subtree specifies a source and/or endpoint group index as match criteria in the
 ACEs. Unauthorized write access to this data node may allow intruders to
@@ -2616,7 +2616,7 @@ vulnerabilities:<a href="#section-9.1-5.2.2" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-9.1-5.3">
             <span class="break"></span><dl class="dlParallel" id="section-9.1-5.3.1">
-              <dt id="section-9.1-5.3.1.1">/acl:acls/acl:acl/acl:aces/acl:ace/uacl:effective-schedule:</dt>
+              <dt id="section-9.1-5.3.1.1">/acl:acls/acl:acl/acl:aces/acl:ace/ucl:effective-schedule:</dt>
               <dd style="margin-left: 1.5em" id="section-9.1-5.3.1.2">
                 <p id="section-9.1-5.3.1.2.1">This subtree specifies when the access control entry rules are in effect. An
 unauthorized read access of the list will allow the attacker to determine
@@ -2665,7 +2665,7 @@ which rules are in effect, to better craft an attack.<a href="#section-9.1-5.3.1
 <div class="alignLeft art-text artwork" id="section-10.1-4">
 <pre>
         name:               ietf-ucl-acl
-        prefix:             uacl
+        prefix:             ucl
         namespace:          urn:ietf:params:xml:ns:yang:ietf-ucl-acl
         maintained by IANA? N
         reference:          RFC XXXX
@@ -2798,7 +2798,7 @@ which rules are in effect, to better craft an attack.<a href="#section-9.1-5.3.1
 <dd class="break"></dd>
 <dt id="RADIUS-Types">[RADIUS-Types]</dt>
         <dd>
-<span class="refAuthor">IANA</span>, <span class="refTitle">"RADIUS Types"</span>, <span>&lt;<a href="http://www.iana.org/assignments/radius-types">http://www.iana.org/assignments/radius-types</a>&gt;</span>. </dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"RADIUS Types"</span>, <span>&lt;<a href="https://www.iana.org/assignments/radius-types">https://www.iana.org/assignments/radius-types</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2475">[RFC2475]</dt>
         <dd>
@@ -3402,6 +3402,7 @@ at 18:00:00 in Pacific Standard Time on December 31, 2026.<a href="#appendix-A.1
    Alan Dekok, Heikki Vatiainen, Wen Xiang, Wei Wang, Hongwei Li, and Jensen Zhang for
    their review and comments.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
 <p id="appendix-B-4">Thanks to Dhruv Dhody for the OPSDIR review and Alexander Pelov for INTDIR review.<a href="#appendix-B-4" class="pilcrow">¶</a></p>
+<p id="appendix-B-5">Thanks to Mahesh Jethanandani for the AD review.<a href="#appendix-B-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">

@@ -194,7 +194,7 @@ Table of Contents
    *  SSSS --> the assigned RFC number for
       [I-D.ietf-netmod-schedule-yang]
 
-   *  2025-03-11 --> the actual date of the publication of this document
+   *  2026-01-12 --> the actual date of the publication of this document
 
 2.  Conventions and Definitions
 
@@ -313,7 +313,7 @@ Table of Contents
    *  The AAA server provides a collection of authentication,
       authorization, and accounting functions.  The AAA server is
       responsible for centralized user information management.  The AAA
-      server is preconfigured with user credentials (e.g., user name and
+      server is preconfigured with user credentials (e.g., username and
       password), possible group identities and related user attributes
       (users may be divided into different groups based on different
       user attributes).
@@ -371,13 +371,13 @@ Table of Contents
       in Section 5.2.  An example is provided in Appendix A.1.
 
    Step 2:  When a user first logs onto the network, they are required
-      to be authenticated (e.g., using user name and password) at the
+      to be authenticated (e.g., using username and password) at the
       NAS.
 
    Step 3:  The authentication request is then relayed to the AAA server
       using a protocol such as RADIUS [RFC2865].  It is assumed that the
       AAA server has been appropriately configured to store user
-      credentials, e.g., user name, password, group information, and
+      credentials, e.g., username, password, group information, and
       other user attributes.  This document does not restrict what
       authentication method is used.  Administrators may refer to, e.g.,
       Section 7.4 of [I-D.ietf-radext-deprecating-radius] for
@@ -543,16 +543,16 @@ Table of Contents
     module: ietf-ucl-acl
 
       augment /acl:acls:
-        +--rw endpoint-groups {uacl:group}?
+        +--rw endpoint-groups {ucl:group}?
            +--rw endpoint-group* [group-id]
               +--rw group-id      string
               +--rw group-type?   identityref
       augment /acl:acls/acl:acl/acl:aces/acl:ace/acl:matches:
-        +--rw endpoint-group {uacl:match-on-group}?
+        +--rw endpoint-group {ucl:match-on-group}?
            +--rw source-group-id?        group-id-reference
            +--rw destination-group-id?   group-id-reference
       augment /acl:acls/acl:acl/acl:aces/acl:ace:
-        +--rw effective-schedule {uacl:schedule}?
+        +--rw effective-schedule {ucl:schedule}?
            +--rw (schedule-type)?
               +--:(period)
               |  +--rw period
@@ -639,11 +639,11 @@ Table of Contents
    schedule" module [I-D.ietf-netmod-schedule-yang].  It also augments
    the "ietf-access-control-list" module (Section 4.1 of [RFC8519]).
 
-   <CODE BEGINS> file "ietf-ucl-acl@2025-03-11.yang"
+   <CODE BEGINS> file "ietf-ucl-acl@2026-01-12.yang"
    module ietf-ucl-acl {
      yang-version 1.1;
      namespace "urn:ietf:params:xml:ns:yang:ietf-ucl-acl";
-     prefix uacl;
+     prefix ucl;
 
      import ietf-access-control-list {
        prefix acl;
@@ -677,7 +677,7 @@ Table of Contents
         ensure consistent enforcement of ACL policies based on
          the group identity.
 
-        Copyright (c) 2025 IETF Trust and the persons identified
+        Copyright (c) 2026 IETF Trust and the persons identified
         as authors of the code. All rights reserved.
 
         Redistribution and use in source and binary forms, with
@@ -694,7 +694,7 @@ Table of Contents
         This version of this YANG module is part of RFC XXXX; see
         the RFC itself for full legal notices.";
 
-     revision 2025-03-11 {
+     revision 2026-01-12 {
        description
          "Initial revision.";
        reference
@@ -713,53 +713,53 @@ Table of Contents
      }
 
      feature group {
-       if-feature "uacl:match-on-group";
+       if-feature "ucl:match-on-group";
        description
          "Indicates support of group-based ACLs.";
      }
 
      feature mixed-ipv4-group {
-       if-feature "acl:match-on-ipv4 and uacl:match-on-group";
+       if-feature "acl:match-on-ipv4 and ucl:match-on-group";
        description
          "IPv4 and group ACL combinations supported.";
      }
 
      feature mixed-ipv6-group {
-       if-feature "acl:match-on-ipv6 and uacl:match-on-group";
+       if-feature "acl:match-on-ipv6 and ucl:match-on-group";
        description
          "IPv6 and group ACL combinations supported.";
      }
 
      feature mixed-ipv4-ipv6-group {
        if-feature "acl:match-on-ipv4 and acl:match-on-ipv6 and "
-                + "uacl:match-on-group";
+                + "ucl:match-on-group";
        description
          "IPv4, IPv6, and group ACL combinations supported.";
      }
 
      feature mixed-eth-group {
-       if-feature "acl:match-on-eth and uacl:match-on-group";
+       if-feature "acl:match-on-eth and ucl:match-on-group";
        description
          "Eth and group ACL combinations supported.";
      }
 
      feature mixed-eth-ipv4-group {
        if-feature "acl:match-on-eth and acl:match-on-ipv4 and "
-                + "uacl:match-on-group";
+                + "ucl:match-on-group";
        description
          "Eth, IPv4, and group ACL combinations supported.";
      }
 
      feature mixed-eth-ipv6-group {
        if-feature "acl:match-on-eth and acl:match-on-ipv6 and "
-                + "uacl:match-on-group";
+                + "ucl:match-on-group";
        description
          "Eth, IPv6, and group ACL combinations supported.";
      }
 
      feature mixed-eth-ipv4-ipv6-group {
        if-feature "acl:match-on-eth and acl:match-on-ipv4 and "
-                + "acl:match-on-ipv6 and uacl:match-on-group";
+                + "acl:match-on-ipv6 and ucl:match-on-group";
        description
          "Eth, IPv4, IPv6, and group ACL combinations supported.";
      }
@@ -781,7 +781,7 @@ Table of Contents
      identity mixed-ipv4-group-type {
        if-feature "mixed-ipv4-group";
        base acl:ipv4-acl-type;
-       base uacl:group-acl-type;
+       base ucl:group-acl-type;
        description
          "An ACL that contains a mix of entries that match on fields
           in the IPv4 header and endpoint group identities, which can
@@ -793,7 +793,7 @@ Table of Contents
      identity mixed-ipv6-group-type {
        if-feature "mixed-ipv6-group";
        base acl:ipv6-acl-type;
-       base uacl:group-acl-type;
+       base ucl:group-acl-type;
        description
          "An ACL that contains a mix of entries that match on fields
           in the IPv6 header and endpoint group identities, which can
@@ -806,7 +806,7 @@ Table of Contents
        if-feature "mixed-ipv4-ipv6-group";
        base acl:ipv4-acl-type;
        base acl:ipv6-acl-type;
-       base uacl:group-acl-type;
+       base ucl:group-acl-type;
        description
          "An ACL that contains a mix of entries that match on fields
           in the IPv4 header, IPv6 header, and endpoint group
@@ -819,7 +819,7 @@ Table of Contents
      identity mixed-eth-group-type {
        if-feature "mixed-eth-group";
        base acl:eth-acl-type;
-       base uacl:group-acl-type;
+       base ucl:group-acl-type;
        description
          "An ACL that contains a mix of entries that match on fields
           in the Ethernet header and endpoint group identities,
@@ -832,7 +832,7 @@ Table of Contents
        if-feature "mixed-eth-ipv4-group";
        base acl:eth-acl-type;
        base acl:ipv4-acl-type;
-       base uacl:group-acl-type;
+       base ucl:group-acl-type;
        description
          "An ACL that contains a mix of entries that match on fields
           in the Ethernet header, IPv4 header, and endpoint group
@@ -846,7 +846,7 @@ Table of Contents
        if-feature "mixed-eth-ipv6-group";
        base acl:eth-acl-type;
        base acl:ipv6-acl-type;
-       base uacl:group-acl-type;
+       base ucl:group-acl-type;
        description
          "An ACL that contains a mix of entries that match on fields
           in the Ethernet header, IPv6 header, and endpoint group
@@ -861,7 +861,7 @@ Table of Contents
        base acl:eth-acl-type;
        base acl:ipv4-acl-type;
        base acl:ipv6-acl-type;
-       base uacl:group-acl-type;
+       base ucl:group-acl-type;
        description
          "An ACL that contains a mix of entries that match on fields
           in the Ethernet header, IPv4 header, IPv6 header, and endpoint
@@ -877,34 +877,34 @@ Table of Contents
      }
 
      identity user-group {
-       base uacl:endpoint-group-type;
+       base ucl:endpoint-group-type;
        description
          "Identity for the user endpoint group.";
      }
 
      identity device-group {
-       base uacl:endpoint-group-type;
+       base ucl:endpoint-group-type;
        description
          "Identity for the device endpoint group.";
      }
 
      identity application-group {
-       base uacl:endpoint-group-type;
+       base ucl:endpoint-group-type;
        description
          "Identity for the application endpoint group.";
      }
 
      typedef group-id-reference {
        type leafref {
-         path "/acl:acls/uacl:endpoint-groups"
-            + "/uacl:endpoint-group/uacl:group-id";
+         path "/acl:acls/ucl:endpoint-groups"
+            + "/ucl:endpoint-group/ucl:group-id";
        }
        description
          "Defines a reference to a group identifier.";
      }
 
      augment "/acl:acls" {
-       if-feature "uacl:group";
+       if-feature "ucl:group";
        description
          "Adds a container for endpoint group definition.";
        container endpoint-groups {
@@ -934,13 +934,13 @@ Table of Contents
      }
 
      augment "/acl:acls/acl:acl/acl:aces/acl:ace/acl:matches" {
-       if-feature "uacl:match-on-group";
+       if-feature "ucl:match-on-group";
        description
          "Specifies how a source and/or destination endpoint group
           index can be referenced as the match criteria in the ACEs.";
        container endpoint-group {
          when "derived-from-or-self(/acl:acls/acl:acl/acl:type, "
-            + "'uacl:group-acl-type')";
+            + "'ucl:group-acl-type')";
          description
            "Adds new match types.";
          leaf source-group-id {
@@ -957,7 +957,7 @@ Table of Contents
      }
 
      augment "/acl:acls/acl:acl/acl:aces/acl:ace" {
-       if-feature "uacl:schedule";
+       if-feature "ucl:schedule";
        description
          "Adds schedule parameters to allow the ACE to take effect
           based on date and time.";
@@ -1147,14 +1147,14 @@ Table of Contents
    operations.  The following subtrees and data nodes have particular
    sensitivities/vulnerabilities:
 
-   *  /acl:acls/uacl:endpoint-groups/uacl:endpoint-group:  This list
+   *  /acl:acls/ucl:endpoint-groups/ucl:endpoint-group:  This list
          specifies all the endpoint group entries.  Unauthorized write
          access to this list can allow intruders to modify the entries
          so as to forge an endpoint group that does not exist or
          maliciously delete an existing endpoint group, which could be
          used to craft an attack.
 
-   *  /acl:acls/acl:acl/acl:aces/acl:ace/acl:matches/uacl:endpoint-
+   *  /acl:acls/acl:acl/acl:aces/acl:ace/acl:matches/ucl:endpoint-
       group:  This subtree specifies a source and/or endpoint group
          index as match criteria in the ACEs.  Unauthorized write access
          to this data node may allow intruders to modify the group
@@ -1168,8 +1168,8 @@ Table of Contents
       following subtrees and data nodes have particular sensitivities/
       vulnerabilities:
 
-   *  /acl:acls/acl:acl/acl:aces/acl:ace/uacl:effective-schedule:  This 
-         subtree specifies when the access control entry rules are in
+   *  /acl:acls/acl:acl/acl:aces/acl:ace/ucl:effective-schedule:  This s
+         ubtree specifies when the access control entry rules are in
          effect.  An unauthorized read access of the list will allow the
          attacker to determine which rules are in effect, to better
          craft an attack.
@@ -1198,7 +1198,7 @@ Table of Contents
    Module Names" registry [RFC6020].
 
            name:               ietf-ucl-acl
-           prefix:             uacl
+           prefix:             ucl
            namespace:          urn:ietf:params:xml:ns:yang:ietf-ucl-acl
            maintained by IANA? N
            reference:          RFC XXXX
@@ -1324,7 +1324,7 @@ Table of Contents
 
    [RADIUS-Types]
               IANA, "RADIUS Types",
-              <http://www.iana.org/assignments/radius-types>.
+              <https://www.iana.org/assignments/radius-types>.
 
    [RFC2475]  Blake, S., Black, D., Carlson, M., Davies, E., Wang, Z.,
               and W. Weiss, "An Architecture for Differentiated
@@ -1899,6 +1899,8 @@ Acknowledgments
 
    Thanks to Dhruv Dhody for the OPSDIR review and Alexander Pelov for
    INTDIR review.
+
+   Thanks to Mahesh Jethanandani for the AD review.
 
 Authors' Addresses
 
