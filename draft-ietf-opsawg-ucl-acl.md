@@ -197,8 +197,8 @@ informative:
 
 #  Sample Usage
 
-   Access to some networks (e.g., enterprise networks) requires to
-   recognize the endpoints' identities no matter how, where, and when they
+   Access to some networks (e.g., enterprise networks) requires
+   recognizing the endpoints' identities no matter how, where, and when they
    connect to the network resources.  Then, the network maps the
    (connecting) endpoints to their access authorization rights.  Such rights
    are defined following local policies.  As discussed in {{intro}},
@@ -218,7 +218,7 @@ informative:
    For example, companies may restrict (or grant) employees access to specific
    internal or external resources during work hours,
    while another policy is adopted during off-hours and weekends.  A
-   network administrator may also require to enforce traffic shaping
+   network administrator may also require enforcing traffic shaping
    ({{Section 2.3.3.3 of ?RFC2475}}) and policing
    ({{Section 2.3.3.4 of ?RFC2475}}) during peak hours in order not to affect other data
    services.
