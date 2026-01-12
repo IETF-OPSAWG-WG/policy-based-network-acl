@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <acls xmlns="urn:ietf:params:xml:ns:yang:ietf-access-control-list"
-      xmlns:uacl="urn:ietf:params:xml:ns:yang:ietf-ucl-acl">
+      xmlns:ucl="urn:ietf:params:xml:ns:yang:ietf-ucl-acl">
     <endpoint-groups
       xmlns="urn:ietf:params:xml:ns:yang:ietf-ucl-acl">
       <endpoint-group>
@@ -18,7 +18,7 @@
     </endpoint-groups>
     <acl>
     <name>sample-group-acl</name>
-    <type>uacl:group-acl-type</type>
+    <type>ucl:group-acl-type</type>
     <aces>
       <ace>
         <name>rule1</name>
