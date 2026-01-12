@@ -256,7 +256,7 @@ informative:
    *  The AAA server provides a collection of authentication, authorization,
       and accounting functions. The AAA server is responsible for centralized user
       information management. The AAA server is preconfigured with user
-      credentials (e.g., user name and password), possible group identities
+      credentials (e.g., username and password), possible group identities
       and related user attributes (users may be divided into different
       groups based on different user attributes).
 
@@ -313,14 +313,14 @@ informative:
 
    Step 2:
    :  When a user first logs onto the network, they are
-      required to be authenticated (e.g., using user name and password)
+      required to be authenticated (e.g., using username and password)
       at the NAS.
 
    Step 3:
    :  The authentication request is then relayed to the AAA server
       using a protocol such as RADIUS {{!RFC2865}}. It is assumed that the
       AAA server has been appropriately configured to store user credentials,
-      e.g., user name, password, group information, and other user attributes.
+      e.g., username, password, group information, and other user attributes.
       This document does not restrict what authentication method is used. Administrators
       may refer to, e.g., {{Section 7.4 of ?I-D.ietf-radext-deprecating-radius}}
       for authentication method recommendations.
@@ -792,3 +792,5 @@ Notation for {{rad-att}}:
    their review and comments.
 
    Thanks to Dhruv Dhody for the OPSDIR review and Alexander Pelov for INTDIR review.
+
+   Thanks to Mahesh Jethanandani for the AD review.
