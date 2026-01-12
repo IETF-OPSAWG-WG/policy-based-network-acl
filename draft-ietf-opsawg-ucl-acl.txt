@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 20 June 2026                                  M. Boucadair, Ed.
+Expires: 16 July 2026                                  M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                        17 December 2025
+                                                         12 January 2026
 
 
  A YANG Data Model and RADIUS Extension for Policy-based Network Access
@@ -57,11 +57,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 June 2026.
+   This Internet-Draft will expire on 16 July 2026.
 
 Copyright Notice
 
-   Copyright (c) 2025 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -92,6 +92,9 @@ Table of Contents
    6.  User Access Control Group ID RADIUS Attribute
    7.  RADIUS Attributes
    8.  Operational Considerations
+     8.1.  Deployment Options
+     8.2.  Hardware/Software Implications
+     8.3.  Mapping Consistency
    9.  Security Considerations
      9.1.  YANG
      9.2.  RADIUS
@@ -1076,6 +1079,8 @@ Table of Contents
 
 8.  Operational Considerations
 
+8.1.  Deployment Options
+
    The UCL model can be implemented in different ways.
 
    In some cases, the UCL data model is implemented at the network/
@@ -1099,6 +1104,20 @@ Table of Contents
    operational tradeoff (flexibility brought to the network vs. the
    complexity of implementation) carefully.  Such assessment is out of
    scope of this document.
+
+8.2.  Hardware/Software Implications
+
+   Some devices may not have built-in capabilities to enforce group-
+   based match policies.  Hardware or software upgrades may be required
+   to support such feature by involved PEPs.
+
+8.3.  Mapping Consistency
+
+   The specification requires that adequate setup is put in place to map
+   a Group ID to packets fields, typically managed by a controller.
+   Special care should be taken to ensure that such mapping is
+   appropriately enforced when distinct mechanisms (RADIUS, etc.) are
+   supported in network.
 
 9.  Security Considerations
 
@@ -1305,7 +1324,7 @@ Table of Contents
 
    [RADIUS-Types]
               IANA, "RADIUS Types",
-              <http://www.iana.org/assignments/radius-types>.
+              <https://www.iana.org/assignments/radius-types>.
 
    [RFC2475]  Blake, S., Black, D., Carlson, M., Davies, E., Wang, Z.,
               and W. Weiss, "An Architecture for Differentiated
