@@ -1,16 +1,16 @@
 module: ietf-ucl-acl
 
   augment /acl:acls:
-    +--rw endpoint-groups {uacl:group}?
+    +--rw endpoint-groups {ucl:group}?
        +--rw endpoint-group* [group-id]
           +--rw group-id      string
           +--rw group-type?   identityref
   augment /acl:acls/acl:acl/acl:aces/acl:ace/acl:matches:
-    +--rw endpoint-group {uacl:match-on-group}?
+    +--rw endpoint-group {ucl:match-on-group}?
        +--rw source-group-id?        group-id-reference
        +--rw destination-group-id?   group-id-reference
   augment /acl:acls/acl:acl/acl:aces/acl:ace:
-    +--rw effective-schedule {uacl:schedule}?
+    +--rw effective-schedule {ucl:schedule}?
        +--rw (schedule-type)?
           +--:(period)
           |  +--rw period
