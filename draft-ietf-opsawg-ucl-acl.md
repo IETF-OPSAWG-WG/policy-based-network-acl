@@ -601,13 +601,13 @@ Notation for {{rad-att}}:
    effect on network operations.  The following subtrees and data nodes
    have particular sensitivities/vulnerabilities:
 
-   * /acl:acls/uacl:endpoint-groups/uacl:endpoint-group:
+   * /acl:acls/ucl:endpoint-groups/ucl:endpoint-group:
    : This list specifies all the endpoint group entries. Unauthorized write access to this
      list can allow intruders to modify the entries so as to forge an endpoint
      group that does not exist or maliciously delete an existing endpoint group,
      which could be used to craft an attack.
 
-   * /acl:acls/acl:acl/acl:aces/acl:ace/acl:matches/uacl:endpoint-group:
+   * /acl:acls/acl:acl/acl:aces/acl:ace/acl:matches/ucl:endpoint-group:
    : This subtree specifies a source and/or endpoint group index as match criteria in the
      ACEs. Unauthorized write access to this data node may allow intruders to
      modify the group identity so as to permit access that should not be
@@ -620,7 +620,7 @@ Notation for {{rad-att}}:
      subtrees and data nodes have particular sensitivities/
      vulnerabilities:
 
-   * /acl:acls/acl:acl/acl:aces/acl:ace/uacl:effective-schedule:
+   * /acl:acls/acl:acl/acl:aces/acl:ace/ucl:effective-schedule:
    : This subtree specifies when the access control entry rules are in effect. An
      unauthorized read access of the list will allow the attacker to determine
      which rules are in effect, to better craft an attack.
@@ -652,7 +652,7 @@ Notation for {{rad-att}}:
 
 ~~~~
         name:               ietf-ucl-acl
-        prefix:             uacl
+        prefix:             ucl
         namespace:          urn:ietf:params:xml:ns:yang:ietf-ucl-acl
         maintained by IANA? N
         reference:          RFC XXXX
