@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 18 June 2026                                  M. Boucadair, Ed.
+Expires: 16 July 2026                                  M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                        15 December 2025
+                                                         12 January 2026
 
 
  A YANG Data Model and RADIUS Extension for Policy-based Network Access
@@ -19,16 +19,16 @@ Expires: 18 June 2026                                  M. Boucadair, Ed.
 Abstract
 
    This document defines a YANG data model for policy-based network
-   access control, which provides consistent and efficient enforcement
-   of network access control policies based on group identity.
-   Moreover, this document defines a mechanism to ease the maintenance
-   of the mapping between a user group identifier and a set of IP/MAC
-   addresses to enforce policy-based network access control.
+   access control, which provides enforcement of network access control
+   policies based on group identity.
 
-   In addition, the document defines a Remote Authentication Dial-in
-   User Service (RADIUS) attribute that is used to communicate the user
-   group identifier as part of identification and authorization
-   information.
+   Specifically in scenarios where network access is triggered by user
+   authentication, this document defines a mechanism to ease the
+   maintenance of the mapping between a user group identifier and a set
+   of IP/MAC addresses to enforce policy-based network access control.
+   Moreover, the document defines a Remote Authentication Dial-in User
+   Service (RADIUS) attribute that is used to communicate the user group
+   identifier as part of identification and authorization information.
 
 Discussion Venues
 
@@ -57,11 +57,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 June 2026.
+   This Internet-Draft will expire on 16 July 2026.
 
 Copyright Notice
 
-   Copyright (c) 2025 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -85,6 +85,7 @@ Table of Contents
        4.2.1.  User Group
        4.2.2.  Device Group
        4.2.3.  Application Group
+     4.3.  Relations Between Different Endpoint Groups
    5.  The UCL Extension to the ACL Module
      5.1.  Module Overview
      5.2.  The "ietf-ucl-acl" YANG Module
@@ -127,16 +128,16 @@ Table of Contents
       enough to accommodate endpoints with volatile IP addresses.
 
    *  With the massive adoption of teleworking, there is a need to apply
-      different security policies to the same set of users under
+      different security policies to the same set of endpoints under
       different circumstances (e.g., prevent relaying attacks against a
       local attachment point to the enterprise network).  For example,
       network access might be granted based upon criteria such as users'
       access location, source network reputation, users' role, time-of-
       day, type of network device used (e.g., corporate issued device
       versus personal device), device's security posture, etc.  This
-      means that the network needs to recognize the users' identity and
-      their current context, and map the users to their correct access
-      grant to the network.
+      means that the network needs to recognize the endpoints' identity
+      and their current context, and map the endpoints to their correct
+      access grant to the network.
 
    This document defines a YANG data model (Section 5.2) for policy-
    based network access control, which extends the IETF Access Control
@@ -146,18 +147,18 @@ Table of Contents
 
    The ACL concept has been generalized to be device-nonspecific, and
    can be defined at network/administrative domain level
-   [I-D.ietf-netmod-acl-extensions].  To allow for all applications of
-   ACLs, the YANG module for policy-based network ACL defined in
-   Section 5.2 does not limit how it can be used.
+   [I-D.ietf-netmod-acl-extensions].  To allow for all ACL applications,
+   the YANG module for policy-based network ACL defined in Section 5.2
+   does not limit how it can be used.
 
-   This document also defines a mechanism to establish a mapping between
-   (1) the user group identifier (ID) and (2) common IP packet header
-   fields and other encapsulating packet data (e.g., MAC address) to
-   execute the policy-based access control.
-
-   Additionally, the document defines a Remote Authentication Dial-in
-   User Service (RADIUS) [RFC2865] attribute that is used to communicate
-   the user group identifier as part of identification and authorization
+   Specifically in scenarios where network access is triggered by user
+   authentication, this document also defines a mechanism to establish a
+   mapping between (1) the user group identifier (ID) and (2) common IP
+   packet header fields and other encapsulating packet data (e.g., MAC
+   address) to execute the policy-based access control.  Additionally,
+   the document defines a Remote Authentication Dial-in User Service
+   (RADIUS) [RFC2865] attribute that is used to communicate the user
+   group identifier as part of identification and authorization
    information (Section 6).
 
    Although the document cites MAC addresses as an example in some
@@ -169,8 +170,9 @@ Table of Contents
    [RFC9797].
 
    The document does not specify how to map the policy group identifiers
-   to dedicated fields (e.g., Group Based Policy (GBP) discussed in
-   Section 6.2.3 of [RFC9638]).
+   to dedicated fields, Group-Based Policy (GBP) discussed in
+   Section 6.2.3 of [RFC9638] provides an example of how that may be
+   achieved.
 
 1.1.  Editorial Note (To be removed by RFC Editor)
 
@@ -202,50 +204,61 @@ Table of Contents
    The meanings of the symbols in tree diagrams are defined in
    [RFC8340].
 
-   The document uses the following definition in [RFC3198]:
+   The document uses the following term defined in [RFC3198]:
 
    *  policy
 
-   The document uses the following definitions and acronyms defined in
-   [RFC8519]:
+   The document uses the following terms defined in [RFC8519]:
 
    *  Access Control Entry (ACE)
 
    *  Access Control List (ACL)
 
-   The following definitions and acronyms are used throughout this
-   document:
+   The following definitions are used throughout this document:
 
-   *  User group based Control List (UCL) model:  A YANG data model for
-         policy-based network access control that specifies an extension
-         to the "ietf-access-control-list" model [RFC8519].  It allows
-         policy enforcement based on the group identity, which can be
-         used both at the network device level and at the network/
-         administrative domain level.
+   *  Endpoint:  Refers to an entity which could be an end-user, host
+         device, or application that actually connects to a network.
 
-   *  Endpoint:  refers to an end-user, host device, or application that
-         actually connects to a network.  An end-user is defined as a
-         person.  A host device provides compute, memory, storage and
-         networking capabilities and connects to the network without any
-         user intervention.  Host devices refer to servers, IoTs and
-         other devices owned by the enterprise.  An application is a
-         software program used for a specific service.
+   *  Endpoint group:  Refers to a group of endpoints that share a
+         common access control policies.
+
+   *  User group:  A group of end-users who will be assigned the same
+         network access policy.  An end-user is defined as a person.
+         Refer to Section 4.2.1 for more details.
+
+* device group:
+: A collection of host devices that share a common access control policies. A host device provides compute, memory, storage, and networking capabilities and connects to a network. Host devices may be servers, Internet of Things (IoT) devices, etc. Refer to {{sec-dg}} for more details.
+
+* Application group:
+: A collection of applications that share a common access control policies. An application is a software program used for a specific service. Refer to {{sec-ag}} for more details.
+
+   *  Endpoint group identifier:  An identifier used to represent the
+         collective identity of an endpoint group.  An endpoint group
+         may include a user group, device group, or application group.
+
+   *  User group based Control List (UCL) data model:  A YANG data model
+         for policy-based network access control that specifies an
+         extension to the "ietf-access-control-list" module [RFC8519].
+         It allows policy enforcement based on a group identifier, which
+         can be used both at the network device level and at the
+         network/administrative domain level.
 
 3.  Sample Usage
 
    Access to some networks (e.g., enterprise networks) requires to
-   recognize the users' identities no matter how, where, and when they
-   connect to the network resources.  Then, the network maps the
-   (connecting) users to their access authorization rights.  Such rights
-   are defined following local policies.  As discussed in Section 1,
-   because (1) there is a large number of users and (2) a user may have
-   different source IP addresses in different network segments,
-   deploying a network access control policy for each IP address or
-   network segment is a heavy workload.  An alternate approach is to
-   configure endpoint groups to classify users and enterprise devices
-   and associate ACLs with endpoint groups so that endpoints in each
-   group can share a group of ACL rules.  This approach greatly reduces
-   the workload of the administrators and optimizes the ACL resources.
+   recognize the endpoints' identities no matter how, where, and when
+   they connect to the network resources.  Then, the network maps the
+   (connecting) endpoints to their access authorization rights.  Such
+   rights are defined following local policies.  As discussed in
+   Section 1, because (1) there is a large number of connecting
+   endpoints and (2) an endpoint may have different source IP addresses
+   in different network segments, deploying a network access control
+   policy for each IP address or network segment is a heavy workload.
+   An alternate approach is to configure endpoint groups to classify
+   users, enterprise devices and applications and associate ACLs with
+   endpoint groups so that endpoints in each group can share a group of
+   ACL rules.  This approach greatly reduces the workload of the
+   administrators and optimizes the ACL resources.
 
    The network ACLs can be provisioned on devices using specific
    mechanisms, such as [RFC8519] or [I-D.ietf-netmod-acl-extensions].
@@ -265,8 +278,8 @@ Table of Contents
 
    An architecture example of a system that provides real-time and
    consistent enforcement of access control policies is shown in
-   Figure 1.  This architecture includes the following functional
-   entities and interfaces:
+   Figure 1.  This architecture illustrates a user-centric flow, which
+   includes the following functional entities and interfaces:
 
    *  A service orchestrator which coordinates the overall service,
       including security policies.  The service may be connectivity or
@@ -275,7 +288,7 @@ Table of Contents
 
    *  A Software-Defined Networking (SDN) [RFC7149] [RFC7426] controller
       which is responsible for maintaining endpoint-group based ACLs and
-      mapping the endpoint-group to the associated attributes
+      mapping the endpoint group to the associated attributes
       information (e.g., IP/MAC address).  An SDN controller also
       behaves as a Policy Decision Point (PDP) [RFC3198] and pushes the
       required access control policies to relevant Policy Enforcement
@@ -311,8 +324,7 @@ Table of Contents
       their associated source and/or destination endpoint-group IDs, and
       acts upon the endpoint-group ID based ACL policies (e.g., a group
       identifier may be carried in packet headers such as discussed in
-      Section 6.2.3 of [RFC9638]).  More details are provided in
-      Section 8.
+      Section 6.2.3 of [RFC9638]).
 
       Multiple PEPs may be involved in a network.
 
@@ -346,7 +358,8 @@ Table of Contents
                            |                      PEP                  |
                            '-------------------------------------------'
 
-  Figure 1: A Sample Architecture for Group-based Policy Management
+     Figure 1: A Sample Architecture for User Group-based Policy
+                              Management
 
    In reference to Figure 1, the following typical flow is experienced:
 
@@ -367,14 +380,15 @@ Table of Contents
       Section 7.4 of [I-D.ietf-radext-deprecating-radius] for
       authentication method recommendations.  If the authentication
       request succeeds, the user is placed in a user group with the
-      identity returned to the NAS as the authentication result (see
+      identifier returned to the NAS as the authentication result (see
       Section 6).  If the authentication fails, the user is not assigned
-      any user group, which also means that the user has no access; or
-      the user is assigned a special group with very limited access
-      permissions for the network (as a function of the local policy).
-      ACLs are enforced so that flows from that IP address are discarded
-      (or rate-limited) by the network.  In some implementations, the
-      AAA server can be integrated with an SDN controller.
+      any user group, which also means that the user has no access
+      (i.e., return an Access-Reject); or the user is assigned a special
+      group with very limited access permissions for the network (as a
+      function of the local policy).  ACLs are enforced so that flows
+      from that IP address are discarded (or rate-limited) by the
+      network.  In some implementations, the AAA server can be
+      integrated with an SDN controller.
 
    Step 4:  Either the AAA server or the NAS notifies an SDN controller
       of the mapping between the user group ID and related common packet
@@ -388,6 +402,15 @@ Table of Contents
       based ACL is implementation specific.  Both types of ACL policy
       may exist on the PEP.  Appendix A.2 and Appendix A.3 elaborate on
       each case.
+
+   Similar flow applies to policy management based on other endpoint
+   group types, such as device or application groups, except that the
+   mapping between the group ID and related common packet header
+   attributes (e.g., IP/MAC address) may be maintained on the SDN
+   controller based on inventory or application registry.  Particularly,
+   the use of RADIUS exchanges is not required in such cases (Section 6)
+
+   Section 8 provides additional operational considerations.
 
 4.2.  Endpoint Group
 
@@ -487,6 +510,21 @@ Table of Contents
       +-----------------------+----------+--------------------------+
 
                      Table 3: Application Group Example
+
+4.3.  Relations Between Different Endpoint Groups
+
+   Policies enforcement can be targeted to different endpoint groups in
+   different scenarios.  For example, when a user connects to the
+   network and accesses an application hosted on one or multiple
+   devices, access policies may be applied to different user groups.  In
+   some cases, applications and devices may operate and run without
+   requiring any user interventions or access rules not differentiating
+   between different users.  This enables policies to be applied to the
+   application or device group.  A device group can be used when there
+   is only one single application running on the device or different
+   applications running but with the same access control rules.  If
+   there is an application running on different devices/VMs/containers,
+   it is simpler to apply a single policy to the application group.
 
 5.  The UCL Extension to the ACL Module
 
@@ -950,13 +988,19 @@ Table of Contents
 
 6.  User Access Control Group ID RADIUS Attribute
 
+   This section defines a User-Access-Group-ID RADIUS attribute which is
+   designed for user-centric access control scenarios where network
+   access is triggered by user authentication and used to indicate the
+   user group ID to be used by the NAS.  For other endpoint group types,
+   such as device group or application group, the identifiers are
+   typically pre-provisioned on the SDN controller based on inventory or
+   application registry.
+
    The User-Access-Group-ID RADIUS attribute is defined with a globally
    unique name.  The definition of the attribute follows the guidelines
-   in Section 2.7.1 of [RFC6929].  This attribute is used to indicate
-   the user group ID to be used by the NAS.  When the User-Access-Group-
-   ID RADIUS attribute is present in the RADIUS Access-Accept, the
-   system applies the related access control to the users after it
-   authenticates.
+   in Section 2.7.1 of [RFC6929].  When the User-Access-Group-ID RADIUS
+   attribute is present in the RADIUS Access-Accept, the system applies
+   the related access control to the users after it authenticates.
 
    The User-Access-Group-ID Attribute is of type "string" as defined in
    Section 3.5 of [RFC8044].
@@ -1008,8 +1052,8 @@ Table of Contents
    contain User-Access-Group-ID Attribute, and in what quantity.
 
      +================+=========+=========+===========+==============+
-     | Access-Request | Access- | Access- | Challenge | Attribute    |
-     |                | Accept  | Reject  |           |              |
+     | Access-Request | Access- | Access- | Access-   | Attribute    |
+     |                | Accept  | Reject  | Challenge |              |
      +================+=========+=========+===========+==============+
      | 0+             | 0+      | 0       | 0         | User-Access- |
      |                |         |         |           | Group-ID     |
@@ -1261,7 +1305,7 @@ Table of Contents
 
    [RADIUS-Types]
               IANA, "RADIUS Types",
-              <http://www.iana.org/assignments/radius-types>.
+              <https://www.iana.org/assignments/radius-types>.
 
    [RFC2475]  Blake, S., Black, D., Carlson, M., Davies, E., Wang, Z.,
               and W. Weiss, "An Architecture for Differentiated
@@ -1834,7 +1878,8 @@ Acknowledgments
    Somers-Harris, Alan Dekok, Heikki Vatiainen, Wen Xiang, Wei Wang,
    Hongwei Li, and Jensen Zhang for their review and comments.
 
-   Thanks to Dhruv Dhody for the OPSDIR review.
+   Thanks to Dhruv Dhody for the OPSDIR review and Alexander Pelov for
+   INTDIR review.
 
 Authors' Addresses
 
