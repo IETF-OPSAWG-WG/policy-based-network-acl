@@ -93,7 +93,7 @@ Table of Contents
    7.  RADIUS Attributes
    8.  Operational Considerations
      8.1.  Deployment Options
-     8.2.  Installation
+     8.2.  Hardware/Software Implications
      8.3.  Mapping Consistency
    9.  Security Considerations
      9.1.  YANG
@@ -1105,7 +1105,7 @@ Table of Contents
    complexity of implementation) carefully.  Such assessment is out of
    scope of this document.
 
-8.2.  Installation
+8.2.  Hardware/Software Implications
 
    Some nodes may not have built-in capabilities to enforce group-based
    match policies.  Hardware or software upgrades may be required to
