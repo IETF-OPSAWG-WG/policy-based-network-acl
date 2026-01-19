@@ -628,6 +628,10 @@ Notation for {{rad-att}}:
      modify the group identity so as to permit access that should not be
      permitted, or deny access that should be permitted.
 
+   * /acl:acls/acl:acl/acl:aces/acl:ace/ucl:effective-schedule:
+   : This subtree specifies the secheduling of ACLs. Unauthorized write access to this data node may allow intruders to
+     alter it. This may lead to service disruption or unavailability.
+
      Some of the readable data nodes in this YANG module may be considered
      sensitive or vulnerable in some network environments.  It is thus
      important to control read access (e.g., via get, get-config, or
