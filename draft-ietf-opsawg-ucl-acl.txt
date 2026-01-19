@@ -1168,11 +1168,10 @@ Table of Contents
       following subtrees and data nodes have particular sensitivities/
       vulnerabilities:
 
-   *  /acl:acls/acl:acl/acl:aces/acl:ace/ucl:effective-schedule:  This s
-         ubtree specifies when the access control entry rules are in
-         effect.  An unauthorized read access of the list will allow the
-         attacker to determine which rules are in effect, to better
-         craft an attack.
+   *  /acl:acls/acl:acl/acl:aces/acl:ace/ucl:effective-schedule:  It spe
+         cifies when the access control entry rules are in effect.  An
+         unauthorized read access of the list will allow the attacker to
+         determine which rules are in effect, to better craft an attack.
 
 9.2.  RADIUS
 
