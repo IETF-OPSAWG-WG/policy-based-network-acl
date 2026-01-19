@@ -644,11 +644,12 @@ Notation for {{rad-att}}:
 ##  RADIUS
 
    RADIUS-related security considerations are discussed in {{!RFC2865}}.
+   An effort to deprecating insecure practices in RADIUS is provided in {{?I-D.ietf-radext-deprecating-radius}}.
 
    This document targets deployments where a trusted relationship is in
    place between the RADIUS client and server with communication
    optionally secured by IPsec or Transport Layer Security (TLS)
-   {{?RFC6614}}.
+   {{?RFC6614}}{{?I-D.ietf-radext-radiusdtls-bis}}.
 
 #  IANA Considerations
 
