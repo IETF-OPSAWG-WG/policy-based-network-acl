@@ -792,6 +792,7 @@ Notation for {{rad-att}}:
    Alan Dekok, Heikki Vatiainen, Wen Xiang, Wei Wang, Hongwei Li, and Jensen Zhang for
    their review and comments.
 
-   Thanks to Dhruv Dhody for the OPSDIR review and Alexander Pelov for INTDIR review.
+   Thanks to Dhruv Dhody for the OPSDIR review, Alexander Pelov for INTDIR review, and Valery
+   Smyslov for the SECDIR review.
 
    Thanks to Mahesh Jethanandani for the AD review.
