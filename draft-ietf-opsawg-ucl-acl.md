@@ -636,7 +636,7 @@ Notation for {{rad-att}}:
      vulnerabilities:
 
    * /acl:acls/acl:acl/acl:aces/acl:ace/ucl:effective-schedule:
-   : This subtree specifies when the access control entry rules are in effect. An
+   : It specifies when the access control entry rules are in effect. An
      unauthorized read access of the list will allow the attacker to determine
      which rules are in effect, to better craft an attack.
 
