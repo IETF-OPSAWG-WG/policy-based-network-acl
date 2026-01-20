@@ -629,21 +629,20 @@ Notation for {{rad-att}}:
      permitted, or deny access that should be permitted.
 
    * /acl:acls/acl:acl/acl:aces/acl:ace/ucl:effective-schedule:
-   : This subtree specifies the secheduling of ACLs. Unauthorized write access to this data node may allow intruders to
+   : It specifies the secheduling of ACLs. Unauthorized write access to this data node may allow intruders to
      alter it. This may lead to service disruption or unavailability.
 
-     Some of the readable data nodes in this YANG module may be considered
-     sensitive or vulnerable in some network environments.  It is thus
-     important to control read access (e.g., via get, get-config, or
-     notification) to these data nodes. Specifically, the following
-     subtrees and data nodes have particular sensitivities/
-     vulnerabilities:
+   Some of the readable data nodes in this YANG module may be considered
+   sensitive or vulnerable in some network environments.  It is thus
+   important to control read access (e.g., via get, get-config, or
+   notification) to these data nodes. Specifically, the following
+   subtrees and data nodes have particular sensitivities/
+   vulnerabilities:
 
    * /acl:acls/acl:acl/acl:aces/acl:ace/ucl:effective-schedule:
    : It specifies when the access control entry rules are in effect. An
      unauthorized read access of the list will allow the attacker to determine
      which rules are in effect, to better craft an attack.
-
 
 ##  RADIUS
 
