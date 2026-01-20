@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 23 July 2026                                  M. Boucadair, Ed.
+Expires: 24 July 2026                                  M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                         19 January 2026
+                                                         20 January 2026
 
 
  A YANG Data Model and RADIUS Extension for Policy-based Network Access
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 July 2026.
+   This Internet-Draft will expire on 24 July 2026.
 
 Copyright Notice
 
@@ -1161,6 +1161,11 @@ Table of Contents
          identity so as to permit access that should not be permitted,
          or deny access that should be permitted.
 
+   *  /acl:acls/acl:acl/acl:aces/acl:ace/ucl:effective-schedule:  This s
+         ubtree specifies the secheduling of ACLs.  Unauthorized write
+         access to this data node may allow intruders to alter it.  This
+         may lead to service disruption or unavailability.
+
       Some of the readable data nodes in this YANG module may be
       considered sensitive or vulnerable in some network environments.
       It is thus important to control read access (e.g., via get, get-
@@ -1301,12 +1306,12 @@ Table of Contents
               deprecating-radius-08>.
 
    [I-D.ietf-radext-radiusdtls-bis]
-              Rieckers, J. and S. Winter, "RadSec: RADIUS over Transport
-              Layer Security (TLS) and Datagram Transport Layer Security
-              (DTLS)", Work in Progress, Internet-Draft, draft-ietf-
-              radext-radiusdtls-bis-11, 21 November 2025,
+              Rieckers, J., Cullen, M., and S. Winter, "RadSec: RADIUS
+              over Transport Layer Security (TLS) and Datagram Transport
+              Layer Security (DTLS)", Work in Progress, Internet-Draft,
+              draft-ietf-radext-radiusdtls-bis-12, 19 January 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-radext-
-              radiusdtls-bis-11>.
+              radiusdtls-bis-12>.
 
    [I-D.smith-vxlan-group-policy]
               Smith, M. and L. Kreeger, "VXLAN Group Policy Option",
