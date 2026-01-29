@@ -30,7 +30,7 @@ module ietf-ucl-acl {
      Author:   Daniel King
                <mailto:d.king@lancaster.ac.uk>";
   description
-    "The User group based Control List (UCL) YANG module augments
+    "The User group-based Control List (UCL) YANG module augments
      the IETF access control lists (ACLs) module and is meant to
      ensure consistent enforcement of ACL policies based on
       the group identity.
@@ -128,9 +128,9 @@ module ietf-ucl-acl {
     description
       "An Access Control List (ACL) that matches based on an endpoint
        group identity, which can represent the collective identity of
-       a group of authenticated users, end devices, or applications.
+       a group of authenticated users, end-devices, or applications.
        An endpoint group identity may be carried in the outer/inner 
-       packet header (e.g., via NVO3 encapsulation), may also not 
+       packet header (e.g., via NVO3 encapsulation), or may not 
        correspond to any field in the packet header. Matching on 
        Layer 4 header fields may also exist in the Access Control 
        Entries (ACEs).";
@@ -144,7 +144,7 @@ module ietf-ucl-acl {
       "An ACL that contains a mix of entries that match on fields
        in the IPv4 header and endpoint group identities, which can
        represent the collective identity of a group of authenticated
-       users, end devices, or applications. Matching on Layer 4 
+       users, end-devices, or applications. Matching on Layer 4 
        header fields may also exist in the ACEs.";
   }
   
@@ -156,7 +156,7 @@ module ietf-ucl-acl {
       "An ACL that contains a mix of entries that match on fields
        in the IPv6 header and endpoint group identities, which can
        represent the collective identity of a group of authenticated
-       users, end devices, or applications. Matching on Layer 4 
+       users, end-devices, or applications. Matching on Layer 4 
        header fields may also exist in the ACEs.";
   }
   
@@ -169,7 +169,7 @@ module ietf-ucl-acl {
       "An ACL that contains a mix of entries that match on fields
        in the IPv4 header, IPv6 header, and endpoint group
        identities, which can represent the collective identity of a
-       group of authenticated users, end devices, or applications.
+       group of authenticated users, end-devices, or applications.
        Matching on Layer 4 header fields may also exist in the
        ACEs.";
   }
@@ -182,7 +182,7 @@ module ietf-ucl-acl {
       "An ACL that contains a mix of entries that match on fields
        in the Ethernet header and endpoint group identities,
        which can represent the collective identity of a group of
-       authenticated users, end devices, or applications. Matching 
+       authenticated users, end-devices, or applications. Matching 
        on Layer 4 header fields may also exist in the ACEs.";
   }
   
@@ -195,7 +195,7 @@ module ietf-ucl-acl {
       "An ACL that contains a mix of entries that match on fields
        in the Ethernet header, IPv4 header, and endpoint group 
        identities, which can represent the collective identity of a 
-       group of authenticated users, end devices or applications. 
+       group of authenticated users, end-devices or applications. 
        Matching on Layer 4 header fields may also exist in the
        ACEs.";
   }  
@@ -209,7 +209,7 @@ module ietf-ucl-acl {
       "An ACL that contains a mix of entries that match on fields
        in the Ethernet header, IPv6 header, and endpoint group 
        identities, which can represent the collective identity of 
-       a group of authenticated users, end devices or applications. 
+       a group of authenticated users, end-devices or applications. 
        Matching on Layer 4 header fields may also exist in the
        ACEs.";
   }  
@@ -224,7 +224,7 @@ module ietf-ucl-acl {
       "An ACL that contains a mix of entries that match on fields
        in the Ethernet header, IPv4 header, IPv6 header, and endpoint 
        group identities, which can represent the collective identity 
-       of a group of authenticated users, end devices or 
+       of a group of authenticated users, end-devices or 
        applications. Matching on Layer 4 header fields may also exist 
        in the ACEs.";
   }  
@@ -237,19 +237,19 @@ module ietf-ucl-acl {
   identity user-group {
     base ucl:endpoint-group-type;
     description
-      "Identity for the user endpoint group.";
+      "Identity for the user endpoint group type.";
   }
   
   identity device-group {
     base ucl:endpoint-group-type;
     description
-      "Identity for the device endpoint group.";
+      "Identity for the device endpoint group type.";
   }
   
   identity application-group {
     base ucl:endpoint-group-type;
     description
-      "Identity for the application endpoint group.";
+      "Identity for the application endpoint group type.";
   }
   
   typedef group-id-reference {
@@ -322,23 +322,23 @@ module ietf-ucl-acl {
     container effective-schedule {
       description
         "Defines when the access control entry rules 
-         are in effect based on date and time condition.
+         are applied based on date and time condition.
 
          If it is not configured, the access control entry
-         is immediately and always in effect.";
+         is immediately and always applied.";
       choice schedule-type {
         description
           "Choice based on the type of the time range.";
         container period {
           description
-            "The ACE takes effect based on a precise period of 
+            "The ACE is applied based on a precise period of 
              time.";        
             uses schedule:period-of-time;
         }
         container recurrence {
           if-feature "schedule:icalendar-recurrence";
           description
-            "The ACE takes effect based on a recurrence rule.";
+            "The ACE is applied based on a recurrence rule.";
           uses schedule:icalendar-recurrence;          
         }
       }
