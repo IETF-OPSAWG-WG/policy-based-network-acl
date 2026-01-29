@@ -302,7 +302,7 @@ informative:
                            |                      PEP                  |
                            '-------------------------------------------'
 ~~~~
-{: #arch title="A Example Architecture for User Group-based Policy Management" artwork-align="center"}
+{: #arch title="An Example Architecture for User Group-based Policy Management" artwork-align="center"}
 
    In reference to {{arch}}, the following typical flow is experienced:
 
@@ -795,7 +795,6 @@ Notation for {{rad-att}}:
    Alan Dekok, Heikki Vatiainen, Wen Xiang, Wei Wang, Hongwei Li, and Jensen Zhang for
    their review and comments.
 
-   Thanks to Dhruv Dhody for the OPSDIR review, Alexander Pelov for INTDIR review, and Valery
-   Smyslov for the SECDIR review.
+   Thanks to Dhruv Dhody for the OPSDIR review, Alexander Pelov for INTDIR review, , Valery Smyslov for the SECDIR review, and Acee Lindem for the YANGDOCTORs review.
 
    Thanks to Mahesh Jethanandani for the AD review.
