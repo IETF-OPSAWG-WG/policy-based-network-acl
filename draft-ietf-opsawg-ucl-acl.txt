@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 24 July 2026                                  M. Boucadair, Ed.
+Expires: 6 August 2026                                 M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                         20 January 2026
+                                                         2 February 2026
 
 
  A YANG Data Model and RADIUS Extension for Policy-based Network Access
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 July 2026.
+   This Internet-Draft will expire on 6 August 2026.
 
 Copyright Notice
 
@@ -229,11 +229,16 @@ Table of Contents
          network access policy.  An end-user is defined as a person.
          Refer to Section 4.2.1 for more details.
 
-* device group:
-: A collection of host devices that share a common access control policies. A host device provides compute, memory, storage, and networking capabilities and connects to a network. Host devices may be servers, Internet of Things (IoT) devices, etc. Refer to {{sec-dg}} for more details.
+   *  device group:  A collection of host devices that share a common
+         access control policies.  A host device provides compute,
+         memory, storage, and networking capabilities and connects to a
+         network.  Host devices may be servers, Internet of Things (IoT)
+         devices, etc.  Refer to Section 4.2.2 for more details.
 
-* Application group:
-: A collection of applications that share a common access control policies. An application is a software program used for a specific service. Refer to {{sec-ag}} for more details.
+   *  Application group:  A collection of applications that share a
+         common access control policies.  An application is a software
+         program used for a specific service.  Refer to Section 4.2.3
+         for more details.
 
    *  Endpoint group identifier:  An identifier used to represent the
          collective identity of an endpoint group.  An endpoint group
