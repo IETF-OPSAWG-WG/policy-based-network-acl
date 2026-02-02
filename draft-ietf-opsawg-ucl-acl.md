@@ -179,11 +179,11 @@ informative:
    * User group:
    : A group of end-users who will be assigned the same network access policy. An end-user is defined as a person. Refer to {{sec-ug}} for more details.
 
-    * device group:
-    : A collection of host devices that share a common access control policies. A host device provides compute, memory, storage, and networking capabilities and connects to a network. Host devices may be servers, Internet of Things (IoT) devices, etc. Refer to {{sec-dg}} for more details.
+   * device group:
+   : A collection of host devices that share a common access control policies. A host device provides compute, memory, storage, and networking capabilities and connects to a network. Host devices may be servers, Internet of Things (IoT) devices, etc. Refer to {{sec-dg}} for more details.
 
-    * Application group:
-    : A collection of applications that share a common access control policies. An application is a software program used for a specific service. Refer to {{sec-ag}} for more details.
+   * Application group:
+   : A collection of applications that share a common access control policies. An application is a software program used for a specific service. Refer to {{sec-ag}} for more details.
 
    * Endpoint group identifier:
    : An identifier used to represent the collective identity of
