@@ -1,5 +1,5 @@
 ---
-title: "A YANG Data Model and RADIUS Extension for Policy-based Network Access Control"
+title: "A YANG Data Model and RADIUS Extension for Policy-Based Network Access Control"
 abbrev: "A Policy-based Network Access Control"
 category: std
 
@@ -65,7 +65,7 @@ informative:
 
    This document defines a YANG data model for policy-based network access
    control, which provides enforcement of
-   network access control policies based on group identity.
+   network access control policies based on group identity. Additionally, the YANG data model defined in the document also extends ACLs (Access Control Lists) with date and time parameters to support schedule-aware policy enforcement.
 
    Specifically in scenarios where network access is triggered by user authentication, this document defines a mechanism to ease the maintenance
    of the mapping between a user group identifier and a set of IP/MAC addresses
@@ -79,8 +79,8 @@ informative:
 # Introduction {#intro}
 
    With the increased adoption of remote access technologies (e.g.,
-   Virtual Private Networks (VPNs)) and Bring Your Own Device (BYOD)
-   policies, enterprises adopted more flexibility related to how, where,
+   Virtual Private Networks (VPNs) and Bring Your Own Device (BYOD)
+   policies), enterprises adopted more flexibility related to how, where,
    and when employees work and collaborate.  However, more flexibility
    comes with increased risks.  Enabling office flexibility (e.g.,
    mobility across many access locations) introduces a set of challenges
@@ -97,7 +97,7 @@ informative:
 
    *  With the massive adoption of teleworking, there is a need to
       apply different security policies to the same set of endpoints under
-      different circumstances (e.g., prevent relaying attacks against a
+      different circumstances (e.g., prevent relay attacks against a
       local attachment point to the enterprise network).  For example,
       network access might be granted based upon criteria such as users'
       access location, source network reputation, users' role, time-of-
@@ -110,7 +110,7 @@ informative:
    This document defines a YANG data model ({{sec-UCL}}) for policy-based network access control,
    which extends the IETF Access Control Lists (ACLs) module defined in {{!RFC8519}}.
    This module can be used to ensure consistent enforcement of ACL policies
-   based on the group identity.
+   based on the group identity. Additionally, the YANG data model defined in the document also extends ACLs with date and time parameters to support schedule-aware policy enforcement.
 
    The ACL concept has been generalized to be device-nonspecific, and can be
    defined at network/administrative domain level {{?I-D.ietf-netmod-acl-extensions}}. To
@@ -174,7 +174,7 @@ informative:
    : Refers to an entity which could be an end-user, host device, or application that actually connects to a network.
 
    * Endpoint group:
-   : Refers to a group of endpoints that share a common access control policies.
+   : Refers to a group of endpoints that share common access control policies.
 
    * User group:
    : A group of end-users who will be assigned the same network access policy. An end-user is defined as a person. Refer to {{sec-ug}} for more details.
@@ -201,15 +201,15 @@ informative:
    recognizing the endpoints' identities no matter how, where, and when they
    connect to the network resources.  Then, the network maps the
    (connecting) endpoints to their access authorization rights.  Such rights
-   are defined following local policies.  As discussed in {{intro}},
+   are defined using local policies.  As discussed in {{intro}},
    because (1) there is a large number of connecting endpoints and (2) an endpoint may have different
    source IP addresses in different network segments,
    deploying a network access control policy for each IP address or
-   network segment is a heavy workload.  An alternate approach is to
+   network segment requires a high overhead.  An alternate approach is to
    configure endpoint groups to classify users, enterprise devices and applications
    and associate ACLs with endpoint groups so that endpoints in each
    group can share a group of ACL rules.  This approach greatly reduces
-   the workload of the administrators and optimizes the ACL resources.
+   the overhead of the administrators and optimizes the ACL resources.
 
    The network ACLs can be provisioned on devices using specific
    mechanisms, such as {{!RFC8519}} or {{?I-D.ietf-netmod-acl-extensions}}.
@@ -218,16 +218,16 @@ informative:
    For example, companies may restrict (or grant) employees access to specific
    internal or external resources during work hours,
    while another policy is adopted during off-hours and weekends.  A
-   network administrator may also require enforcing traffic shaping
+   network administrator may also require traffic-shaping
    ({{Section 2.3.3.3 of ?RFC2475}}) and policing
-   ({{Section 2.3.3.4 of ?RFC2475}}) during peak hours in order not to affect other data
+   ({{Section 2.3.3.4 of ?RFC2475}}) during peak hours in order to not affect other data
    services.
 
 #  Policy-based Network Access Control
 
 ##  Overview {#overview}
 
-   An architecture example of a system that provides real-time and consistent
+   An example architecture of a system that provides real-time and consistent
    enforcement of access control policies is shown in {{arch}}. This architecture illustrates
    a user-centric flow, which includes the following functional entities and interfaces:
 
@@ -244,7 +244,7 @@ informative:
       "policy server" {{?RFC2753}}.
 
       An SDN controller may interact with an Authentication,
-      Authorization and Accounting (AAA) {{?RFC3539}} server or a Network Access Server (NAS) {{?RFC7542}}.
+      Authorization, and Accounting (AAA) {{?RFC3539}} server or a Network Access Server (NAS) {{?RFC7542}}.
 
    *  A Network Access Server (NAS) entity which handles authentication
       requests.  The NAS interacts with an AAA server to complete user
@@ -267,7 +267,7 @@ informative:
       header and delivers IP/MAC address based ACL policies to the
       required PEPs.  Another deployment scenario may require that PEPs map incoming packets to their
       associated source and/or destination endpoint-group IDs, and acts upon
-      the endpoint-group ID based ACL policies (e.g., a group identifier may be carried in packet headers such as discussed in
+      the endpoint-group ID-based ACL policies (e.g., a group identifier may be carried in packet headers such as discussed in
       {{Section 6.2.3 of ?RFC9638}}).
 
       Multiple PEPs may be involved in a network.
@@ -302,7 +302,7 @@ informative:
                            |                      PEP                  |
                            '-------------------------------------------'
 ~~~~
-{: #arch title="A Sample Architecture for User Group-based Policy Management" artwork-align="center"}
+{: #arch title="An Example Architecture for User Group-based Policy Management" artwork-align="center"}
 
    In reference to {{arch}}, the following typical flow is experienced:
 
@@ -328,7 +328,7 @@ informative:
       user group with the identifier returned to the NAS
       as the authentication result (see {{sec-radius}}).
       If the authentication fails, the user is not assigned any user
-      group, which also means that the user has no access (i.e., return an Access-Reject); or the user
+      group, which also means that the user has no access (i.e., Access-Reject returned); or the user
       is assigned a special group with very limited access permissions
       for the network (as a function of the local policy). ACLs are
       enforced so that flows from that IP address are discarded
@@ -338,18 +338,18 @@ informative:
    Step 4:
    :  Either the AAA server or the NAS notifies an SDN controller
       of the mapping between the user group ID and related common packet
-      header attributes (e.g., IP/MAC address). The exact details of how such notification is made are out the scope of this specification.
+      header attributes (e.g., IP/MAC address). The exact details of how such notification is performed are out scope of this specification.
 
    Step 5:
-   :  Either group or IP/MAC address based access control policies
+   :  Either group or IP/MAC address-based access control policies
       are maintained on relevant PEPs under the SDN controller's management.
-      Whether the PEP enforces the group or IP/MAC address based ACL is
+      Whether the PEP enforces the group or IP/MAC address-based ACL is
       implementation specific. Both types of ACL policy may exist on
       the PEP. {{PEP-ucl}} and {{PEP-acl}} elaborate on each case.
 
-  Similar flow applies to policy management based on other endpoint group types, such as device or application groups,
+  A similar flow applies to policy management based on other endpoint group types, such as device or application groups,
   except that the mapping between the group ID and related common packet
-  header attributes (e.g., IP/MAC address) may be maintained on the SDN controller based on inventory or application registry. Particularly, the use of RADIUS exchanges is not required in such cases ({{sec-radius}})
+  header attributes (e.g., IP/MAC address) may be maintained on the SDN controller based on an inventory or an application registry. Particularly, the use of RADIUS exchanges is not required in such cases ({{sec-radius}}).
 
 {{implement-considerations}} provides additional operational considerations.
 
@@ -394,11 +394,11 @@ informative:
 ###  Device Group {#sec-dg}
 
    The device group ID is an identifier that represents the collective
-   identity of a group of enterprise end devices.  An enterprise device
+   identity of a group of enterprise end-devices.  An enterprise device
    could be a server that hosts applications or software that deliver
    services to enterprise users.  It could also be an enterprise IoT
    device that serves a limited purpose, e.g., a printer that allows
-   users to scan, print and send emails. {{dg-example}} shows an example
+   users to scan and print. {{dg-example}} shows an example
    of how device group definitions may be characterized.
 
    | Group Name | Group ID | Group Description |
@@ -423,16 +423,16 @@ informative:
 
    | Group Name | Group ID | Group Description |
    | Audio/Video Streaming  |   baz-70   |  Audio/Video conferencing application |
-   | Instant messaging |   baz-80   | Messaging application |
-   | document collaboration |  baz-90  | Real-time document editing application |
+   | Instant Messaging |   baz-80   | Messaging application |
+   | document Collaboration |  baz-90  | Real-time document editing application |
    {: #ag-example title='Application Group Example'}
 
 ## Relations Between Different Endpoint Groups
 
   Policies enforcement can be targeted to different endpoint groups in different scenarios.
   For example, when a user connects to the network and accesses an application hosted on one or multiple devices, access policies may be applied to different user groups.
-  In some cases, applications and devices may operate and run without requiring any user interventions
-  or access rules not differentiating between different users.
+  In some cases, applications and devices may operate and run without requiring any user interventions,
+  or they may require user authentication but access rules do not differentiate between different users.
   This enables policies to be applied to the application or device group.
   A device group can be used when there is only one single application running on the device
   or different applications running but with the same access control rules.
@@ -486,14 +486,14 @@ informative:
 
 This section defines a User-Access-Group-ID RADIUS attribute which is designed for user-centric access control scenarios where network access is triggered by user authentication and used to indicate the user group ID to be used by the NAS.
 For other endpoint group types, such as device group or application group, the identifiers are typically pre-provisioned
-on the SDN controller based on inventory or application registry.
+on the SDN controller based on an inventory or an application registry.
 
 The User-Access-Group-ID RADIUS attribute is
 defined with a globally unique name. The definition of the attribute
 follows the guidelines in {{Section 2.7.1 of !RFC6929}}. When
 the User-Access-Group-ID RADIUS attribute is present in the RADIUS
 Access-Accept, the system applies the related access control to the
-users after it authenticates.
+users after the user authenticates.
 
 The User-Access-Group-ID Attribute is of type "string" as defined in
 {{Section 3.5 of !RFC8044}}.
@@ -575,7 +575,7 @@ Notation for {{rad-att}}:
    being encapsulated into packet headers might affect the forwarding performance.
    Implementations need to evaluate the operational tradeoff (flexibility brought
    to the network vs. the complexity of implementation) carefully. Such assessment
-   is out of scope of this document.
+   is out of scope for this document.
 
 ## Hardware/Software Implications
 
@@ -630,7 +630,7 @@ Notation for {{rad-att}}:
 
    * /acl:acls/acl:acl/acl:aces/acl:ace/ucl:effective-schedule:
    : It specifies the secheduling of ACLs. Unauthorized write access to this data node may allow intruders to
-     alter it. This may lead to service disruption or unavailability.
+     alter it. This may lead to service disruption or unavailability. Strict access control must be implemented for write operations on this subtree to ensure that only authorized users can modify it.
 
    Some of the readable data nodes in this YANG module may be considered
    sensitive or vulnerable in some network environments.  It is thus
@@ -640,9 +640,9 @@ Notation for {{rad-att}}:
    vulnerabilities:
 
    * /acl:acls/acl:acl/acl:aces/acl:ace/ucl:effective-schedule:
-   : It specifies when the access control entry rules are in effect. An
+   : It specifies when the access control entry rules are applied. An
      unauthorized read access of the list will allow the attacker to determine
-     which rules are in effect, to better craft an attack.
+     which rules are applied, to better craft an attack.
 
 ##  RADIUS
 
@@ -795,7 +795,6 @@ Notation for {{rad-att}}:
    Alan Dekok, Heikki Vatiainen, Wen Xiang, Wei Wang, Hongwei Li, and Jensen Zhang for
    their review and comments.
 
-   Thanks to Dhruv Dhody for the OPSDIR review, Alexander Pelov for INTDIR review, and Valery
-   Smyslov for the SECDIR review.
+   Thanks to Dhruv Dhody for the OPSDIR review, Alexander Pelov for INTDIR review, Valery Smyslov for the SECDIR review, and Acee Lindem for the YANGDOCTORs review.
 
    Thanks to Mahesh Jethanandani for the AD review.
