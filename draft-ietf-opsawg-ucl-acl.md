@@ -272,7 +272,7 @@ informative:
 
       Multiple PEPs may be involved in a network.
 
-      A PEP exposes a YANG-based interface (e.g., NETCONF {{!RFC6241}}) to an SDN controller.
+      A PEP exposes a YANG-based interface (e.g., NETCONF {{?RFC6241}}) to an SDN controller.
 
    {{arch}} provides the overall architecture and procedure for
    policy-based access control management.
