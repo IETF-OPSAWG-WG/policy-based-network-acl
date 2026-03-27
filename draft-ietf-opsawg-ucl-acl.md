@@ -65,7 +65,7 @@ informative:
 
    This document defines a YANG data model for policy-based network access
    control, which provides enforcement of
-   network access control policies based on group identity. Additionally, the YANG data model defined in the document also extends ACLs (Access Control Lists) with date and time parameters to support schedule-aware policy enforcement.
+   network access control policies based on group identity. This YANG data model extends Access Control Lists (ACLs) with date and time parameters to support schedule-aware policy enforcement.
 
    Specifically in scenarios where network access is triggered by user authentication, this document defines a mechanism to ease the maintenance
    of the mapping between a user group identifier and a set of IP/MAC addresses
@@ -113,7 +113,7 @@ informative:
    based on the group identity. Additionally, the YANG data model defined in the document also extends ACLs with date and time parameters to support schedule-aware policy enforcement.
 
    The ACL concept has been generalized to be device-nonspecific, and can be
-   defined at network/administrative domain level {{?I-D.ietf-netmod-acl-extensions}}. To
+   defined at network/administrative domain level {{?RFC9899}}. To
    allow for all  ACL applications, the YANG module for policy-based network
    ACL defined in {{sec-UCL}} does not limit how it can be used.
 
@@ -148,7 +148,6 @@ informative:
    Please apply the following replacements:
 
    * XXXX --> the assigned RFC number for this document
-   * SSSS --> the assigned RFC number for {{!I-D.ietf-netmod-schedule-yang}}
    * 2026-01-12 --> the actual date of the publication of this document
 
 # Conventions and Definitions
@@ -157,11 +156,7 @@ informative:
 
    The meanings of the symbols in tree diagrams are defined in
    {{?RFC8340}}.
-
-   The document uses the following term defined in {{?RFC3198}}:
-
-   * policy
-
+   
    The document uses the following terms defined in {{!RFC8519}}:
 
    * Access Control Entry (ACE)
@@ -195,6 +190,9 @@ informative:
      It allows policy enforcement based on a group identifier, which can be used
      both at the network device level and at the network/administrative domain level.
 
+    * Policy:
+    : A set of rules to administer, manage, and control access to network resources {{?RFC3198}}.
+
 #  Sample Usage
 
    Access to some networks (e.g., enterprise networks) requires
@@ -212,7 +210,7 @@ informative:
    the overhead of the administrators and optimizes the ACL resources.
 
    The network ACLs can be provisioned on devices using specific
-   mechanisms, such as {{!RFC8519}} or {{?I-D.ietf-netmod-acl-extensions}}.
+   mechanisms, such as {{!RFC8519}} or {{?RFC9899}}.
 
    Different policies may need to be applied in different contextual situations.
    For example, companies may restrict (or grant) employees access to specific
@@ -246,7 +244,7 @@ informative:
       An SDN controller may interact with an Authentication,
       Authorization, and Accounting (AAA) {{?RFC3539}} server or a Network Access Server (NAS) {{?RFC7542}}.
 
-   *  A Network Access Server (NAS) entity which handles authentication
+   *  A NAS entity which handles authentication
       requests.  The NAS interacts with an AAA server to complete user
       authentication using protocols like RADIUS {{!RFC2865}}. When access is granted, the AAA
       server provides the group identifier (group ID) to which the user
@@ -389,7 +387,7 @@ informative:
 | R&D BYOD   |   foo-11 |  Personal devices of R&D employees |
 | Sales      |   foo-20 |  Sales employees               |
 | VIP        |   foo-30 |  VIP employees                 |
-{: #ug-example title='User Group Example'}
+{: #ug-example title='User Group Examples'}
 
 ###  Device Group {#sec-dg}
 
@@ -425,7 +423,7 @@ informative:
    | Audio/Video Streaming  |   baz-70   |  Audio/Video conferencing application |
    | Instant Messaging |   baz-80   | Messaging application |
    | document Collaboration |  baz-90  | Real-time document editing application |
-   {: #ag-example title='Application Group Example'}
+   {: #ag-example title='Application Group Examples'}
 
 ## Relations Between Different Endpoint Groups
 
@@ -469,12 +467,12 @@ informative:
    module {{!RFC8519}} with date and time specific parameters to allow ACE to be
    activated based on a date/time condition. Two types of time range are defined,
    which reuse "recurrence" and "period" groupings defined in the "ietf-schedule"
-   YANG module in {{!I-D.ietf-netmod-schedule-yang}}, respectively.
+   YANG module in {{!RFC9922}}, respectively.
 
 ##  The "ietf-ucl-acl" YANG Module {#sec-UCL}
 
    This module imports types and groupings defined in the "ietf-schedule" module
-   {{!I-D.ietf-netmod-schedule-yang}}. It also augments the "ietf-access-control-list" module ({{Section 4.1 of !RFC8519}}).
+   {{!RFC9922}}. It also augments the "ietf-access-control-list" module ({{Section 4.1 of !RFC8519}}).
 
 ~~~~ yang
 <CODE BEGINS> file "ietf-ucl-acl@2026-01-12.yang"
@@ -598,8 +596,8 @@ Notation for {{rad-att}}:
 
    The "ietf-ucl-acl" YANG module defines a data model
    that is designed to be accessed via YANG-based management protocols such
-   as NETCONF {{?RFC6241}} and RESTCONF {{?RFC8040}}. These YANG-based management
-   protocols (1) have to use a secure transport layer (e.g., SSH {{?RFC4252}}, TLS {{?RFC8446}}, and
+   as the Network Configuration Protocol (NETCONF) {{?RFC6241}} and RESTCONF {{?RFC8040}}. These YANG-based management
+   protocols (1) have to use a secure transport layer (e.g., Secure Shell (SSH) {{?RFC4252}}, TLS {{?RFC8446}}, and
    QUIC {{?RFC9000}}) and (2) have to use mutual authentication.
 
    The Network Configuration Access Control Model (NACM) {{!RFC8341}}
@@ -679,7 +677,7 @@ Notation for {{rad-att}}:
 
 ##  RADIUS
 
-   This document requests IANA to assign a new RADIUS attribute type from the IANA
+   This document requests IANA to assign a new RADIUS attribute type in the 241-245 range from the IANA
    registry "Radius Attribute Types" {{RADIUS-Types}}:
 
 | Value    | Description          | Data Type | Reference     |
@@ -795,6 +793,6 @@ Notation for {{rad-att}}:
    Alan Dekok, Heikki Vatiainen, Wen Xiang, Wei Wang, Hongwei Li, and Jensen Zhang for
    their review and comments.
 
-   Thanks to Dhruv Dhody for the OPSDIR review, Alexander Pelov for INTDIR review, Valery Smyslov for the SECDIR review, and Acee Lindem for the YANGDOCTORs review.
+   Thanks to Dhruv Dhody for the OPSDIR review, Alexander Pelov for INTDIR review, Valery Smyslov for the SECDIR review, and Acee Lindem for the YANGDOCTORS review.
 
    Thanks to Mahesh Jethanandani for the AD review.
