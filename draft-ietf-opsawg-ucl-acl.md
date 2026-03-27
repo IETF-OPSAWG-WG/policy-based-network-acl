@@ -165,32 +165,32 @@ informative:
 
    The following definitions are used throughout this document:
 
-   * Endpoint:
+   Endpoint:
    : Refers to an entity which could be an end-user, host device, or application that actually connects to a network.
 
-   * Endpoint group:
+   Endpoint group:
    : Refers to a group of endpoints that share common access control policies.
 
-   * User group:
+   User group:
    : A group of end-users who will be assigned the same network access policy. An end-user is defined as a person. Refer to {{sec-ug}} for more details.
 
-   * device group:
+   device group:
    : A collection of host devices that share a common access control policies. A host device provides compute, memory, storage, and networking capabilities and connects to a network. Host devices may be servers, Internet of Things (IoT) devices, etc. Refer to {{sec-dg}} for more details.
 
-   * Application group:
+   Application group:
    : A collection of applications that share a common access control policies. An application is a software program used for a specific service. Refer to {{sec-ag}} for more details.
 
-   * Endpoint group identifier:
+   Endpoint group identifier:
    : An identifier used to represent the collective identity of
    an endpoint group. An endpoint group may include a user group, device group, or application group.
 
-   * User group based Control List (UCL) data model:
+   User group based Control List (UCL) data model:
    : A YANG data model for policy-based network access
      control that specifies an extension to the "ietf-access-control-list" module {{!RFC8519}}.
      It allows policy enforcement based on a group identifier, which can be used
      both at the network device level and at the network/administrative domain level.
 
-   * Policy:
+   Policy:
    : A set of rules to administer, manage, and control access to network resources {{?RFC3198}}.
 
 #  Sample Usage
@@ -216,7 +216,7 @@ informative:
    For example, companies may restrict (or grant) employees access to specific
    internal or external resources during work hours,
    while another policy is adopted during off-hours and weekends.  A
-   network administrator may also require traffic-shaping
+   network administrator may also require traffic shaping
    ({{Section 2.3.3.3 of ?RFC2475}}) and policing
    ({{Section 2.3.3.4 of ?RFC2475}}) during peak hours in order to not affect other data
    services.
@@ -230,11 +230,23 @@ informative:
    {{arch}}.  This architecture illustrates a user-centric flow, which
    includes the following functional entities and interfaces:
 
- * A service orchestrator which coordinates the overall service, including security policies.  The service may be connectivity or any other access to resources that can be hosted and offered by a network.
- * A Software-Defined Networking (SDN) {{?RFC7149}} {{?RFC7426}} controller which is responsible for maintaining endpoint-group based ACLs and mapping the endpoint group to the associated attributes information (e.g., IP/MAC address). An SDN controller also behaves as a Policy Decision Point (PDP) {{?RFC3198}} and pushes the required access control policies to relevant Policy Enforcement Points (PEPs) {{?RFC3198}}.  A PDP is also known as "policy server" {{?RFC2753}}. An SDN controller may interact with an Authentication, Authorization, and Accounting (AAA) {{?RFC3539}} server or a Network Access Server (NAS) {{?RFC7542}}.
- * A NAS entity which handles authentication requests.  The NAS interacts with an AAA server to complete user authentication using protocols like RADIUS {{!RFC2865}}. When access is granted, the AAA server provides the group identifier (group ID) to which the user belongs when the user first logs onto the network. A new RADIUS attribute is defined in {{sec-radius}} for this purpose.
- * The AAA server provides a collection of authentication, authorization, and accounting functions. The AAA server is responsible for centralized user information management. The AAA server is preconfigured with user credentials (e.g., username and password), possible group identities and related user attributes (users may be divided into different groups based on different user attributes).
- * The Policy Enforcement Point (PEP) is the central entity which is responsible for enforcing appropriate access control policies. A first deployment scenario assumes that the SDN controller maps the group ID to the related common packet header and delivers IP/MAC address based ACL policies to the required PEPs.  Another deployment scenario may require that PEPs map incoming packets to their associated source and/or destination endpoint-group IDs, and acts upon the endpoint-group ID-based ACL policies (e.g., a group identifier may be carried in packet headers such as discussed in {{Section 6.2.3 of ?RFC9638}}). Multiple PEPs may be involved in a network. A PEP exposes a YANG-based interface (e.g., NETCONF {{?RFC6241}}) to an SDN controller.
+* A service orchestrator which coordinates the overall service, including security policies. The service may be connectivity or any other access to resources that can be hosted and offered by a network.
+
+* A Software-Defined Networking (SDN) {{?RFC7149}} {{?RFC7426}} controller which is responsible for maintaining endpoint-group based ACLs and mapping the endpoint group to the associated attributes information (e.g., IP/MAC address). An SDN controller also behaves as a Policy Decision Point (PDP) {{?RFC3198}} and pushes the required access control policies to relevant Policy Enforcement Points (PEPs) {{?RFC3198}}. A PDP is also known as "policy server" {{?RFC2753}}.
+
+    An SDN controller may interact with an Authentication, Authorization, and Accounting (AAA) {{?RFC3539}} server or a Network Access Server (NAS) {{?RFC7542}}.
+
+* A NAS entity which handles authentication requests. The NAS interacts with an AAA server to complete user authentication using protocols like RADIUS {{!RFC2865}}. When access is granted, the AAA server provides the group identifier (group ID) to which the user belongs when the user first logs onto the network.
+
+    A new RADIUS attribute is defined in {{sec-radius}} for this purpose.
+
+* The AAA server provides a collection of authentication, authorization, and accounting functions. The AAA server is responsible for centralized user information management. The AAA server is preconfigured with user credentials (e.g., username and password), possible group identities and related user attributes (users may be divided into different groups based on different user attributes).
+
+* The Policy Enforcement Point (PEP) is the central entity which is responsible for enforcing appropriate access control policies. A first deployment scenario assumes that the SDN controller maps the group ID to the related common packet header and delivers IP/MAC address based ACL policies to the required PEPs. Another deployment scenario may require that PEPs map incoming packets to their associated source and/or destination endpoint-group IDs, and acts upon the endpoint-group ID-based ACL policies (e.g., a group identifier may be carried in packet headers such as discussed in {{Section 6.2.3 of ?RFC9638}}).
+
+    Multiple PEPs may be involved in a network.
+
+    A PEP exposes a YANG-based interface (e.g., NETCONF {{?RFC6241}}) to an SDN controller.
 
 {{arch}} provides the overall architecture and procedure for policy-based access control management.
 
@@ -690,13 +702,12 @@ Notation for {{rad-att}}:
 
    The section describes an example of configuring a PEP using
    IP address based ACL. IP address based access control policies could
-   be applied to the PEP that may not understand the group information,
-   e.g., firewall.
+   be applied to the PEP that may not understand the group information (e.g., firewall).
 
    Assume an employee in the R&D department accesses the network
    wirelessly from a non-corporate laptop.
    The SDN controller associates the user group to which the employee
-   belongs with the user address according to step 1 to 4 in {{overview}}.
+   belongs with the user address according to steps 1 to 4 in {{overview}}.
 
    Assume the mapping between device group ID and IP addresses is
    predefined or acquired via device authentication. {{ex-PEP-acl}}
