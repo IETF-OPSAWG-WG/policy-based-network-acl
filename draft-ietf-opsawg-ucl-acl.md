@@ -156,7 +156,7 @@ informative:
 
    The meanings of the symbols in tree diagrams are defined in
    {{?RFC8340}}.
-   
+
    The document uses the following terms defined in {{!RFC8519}}:
 
    * Access Control Entry (ACE)
