@@ -226,8 +226,36 @@ informative:
 ##  Overview {#overview}
 
    An example architecture of a system that provides real-time and consistent
-   enforcement of access control policies is shown in {{arch}}. This architecture illustrates
-   a user-centric flow, which includes the following functional entities and interfaces:
+   enforcement of access control policies is shown in {{arch}}.
+
+   ~~~~ aasvg
+                                         .------------.
+                                         |Orchestrator|
+                                         '------+-----'
+       Service                                  | (Step 1)
+      ------------------------------------------)-------------
+       Network                                  |
+                                 Step 4         |
+       .-------.        .--------.     .--------+--------.
+       |User #1+--+     |  AAA   |     | SDN Controller  |
+       '-------'  |     | Server +-----+      PDP        |
+                  |     '----+---'     '--------+--------'
+                  |          |                  |
+                  |          |           +------+--------+  Step 5
+         Step 2   |          | Step 3    |               |
+                  |          |           |               |
+                  |        .-+-----------+---------------+-------------.
+                  +--------+                                           |
+                           | .----------------------. .--------------. |
+       .-------.           | | Network Access Server| |Firewall, etc.| |
+       |User #2+-----------+ |       (NAS)          | '--------------' |
+       '-------'           | '----------------------'                  |
+                           |                      PEP                  |
+                           '-------------------------------------------'
+~~~~
+{: #arch title="An Example Architecture for User Group-based Policy Management" artwork-align="center"}
+   
+   The architecture depicted in {{arch}} illustrates a user-centric flow, which includes the following functional entities and interfaces:
 
    *  A service orchestrator which coordinates the overall service,
       including security policies.  The service may be connectivity or
@@ -271,36 +299,6 @@ informative:
       Multiple PEPs may be involved in a network.
 
       A PEP exposes a YANG-based interface (e.g., NETCONF {{?RFC6241}}) to an SDN controller.
-
-   {{arch}} provides the overall architecture and procedure for
-   policy-based access control management.
-
-~~~~ aasvg
-                                         .------------.
-                                         |Orchestrator|
-                                         '------+-----'
-       Service                                  | (Step 1)
-      ------------------------------------------)-------------
-       Network                                  |
-                                 Step 4         |
-       .-------.        .--------.     .--------+--------.
-       |User #1+--+     |  AAA   |     | SDN Controller  |
-       '-------'  |     | Server +-----+      PDP        |
-                  |     '----+---'     '--------+--------'
-                  |          |                  |
-                  |          |           +------+--------+  Step 5
-         Step 2   |          | Step 3    |               |
-                  |          |           |               |
-                  |        .-+-----------+---------------+-------------.
-                  +--------+                                           |
-                           | .----------------------. .--------------. |
-       .-------.           | | Network Access Server| |Firewall, etc.| |
-       |User #2+-----------+ |       (NAS)          | '--------------' |
-       '-------'           | '----------------------'                  |
-                           |                      PEP                  |
-                           '-------------------------------------------'
-~~~~
-{: #arch title="An Example Architecture for User Group-based Policy Management" artwork-align="center"}
 
    In reference to {{arch}}, the following typical flow is experienced:
 
