@@ -190,8 +190,8 @@ informative:
      It allows policy enforcement based on a group identifier, which can be used
      both at the network device level and at the network/administrative domain level.
 
-    * Policy:
-    : A set of rules to administer, manage, and control access to network resources {{?RFC3198}}.
+   * Policy:
+   : A set of rules to administer, manage, and control access to network resources {{?RFC3198}}.
 
 #  Sample Usage
 
@@ -225,37 +225,14 @@ informative:
 
 ##  Overview {#overview}
 
-   An example architecture of a system that provides real-time and consistent
-   enforcement of access control policies is shown in {{arch}}.
+An example architecture of a system that provides real-time and consistent enforcement of access control policies is shown in {{arch}}.
 
-~~~~ aasvg
-                                         .------------.
-                                         |Orchestrator|
-                                         '------+-----'
-       Service                                  | (Step 1)
-      ------------------------------------------)-------------
-       Network                                  |
-                                 Step 4         |
-       .-------.        .--------.     .--------+--------.
-       |User #1+--+     |  AAA   |     | SDN Controller  |
-       '-------'  |     | Server +-----+      PDP        |
-                  |     '----+---'     '--------+--------'
-                  |          |                  |
-                  |          |           +------+--------+  Step 5
-         Step 2   |          | Step 3    |               |
-                  |          |           |               |
-                  |        .-+-----------+---------------+-------------.
-                  +--------+                                           |
-                           | .----------------------. .--------------. |
-       .-------.           | | Network Access Server| |Firewall, etc.| |
-       |User #2+-----------+ |       (NAS)          | '--------------' |
-       '-------'           | '----------------------'                  |
-                           |                      PEP                  |
-                           '-------------------------------------------'
+~~~~
+{::include-fold ./examples/arch.txt}
 ~~~~
 {: #arch title="An Example Architecture for User Group-based Policy Management" artwork-align="center"}
 
-The architecture depicted in {{arch}} illustrates a user-centric flow, which includes the following functional entities and interfaces:
+The architecture depicted in {{arch}} includes the following functional entities and interfaces:
 
  * A service orchestrator which coordinates the overall service, including security policies.  The service may be connectivity or any other access to resources that can be hosted and offered by a network.
  * A Software-Defined Networking (SDN) {{?RFC7149}} {{?RFC7426}} controller which is responsible for maintaining endpoint-group based ACLs and mapping the endpoint group to the associated attributes information (e.g., IP/MAC address). An SDN controller also behaves as a Policy Decision Point (PDP) {{?RFC3198}} and pushes the required access control policies to relevant Policy Enforcement Points (PEPs) {{?RFC3198}}.  A PDP is also known as "policy server" {{?RFC2753}}. An SDN controller may interact with an Authentication, Authorization, and Accounting (AAA) {{?RFC3539}} server or a Network Access Server (NAS) {{?RFC7542}}.
@@ -306,9 +283,9 @@ Step 5:
       implementation specific. Both types of ACL policy may exist on
       the PEP. {{PEP-ucl}} and {{PEP-acl}} elaborate on each case.
 
- A similar flow applies to policy management based on other endpoint group types, such as device or application groups,
- except that the mapping between the group ID and related common packet
- header attributes (e.g., IP/MAC address) may be maintained on the SDN controller based on an inventory or an application registry. Particularly, the use of RADIUS exchanges is not required in such cases ({{sec-radius}}).
+A similar flow applies to policy management based on other endpoint group types, such as device or application groups,
+except that the mapping between the group ID and related common packet
+header attributes (e.g., IP/MAC address) may be maintained on the SDN controller based on an inventory or an application registry. Particularly, the use of RADIUS exchanges is not required in such cases ({{sec-radius}}).
 
 {{implement-considerations}} provides additional operational considerations.
 
