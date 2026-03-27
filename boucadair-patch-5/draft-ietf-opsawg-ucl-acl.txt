@@ -284,6 +284,58 @@ Table of Contents
 
 4.1.  Overview
 
+   An example architecture of a system that provides real-time and
+   consistent enforcement of access control policies is shown in XXXX.
+
+   The architecture depicted in xxx illustrates a user-centric flow,
+   which includes the following functional entities and interfaces:
+
+   *  A service orchestrator which coordinates the overall service,
+      including security policies.  The service may be connectivity or
+      any other access to resources that can be hosted and offered by a
+      network.
+
+   *  A Software-Defined Networking (SDN) [RFC7149] [RFC7426] controller
+      which is responsible for maintaining endpoint-group based ACLs and
+      mapping the endpoint group to the associated attributes
+      information (e.g., IP/MAC address).  An SDN controller also
+      behaves as a Policy Decision Point (PDP) [RFC3198] and pushes the
+      required access control policies to relevant Policy Enforcement
+      Points (PEPs) [RFC3198].  A PDP is also known as "policy server"
+      [RFC2753].  An SDN controller may interact with an Authentication,
+      Authorization, and Accounting (AAA) [RFC3539] server or a Network
+      Access Server (NAS) [RFC7542].
+
+   *  A NAS entity which handles authentication requests.  The NAS
+      interacts with an AAA server to complete user authentication using
+      protocols like RADIUS [RFC2865].  When access is granted, the AAA
+      server provides the group identifier (group ID) to which the user
+      belongs when the user first logs onto the network.  A new RADIUS
+      attribute is defined in Section 6 for this purpose.
+
+   *  The AAA server provides a collection of authentication,
+      authorization, and accounting functions.  The AAA server is
+      responsible for centralized user information management.  The AAA
+      server is preconfigured with user credentials (e.g., username and
+      password), possible group identities and related user attributes
+      (users may be divided into different groups based on different
+      user attributes).
+
+   *  The Policy Enforcement Point (PEP) is the central entity which is
+      responsible for enforcing appropriate access control policies.  A
+      first deployment scenario assumes that the SDN controller maps the
+      group ID to the related common packet header and delivers IP/MAC
+      address based ACL policies to the required PEPs.  Another
+      deployment scenario may require that PEPs map incoming packets to
+      their associated source and/or destination endpoint-group IDs, and
+      acts upon the endpoint-group ID-based ACL policies (e.g., a group
+      identifier may be carried in packet headers such as discussed in
+      Section 6.2.3 of [RFC9638]).  Multiple PEPs may be involved in a
+      network.  A PEP exposes a YANG-based interface (e.g., NETCONF
+      [RFC6241]) to an SDN controller.
+
+   In reference to xxx, the following typical flow is experienced:
+
    Step 1:  Administrators (or a service orchestrator) configure an SDN
       controller with network-level ACLs using the YANG module defined
       in Section 5.2.  An example is provided in Appendix A.1.
@@ -1257,11 +1309,21 @@ Table of Contents
               Services", RFC 2475, DOI 10.17487/RFC2475, December 1998,
               <https://www.rfc-editor.org/rfc/rfc2475>.
 
+   [RFC2753]  Yavatkar, R., Pendarakis, D., and R. Guerin, "A Framework
+              for Policy-based Admission Control", RFC 2753,
+              DOI 10.17487/RFC2753, January 2000,
+              <https://www.rfc-editor.org/rfc/rfc2753>.
+
    [RFC3198]  Westerinen, A., Schnizlein, J., Strassner, J., Scherling,
               M., Quinn, B., Herzog, S., Huynh, A., Carlson, M., Perry,
               J., and S. Waldbusser, "Terminology for Policy-Based
               Management", RFC 3198, DOI 10.17487/RFC3198, November
               2001, <https://www.rfc-editor.org/rfc/rfc3198>.
+
+   [RFC3539]  Aboba, B. and J. Wood, "Authentication, Authorization and
+              Accounting (AAA) Transport Profile", RFC 3539,
+              DOI 10.17487/RFC3539, June 2003,
+              <https://www.rfc-editor.org/rfc/rfc3539>.
 
    [RFC4252]  Ylonen, T. and C. Lonvick, Ed., "The Secure Shell (SSH)
               Authentication Protocol", RFC 4252, DOI 10.17487/RFC4252,
@@ -1276,6 +1338,21 @@ Table of Contents
               "Transport Layer Security (TLS) Encryption for RADIUS",
               RFC 6614, DOI 10.17487/RFC6614, May 2012,
               <https://www.rfc-editor.org/rfc/rfc6614>.
+
+   [RFC7149]  Boucadair, M. and C. Jacquenet, "Software-Defined
+              Networking: A Perspective from within a Service Provider
+              Environment", RFC 7149, DOI 10.17487/RFC7149, March 2014,
+              <https://www.rfc-editor.org/rfc/rfc7149>.
+
+   [RFC7426]  Haleplidis, E., Ed., Pentikousis, K., Ed., Denazis, S.,
+              Hadi Salim, J., Meyer, D., and O. Koufopavlou, "Software-
+              Defined Networking (SDN): Layers and Architecture
+              Terminology", RFC 7426, DOI 10.17487/RFC7426, January
+              2015, <https://www.rfc-editor.org/rfc/rfc7426>.
+
+   [RFC7542]  DeKok, A., "The Network Access Identifier", RFC 7542,
+              DOI 10.17487/RFC7542, May 2015,
+              <https://www.rfc-editor.org/rfc/rfc7542>.
 
    [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
               Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
