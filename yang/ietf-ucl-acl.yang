@@ -12,14 +12,14 @@ module ietf-ucl-acl {
   import ietf-schedule {
     prefix schedule;
     reference
-      "RFC SSSS: A Common YANG Data Model for Scheduling";
+      "RFC 9922: A Common YANG Data Model for Scheduling";
   }
 
   organization
     "IETF OPSWG Working Group";
   contact
     "WG Web: <https://datatracker.ietf.org/wg/opsawg/>
-     WG List: <mailto:opsawg@ietf.org>
+     WG List: OPSAWG <mailto:opsawg@ietf.org>
 
      Editor:   Qiufang Ma
                <mailto:maqiufang1@huawei.com>
@@ -31,7 +31,7 @@ module ietf-ucl-acl {
                <mailto:d.king@lancaster.ac.uk>";
   description
     "The User group-based Control List (UCL) YANG module augments
-     the IETF access control lists (ACLs) module and is meant to
+     the IETF Access Control Lists (ACLs) module and is meant to
      ensure consistent enforcement of ACL policies based on
       the group identity.
 
@@ -62,7 +62,8 @@ module ietf-ucl-acl {
 
   feature schedule {
     description
-      "Indicates support of schedule-based ACEs.";
+      "Indicates support of schedule-based Access Control
+       Entries (ACEs).";
   }
 
   feature match-on-group {
@@ -126,14 +127,13 @@ module ietf-ucl-acl {
     if-feature "group";
     base acl:acl-base;
     description
-      "An Access Control List (ACL) that matches based on an endpoint
-       group identity, which can represent the collective identity of
+      "An ACL that matches based on an endpoint group identity,
+       which can represent the collective identity of
        a group of authenticated users, end-devices, or applications.
        An endpoint group identity may be carried in the outer/inner 
        packet header (e.g., via NVO3 encapsulation), or may not 
        correspond to any field in the packet header. Matching on 
-       Layer 4 header fields may also exist in the Access Control 
-       Entries (ACEs).";
+       Layer 4 header fields may also exist in the ACEs.";
   }
   
   identity mixed-ipv4-group-type {
@@ -237,19 +237,19 @@ module ietf-ucl-acl {
   identity user-group {
     base ucl:endpoint-group-type;
     description
-      "Identity for the user endpoint group type.";
+      "Indicates user endpoint group type.";
   }
   
   identity device-group {
     base ucl:endpoint-group-type;
     description
-      "Identity for the device endpoint group type.";
+      "Indicates device endpoint group type.";
   }
   
   identity application-group {
     base ucl:endpoint-group-type;
     description
-      "Identity for the application endpoint group type.";
+      "Indicates application endpoint group type.";
   }
   
   typedef group-id-reference {
@@ -309,7 +309,7 @@ module ietf-ucl-acl {
       leaf destination-group-id {
         type group-id-reference;
         description
-          "The matched destination endpoint group ID.";
+          "The matched destination endpoint group identifier.";
       }
     }
   }
