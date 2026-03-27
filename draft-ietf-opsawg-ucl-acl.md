@@ -254,7 +254,7 @@ informative:
                            '-------------------------------------------'
 ~~~~
 {: #arch title="An Example Architecture for User Group-based Policy Management" artwork-align="center"}
-   
+
 The architecture depicted in {{arch}} illustrates a user-centric flow, which includes the following functional entities and interfaces:
 
 * A service orchestrator which coordinates the overall service, including security policies.  The service may be connectivity or any other access to resources that can be hosted and offered by a network.
