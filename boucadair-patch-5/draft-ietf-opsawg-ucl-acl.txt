@@ -285,10 +285,48 @@ Table of Contents
 4.1.  Overview
 
    An example architecture of a system that provides real-time and
-   consistent enforcement of access control policies is shown in XXXX.
+   consistent enforcement of access control policies is shown in
+   Figure 1.
 
-   The architecture depicted in xxx illustrates a user-centric flow,
-   which includes the following functional entities and interfaces:
+   =============== NOTE: '\' line wrapping per RFC 8792 ================
+
+                                            .------------.
+                                            |Orchestrator|
+                                            '------+-----'
+          Service                                  | (Step 1)
+         ------------------------------------------)-------------
+          Network                                  |
+                                    Step 4         |
+          .-------.        .--------.     .--------+--------.
+          |User #1+--+     |  AAA   |     | SDN Controller  |
+          '-------'  |     | Server +-----+      PDP        |
+                     |     '----+---'     '--------+--------'
+                     |          |                  |
+                     |          |           +------+--------+  Step 5
+            Step 2   |          | Step 3    |               |
+                     |          |           |               |
+                     |        .-+-----------+---------------+----------\
+                                                                    ---.
+                     +--------\
+                           +                                           |
+                              | .----------------------. .-------------\
+                                                                    -. |
+          .-------.           | | Network Access Server| |Firewall, etc\
+                                                                    .| |
+          |User #2+-----------+ |       (NAS)          | '-------------\
+                                                                    -' |
+          '-------'           | '----------------------\
+                                                    '                  |
+                              |                      \
+                                                  PEP                  |
+                              '----------------------------------------\
+                                                                    ---'
+
+       Figure 1: An Example Architecture for User Group-based Policy
+                                 Management
+
+   The architecture depicted in Figure 1 includes the following
+   functional entities and interfaces:
 
    *  A service orchestrator which coordinates the overall service,
       including security policies.  The service may be connectivity or
@@ -334,7 +372,7 @@ Table of Contents
       network.  A PEP exposes a YANG-based interface (e.g., NETCONF
       [RFC6241]) to an SDN controller.
 
-   In reference to xxx, the following typical flow is experienced:
+   In reference to Figure 1, the following typical flow is experienced:
 
    Step 1:  Administrators (or a service orchestrator) configure an SDN
       controller with network-level ACLs using the YANG module defined
@@ -513,7 +551,7 @@ Table of Contents
    endpoint group identifier can be matched upon, and also enable access
    control policy activation based on date and time conditions.
 
-   Figure 1 provides the tree structure of the "ietf-ucl-acl" module.
+   Figure 2 provides the tree structure of the "ietf-ucl-acl" module.
 
     module: ietf-ucl-acl
 
@@ -576,7 +614,7 @@ Table of Contents
                     +--rw workweek-start?           schedule:weekday
                     +--rw exception-dates*          yang:date-and-time
 
-                          Figure 1: UCL Extension
+                          Figure 2: UCL Extension
 
    The first part of the "ietf-ucl-acl" module augments the "acl" list
    in the "ietf-access-control-list" module [RFC8519] with an "endpoint-
@@ -1406,7 +1444,7 @@ A.1.  Configuring the Controller Using Group based ACL
       Standard Time) and ending at 18:00:00 in Pacific Standard Time on
       December 31, 2026.
 
-   The example shown in Figure 2 illustrates the configuration of an SDN
+   The example shown in Figure 3 illustrates the configuration of an SDN
    controller using the group-based ACL:
 
    {
@@ -1496,7 +1534,7 @@ A.1.  Configuring the Controller Using Group based ACL
      }
    }
 
-                   Figure 2: Example of UCL Configuration
+                   Figure 3: Example of UCL Configuration
 
 A.2.  Configuring a PEP Using Group-based ACL
 
@@ -1511,7 +1549,7 @@ A.2.  Configuring a PEP Using Group-based ACL
    [I-D.smith-vxlan-group-policy].
 
    Assume the mapping between device group ID and IP addresses is
-   predefined or acquired via device authentication.  Figure 3 shows the
+   predefined or acquired via device authentication.  Figure 4 shows the
    ACL configuration delivered from the controller to the PEP.  This
    example is consistent with the example presented in Appendix A.1.
 
@@ -1606,9 +1644,9 @@ A.2.  Configuring a PEP Using Group-based ACL
      }
    }
 
-                   Figure 3: Example of PEP Configuration
+                   Figure 4: Example of PEP Configuration
 
-   Figure 4 shows an example of the same policy but with a destination
+   Figure 5 shows an example of the same policy but with a destination
    IPv6 prefix.
 
    {
@@ -1696,7 +1734,7 @@ A.2.  Configuring a PEP Using Group-based ACL
      }
    }
 
-               Figure 4: Example of PEP Configuration (ipv6)
+               Figure 5: Example of PEP Configuration (ipv6)
 
 A.3.  Configuring PEPs Using Address-based ACLs
 
@@ -1711,7 +1749,7 @@ A.3.  Configuring PEPs Using Address-based ACLs
    address according to step 1 to 4 in Section 4.1.
 
    Assume the mapping between device group ID and IP addresses is
-   predefined or acquired via device authentication.  Figure 5 shows an
+   predefined or acquired via device authentication.  Figure 6 shows an
    IPv4 address based ACL configuration delivered from the controller to
    the PEP.  This example is consistent with the example presented in
    Appendix A.1.
@@ -1787,9 +1825,9 @@ A.3.  Configuring PEPs Using Address-based ACLs
      }
    }
 
-                   Figure 5: Example of PEP Configuration
+                   Figure 6: Example of PEP Configuration
 
-   Figure 6 shows an example of the same policy but with a destination
+   Figure 7 shows an example of the same policy but with a destination
    IPv6 prefix.
 
    {
@@ -1863,7 +1901,7 @@ A.3.  Configuring PEPs Using Address-based ACLs
      }
    }
 
-               Figure 6: Example of PEP Configuration (IPv6)
+               Figure 7: Example of PEP Configuration (IPv6)
 
 Acknowledgments
 
