@@ -228,34 +228,11 @@ informative:
 An example architecture of a system that provides real-time and consistent enforcement of access control policies is shown in {{arch}}.
 
 ~~~~ aasvg
-                                         .------------.
-                                         |Orchestrator|
-                                         '------+-----'
-       Service                                  | (Step 1)
-      ------------------------------------------)-------------
-       Network                                  |
-                                 Step 4         |
-       .-------.        .--------.     .--------+--------.
-       |User #1+--+     |  AAA   |     | SDN Controller  |
-       '-------'  |     | Server +-----+      PDP        |
-                  |     '----+---'     '--------+--------'
-                  |          |                  |
-                  |          |           +------+--------+  Step 5
-         Step 2   |          | Step 3    |               |
-                  |          |           |               |
-                  |        .-+-----------+---------------+-------------.
-                  +--------+                                           |
-                           | .----------------------. .--------------. |
-       .-------.           | | Network Access Server| |Firewall, etc.| |
-       |User #2+-----------+ |       (NAS)          | '--------------' |
-       '-------'           | '----------------------'                  |
-                           |                      PEP                  |
-                           '-------------------------------------------'
-
+{::include-fold ./examples/arch.txt}
 ~~~~
 {: #arch title="An Example Architecture for User Group-based Policy Management" artwork-align="center"}
 
-The architecture depicted in {{arch}} illustrates a user-centric flow, which includes the following functional entities and interfaces:
+The architecture depicted in {{arch}} includes the following functional entities and interfaces:
 
  * A service orchestrator which coordinates the overall service, including security policies.  The service may be connectivity or any other access to resources that can be hosted and offered by a network.
  * A Software-Defined Networking (SDN) {{?RFC7149}} {{?RFC7426}} controller which is responsible for maintaining endpoint-group based ACLs and mapping the endpoint group to the associated attributes information (e.g., IP/MAC address). An SDN controller also behaves as a Policy Decision Point (PDP) {{?RFC3198}} and pushes the required access control policies to relevant Policy Enforcement Points (PEPs) {{?RFC3198}}.  A PDP is also known as "policy server" {{?RFC2753}}. An SDN controller may interact with an Authentication, Authorization, and Accounting (AAA) {{?RFC3539}} server or a Network Access Server (NAS) {{?RFC7542}}.
