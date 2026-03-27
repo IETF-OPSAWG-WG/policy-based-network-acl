@@ -225,45 +225,7 @@ informative:
 
 ##  Overview {#overview}
 
-   An example architecture of a system that provides real-time and consistent
-   enforcement of access control policies is shown in {{arch}}.
 
-~~~~ aasvg
-                                         .------------.
-                                         |Orchestrator|
-                                         '------+-----'
-       Service                                  | (Step 1)
-      ------------------------------------------)-------------
-       Network                                  |
-                                 Step 4         |
-       .-------.        .--------.     .--------+--------.
-       |User #1+--+     |  AAA   |     | SDN Controller  |
-       '-------'  |     | Server +-----+      PDP        |
-                  |     '----+---'     '--------+--------'
-                  |          |                  |
-                  |          |           +------+--------+  Step 5
-         Step 2   |          | Step 3    |               |
-                  |          |           |               |
-                  |        .-+-----------+---------------+-------------.
-                  +--------+                                           |
-                           | .----------------------. .--------------. |
-       .-------.           | | Network Access Server| |Firewall, etc.| |
-       |User #2+-----------+ |       (NAS)          | '--------------' |
-       '-------'           | '----------------------'                  |
-                           |                      PEP                  |
-                           '-------------------------------------------'
-~~~~
-{: #arch title="An Example Architecture for User Group-based Policy Management" artwork-align="center"}
-
-The architecture depicted in {{arch}} illustrates a user-centric flow, which includes the following functional entities and interfaces:
-
- * A service orchestrator which coordinates the overall service, including security policies.  The service may be connectivity or any other access to resources that can be hosted and offered by a network.
- * A Software-Defined Networking (SDN) {{?RFC7149}} {{?RFC7426}} controller which is responsible for maintaining endpoint-group based ACLs and mapping the endpoint group to the associated attributes information (e.g., IP/MAC address). An SDN controller also behaves as a Policy Decision Point (PDP) {{?RFC3198}} and pushes the required access control policies to relevant Policy Enforcement Points (PEPs) {{?RFC3198}}.  A PDP is also known as "policy server" {{?RFC2753}}. An SDN controller may interact with an Authentication, Authorization, and Accounting (AAA) {{?RFC3539}} server or a Network Access Server (NAS) {{?RFC7542}}.
- * A NAS entity which handles authentication requests.  The NAS interacts with an AAA server to complete user authentication using protocols like RADIUS {{!RFC2865}}. When access is granted, the AAA server provides the group identifier (group ID) to which the user belongs when the user first logs onto the network. A new RADIUS attribute is defined in {{sec-radius}} for this purpose.
- * The AAA server provides a collection of authentication, authorization, and accounting functions. The AAA server is responsible for centralized user information management. The AAA server is preconfigured with user credentials (e.g., username and password), possible group identities and related user attributes (users may be divided into different groups based on different user attributes).
- * The Policy Enforcement Point (PEP) is the central entity which is responsible for enforcing appropriate access control policies. A first deployment scenario assumes that the SDN controller maps the group ID to the related common packet header and delivers IP/MAC address based ACL policies to the required PEPs.  Another deployment scenario may require that PEPs map incoming packets to their associated source and/or destination endpoint-group IDs, and acts upon the endpoint-group ID-based ACL policies (e.g., a group identifier may be carried in packet headers such as discussed in {{Section 6.2.3 of ?RFC9638}}). Multiple PEPs may be involved in a network. A PEP exposes a YANG-based interface (e.g., NETCONF {{?RFC6241}}) to an SDN controller.
-
-In reference to {{arch}}, the following typical flow is experienced:
 
 Step 1:
 :  Administrators (or a service orchestrator) configure an SDN
@@ -306,9 +268,9 @@ Step 5:
       implementation specific. Both types of ACL policy may exist on
       the PEP. {{PEP-ucl}} and {{PEP-acl}} elaborate on each case.
 
- A similar flow applies to policy management based on other endpoint group types, such as device or application groups,
- except that the mapping between the group ID and related common packet
- header attributes (e.g., IP/MAC address) may be maintained on the SDN controller based on an inventory or an application registry. Particularly, the use of RADIUS exchanges is not required in such cases ({{sec-radius}}).
+A similar flow applies to policy management based on other endpoint group types, such as device or application groups,
+except that the mapping between the group ID and related common packet
+header attributes (e.g., IP/MAC address) may be maintained on the SDN controller based on an inventory or an application registry. Particularly, the use of RADIUS exchanges is not required in such cases ({{sec-radius}}).
 
 {{implement-considerations}} provides additional operational considerations.
 
