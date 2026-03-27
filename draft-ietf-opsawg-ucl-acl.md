@@ -227,7 +227,7 @@ informative:
 
 An example architecture of a system that provides real-time and consistent enforcement of access control policies is shown in {{arch}}.
 
-~~~~ aasvg
+~~~~
 {::include-fold ./examples/arch.txt}
 ~~~~
 {: #arch title="An Example Architecture for User Group-based Policy Management" artwork-align="center"}
