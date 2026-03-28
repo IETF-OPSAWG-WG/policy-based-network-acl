@@ -87,13 +87,13 @@ informative:
    for large-scale enterprises compared to conventional network access management approaches.
    Examples of such challenges are listed below:
 
-   *  Endpoints do not have stable IP addresses.  For example, Wireless
+   *  Endpoints do not have stable and unique IP addresses.  For example, Wireless
       LAN (WLAN) and VPN clients, as well as back-end Virtual Machine
       (VM)-based servers, can move; their IP addresses could change as a
-      result.  This means that relying on IP/transport fields (e.g., the
+      result. Additionally, IPv6 temporary addresses {{?RFC8981}} change periodically as part of privacy extensions, further contributing to address instability.  Similarly, Happy Eyeballs {{?RFC8305}} may cause endpoints to alternate between IPv4 and IPv6 addresses, resulting in multiple address bindings for the same endpoint. This means that relying on IP/transport fields (e.g., the
       5-tuple) is inadequate to ensure consistent and efficient security
       policy enforcement.  IP address-based policies may not be flexible
-      enough to accommodate endpoints with volatile IP addresses.
+      enough to accommodate endpoints with volatile IP addresses. Moreover, Network Address Port Translation (NAPT) {{?RFC3022}} and proxies may cause multiple endpoints to share the same IP address, making it difficult to distinguish individual endpoints based solely on IP addresses.
 
    *  With the massive adoption of teleworking, there is a need to
       apply different security policies to the same set of endpoints under
