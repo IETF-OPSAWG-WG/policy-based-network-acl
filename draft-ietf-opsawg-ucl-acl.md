@@ -68,7 +68,7 @@ informative:
    network access control policies based on group identity. This YANG data model extends Access Control Lists (ACLs) with date and time parameters to support schedule-aware policy enforcement.
 
    Specifically in scenarios where network access is triggered by user authentication, this document defines a mechanism to ease the maintenance
-   of the mapping between a user group identifier and a set of packet header fields or metadata
+   of the mapping between a user group identifier and a set of packet header fields
    to enforce policy-based network access control. Moreover, the document defines a Remote Authentication Dial-in
    User Service (RADIUS) attribute that is used to
    communicate the user group identifier as part of identification and
