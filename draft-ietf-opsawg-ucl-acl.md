@@ -127,7 +127,7 @@ informative:
    Although the document cites MAC addresses as an example in some sections, the
    document does not make assumptions about which identifiers are used to trigger ACLs.
    These examples should not be considered as recommendations. Readers should be
-   aware that MAC-based ACLs can be bypassed by flushing out the MAC address.
+   aware that MAC-based ACLs can be bypassed by clearing the MAC address.
    Other implications related to the change of MAC addresses are discussed in
    {{?RFC9797}}.
 
