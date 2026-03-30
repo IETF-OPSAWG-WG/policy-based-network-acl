@@ -249,9 +249,9 @@ informative:
 
 {{arch}} provides the overall architecture and procedure for policy-based access control management.
 
-~~~ aasvg
+~~~~
 {::include-fold ./examples/arch.txt}
-~~~
+~~~~
 {: #arch title="An Example Architecture for User Group-based Policy Management" artwork-align="center"}
 
 In reference to {{arch}}, the following typical flow is experienced:
