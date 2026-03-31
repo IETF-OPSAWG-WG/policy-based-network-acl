@@ -99,37 +99,28 @@ module ietf-ucl-acl {
   feature mixed-eth-group {
     if-feature "acl:match-on-eth and ucl:match-on-group";
     description
-      "Eth and group ACL combinations supported. Note that
-       the eth type broadly applies to the IEEE 802 family 
-       of Layer 2 technologies (e.g., Ethernet, Wi-Fi, VLAN).";
+      "Eth and group ACL combinations supported.";    
   }
   
   feature mixed-eth-ipv4-group {
     if-feature "acl:match-on-eth and acl:match-on-ipv4 and "
              + "ucl:match-on-group";
     description
-      "Eth, IPv4, and group ACL combinations supported. Note
-       that the eth type broadly applies to the IEEE 802 family 
-       of Layer 2 technologies (e.g., Ethernet, Wi-Fi, VLAN).";       
+      "Eth, IPv4, and group ACL combinations supported.";       
   }
   
   feature mixed-eth-ipv6-group {
     if-feature "acl:match-on-eth and acl:match-on-ipv6 and "
              + "ucl:match-on-group";
     description
-      "Eth, IPv6, and group ACL combinations supported. Note
-       that the eth type broadly applies to the IEEE 802 family 
-       of Layer 2 technologies (e.g., Ethernet, Wi-Fi, VLAN).";    
+      "Eth, IPv6, and group ACL combinations supported.";    
   }
   
   feature mixed-eth-ipv4-ipv6-group {
     if-feature "acl:match-on-eth and acl:match-on-ipv4 and "
              + "acl:match-on-ipv6 and ucl:match-on-group";
     description
-      "Eth, IPv4, IPv6, and group ACL combinations supported.
-       Note that the eth type broadly applies to the IEEE 802
-       family of Layer 2 technologies (e.g., Ethernet, Wi-Fi,
-       VLAN).";   
+      "Eth, IPv4, IPv6, and group ACL combinations supported.";   
   }
 
   identity group-acl-type {
@@ -192,9 +183,7 @@ module ietf-ucl-acl {
        in the Ethernet header and endpoint group identities,
        which can represent the collective identity of a group of
        authenticated users, end-devices, or applications. Matching 
-       on Layer 4 header fields may also exist in the ACEs. Note
-       that the Ethernet type broadly applies to the IEEE 802 family 
-       of Layer 2 technologies (e.g., Ethernet, Wi-Fi, VLAN).";
+       on Layer 4 header fields may also exist in the ACEs.";
   }
   
   identity mixed-eth-ipv4-group-type {
@@ -208,9 +197,7 @@ module ietf-ucl-acl {
        identities, which can represent the collective identity of a 
        group of authenticated users, end-devices or applications. 
        Matching on Layer 4 header fields may also exist in the
-       ACEs. Note that the Ethernet type broadly applies to the IEEE
-       802 family of Layer 2 technologies (e.g., Ethernet, Wi-Fi,
-       VLAN).";
+       ACEs.";
   }  
   
   identity mixed-eth-ipv6-group-type {
@@ -224,9 +211,7 @@ module ietf-ucl-acl {
        identities, which can represent the collective identity of 
        a group of authenticated users, end-devices or applications. 
        Matching on Layer 4 header fields may also exist in the
-       ACEs. Note that the Ethernet type broadly applies to the
-       IEEE 802 family of Layer 2 technologies (e.g., Ethernet,
-       Wi-Fi, VLAN).";
+       ACEs.";
   }  
   
   identity mixed-eth-ipv4-ipv6-group-type {
@@ -241,9 +226,7 @@ module ietf-ucl-acl {
        group identities, which can represent the collective identity 
        of a group of authenticated users, end-devices or 
        applications. Matching on Layer 4 header fields may also exist 
-       in the ACEs. Note that the Ethernet type broadly applies to
-       the IEEE 802 family of Layer 2 technologies (e.g., Ethernet,
-       Wi-Fi, VLAN).";
+       in the ACEs.";
   }  
     
   identity endpoint-group-type {
