@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-03-29T03:25:02.929646+00:00",
+  "timestamp": "2026-03-31T03:19:18.196656+00:00",
   "repo": "IETF-OPSAWG-WG/policy-based-network-acl",
   "labels": [
     {
@@ -1189,6 +1189,75 @@
           "body": "Proposed update from Mahesh:\n\nAbstract:\n\nThe abstract anyway needs to be short and succint. It could therefore drop the second paragraph and just say:\n\n\"This document defines a YANG data model for policy-based network access control, which provides enforcement of network access control policies based on group identity.\u201d\n\nand then in the Introduction, where one normally starts describing the module in detail could add a sentence, (which BTW, appears later in the draft). Specifically, in the Introduction section, the paragraph that starts with \u201cSpecifically in scenarios \u2026\u201d, could see an addition of the following sentence at the end.\n\n\u201cFinally, it enables access control policy activation based on date and time conditions.\u201d\n",
           "createdAt": "2026-02-02T03:57:11Z",
           "updatedAt": "2026-02-02T03:57:11Z"
+        }
+      ]
+    },
+    {
+      "number": 156,
+      "id": "I_kwDOI7U4Jc74hS6m",
+      "title": "eth naming for features and identities",
+      "url": "https://github.com/IETF-OPSAWG-WG/policy-based-network-acl/issues/156",
+      "state": "OPEN",
+      "author": "QiufangMa",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "why using 'Ethernet' (or rather\n'eth') in several leaves names as most of attachments in 2026 are over Wi-Fi ?\n*STRONGLY* suggest to s/eth/ieee802/ or something similar.\n",
+      "createdAt": "2026-03-30T10:17:58Z",
+      "updatedAt": "2026-03-31T03:10:09Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "QiufangMa",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think it is the naming that causes some misunderstanding, as the 'eth' here follows RFC 8519 and covers both wired IEEE 802.3 and wireless IEEE 802.11 (Wi-Fi) layer 2 MAC-based access control.\nLook at the definition of eth-acl-type identity in https://datatracker.ietf.org/doc/html/rfc8519#section-4.1: \n  identity eth-acl-type {\n    base acl:acl-base;\n    if-feature \"eth\";\n    description\n      \"An ACL that matches on fields in the Ethernet header,\n       like 10/100/1000baseT or a Wi-Fi Access Control List.  An ACL\n       of type ethernet does not contain matches on fields in the\n       IPv4 header, the IPv6 header, or Layer 4 headers.\";\n  }\n\nAnd also for the ethertype type definition in https://datatracker.ietf.org/doc/html/rfc8519#appendix-A.3, the type of Ethernet does include wifi.\n\nThe question is, should we continue to use \"eth\" to be consistent with 8519? or we should rename it with something else like ieee802.\n",
+          "createdAt": "2026-03-30T10:19:29Z",
+          "updatedAt": "2026-03-30T10:19:29Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I don't think we need to make a change here. We simply need to remind that we are using the names inherited from RFC8519. We favor consistency. \n\nAlso,  remond that all these types are conditionned with this feature that we can't rename.\n\n  feature eth {\n    if-feature \"match-on-eth\";\n    description\n      \"Plain Ethernet ACL supported.\";\n  }\n\n\n",
+          "createdAt": "2026-03-30T11:45:41Z",
+          "updatedAt": "2026-03-30T11:45:41Z"
+        },
+        {
+          "author": "QiufangMa",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think it might be helpful if some clarifying text could be added in the description statement, e.g.,\nNote that the eth type broadly applies to the IEEE 802 family of Layer 2 technologies (e.g., Ethernet, Wi-Fi, VLAN).",
+          "createdAt": "2026-03-31T03:10:09Z",
+          "updatedAt": "2026-03-31T03:10:09Z"
+        }
+      ]
+    },
+    {
+      "number": 157,
+      "id": "I_kwDOI7U4Jc74hYA8",
+      "title": "formatting issues in sec.2",
+      "url": "https://github.com/IETF-OPSAWG-WG/policy-based-network-acl/issues/157",
+      "state": "OPEN",
+      "author": "QiufangMa",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "nit:  Section 2 bullets in the html version are not quite right.  I'm sure the\neditor will fix this... (the text version seems to be better).\n",
+      "createdAt": "2026-03-30T10:20:59Z",
+      "updatedAt": "2026-03-30T11:51:52Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "QiufangMa",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@boucadair, could you please also take a look at this? I did not find anything wrong...",
+          "createdAt": "2026-03-30T10:27:50Z",
+          "updatedAt": "2026-03-30T10:27:50Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The formatting is similar to what we have in RFCs, e.g., https://www.rfc-editor.org/rfc/rfc9907.html#section-2.\n\nAnyway, leave it to the RFC editor to implement fixes as appropriate. ",
+          "createdAt": "2026-03-30T11:51:52Z",
+          "updatedAt": "2026-03-30T11:51:52Z"
         }
       ]
     }
@@ -8716,7 +8785,7 @@
     {
       "number": 154,
       "id": "PR_kwDOI7U4Jc7OQcYv",
-      "title": "IESG review comments (partial)",
+      "title": "IESG review comments",
       "url": "https://github.com/IETF-OPSAWG-WG/policy-based-network-acl/pull/154",
       "state": "OPEN",
       "author": "QiufangMa",
@@ -8725,14 +8794,194 @@
       "labels": [],
       "body": "",
       "createdAt": "2026-03-28T10:01:48Z",
-      "updatedAt": "2026-03-28T10:01:48Z",
+      "updatedAt": "2026-03-31T03:07:19Z",
       "baseRepository": "IETF-OPSAWG-WG/policy-based-network-acl",
       "baseRefName": "main",
       "baseRefOid": "ae244a8cc108dc1f558313ae9b4fa53d396f970e",
       "headRepository": "QiufangMa/policy-based-network-acl",
       "headRefName": "main",
-      "headRefOid": "47f8022f2d5a2875b6fd339168aaacb54e2916d9",
+      "headRefOid": "adb543f3e12acbada0aa3ff6c4c263c5c5fb068b",
       "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOI7U4Jc7v_yOv",
+          "commit": {
+            "abbreviatedOid": "47f8022"
+          },
+          "author": "boucadair",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-03-29T07:38:29Z",
+          "updatedAt": "2026-03-29T07:38:29Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "Not sure it is relevant to this draft to talk about HE.\n\nTo be efficient, ACLs will need to cover all addresses usable by an endpoint though. I 'm OK to generalize but we need to correlate this with the purpose of the draft.",
+              "createdAt": "2026-03-29T07:38:29Z",
+              "updatedAt": "2026-03-29T07:38:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOI7U4Jc7v_yqV",
+          "commit": {
+            "abbreviatedOid": "47f8022"
+          },
+          "author": "boucadair",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-03-29T07:41:12Z",
+          "updatedAt": "2026-03-29T07:41:12Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "We could cite rfc6269#section-13.2 where that issue is discussed, but I'm not sure we need to have this discussion here. Is this useful for the extensions in the draft?",
+              "createdAt": "2026-03-29T07:41:12Z",
+              "updatedAt": "2026-03-29T07:41:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOI7U4Jc7v_ysi",
+          "commit": {
+            "abbreviatedOid": "47f8022"
+          },
+          "author": "boucadair",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2026-03-29T07:41:24Z",
+          "updatedAt": "2026-03-29T07:41:24Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOI7U4Jc7wHnBA",
+          "commit": {
+            "abbreviatedOid": "47f8022"
+          },
+          "author": "QiufangMa",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-03-30T07:16:26Z",
+          "updatedAt": "2026-03-30T07:16:26Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "Feel free to review if a brief mention of these RFCs to highlight the complexity of address based management is better.",
+              "createdAt": "2026-03-30T07:16:26Z",
+              "updatedAt": "2026-03-30T07:21:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOI7U4Jc7wIGCy",
+          "commit": {
+            "abbreviatedOid": "53096b7"
+          },
+          "author": "boucadair",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-03-30T07:43:15Z",
+          "updatedAt": "2026-03-30T07:43:16Z",
+          "comments": [
+            {
+              "originalPosition": 11,
+              "body": "```suggestion\n      result. Furthermore, mechanisms such as IPv6 temporary addresses {{?RFC8981}} and Network Address Port Translation (NAPT) {{?RFC3022}} may further contribute to address unstability and non-uniqueness. This complicates the consistent and efficient access control policy enforcement relying on IP/transport fields (e.g., the\n```",
+              "createdAt": "2026-03-30T07:43:15Z",
+              "updatedAt": "2026-03-30T07:43:16Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOI7U4Jc7wI0CV",
+          "commit": {
+            "abbreviatedOid": "53096b7"
+          },
+          "author": "QiufangMa",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-03-30T08:16:47Z",
+          "updatedAt": "2026-03-30T08:16:48Z",
+          "comments": [
+            {
+              "originalPosition": 11,
+              "body": "Any specific reason for s/instability/unstability/? I thought \"instability\" might be more commonly used than \"unstability\" :-)",
+              "createdAt": "2026-03-30T08:16:47Z",
+              "updatedAt": "2026-03-30T08:16:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOI7U4Jc7wJlHf",
+          "commit": {
+            "abbreviatedOid": "3a4cbae"
+          },
+          "author": "boucadair",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-03-30T08:53:47Z",
+          "updatedAt": "2026-03-30T08:53:47Z",
+          "comments": [
+            {
+              "originalPosition": 48,
+              "body": "I didn't had time to dive into this, but this breaks the validation.",
+              "createdAt": "2026-03-30T08:53:47Z",
+              "updatedAt": "2026-03-30T08:53:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOI7U4Jc7wKfB4",
+          "commit": {
+            "abbreviatedOid": "3a4cbae"
+          },
+          "author": "QiufangMa",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-03-30T09:35:34Z",
+          "updatedAt": "2026-03-30T09:35:34Z",
+          "comments": [
+            {
+              "originalPosition": 48,
+              "body": "It is weird. I recall it worked before.",
+              "createdAt": "2026-03-30T09:35:34Z",
+              "updatedAt": "2026-03-30T09:35:34Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 155,
+      "id": "PR_kwDOI7U4Jc7OXCqV",
+      "title": "svg",
+      "url": "https://github.com/IETF-OPSAWG-WG/policy-based-network-acl/pull/155",
+      "state": "CLOSED",
+      "author": "boucadair",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-03-29T08:46:30Z",
+      "updatedAt": "2026-03-29T08:47:33Z",
+      "baseRepository": "IETF-OPSAWG-WG/policy-based-network-acl",
+      "baseRefName": "main",
+      "baseRefOid": "ae244a8cc108dc1f558313ae9b4fa53d396f970e",
+      "headRepository": "IETF-OPSAWG-WG/policy-based-network-acl",
+      "headRefName": "boucadair-patch-5",
+      "headRefOid": "d9ee6014ef3aa21ae6aedfa1355f36cbe5b89e5d",
+      "closedAt": "2026-03-29T08:47:33Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
