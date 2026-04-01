@@ -358,7 +358,6 @@ header attributes (e.g., IP/MAC address) may be maintained on the SDN controller
    |Printer Resource|   bar-60     | Printer resources |
    {: #dg-example title='Device Group Example'}
 
-   Users accessing an enterprise device should be strictly controlled.
    Matching abstract device group ID instead of specified addresses in
    ACL polices helps shield the consequences of address change (e.g.,
    back-end VM-based server migration).
