@@ -352,7 +352,7 @@ header attributes (e.g., IP/MAC address) may be maintained on the SDN controller
 ###  Device Group {#sec-dg}
 
    The device group ID is an identifier that represents the collective
-   identity of a group of enterprise end-devices.  An enterprise device
+   identity of a group of enterprise end-devices.
    could be a server that hosts applications or software that deliver
    services to enterprise users.  It could also be an enterprise IoT
    device that serves a limited purpose, e.g., a printer that allows
