@@ -169,7 +169,8 @@ dedicated fields. Group-Based Policy (GBP), discussed in {{Section 6.2.3 of ?RFC
   : A device
  that falls under the access control domain of
   centrally managed authority (enterprise administrator, typically).
-  (BYOD)) may temporarily be considered an enterprise device when it is used to
+An enterprise device provides compute, memory, storage, and networking capabilities and connects to a network.
+: An enterprise device could be a server that hosts applications or software that deliver services to enterprise users. It could also be an enterprise Internet of Things (IoT) device that serves a limited purpose (e.g., a printer that allows users to scan and print), etc.
   access resources controlled by the centrally managed authority.
 
    Endpoint:
