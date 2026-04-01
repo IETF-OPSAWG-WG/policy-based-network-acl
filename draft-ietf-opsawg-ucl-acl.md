@@ -168,7 +168,7 @@ dedicated fields. Group-Based Policy (GBP), discussed in {{Section 6.2.3 of ?RFC
   Enterprise device:
   : A device
  that falls under the access control domain of
-  centrally managed authority.  A personal device (bring your own device
+  centrally managed authority (enterprise administrator, typically).
   (BYOD)) may temporarily be considered an enterprise device when it is used to
   access resources controlled by the centrally managed authority.
 
