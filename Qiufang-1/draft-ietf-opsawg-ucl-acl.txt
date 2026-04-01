@@ -216,6 +216,13 @@ Table of Contents
 
    The following definitions are used throughout this document:
 
+   Enterprise device:  For the purposes of this document, an enterprise
+      device is a computing device which falls under the access control
+      domain of centrally managed authority.  A personal device (bring
+      your own device (BYOD)) may temporarily be considered an
+      enterprise device when it is used to access resources controlled
+      by the centrally managed authority.
+
    Endpoint:  Refers to an entity which could be an end-user, host
       device, or application that actually connects to a network.
 
@@ -456,19 +463,19 @@ Table of Contents
    groups depending on the time of day or the type of day (e.g.,
    weekdays versus weekends), etc.
 
-       +============+==========+===================================+
-       | Group Name | Group ID | Group Description                 |
-       +============+==========+===================================+
-       | R&D        | foo-10   | R&D employees                     |
-       +------------+----------+-----------------------------------+
-       | R&D BYOD   | foo-11   | Personal devices of R&D employees |
-       +------------+----------+-----------------------------------+
-       | Sales      | foo-20   | Sales employees                   |
-       +------------+----------+-----------------------------------+
-       | VIP        | foo-30   | VIP employees                     |
-       +------------+----------+-----------------------------------+
+      +=============+==========+===================================+
+      | Group Name  | Group ID | Group Description                 |
+      +=============+==========+===================================+
+      | R&D Regular | foo-10   | R&D employees                     |
+      +-------------+----------+-----------------------------------+
+      | R&D BYOD    | foo-11   | Personal devices of R&D employees |
+      +-------------+----------+-----------------------------------+
+      | Sales       | foo-20   | Sales employees                   |
+      +-------------+----------+-----------------------------------+
+      | VIP         | foo-30   | VIP employees                     |
+      +-------------+----------+-----------------------------------+
 
-                        Table 1: User Group Examples
+                       Table 1: User Group Examples
 
 4.2.2.  Device Group
 
