@@ -101,7 +101,7 @@ informative:
       local attachment point to the enterprise network).  For example,
       network access might be granted based upon criteria such as users'
       access location, source network reputation, users' role, time-of-
-      day, type of network device used (e.g., corporate issued device
+      day, type of network device used (e.g., corporate-issued device
       versus personal device), device's security posture, etc. This
       means that the network needs to recognize the endpoints' identity and their
       current context, and map the endpoints to their correct access
@@ -166,11 +166,11 @@ dedicated fields. Group-Based Policy (GBP), discussed in {{Section 6.2.3 of ?RFC
    The following definitions are used throughout this document:
 
   Enterprise device:
-  : A device
- that falls under the access control domain of
-  centrally managed authority (enterprise administrator, typically).
-An enterprise device provides compute, memory, storage, and networking capabilities and connects to a network.
-: An enterprise device could be a server that hosts applications or software that deliver services to enterprise users. It could also be an enterprise Internet of Things (IoT) device that serves a limited purpose (e.g., a printer that allows users to scan and print), etc.
+  : A device that falls under the access control domain of
+   centrally managed authority (enterprise administrator, typically).
+   An enterprise device provides compute, memory, storage, and networking capabilities and connects to a network.
+  : An enterprise device could be a server that hosts applications or software that deliver services to enterprise users. It could also be an enterprise Internet of Things (IoT) device that serves a limited purpose (e.g., a printer that allows users to scan and print), etc.
+  : While a personal device (BYOD) is not a physical asset of the enterprise, it is subject to the enterprise' access control policies when accessing the enterprise resources controlled by the centrally managed authority.
 
    Endpoint:
    : Refers to an entity which could be an end-user, enterprise device, or application that actually connects to a network.
@@ -352,10 +352,7 @@ header attributes (e.g., IP/MAC address) may be maintained on the SDN controller
 ###  Device Group {#sec-dg}
 
    The device group ID is an identifier that represents the collective
-   identity of a group of enterprise end-devices.
-   could be a server that hosts applications or software that deliver
-   services to enterprise users.  It could also be an enterprise IoT
-   device that serves a limited purpose, e.g., a printer that allows
+   identity of a group of enterprise devices.
    {{dg-example}} shows an example
    of how device group definitions may be characterized.
 
