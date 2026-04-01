@@ -227,8 +227,9 @@ Table of Contents
       limited purpose (e.g., a printer that allows users to scan and
       print), etc.
 
-      Endpoint:  Refers to an entity which could be an end-user, host
-         device, or application that actually connects to a network.
+      Endpoint:  Refers to an entity which could be an end-user,
+         enterprise device, or application that actually connects to a
+         network.
 
       Endpoint group:  Refers to a group of endpoints that share common
          access control policies.
