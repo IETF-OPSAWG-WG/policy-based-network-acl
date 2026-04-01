@@ -744,3 +744,5 @@ Notation for {{rad-att}}:
    Thanks to Dhruv Dhody for the OPSDIR review, Alexander Pelov for INTDIR review, Valery Smyslov for the SECDIR review, and Acee Lindem for the YANGDOCTORS review.
 
    Thanks to Mahesh Jethanandani for the AD review.
+
+   Thanks to Christopher Inacio, Andy Newton, Charles Eckel, Éric Vyncke, Deb Cooley, Gorry Fairhurst, Gunter Van de Velde, Jim Guichard, and Ketan Talaulikar for the IESG review.
