@@ -482,12 +482,12 @@ Table of Contents
 4.2.2.  Device Group
 
    The device group ID is an identifier that represents the collective
-   identity of a group of enterprise end-devices.  An enterprise device
-   could be a server that hosts applications or software that deliver
-   services to enterprise users.  It could also be an enterprise IoT
-   device that serves a limited purpose, e.g., a printer that allows
-   users to scan and print.  Table 2 shows an example of how device
-   group definitions may be characterized.
+   identity of a group of enterprise end-devices.  could be a server
+   that hosts applications or software that deliver services to
+   enterprise users.  It could also be an enterprise IoT device that
+   serves a limited purpose, e.g., a printer that allows users to scan
+   and print.  Table 2 shows an example of how device group definitions
+   may be characterized.
 
         +==================+==========+===========================+
         | Group Name       | Group ID | Group Description         |
