@@ -68,7 +68,7 @@ informative:
    network access control policies based on group identity. This YANG data model extends Access Control Lists (ACLs) with date and time parameters to support schedule-aware policy enforcement.
 
    Specifically in scenarios where network access is triggered by user authentication, this document defines a mechanism to ease the maintenance
-   of the mapping between a user group identifier and a set of IP/MAC addresses
+   of the mapping between a user group identifier and a set of packet header fields
    to enforce policy-based network access control. Moreover, the document defines a Remote Authentication Dial-in
    User Service (RADIUS) attribute that is used to
    communicate the user group identifier as part of identification and
@@ -87,12 +87,11 @@ informative:
    for large-scale enterprises compared to conventional network access management approaches.
    Examples of such challenges are listed below:
 
-   *  Endpoints do not have stable IP addresses.  For example, Wireless
+   *  Endpoints do not have stable and unique IP addresses.  For example, Wireless
       LAN (WLAN) and VPN clients, as well as back-end Virtual Machine
       (VM)-based servers, can move; their IP addresses could change as a
-      result.  This means that relying on IP/transport fields (e.g., the
-      5-tuple) is inadequate to ensure consistent and efficient security
-      policy enforcement.  IP address-based policies may not be flexible
+      result. Furthermore, mechanisms such as IPv6 temporary addresses {{?RFC8981}}, and Network Address Port Translation (NAPT) {{?RFC3022}} may further contribute to address instability and non-uniqueness. This complicates the consistent and efficient access control policy enforcement relying on IP/transport fields (e.g., the
+      5-tuple). IP address-based policies may not be flexible
       enough to accommodate endpoints with volatile IP addresses.
 
    *  With the massive adoption of teleworking, there is a need to
@@ -128,7 +127,7 @@ informative:
    Although the document cites MAC addresses as an example in some sections, the
    document does not make assumptions about which identifiers are used to trigger ACLs.
    These examples should not be considered as recommendations. Readers should be
-   aware that MAC-based ACLs can be bypassed by flushing out the MAC address.
+   aware that MAC-based ACLs can be bypassed by clearing the MAC address.
    Other implications related to the change of MAC addresses are discussed in
    {{?RFC9797}}.
 
@@ -232,7 +231,7 @@ informative:
 
 * A service orchestrator which coordinates the overall service, including security policies. The service may be connectivity or any other access to resources that can be hosted and offered by a network.
 
-* A Software-Defined Networking (SDN) {{?RFC7149}} {{?RFC7426}} controller which is responsible for maintaining endpoint-group based ACLs and mapping the endpoint group to the associated attributes information (e.g., IP/MAC address). An SDN controller also behaves as a Policy Decision Point (PDP) {{?RFC3198}} and pushes the required access control policies to relevant Policy Enforcement Points (PEPs) {{?RFC3198}}. A PDP is also known as "policy server" {{?RFC2753}}.
+* A Software-Defined Networking (SDN) {{?RFC7149}} {{?RFC7426}} controller which is responsible for maintaining endpoint-group based ACLs and mapping the endpoint group to the associated attributes information (e.g., packet header fields). An SDN controller also behaves as a Policy Decision Point (PDP) {{?RFC3198}} and pushes the required access control policies to relevant Policy Enforcement Points (PEPs) {{?RFC3198}}. A PDP is also known as "policy server" {{?RFC2753}}.
 
     An SDN controller may interact with an Authentication, Authorization, and Accounting (AAA) {{?RFC3539}} server or a Network Access Server (NAS) {{?RFC7542}}.
 
@@ -242,7 +241,7 @@ informative:
 
 * The AAA server provides a collection of authentication, authorization, and accounting functions. The AAA server is responsible for centralized user information management. The AAA server is preconfigured with user credentials (e.g., username and password), possible group identities and related user attributes (users may be divided into different groups based on different user attributes).
 
-* The Policy Enforcement Point (PEP) is the central entity which is responsible for enforcing appropriate access control policies. A first deployment scenario assumes that the SDN controller maps the group ID to the related common packet header and delivers IP/MAC address based ACL policies to the required PEPs. Another deployment scenario may require that PEPs map incoming packets to their associated source and/or destination endpoint-group IDs, and acts upon the endpoint-group ID-based ACL policies (e.g., a group identifier may be carried in packet headers such as discussed in {{Section 6.2.3 of ?RFC9638}}).
+* The Policy Enforcement Point (PEP) is the central entity which is responsible for enforcing appropriate access control policies. A first deployment scenario assumes that the SDN controller maps the group ID to the related common packet header and delivers packet header fields based ACL policies to the required PEPs. Another deployment scenario may require that PEPs map incoming packets to their associated source and/or destination endpoint-group IDs, and acts upon the endpoint-group ID-based ACL policies (e.g., a group identifier may be carried in packet headers such as discussed in {{Section 6.2.3 of ?RFC9638}}).
 
     Multiple PEPs may be involved in a network.
 
@@ -250,7 +249,7 @@ informative:
 
 {{arch}} provides the overall architecture and procedure for policy-based access control management.
 
-~~~~
+~~~~ aasvg
 {::include-fold ./examples/arch.txt}
 ~~~~
 {: #arch title="An Example Architecture for User Group-based Policy Management" artwork-align="center"}
@@ -289,18 +288,17 @@ Step 3:
 Step 4:
 :  Either the AAA server or the NAS notifies an SDN controller
       of the mapping between the user group ID and related common packet
-      header attributes (e.g., IP/MAC address). The exact details of how such notification is performed are out scope of this specification.
+      header attributes (e.g., the 5-tuple). The exact details of how such notification is performed are out scope of this specification.
 
 Step 5:
-:  Either group or IP/MAC address-based access control policies
+:  Either group-based or packet header field-based access control policies
       are maintained on relevant PEPs under the SDN controller's management.
-      Whether the PEP enforces the group or IP/MAC address-based ACL is
-      implementation specific. Both types of ACL policy may exist on
+      Both types of ACL policy may exist on
       the PEP. {{PEP-ucl}} and {{PEP-acl}} elaborate on each case.
 
 A similar flow applies to policy management based on other endpoint group types, such as device or application groups,
 except that the mapping between the group ID and related common packet
-header attributes (e.g., IP/MAC address) may be maintained on the SDN controller based on an inventory or an application registry. Particularly, the use of RADIUS exchanges is not required in such cases ({{sec-radius}}).
+header attributes (e.g., 5-tuple) may be maintained on the SDN controller based on an inventory or an application registry. Particularly, the use of RADIUS exchanges is not required in such cases ({{sec-radius}}).
 
 {{implement-considerations}} provides additional operational considerations.
 
@@ -734,12 +732,7 @@ Notation for {{rad-att}}:
    Security Policy over the years.  In particular, {{?I-D.you-i2nsf-user-group-based-policy}}
    and {{?I-D.yizhou-anima-ip-to-access-control-groups}} provided mechanisms to
    establish a mapping between the IP address/prefix of users and access
-   control group IDs.
-
-   Jianjie You, Myo Zarny, Christian Jacquenet, Mohamed Boucadair, and
-   Yizhou Li contributed to an earlier version of {{?I-D.you-i2nsf-user-group-based-policy}}.
-   We would like to thank the authors of that Internet-Draft on modern network access
-   control mechanisms for material that assisted in thinking about this document.
+   control group IDs. The authors would like to thank Jianjie You, Myo Zarny, Christian Jacquenet, and Yizhou Li for their early contributions to these works.
 
    Thanks to Joe Clarke, Bill Fenner, Benoît Claise, Rob Wilton, David Somers-Harris,
    Alan Dekok, Heikki Vatiainen, Wen Xiang, Wei Wang, Hongwei Li, and Jensen Zhang for
