@@ -166,7 +166,7 @@ dedicated fields. Group-Based Policy (GBP), discussed in {{Section 6.2.3 of ?RFC
    The following definitions are used throughout this document:
 
   Enterprise device:
-  : For the purposes of this document, an enterprise device
+  : A device
   is an end-equipment which falls under the access control domain of
   centrally managed authority.  A personal device (bring your own device
   (BYOD)) may temporarily be considered an enterprise device when it is used to
