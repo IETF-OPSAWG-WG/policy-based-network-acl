@@ -1945,6 +1945,10 @@ Acknowledgments
 
    Thanks to Mahesh Jethanandani for the AD review.
 
+   Thanks to Christopher Inacio, Andy Newton, Charles Eckel, Éric
+   Vyncke, Deb Cooley, Gorry Fairhurst, Gunter Van de Velde, Jim
+   Guichard, and Ketan Talaulikar for the IESG review.
+
 Authors' Addresses
 
    Qiufang Ma (editor)
