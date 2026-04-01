@@ -238,11 +238,8 @@ Table of Contents
          Refer to Section 4.2.1 for more details.
 
       device group:  A collection of enterprise devices that share a
-         common access control policies.  A host device provides
-         compute, memory, storage, and networking capabilities and
-         connects to a network.  Host devices may be servers, Internet
-         of Things (IoT) devices, etc.  Refer to Section 4.2.2 for more
-         details.
+         common access control policies.  Refer to Section 4.2.2 for
+         more details.
 
       Application group:  A collection of applications that share a
          common access control policies.  An application is a software
