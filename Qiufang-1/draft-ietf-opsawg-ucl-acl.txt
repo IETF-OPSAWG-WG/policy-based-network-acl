@@ -218,44 +218,50 @@ Table of Contents
 
    Enterprise device:  A device that falls under the access control
       domain of centrally managed authority (enterprise administrator,
-      typically).  (BYOD)) may temporarily be considered an enterprise
-      device when it is used to access resources controlled by the
-      centrally managed authority.
-
-   Endpoint:  Refers to an entity which could be an end-user, host
-      device, or application that actually connects to a network.
-
-   Endpoint group:  Refers to a group of endpoints that share common
-      access control policies.
-
-   User group:  A group of end-users who will be assigned the same
-      network access policy.  An end-user is defined as a person.  Refer
-      to Section 4.2.1 for more details.
-
-   device group:  A collection of enterprise devices that share a common
-      access control policies.  A host device provides compute, memory,
+      typically).  An enterprise device provides compute, memory,
       storage, and networking capabilities and connects to a network.
-      Host devices may be servers, Internet of Things (IoT) devices,
-      etc.  Refer to Section 4.2.2 for more details.
 
-   Application group:  A collection of applications that share a common
-      access control policies.  An application is a software program
-      used for a specific service.  Refer to Section 4.2.3 for more
-      details.
+      An enterprise device could be a server that hosts applications or
+      software that deliver services to enterprise users.  It could also
+      be an enterprise Internet of Things (IoT) device that serves a
+      limited purpose (e.g., a printer that allows users to scan and
+      print), etc.
 
-   Endpoint group identifier:  An identifier used to represent the
-      collective identity of an endpoint group.  An endpoint group may
-      include a user group, device group, or application group.
+      Endpoint:  Refers to an entity which could be an end-user, host
+         device, or application that actually connects to a network.
 
-   User group based Control List (UCL) data model:  A YANG data model
-      for policy-based network access control that specifies an
-      extension to the "ietf-access-control-list" module [RFC8519].  It
-      allows policy enforcement based on a group identifier, which can
-      be used both at the network device level and at the network/
-      administrative domain level.
+      Endpoint group:  Refers to a group of endpoints that share common
+         access control policies.
 
-   Policy:  A set of rules to administer, manage, and control access to
-      network resources [RFC3198].
+      User group:  A group of end-users who will be assigned the same
+         network access policy.  An end-user is defined as a person.
+         Refer to Section 4.2.1 for more details.
+
+      device group:  A collection of enterprise devices that share a
+         common access control policies.  A host device provides
+         compute, memory, storage, and networking capabilities and
+         connects to a network.  Host devices may be servers, Internet
+         of Things (IoT) devices, etc.  Refer to Section 4.2.2 for more
+         details.
+
+      Application group:  A collection of applications that share a
+         common access control policies.  An application is a software
+         program used for a specific service.  Refer to Section 4.2.3
+         for more details.
+
+      Endpoint group identifier:  An identifier used to represent the
+         collective identity of an endpoint group.  An endpoint group
+         may include a user group, device group, or application group.
+
+      User group based Control List (UCL) data model:  A YANG data model
+         for policy-based network access control that specifies an
+         extension to the "ietf-access-control-list" module [RFC8519].
+         It allows policy enforcement based on a group identifier, which
+         can be used both at the network device level and at the
+         network/administrative domain level.
+
+      Policy:  A set of rules to administer, manage, and control access
+         to network resources [RFC3198].
 
 3.  Sample Usage
 
