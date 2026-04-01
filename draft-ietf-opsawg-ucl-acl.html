@@ -14,7 +14,7 @@
    control, which provides enforcement of
    network access control policies based on group identity. This YANG data model extends Access Control Lists (ACLs) with date and time parameters to support schedule-aware policy enforcement. 
        Specifically in scenarios where network access is triggered by user authentication, this document defines a mechanism to ease the maintenance
-   of the mapping between a user group identifier and a set of IP/MAC addresses
+   of the mapping between a user group identifier and a set of packet header fields
    to enforce policy-based network access control. Moreover, the document defines a Remote Authentication Dial-in
    User Service (RADIUS) attribute that is used to
    communicate the user group identifier as part of identification and
@@ -1059,11 +1059,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">A Policy-based Network Access Control</td>
-<td class="right">March 2026</td>
+<td class="right">April 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ma, et al.</td>
-<td class="center">Expires 28 September 2026</td>
+<td class="center">Expires 3 October 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1076,12 +1076,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-opsawg-ucl-acl-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-03-27" class="published">27 March 2026</time>
+<time datetime="2026-04-01" class="published">1 April 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-09-28">28 September 2026</time></dd>
+<dd class="expires"><time datetime="2026-10-03">3 October 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1112,7 +1112,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
    control, which provides enforcement of
    network access control policies based on group identity. This YANG data model extends Access Control Lists (ACLs) with date and time parameters to support schedule-aware policy enforcement.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 <p id="section-abstract-2">Specifically in scenarios where network access is triggered by user authentication, this document defines a mechanism to ease the maintenance
-   of the mapping between a user group identifier and a set of IP/MAC addresses
+   of the mapping between a user group identifier and a set of packet header fields
    to enforce policy-based network access control. Moreover, the document defines a Remote Authentication Dial-in
    User Service (RADIUS) attribute that is used to
    communicate the user group identifier as part of identification and
@@ -1148,7 +1148,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 28 September 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 3 October 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1319,12 +1319,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
    Examples of such challenges are listed below:<a href="#section-1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-1-2.1">
-          <p id="section-1-2.1.1">Endpoints do not have stable IP addresses.  For example, Wireless
+          <p id="section-1-2.1.1">Endpoints do not have stable and unique IP addresses.  For example, Wireless
 LAN (WLAN) and VPN clients, as well as back-end Virtual Machine
 (VM)-based servers, can move; their IP addresses could change as a
-result.  This means that relying on IP/transport fields (e.g., the
-5-tuple) is inadequate to ensure consistent and efficient security
-policy enforcement.  IP address-based policies may not be flexible
+result. Furthermore, mechanisms such as IPv6 temporary addresses <span>[<a href="#RFC8981" class="cite xref">RFC8981</a>]</span>, and Network Address Port Translation (NAPT) <span>[<a href="#RFC3022" class="cite xref">RFC3022</a>]</span> may further contribute to address instability and non-uniqueness. This complicates the consistent and efficient access control policy enforcement relying on IP/transport fields (e.g., the
+5-tuple). IP address-based policies may not be flexible
 enough to accommodate endpoints with volatile IP addresses.<a href="#section-1-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-1-2.2">
@@ -1359,7 +1358,7 @@ grant to the network.<a href="#section-1-2.2.1" class="pilcrow">¶</a></p>
 <p id="section-1-6">Although the document cites MAC addresses as an example in some sections, the
    document does not make assumptions about which identifiers are used to trigger ACLs.
    These examples should not be considered as recommendations. Readers should be
-   aware that MAC-based ACLs can be bypassed by flushing out the MAC address.
+   aware that MAC-based ACLs can be bypassed by clearing the MAC address.
    Other implications related to the change of MAC addresses are discussed in
    <span>[<a href="#RFC9797" class="cite xref">RFC9797</a>]</span>.<a href="#section-1-6" class="pilcrow">¶</a></p>
 <p id="section-1-7">The document does not specify how to map the policy group identifiers
@@ -1506,7 +1505,7 @@ both at the network device level and at the network/administrative domain level.
             <p id="section-4.1-2.1.1">A service orchestrator which coordinates the overall service, including security policies. The service may be connectivity or any other access to resources that can be hosted and offered by a network.<a href="#section-4.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-4.1-2.2">
-            <p id="section-4.1-2.2.1">A Software-Defined Networking (SDN) <span>[<a href="#RFC7149" class="cite xref">RFC7149</a>]</span> <span>[<a href="#RFC7426" class="cite xref">RFC7426</a>]</span> controller which is responsible for maintaining endpoint-group based ACLs and mapping the endpoint group to the associated attributes information (e.g., IP/MAC address). An SDN controller also behaves as a Policy Decision Point (PDP) <span>[<a href="#RFC3198" class="cite xref">RFC3198</a>]</span> and pushes the required access control policies to relevant Policy Enforcement Points (PEPs) <span>[<a href="#RFC3198" class="cite xref">RFC3198</a>]</span>. A PDP is also known as "policy server" <span>[<a href="#RFC2753" class="cite xref">RFC2753</a>]</span>.<a href="#section-4.1-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-4.1-2.2.1">A Software-Defined Networking (SDN) <span>[<a href="#RFC7149" class="cite xref">RFC7149</a>]</span> <span>[<a href="#RFC7426" class="cite xref">RFC7426</a>]</span> controller which is responsible for maintaining endpoint-group based ACLs and mapping the endpoint group to the associated attributes information (e.g., packet header fields). An SDN controller also behaves as a Policy Decision Point (PDP) <span>[<a href="#RFC3198" class="cite xref">RFC3198</a>]</span> and pushes the required access control policies to relevant Policy Enforcement Points (PEPs) <span>[<a href="#RFC3198" class="cite xref">RFC3198</a>]</span>. A PDP is also known as "policy server" <span>[<a href="#RFC2753" class="cite xref">RFC2753</a>]</span>.<a href="#section-4.1-2.2.1" class="pilcrow">¶</a></p>
 <p id="section-4.1-2.2.2">
 An SDN controller may interact with an Authentication, Authorization, and Accounting (AAA) <span>[<a href="#RFC3539" class="cite xref">RFC3539</a>]</span> server or a Network Access Server (NAS) <span>[<a href="#RFC7542" class="cite xref">RFC7542</a>]</span>.<a href="#section-4.1-2.2.2" class="pilcrow">¶</a></p>
 </li>
@@ -1519,7 +1518,7 @@ A new RADIUS attribute is defined in <a href="#sec-radius" class="auto internal 
             <p id="section-4.1-2.4.1">The AAA server provides a collection of authentication, authorization, and accounting functions. The AAA server is responsible for centralized user information management. The AAA server is preconfigured with user credentials (e.g., username and password), possible group identities and related user attributes (users may be divided into different groups based on different user attributes).<a href="#section-4.1-2.4.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-4.1-2.5">
-            <p id="section-4.1-2.5.1">The Policy Enforcement Point (PEP) is the central entity which is responsible for enforcing appropriate access control policies. A first deployment scenario assumes that the SDN controller maps the group ID to the related common packet header and delivers IP/MAC address based ACL policies to the required PEPs. Another deployment scenario may require that PEPs map incoming packets to their associated source and/or destination endpoint-group IDs, and acts upon the endpoint-group ID-based ACL policies (e.g., a group identifier may be carried in packet headers such as discussed in <span><a href="https://rfc-editor.org/rfc/rfc9638#section-6.2.3" class="relref">Section 6.2.3</a> of [<a href="#RFC9638" class="cite xref">RFC9638</a>]</span>).<a href="#section-4.1-2.5.1" class="pilcrow">¶</a></p>
+            <p id="section-4.1-2.5.1">The Policy Enforcement Point (PEP) is the central entity which is responsible for enforcing appropriate access control policies. A first deployment scenario assumes that the SDN controller maps the group ID to the related common packet header and delivers packet header fields based ACL policies to the required PEPs. Another deployment scenario may require that PEPs map incoming packets to their associated source and/or destination endpoint-group IDs, and acts upon the endpoint-group ID-based ACL policies (e.g., a group identifier may be carried in packet headers such as discussed in <span><a href="https://rfc-editor.org/rfc/rfc9638#section-6.2.3" class="relref">Section 6.2.3</a> of [<a href="#RFC9638" class="cite xref">RFC9638</a>]</span>).<a href="#section-4.1-2.5.1" class="pilcrow">¶</a></p>
 <p id="section-4.1-2.5.2">
 Multiple PEPs may be involved in a network.<a href="#section-4.1-2.5.2" class="pilcrow">¶</a></p>
 <p id="section-4.1-2.5.3">
@@ -1529,32 +1528,88 @@ A PEP exposes a YANG-based interface (e.g., NETCONF <span>[<a href="#RFC6241" cl
 <p id="section-4.1-3"><a href="#arch" class="auto internal xref">Figure 1</a> provides the overall architecture and procedure for policy-based access control management.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
 <span id="name-an-example-architecture-for"></span><div id="arch">
 <figure id="figure-1">
-          <div class="alignCenter art-text artwork" id="section-4.1-4.1">
-<pre>
-                                   .------------.
-                                   |Orchestrator|
-                                   '------+-----'
- Service                                  | (Step 1)
-------------------------------------------)-------------
- Network                                  |
-                           Step 4         |
- .-------.        .--------.     .--------+--------.
- |User #1+--+     |  AAA   |     | SDN Controller  |
- '-------'  |     | Server +-----+      PDP        |
-            |     '----+---'     '--------+--------'
-            |          |                  |
-            |          |           +------+--------+  Step 5
-   Step 2   |          | Step 3    |               |
-            |          |           |               |
-            |        .-+-----------+---------------+-------------.
-            +--------+                                           |
-                     | .----------------------. .--------------. |
- .-------.           | | Network Access Server| |Firewall, etc.| |
- |User #2+-----------+ |       (NAS)          | '--------------' |
- '-------'           | '----------------------'                  |
-                     |                      PEP                  |
-                     '-------------------------------------------'
-</pre>
+          <div id="section-4.1-4.1">
+            <div class="alignCenter art-svg artwork" id="section-4.1-4.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="400" width="536" viewBox="0 0 536 400" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+                <path d="M 16,144 L 16,176" fill="none" stroke="black"></path>
+                <path d="M 16,320 L 16,352" fill="none" stroke="black"></path>
+                <path d="M 80,144 L 80,176" fill="none" stroke="black"></path>
+                <path d="M 80,320 L 80,352" fill="none" stroke="black"></path>
+                <path d="M 104,160 L 104,288" fill="none" stroke="black"></path>
+                <path d="M 152,144 L 152,192" fill="none" stroke="black"></path>
+                <path d="M 176,272 L 176,384" fill="none" stroke="black"></path>
+                <path d="M 192,192 L 192,272" fill="none" stroke="black"></path>
+                <path d="M 192,304 L 192,352" fill="none" stroke="black"></path>
+                <path d="M 224,144 L 224,192" fill="none" stroke="black"></path>
+                <path d="M 272,144 L 272,192" fill="none" stroke="black"></path>
+                <path d="M 288,32 L 288,64" fill="none" stroke="black"></path>
+                <path d="M 288,224 L 288,272" fill="none" stroke="black"></path>
+                <path d="M 344,64 L 344,88" fill="none" stroke="black"></path>
+                <path d="M 344,104 L 344,144" fill="none" stroke="black"></path>
+                <path d="M 344,192 L 344,224" fill="none" stroke="black"></path>
+                <path d="M 376,304 L 376,352" fill="none" stroke="black"></path>
+                <path d="M 392,32 L 392,64" fill="none" stroke="black"></path>
+                <path d="M 392,304 L 392,336" fill="none" stroke="black"></path>
+                <path d="M 416,144 L 416,192" fill="none" stroke="black"></path>
+                <path d="M 416,224 L 416,272" fill="none" stroke="black"></path>
+                <path d="M 512,304 L 512,336" fill="none" stroke="black"></path>
+                <path d="M 528,272 L 528,384" fill="none" stroke="black"></path>
+                <path d="M 288,32 L 392,32" fill="none" stroke="black"></path>
+                <path d="M 288,64 L 392,64" fill="none" stroke="black"></path>
+                <path d="M 8,96 L 448,96" fill="none" stroke="black"></path>
+                <path d="M 16,144 L 80,144" fill="none" stroke="black"></path>
+                <path d="M 152,144 L 224,144" fill="none" stroke="black"></path>
+                <path d="M 272,144 L 416,144" fill="none" stroke="black"></path>
+                <path d="M 80,160 L 104,160" fill="none" stroke="black"></path>
+                <path d="M 16,176 L 80,176" fill="none" stroke="black"></path>
+                <path d="M 224,176 L 272,176" fill="none" stroke="black"></path>
+                <path d="M 152,192 L 224,192" fill="none" stroke="black"></path>
+                <path d="M 272,192 L 416,192" fill="none" stroke="black"></path>
+                <path d="M 288,224 L 416,224" fill="none" stroke="black"></path>
+                <path d="M 176,272 L 528,272" fill="none" stroke="black"></path>
+                <path d="M 104,288 L 176,288" fill="none" stroke="black"></path>
+                <path d="M 192,304 L 376,304" fill="none" stroke="black"></path>
+                <path d="M 392,304 L 512,304" fill="none" stroke="black"></path>
+                <path d="M 16,320 L 80,320" fill="none" stroke="black"></path>
+                <path d="M 80,336 L 176,336" fill="none" stroke="black"></path>
+                <path d="M 392,336 L 512,336" fill="none" stroke="black"></path>
+                <path d="M 16,352 L 80,352" fill="none" stroke="black"></path>
+                <path d="M 192,352 L 376,352" fill="none" stroke="black"></path>
+                <path d="M 176,384 L 528,384" fill="none" stroke="black"></path>
+                <path class="jump" d="M 344,104 C 350,104 350,88 344,88" fill="none" stroke="black"></path>
+                <g class="text">
+                  <text x="340" y="52">Orchestrator</text>
+                  <text x="40" y="84">Service</text>
+                  <text x="376" y="84">(Step</text>
+                  <text x="412" y="84">1)</text>
+                  <text x="40" y="116">Network</text>
+                  <text x="236" y="132">Step</text>
+                  <text x="264" y="132">4</text>
+                  <text x="36" y="164">User</text>
+                  <text x="68" y="164">#1</text>
+                  <text x="184" y="164">AAA</text>
+                  <text x="296" y="164">SDN</text>
+                  <text x="356" y="164">Controller</text>
+                  <text x="188" y="180">Server</text>
+                  <text x="336" y="180">PDP</text>
+                  <text x="452" y="228">Step</text>
+                  <text x="480" y="228">5</text>
+                  <text x="44" y="244">Step</text>
+                  <text x="72" y="244">2</text>
+                  <text x="220" y="244">Step</text>
+                  <text x="248" y="244">3</text>
+                  <text x="232" y="324">Network</text>
+                  <text x="292" y="324">Access</text>
+                  <text x="348" y="324">Server</text>
+                  <text x="432" y="324">Firewall,</text>
+                  <text x="492" y="324">etc.</text>
+                  <text x="36" y="340">User</text>
+                  <text x="68" y="340">#2</text>
+                  <text x="272" y="340">(NAS)</text>
+                  <text x="368" y="372">PEP</text>
+                </g>
+              </svg><a href="#section-4.1-4.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
 <a href="#name-an-example-architecture-for" class="selfRef">An Example Architecture for User Group-based Policy Management</a>
@@ -1609,22 +1664,21 @@ in <a href="#sec-UCL" class="auto internal xref">Section 5.2</a>. An example is 
           <dd style="margin-left: 1.5em" id="section-4.1-6.12">
             <p id="section-4.1-6.12.1">Either the AAA server or the NAS notifies an SDN controller
    of the mapping between the user group ID and related common packet
-   header attributes (e.g., IP/MAC address). The exact details of how such notification is performed are out scope of this specification.<a href="#section-4.1-6.12.1" class="pilcrow">¶</a></p>
+   header attributes (e.g., the 5-tuple). The exact details of how such notification is performed are out scope of this specification.<a href="#section-4.1-6.12.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.1-6.13">Step 5:</dt>
           <dd style="margin-left: 1.5em" id="section-4.1-6.14">
-            <p id="section-4.1-6.14.1">Either group or IP/MAC address-based access control policies
+            <p id="section-4.1-6.14.1">Either group-based or packet header field-based access control policies
    are maintained on relevant PEPs under the SDN controller's management.
-   Whether the PEP enforces the group or IP/MAC address-based ACL is
-   implementation specific. Both types of ACL policy may exist on
+   Both types of ACL policy may exist on
    the PEP. <a href="#PEP-ucl" class="auto internal xref">Appendix A.2</a> and <a href="#PEP-acl" class="auto internal xref">Appendix A.3</a> elaborate on each case.<a href="#section-4.1-6.14.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.1-7">A similar flow applies to policy management based on other endpoint group types, such as device or application groups,
 except that the mapping between the group ID and related common packet
-header attributes (e.g., IP/MAC address) may be maintained on the SDN controller based on an inventory or an application registry. Particularly, the use of RADIUS exchanges is not required in such cases (<a href="#sec-radius" class="auto internal xref">Section 6</a>).<a href="#section-4.1-7" class="pilcrow">¶</a></p>
+header attributes (e.g., 5-tuple) may be maintained on the SDN controller based on an inventory or an application registry. Particularly, the use of RADIUS exchanges is not required in such cases (<a href="#sec-radius" class="auto internal xref">Section 6</a>).<a href="#section-4.1-7" class="pilcrow">¶</a></p>
 <p id="section-4.1-8"><a href="#implement-considerations" class="auto internal xref">Section 8</a> provides additional operational considerations.<a href="#section-4.1-8" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2724,6 +2778,10 @@ which rules are applied, to better craft an attack.<a href="#section-9.1-7.1.1.2
         <dd>
 <span class="refAuthor">Yavatkar, R.</span>, <span class="refAuthor">Pendarakis, D.</span>, and <span class="refAuthor">R. Guerin</span>, <span class="refTitle">"A Framework for Policy-based Admission Control"</span>, <span class="seriesInfo">RFC 2753</span>, <span class="seriesInfo">DOI 10.17487/RFC2753</span>, <time datetime="2000-01" class="refDate">January 2000</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2753">https://www.rfc-editor.org/rfc/rfc2753</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC3022">[RFC3022]</dt>
+        <dd>
+<span class="refAuthor">Srisuresh, P.</span> and <span class="refAuthor">K. Egevang</span>, <span class="refTitle">"Traditional IP Network Address Translator (Traditional NAT)"</span>, <span class="seriesInfo">RFC 3022</span>, <span class="seriesInfo">DOI 10.17487/RFC3022</span>, <time datetime="2001-01" class="refDate">January 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3022">https://www.rfc-editor.org/rfc/rfc3022</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC3198">[RFC3198]</dt>
         <dd>
 <span class="refAuthor">Westerinen, A.</span>, <span class="refAuthor">Schnizlein, J.</span>, <span class="refAuthor">Strassner, J.</span>, <span class="refAuthor">Scherling, M.</span>, <span class="refAuthor">Quinn, B.</span>, <span class="refAuthor">Herzog, S.</span>, <span class="refAuthor">Huynh, A.</span>, <span class="refAuthor">Carlson, M.</span>, <span class="refAuthor">Perry, J.</span>, and <span class="refAuthor">S. Waldbusser</span>, <span class="refTitle">"Terminology for Policy-Based Management"</span>, <span class="seriesInfo">RFC 3198</span>, <span class="seriesInfo">DOI 10.17487/RFC3198</span>, <time datetime="2001-11" class="refDate">November 2001</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3198">https://www.rfc-editor.org/rfc/rfc3198</a>&gt;</span>. </dd>
@@ -2763,6 +2821,10 @@ which rules are applied, to better craft an attack.<a href="#section-9.1-7.1.1.2
 <dt id="RFC8340">[RFC8340]</dt>
         <dd>
 <span class="refAuthor">Bjorklund, M.</span> and <span class="refAuthor">L. Berger, Ed.</span>, <span class="refTitle">"YANG Tree Diagrams"</span>, <span class="seriesInfo">BCP 215</span>, <span class="seriesInfo">RFC 8340</span>, <span class="seriesInfo">DOI 10.17487/RFC8340</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8340">https://www.rfc-editor.org/rfc/rfc8340</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8981">[RFC8981]</dt>
+        <dd>
+<span class="refAuthor">Gont, F.</span>, <span class="refAuthor">Krishnan, S.</span>, <span class="refAuthor">Narten, T.</span>, and <span class="refAuthor">R. Draves</span>, <span class="refTitle">"Temporary Address Extensions for Stateless Address Autoconfiguration in IPv6"</span>, <span class="seriesInfo">RFC 8981</span>, <span class="seriesInfo">DOI 10.17487/RFC8981</span>, <time datetime="2021-02" class="refDate">February 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8981">https://www.rfc-editor.org/rfc/rfc8981</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9000">[RFC9000]</dt>
         <dd>
@@ -3312,16 +3374,12 @@ at 18:00:00 in Pacific Standard Time on December 31, 2026.<a href="#appendix-A.1
    Security Policy over the years.  In particular, <span>[<a href="#I-D.you-i2nsf-user-group-based-policy" class="cite xref">I-D.you-i2nsf-user-group-based-policy</a>]</span>
    and <span>[<a href="#I-D.yizhou-anima-ip-to-access-control-groups" class="cite xref">I-D.yizhou-anima-ip-to-access-control-groups</a>]</span> provided mechanisms to
    establish a mapping between the IP address/prefix of users and access
-   control group IDs.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
-<p id="appendix-B-2">Jianjie You, Myo Zarny, Christian Jacquenet, Mohamed Boucadair, and
-   Yizhou Li contributed to an earlier version of <span>[<a href="#I-D.you-i2nsf-user-group-based-policy" class="cite xref">I-D.you-i2nsf-user-group-based-policy</a>]</span>.
-   We would like to thank the authors of that Internet-Draft on modern network access
-   control mechanisms for material that assisted in thinking about this document.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
-<p id="appendix-B-3">Thanks to Joe Clarke, Bill Fenner, Benoît Claise, Rob Wilton, David Somers-Harris,
+   control group IDs. The authors would like to thank Jianjie You, Myo Zarny, Christian Jacquenet, and Yizhou Li for their early contributions to these works.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2">Thanks to Joe Clarke, Bill Fenner, Benoît Claise, Rob Wilton, David Somers-Harris,
    Alan Dekok, Heikki Vatiainen, Wen Xiang, Wei Wang, Hongwei Li, and Jensen Zhang for
-   their review and comments.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
-<p id="appendix-B-4">Thanks to Dhruv Dhody for the OPSDIR review, Alexander Pelov for INTDIR review, Valery Smyslov for the SECDIR review, and Acee Lindem for the YANGDOCTORS review.<a href="#appendix-B-4" class="pilcrow">¶</a></p>
-<p id="appendix-B-5">Thanks to Mahesh Jethanandani for the AD review.<a href="#appendix-B-5" class="pilcrow">¶</a></p>
+   their review and comments.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+<p id="appendix-B-3">Thanks to Dhruv Dhody for the OPSDIR review, Alexander Pelov for INTDIR review, Valery Smyslov for the SECDIR review, and Acee Lindem for the YANGDOCTORS review.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
+<p id="appendix-B-4">Thanks to Mahesh Jethanandani for the AD review.<a href="#appendix-B-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
