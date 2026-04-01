@@ -217,7 +217,7 @@ Table of Contents
    The following definitions are used throughout this document:
 
    Enterprise device:  For the purposes of this document, an enterprise
-      device is a computing device which falls under the access control
+      device is an end-device which falls under the access control
       domain of centrally managed authority.  A personal device (bring
       your own device (BYOD)) may temporarily be considered an
       enterprise device when it is used to access resources controlled
@@ -233,7 +233,7 @@ Table of Contents
       network access policy.  An end-user is defined as a person.  Refer
       to Section 4.2.1 for more details.
 
-   device group:  A collection of host devices that share a common
+   device group:  A collection of enterprise devices that share a common
       access control policies.  A host device provides compute, memory,
       storage, and networking capabilities and connects to a network.
       Host devices may be servers, Internet of Things (IoT) devices,
