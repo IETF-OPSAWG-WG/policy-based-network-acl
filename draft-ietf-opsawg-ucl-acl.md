@@ -132,8 +132,8 @@ informative:
    Other implications related to the change of MAC addresses are discussed in
    {{?RFC9797}}.
 
-   The document does not specify how to map the policy group identifiers
-   to dedicated fields, Group-Based Policy (GBP) discussed in {{Section 6.2.3 of ?RFC9638}}
+  The document does not specify how to map the policy group identifiers to
+dedicated fields. Group-Based Policy (GBP), discussed in {{Section 6.2.3 of ?RFC9638}},
    provides an example of how that may be achieved.
 
 ## Editorial Note (To be removed by RFC Editor)
@@ -203,10 +203,10 @@ informative:
    because (1) there is a large number of connecting endpoints and (2) an endpoint may have different
    source IP addresses in different network segments,
    deploying a network access control policy for each IP address or
-   network segment requires a high overhead.  An alternate approach is to
-   configure endpoint groups to classify users, enterprise devices and applications
-   and associate ACLs with endpoint groups so that endpoints in each
-   group can share a group of ACL rules.  This approach greatly reduces
+   network segment requires a high overhead. An alternate approach is to configure endpoint groups to classify users,
+   enterprise devices, and applications, and to associate ACLs with endpoint
+   groups so that endpoints in each group can share a group of ACL rules.
+   This approach greatly reduces
    the overhead of the administrators and optimizes the ACL resources.
 
    The network ACLs can be provisioned on devices using specific
