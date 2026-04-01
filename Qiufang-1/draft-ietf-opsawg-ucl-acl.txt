@@ -217,10 +217,10 @@ Table of Contents
    The following definitions are used throughout this document:
 
    Enterprise device:  A device that falls under the access control
-      domain of centrally managed authority.  A personal device (bring
-      your own device (BYOD)) may temporarily be considered an
-      enterprise device when it is used to access resources controlled
-      by the centrally managed authority.
+      domain of centrally managed authority (enterprise administrator,
+      typically).  (BYOD)) may temporarily be considered an enterprise
+      device when it is used to access resources controlled by the
+      centrally managed authority.
 
    Endpoint:  Refers to an entity which could be an end-user, host
       device, or application that actually connects to a network.
