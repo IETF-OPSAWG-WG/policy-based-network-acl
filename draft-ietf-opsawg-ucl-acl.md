@@ -165,6 +165,13 @@ dedicated fields. Group-Based Policy (GBP), discussed in {{Section 6.2.3 of ?RFC
 
    The following definitions are used throughout this document:
 
+  Enterprise device: 
+  : For the purposes of this document, an enterprise device
+  is a computing device which falls under the access control domain of
+  centrally managed authority.  A personal device (bring your own device
+  (BYOD)) may temporarily be considered an enterprise device when it is used to
+  access resources controlled by the centrally managed authority.
+
    Endpoint:
    : Refers to an entity which could be an end-user, host device, or application that actually connects to a network.
 
@@ -336,7 +343,7 @@ header attributes (e.g., IP/MAC address) may be maintained on the SDN controller
    weekdays versus weekends), etc.
 
 | Group Name | Group ID | Group Description |
-| R&D        |   foo-10 |  R&D employees                 |
+| R&D Regular|   foo-10 |  R&D employees                 |
 | R&D BYOD   |   foo-11 |  Personal devices of R&D employees |
 | Sales      |   foo-20 |  Sales employees               |
 | VIP        |   foo-30 |  VIP employees                 |
