@@ -173,7 +173,7 @@ An enterprise device provides compute, memory, storage, and networking capabilit
 : An enterprise device could be a server that hosts applications or software that deliver services to enterprise users. It could also be an enterprise Internet of Things (IoT) device that serves a limited purpose (e.g., a printer that allows users to scan and print), etc.
 
    Endpoint:
-   : Refers to an entity which could be an end-user, host device, or application that actually connects to a network.
+   : Refers to an entity which could be an end-user, enterprise device, or application that actually connects to a network.
 
    Endpoint group:
    : Refers to a group of endpoints that share common access control policies.
