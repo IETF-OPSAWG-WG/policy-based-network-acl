@@ -133,7 +133,7 @@ informative:
    {{?RFC9797}}.
 
   The document does not specify how to map the policy group identifiers to
-dedicated fields. Group-Based Policy (GBP), discussed in {{Section 6.2.3 of ?RFC9638}},
+dedicated packet fields. Group-Based Policy (GBP), discussed in {{Section 6.2.3 of ?RFC9638}},
    provides an example of how that may be achieved.
 
 ## Editorial Note (To be removed by RFC Editor)
