@@ -167,7 +167,7 @@ dedicated fields. Group-Based Policy (GBP), discussed in {{Section 6.2.3 of ?RFC
 
   Enterprise device:
   : For the purposes of this document, an enterprise device
-  is a computing device which falls under the access control domain of
+  is an end-device which falls under the access control domain of
   centrally managed authority.  A personal device (bring your own device
   (BYOD)) may temporarily be considered an enterprise device when it is used to
   access resources controlled by the centrally managed authority.
@@ -182,7 +182,7 @@ dedicated fields. Group-Based Policy (GBP), discussed in {{Section 6.2.3 of ?RFC
    : A group of end-users who will be assigned the same network access policy. An end-user is defined as a person. Refer to {{sec-ug}} for more details.
 
    device group:
-   : A collection of host devices that share a common access control policies. A host device provides compute, memory, storage, and networking capabilities and connects to a network. Host devices may be servers, Internet of Things (IoT) devices, etc. Refer to {{sec-dg}} for more details.
+   : A collection of enterprise devices that share a common access control policies. A host device provides compute, memory, storage, and networking capabilities and connects to a network. Host devices may be servers, Internet of Things (IoT) devices, etc. Refer to {{sec-dg}} for more details.
 
    Application group:
    : A collection of applications that share a common access control policies. An application is a software program used for a specific service. Refer to {{sec-ag}} for more details.
