@@ -485,9 +485,8 @@ Table of Contents
    identity of a group of enterprise end-devices.  could be a server
    that hosts applications or software that deliver services to
    enterprise users.  It could also be an enterprise IoT device that
-   serves a limited purpose, e.g., a printer that allows users to scan
-   and print.  Table 2 shows an example of how device group definitions
-   may be characterized.
+   serves a limited purpose, e.g., a printer that allows Table 2 shows
+   an example of how device group definitions may be characterized.
 
         +==================+==========+===========================+
         | Group Name       | Group ID | Group Description         |
