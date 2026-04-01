@@ -139,7 +139,7 @@ Table of Contents
       local attachment point to the enterprise network).  For example,
       network access might be granted based upon criteria such as users'
       access location, source network reputation, users' role, time-of-
-      day, type of network device used (e.g., corporate issued device
+      day, type of network device used (e.g., corporate-issued device
       versus personal device), device's security posture, etc.  This
       means that the network needs to recognize the endpoints' identity
       and their current context, and map the endpoints to their correct
@@ -227,39 +227,42 @@ Table of Contents
       limited purpose (e.g., a printer that allows users to scan and
       print), etc.
 
-      Endpoint:  Refers to an entity which could be an end-user,
-         enterprise device, or application that actually connects to a
-         network.
+      While a personal device (BYOD) is not a physical asset of the
+      enterprise, it is subject to the enterprise' access control
+      policies when accessing the enterprise resources controlled by the
+      centrally managed authority.
 
-      Endpoint group:  Refers to a group of endpoints that share common
-         access control policies.
+   Endpoint:  Refers to an entity which could be an end-user, enterprise
+      device, or application that actually connects to a network.
 
-      User group:  A group of end-users who will be assigned the same
-         network access policy.  An end-user is defined as a person.
-         Refer to Section 4.2.1 for more details.
+   Endpoint group:  Refers to a group of endpoints that share common
+      access control policies.
 
-      device group:  A collection of enterprise devices that share a
-         common access control policies.  Refer to Section 4.2.2 for
-         more details.
+   User group:  A group of end-users who will be assigned the same
+      network access policy.  An end-user is defined as a person.  Refer
+      to Section 4.2.1 for more details.
 
-      Application group:  A collection of applications that share a
-         common access control policies.  An application is a software
-         program used for a specific service.  Refer to Section 4.2.3
-         for more details.
+   device group:  A collection of enterprise devices that share a common
+      access control policies.  Refer to Section 4.2.2 for more details.
 
-      Endpoint group identifier:  An identifier used to represent the
-         collective identity of an endpoint group.  An endpoint group
-         may include a user group, device group, or application group.
+   Application group:  A collection of applications that share a common
+      access control policies.  An application is a software program
+      used for a specific service.  Refer to Section 4.2.3 for more
+      details.
 
-      User group based Control List (UCL) data model:  A YANG data model
-         for policy-based network access control that specifies an
-         extension to the "ietf-access-control-list" module [RFC8519].
-         It allows policy enforcement based on a group identifier, which
-         can be used both at the network device level and at the
-         network/administrative domain level.
+   Endpoint group identifier:  An identifier used to represent the
+      collective identity of an endpoint group.  An endpoint group may
+      include a user group, device group, or application group.
 
-      Policy:  A set of rules to administer, manage, and control access
-         to network resources [RFC3198].
+   User group based Control List (UCL) data model:  A YANG data model
+      for policy-based network access control that specifies an
+      extension to the "ietf-access-control-list" module [RFC8519].  It
+      allows policy enforcement based on a group identifier, which can
+      be used both at the network device level and at the network/
+      administrative domain level.
+
+   Policy:  A set of rules to administer, manage, and control access to
+      network resources [RFC3198].
 
 3.  Sample Usage
 
@@ -483,11 +486,8 @@ Table of Contents
 4.2.2.  Device Group
 
    The device group ID is an identifier that represents the collective
-   identity of a group of enterprise end-devices.  could be a server
-   that hosts applications or software that deliver services to
-   enterprise users.  It could also be an enterprise IoT device that
-   serves a limited purpose, e.g., a printer that allows Table 2 shows
-   an example of how device group definitions may be characterized.
+   identity of a group of enterprise devices.  Table 2 shows an example
+   of how device group definitions may be characterized.
 
         +==================+==========+===========================+
         | Group Name       | Group ID | Group Description         |
