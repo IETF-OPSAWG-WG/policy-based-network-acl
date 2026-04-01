@@ -100,7 +100,7 @@ informative:
       local attachment point to the enterprise network).  For example,
       network access might be granted based upon criteria such as users'
       access location, source network reputation, users' role, time-of-
-      day, type of network device used (e.g., corporate issued device
+      day, type of network device used (e.g., corporate-issued device
       versus personal device), device's security posture, etc. This
       means that the network needs to recognize the endpoints' identity and their
       current context, and map the endpoints to their correct access
@@ -131,8 +131,8 @@ informative:
    Other implications related to the change of MAC addresses are discussed in
    {{?RFC9797}}.
 
-   The document does not specify how to map the policy group identifiers
-   to dedicated fields, Group-Based Policy (GBP) discussed in {{Section 6.2.3 of ?RFC9638}}
+  The document does not specify how to map the policy group identifiers to
+dedicated packet fields. Group-Based Policy (GBP), discussed in {{Section 6.2.3 of ?RFC9638}},
    provides an example of how that may be achieved.
 
 ## Editorial Note (To be removed by RFC Editor)
@@ -164,8 +164,15 @@ informative:
 
    The following definitions are used throughout this document:
 
+  Enterprise device:
+  : A device that falls under the access control domain of
+   centrally managed authority (enterprise administrator, typically).
+   An enterprise device provides compute, memory, storage, and networking capabilities and connects to a network.
+  : An enterprise device could be a server that hosts applications or software that deliver services to enterprise users. It could also be an enterprise Internet of Things (IoT) device that serves a limited purpose (e.g., a printer that allows users to scan and print), etc.
+  : While a personal device (BYOD) is not a physical asset of the enterprise, it is subject to the enterprise' access control policies when accessing the enterprise resources controlled by the centrally managed authority.
+
    Endpoint:
-   : Refers to an entity which could be an end-user, host device, or application that actually connects to a network.
+   : Refers to an entity which could be an end-user, enterprise device, or application that actually connects to a network.
 
    Endpoint group:
    : Refers to a group of endpoints that share common access control policies.
@@ -174,7 +181,7 @@ informative:
    : A group of end-users who will be assigned the same network access policy. An end-user is defined as a person. Refer to {{sec-ug}} for more details.
 
    device group:
-   : A collection of host devices that share a common access control policies. A host device provides compute, memory, storage, and networking capabilities and connects to a network. Host devices may be servers, Internet of Things (IoT) devices, etc. Refer to {{sec-dg}} for more details.
+   : A collection of enterprise devices that share a common access control policies. Refer to {{sec-dg}} for more details.
 
    Application group:
    : A collection of applications that share a common access control policies. An application is a software program used for a specific service. Refer to {{sec-ag}} for more details.
@@ -202,10 +209,10 @@ informative:
    because (1) there is a large number of connecting endpoints and (2) an endpoint may have different
    source IP addresses in different network segments,
    deploying a network access control policy for each IP address or
-   network segment requires a high overhead.  An alternate approach is to
-   configure endpoint groups to classify users, enterprise devices and applications
-   and associate ACLs with endpoint groups so that endpoints in each
-   group can share a group of ACL rules.  This approach greatly reduces
+   network segment requires a high overhead. An alternate approach is to configure endpoint groups to classify users,
+   enterprise devices, and applications, and to associate ACLs with endpoint
+   groups so that endpoints in each group can share a group of ACL rules.
+   This approach greatly reduces
    the overhead of the administrators and optimizes the ACL resources.
 
    The network ACLs can be provisioned on devices using specific
@@ -334,7 +341,7 @@ header attributes (e.g., 5-tuple) may be maintained on the SDN controller based 
    weekdays versus weekends), etc.
 
 | Group Name | Group ID | Group Description |
-| R&D        |   foo-10 |  R&D employees                 |
+| R&D Regular|   foo-10 |  R&D employees                 |
 | R&D BYOD   |   foo-11 |  Personal devices of R&D employees |
 | Sales      |   foo-20 |  Sales employees               |
 | VIP        |   foo-30 |  VIP employees                 |
@@ -343,11 +350,8 @@ header attributes (e.g., 5-tuple) may be maintained on the SDN controller based 
 ###  Device Group {#sec-dg}
 
    The device group ID is an identifier that represents the collective
-   identity of a group of enterprise end-devices.  An enterprise device
-   could be a server that hosts applications or software that deliver
-   services to enterprise users.  It could also be an enterprise IoT
-   device that serves a limited purpose, e.g., a printer that allows
-   users to scan and print. {{dg-example}} shows an example
+   identity of a group of enterprise devices.
+   {{dg-example}} shows an example
    of how device group definitions may be characterized.
 
    | Group Name | Group ID | Group Description |
@@ -356,7 +360,6 @@ header attributes (e.g., 5-tuple) may be maintained on the SDN controller based 
    |Printer Resource|   bar-60     | Printer resources |
    {: #dg-example title='Device Group Example'}
 
-   Users accessing an enterprise device should be strictly controlled.
    Matching abstract device group ID instead of specified addresses in
    ACL polices helps shield the consequences of address change (e.g.,
    back-end VM-based server migration).
