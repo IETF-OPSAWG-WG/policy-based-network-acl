@@ -356,7 +356,7 @@ header attributes (e.g., IP/MAC address) may be maintained on the SDN controller
    could be a server that hosts applications or software that deliver
    services to enterprise users.  It could also be an enterprise IoT
    device that serves a limited purpose, e.g., a printer that allows
-   users to scan and print. {{dg-example}} shows an example
+   {{dg-example}} shows an example
    of how device group definitions may be characterized.
 
    | Group Name | Group ID | Group Description |
