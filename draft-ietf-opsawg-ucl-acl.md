@@ -13,9 +13,19 @@ area: "Operations and Management"
 workgroup: "OPSAWG"
 keyword:
  - ACL
- - Policy-based
  - BYOD
  - Access control
+ - Policy Enforcement Point
+ - PEP
+ - Policy enforcement
+ - Policy Decision Point
+ - PDP
+ - Network Management
+ - Service Provisioning
+ - Group-Based Policy
+ - GBP
+ - Software-Defined Networking
+ - SDN
 
 author:
  -
@@ -328,7 +338,7 @@ header attributes (e.g., 5-tuple) may be maintained on the SDN controller based 
    previous user group.
 
    This document does not make any assumption about how user groups are
-   defined.  Such considerations are deployment specific and are out of
+   defined.  Such considerations are deployment-specific and are out of
    scope.  However, and for illustration purposes, {{ug-example}} shows
    an example of how user group definitions may be characterized. User
    groups may share several common criteria.  That is, user group
@@ -381,7 +391,7 @@ header attributes (e.g., 5-tuple) may be maintained on the SDN controller based 
 
 ## Relations Between Different Endpoint Groups
 
-  Policies enforcement can be targeted to different endpoint groups in different scenarios.
+  Policy enforcement can be targeted to different endpoint groups in different scenarios.
   For example, when a user connects to the network and accesses an application hosted on one or multiple devices, access policies may be applied to different user groups.
   In some cases, applications and devices may operate and run without requiring any user interventions,
   or they may require user authentication but access rules do not differentiate between different users.
@@ -411,7 +421,7 @@ header attributes (e.g., 5-tuple) may be maintained on the SDN controller based 
    having a list of "endpoint group" inside, each entry has a "group-id" that uniquely
    identifies the endpoint group and a "group-type" parameter to specify the endpoint group type.
 
-> "group-id" is defined as a string rather than unsigned integer (e.g., uint32) to accommodate deployments which require some identification hierarchy within a domain. Such a hierarchy is meant to ease coordination within an administrative domain. There might be cases where a domain needs to tag packets with the group they belong to. The tagging does not need to mirror exactly the "group id" used to populate the policy. How the "group-id" string is mapped to the tagging or field in the packet header in encapsulation scenario is outside the scope of this document. Augmentation may be considered in the future to cover encapsulation considerations.
+> "group-id" is defined as a string rather than unsigned integer (e.g., uint32) to accommodate deployments which require some identification hierarchy within a domain. Such a hierarchy is meant to ease coordination within an administrative domain. There might be cases where a domain needs to tag packets with the group they belong to. The tagging does not need to mirror exactly the "group ID" used to populate the policy. How the "group-id" string is mapped to the tagging or field in the packet header in encapsulation scenario is outside the scope of this document. Augmentation may be considered in the future to cover encapsulation considerations.
 
    The second part of the "ietf-ucl-acl" module augments the "matches" container in the
    "ietf-access-control-list" module {{!RFC8519}} so that a source and/or destination endpoint group index
@@ -514,7 +524,7 @@ Notation for {{rad-att}}:
    In some cases, the UCL data model is implemented at the network/administrative domain
    level with an SDN controller maintaining the dynamical mapping from endpoint
    group ID to IP/transport fields (e.g., the 5-tuple) and programing the PEPs with
-   IP address/5-tuple based ACLs. In such cases, PEPs do not require to implement
+   IP address/5-tuple based ACLs. In such cases, PEPs do not require implementing
    specific logic (including hardware) compared to the enforcement of conventional ACLs.
 
    It is possible for the UCL data model to be implemented at the device level.
@@ -536,7 +546,7 @@ Notation for {{rad-att}}:
 
 ## Mapping Consistency
 
-   The specification requires that adequate setup is put in place to map a Group ID to packets
+   The specification requires that adequate setup is put in place to map a Group ID to packet
    fields, typically managed by a controller. Special care should be taken
    to ensure that such mapping is appropriately enforced when distinct
    mechanisms (RADIUS, etc.) are supported in network.
@@ -546,7 +556,7 @@ Notation for {{rad-att}}:
 
 ##  YANG
 
-   This section is modeled after the template described in {{Section 3.7 of ?I-D.ietf-netmod-rfc8407bis}}.
+   This section is modeled after the template described in {{Section 3.7.1 of ?RFC9907}}.
 
    The "ietf-ucl-acl" YANG module defines a data model
    that is designed to be accessed via YANG-based management protocols such
@@ -745,4 +755,4 @@ Notation for {{rad-att}}:
 
    Thanks to Mahesh Jethanandani for the AD review.
 
-   Thanks to Christopher Inacio, Andy Newton, Charles Eckel, Éric Vyncke, Deb Cooley, Gorry Fairhurst, Gunter Van de Velde, Jim Guichard, and Ketan Talaulikar for the IESG review.
+   Thanks to Christopher Inacio, Andy Newton, Charles Eckel, Éric Vyncke, Deb Cooley, Gorry Fairhurst, Gunter Van de Velde, Jim Guichard, Ketan Talaulikar, and Mike Bishop for the IESG review.
