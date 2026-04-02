@@ -31,9 +31,9 @@ module ietf-ucl-acl {
                <mailto:d.king@lancaster.ac.uk>";
   description
     "The User group-based Control List (UCL) YANG module augments
-     the IETF Access Control Lists (ACLs) module and is meant to
+     the IETF Access Control Lists (ACLs) module. UCL is meant to
      ensure consistent enforcement of ACL policies based on
-      the group identity.
+     the group identity.
 
      Copyright (c) 2026 IETF Trust and the persons identified
      as authors of the code. All rights reserved.
@@ -128,12 +128,13 @@ module ietf-ucl-acl {
     base acl:acl-base;
     description
       "An ACL that matches based on an endpoint group identity,
-       which can represent the collective identity of
-       a group of authenticated users, end-devices, or applications.
+       which can represent the collective identity of a group of
+       authenticated users, end-devices, or applications.
        An endpoint group identity may be carried in the outer/inner 
-       packet header (e.g., via NVO3 encapsulation), or may not 
-       correspond to any field in the packet header. Matching on 
-       Layer 4 header fields may also exist in the ACEs.";
+       packet header (e.g., via Network Virtualization over Layer 3
+       (NVO3) encapsulation), or may not correspond to any field in
+       the packet header. Matching on Layer 4 header fields may also
+       exist in the ACEs.";
   }
   
   identity mixed-ipv4-group-type {
@@ -224,7 +225,7 @@ module ietf-ucl-acl {
       "An ACL that contains a mix of entries that match on fields
        in the Ethernet header, IPv4 header, IPv6 header, and endpoint 
        group identities, which can represent the collective identity 
-       of a group of authenticated users, end-devices or 
+       of a group of authenticated users, end-devices or
        applications. Matching on Layer 4 header fields may also exist 
        in the ACEs.";
   }  
@@ -304,7 +305,7 @@ module ietf-ucl-acl {
       leaf source-group-id {
         type group-id-reference;
         description
-          "The matched source endpoint group ID.";
+          "The matched source endpoint group identifier.";
       }
       leaf destination-group-id {
         type group-id-reference;
@@ -322,10 +323,10 @@ module ietf-ucl-acl {
     container effective-schedule {
       description
         "Defines when the access control entry rules 
-         are applied based on date and time condition.
+         are applied based on date and time conditions.
 
-         If it is not configured, the access control entry
-         is immediately and always applied.";
+         If it is not configured, the ACE is immediately
+         and always applied.";
       choice schedule-type {
         description
           "Choice based on the type of the time range.";
