@@ -22,9 +22,19 @@
     " name="description">
 <meta content="xml2rfc 3.32.0" name="generator">
 <meta content="ACL" name="keyword">
-<meta content="Policy-based" name="keyword">
 <meta content="BYOD" name="keyword">
 <meta content="Access control" name="keyword">
+<meta content="Policy Enforcement Point" name="keyword">
+<meta content="PEP" name="keyword">
+<meta content="Policy enforcement" name="keyword">
+<meta content="Policy Decision Point" name="keyword">
+<meta content="PDP" name="keyword">
+<meta content="Network Management" name="keyword">
+<meta content="Service Provisioning" name="keyword">
+<meta content="Group-Based Policy" name="keyword">
+<meta content="GBP" name="keyword">
+<meta content="Software-Defined Networking" name="keyword">
+<meta content="SDN" name="keyword">
 <meta content="draft-ietf-opsawg-ucl-acl-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.32.0
@@ -1063,7 +1073,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Ma, et al.</td>
-<td class="center">Expires 3 October 2026</td>
+<td class="center">Expires 4 October 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1076,12 +1086,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-opsawg-ucl-acl-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-04-01" class="published">1 April 2026</time>
+<time datetime="2026-04-02" class="published">2 April 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-10-03">3 October 2026</time></dd>
+<dd class="expires"><time datetime="2026-10-04">4 October 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1148,7 +1158,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 3 October 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 4 October 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1722,7 +1732,7 @@ header attributes (e.g., 5-tuple) may be maintained on the SDN controller based 
    IP address that falls outside of the range of addresses of the
    previous user group.<a href="#section-4.2.1-2" class="pilcrow">¶</a></p>
 <p id="section-4.2.1-3">This document does not make any assumption about how user groups are
-   defined.  Such considerations are deployment specific and are out of
+   defined.  Such considerations are deployment-specific and are out of
    scope.  However, and for illustration purposes, <a href="#ug-example" class="auto internal xref">Table 1</a> shows
    an example of how user group definitions may be characterized. User
    groups may share several common criteria.  That is, user group
@@ -1870,7 +1880,7 @@ header attributes (e.g., 5-tuple) may be maintained on the SDN controller based 
         <h3 id="name-relations-between-different">
 <a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-relations-between-different" class="section-name selfRef">Relations Between Different Endpoint Groups</a>
         </h3>
-<p id="section-4.3-1">Policies enforcement can be targeted to different endpoint groups in different scenarios.
+<p id="section-4.3-1">Policy enforcement can be targeted to different endpoint groups in different scenarios.
   For example, when a user connects to the network and accesses an application hosted on one or multiple devices, access policies may be applied to different user groups.
   In some cases, applications and devices may operate and run without requiring any user interventions,
   or they may require user authentication but access rules do not differentiate between different users.
@@ -1973,7 +1983,7 @@ module: ietf-ucl-acl
    identifies the endpoint group and a "group-type" parameter to specify the endpoint group type.<a href="#section-5.1-4" class="pilcrow">¶</a></p>
 <ul class="normal ulEmpty">
 <li class="normal ulEmpty" id="section-5.1-5.1">
-            <p id="section-5.1-5.1.1">"group-id" is defined as a string rather than unsigned integer (e.g., uint32) to accommodate deployments which require some identification hierarchy within a domain. Such a hierarchy is meant to ease coordination within an administrative domain. There might be cases where a domain needs to tag packets with the group they belong to. The tagging does not need to mirror exactly the "group id" used to populate the policy. How the "group-id" string is mapped to the tagging or field in the packet header in encapsulation scenario is outside the scope of this document. Augmentation may be considered in the future to cover encapsulation considerations.<a href="#section-5.1-5.1.1" class="pilcrow">¶</a></p>
+            <p id="section-5.1-5.1.1">"group-id" is defined as a string rather than unsigned integer (e.g., uint32) to accommodate deployments which require some identification hierarchy within a domain. Such a hierarchy is meant to ease coordination within an administrative domain. There might be cases where a domain needs to tag packets with the group they belong to. The tagging does not need to mirror exactly the "group ID" used to populate the policy. How the "group-id" string is mapped to the tagging or field in the packet header in encapsulation scenario is outside the scope of this document. Augmentation may be considered in the future to cover encapsulation considerations.<a href="#section-5.1-5.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-5.1-6">The second part of the "ietf-ucl-acl" module augments the "matches" container in the
@@ -2029,9 +2039,9 @@ module ietf-ucl-acl {
                &lt;mailto:d.king@lancaster.ac.uk&gt;";
   description
     "The User group-based Control List (UCL) YANG module augments
-     the IETF Access Control Lists (ACLs) module and is meant to
+     the IETF Access Control Lists (ACLs) module. UCL is meant to
      ensure consistent enforcement of ACL policies based on
-      the group identity.
+     the group identity.
 
      Copyright (c) 2026 IETF Trust and the persons identified
      as authors of the code. All rights reserved.
@@ -2126,12 +2136,13 @@ module ietf-ucl-acl {
     base acl:acl-base;
     description
       "An ACL that matches based on an endpoint group identity,
-       which can represent the collective identity of
-       a group of authenticated users, end-devices, or applications.
+       which can represent the collective identity of a group of
+       authenticated users, end-devices, or applications.
        An endpoint group identity may be carried in the outer/inner
-       packet header (e.g., via NVO3 encapsulation), or may not
-       correspond to any field in the packet header. Matching on
-       Layer 4 header fields may also exist in the ACEs.";
+       packet header (e.g., via Network Virtualization over Layer 3
+       (NVO3) encapsulation), or may not correspond to any field in
+       the packet header. Matching on Layer 4 header fields may also
+       exist in the ACEs.";
   }
 
   identity mixed-ipv4-group-type {
@@ -2302,7 +2313,7 @@ module ietf-ucl-acl {
       leaf source-group-id {
         type group-id-reference;
         description
-          "The matched source endpoint group ID.";
+          "The matched source endpoint group identifier.";
       }
       leaf destination-group-id {
         type group-id-reference;
@@ -2320,10 +2331,10 @@ module ietf-ucl-acl {
     container effective-schedule {
       description
         "Defines when the access control entry rules
-         are applied based on date and time condition.
+         are applied based on date and time conditions.
 
-         If it is not configured, the access control entry
-         is immediately and always applied.";
+         If it is not configured, the ACE is immediately
+         and always applied.";
       choice schedule-type {
         description
           "Choice based on the type of the time range.";
@@ -2488,7 +2499,7 @@ RADIUS packet.<a href="#section-6-7" class="pilcrow">¶</a></p>
 <p id="section-8.1-2">In some cases, the UCL data model is implemented at the network/administrative domain
    level with an SDN controller maintaining the dynamical mapping from endpoint
    group ID to IP/transport fields (e.g., the 5-tuple) and programing the PEPs with
-   IP address/5-tuple based ACLs. In such cases, PEPs do not require to implement
+   IP address/5-tuple based ACLs. In such cases, PEPs do not require implementing
    specific logic (including hardware) compared to the enforcement of conventional ACLs.<a href="#section-8.1-2" class="pilcrow">¶</a></p>
 <p id="section-8.1-3">It is possible for the UCL data model to be implemented at the device level.
    While it eliminates the need for an SDN controller to interact frequently
@@ -2517,7 +2528,7 @@ RADIUS packet.<a href="#section-6-7" class="pilcrow">¶</a></p>
         <h3 id="name-mapping-consistency">
 <a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-mapping-consistency" class="section-name selfRef">Mapping Consistency</a>
         </h3>
-<p id="section-8.3-1">The specification requires that adequate setup is put in place to map a Group ID to packets
+<p id="section-8.3-1">The specification requires that adequate setup is put in place to map a Group ID to packet
    fields, typically managed by a controller. Special care should be taken
    to ensure that such mapping is appropriately enforced when distinct
    mechanisms (RADIUS, etc.) are supported in network.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
@@ -2535,7 +2546,7 @@ RADIUS packet.<a href="#section-6-7" class="pilcrow">¶</a></p>
         <h3 id="name-yang">
 <a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-yang" class="section-name selfRef">YANG</a>
         </h3>
-<p id="section-9.1-1">This section is modeled after the template described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-28#section-3.7" class="relref">Section 3.7</a> of [<a href="#I-D.ietf-netmod-rfc8407bis" class="cite xref">I-D.ietf-netmod-rfc8407bis</a>]</span>.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
+<p id="section-9.1-1">This section is modeled after the template described in <span><a href="https://rfc-editor.org/rfc/rfc9907#section-3.7.1" class="relref">Section 3.7.1</a> of [<a href="#RFC9907" class="cite xref">RFC9907</a>]</span>.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
 <p id="section-9.1-2">The "ietf-ucl-acl" YANG module defines a data model
    that is designed to be accessed via YANG-based management protocols such
    as the Network Configuration Protocol (NETCONF) <span>[<a href="#RFC6241" class="cite xref">RFC6241</a>]</span> and RESTCONF <span>[<a href="#RFC8040" class="cite xref">RFC8040</a>]</span>. These YANG-based management
@@ -2751,10 +2762,6 @@ which rules are applied, to better craft an attack.<a href="#section-9.1-7.1.1.2
 <a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
-<dt id="I-D.ietf-netmod-rfc8407bis">[I-D.ietf-netmod-rfc8407bis]</dt>
-        <dd>
-<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Boucadair, M.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Guidelines for Authors and Reviewers of Documents Containing YANG Data Models"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-netmod-rfc8407bis-28</span>, <time datetime="2025-06-05" class="refDate">5 June 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-28">https://datatracker.ietf.org/doc/html/draft-ietf-netmod-rfc8407bis-28</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="I-D.ietf-radext-deprecating-radius">[I-D.ietf-radext-deprecating-radius]</dt>
         <dd>
 <span class="refAuthor">DeKok, A.</span>, <span class="refTitle">"Deprecating Insecure Practices in RADIUS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-radext-deprecating-radius-09</span>, <time datetime="2026-03-15" class="refDate">15 March 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-radext-deprecating-radius-09">https://datatracker.ietf.org/doc/html/draft-ietf-radext-deprecating-radius-09</a>&gt;</span>. </dd>
@@ -2852,8 +2859,12 @@ which rules are applied, to better craft an attack.<a href="#section-9.1-7.1.1.2
 <span class="refAuthor">Henry, J.</span> and <span class="refAuthor">Y. Lee</span>, <span class="refTitle">"Randomized and Changing Media Access Control (MAC) Addresses: Context, Network Impacts, and Use Cases"</span>, <span class="seriesInfo">RFC 9797</span>, <span class="seriesInfo">DOI 10.17487/RFC9797</span>, <time datetime="2025-06" class="refDate">June 2025</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9797">https://www.rfc-editor.org/rfc/rfc9797</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9899">[RFC9899]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Gonzalez de Dios, O.</span>, <span class="refAuthor">Barguil, S.</span>, <span class="refAuthor">Boucadair, M.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Extensions to the YANG Data Model for Access Control Lists (ACLs)"</span>, <span class="seriesInfo">RFC 9899</span>, <span class="seriesInfo">DOI 10.17487/RFC9899</span>, <time datetime="2025-12" class="refDate">December 2025</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9899">https://www.rfc-editor.org/rfc/rfc9899</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9907">[RFC9907]</dt>
+      <dd>
+<span class="refAuthor">Bierman, A.</span>, <span class="refAuthor">Boucadair, M., Ed.</span>, and <span class="refAuthor">Q. Wu</span>, <span class="refTitle">"Guidelines for Authors and Reviewers of Documents Containing YANG Data Models"</span>, <span class="seriesInfo">BCP 216</span>, <span class="seriesInfo">RFC 9907</span>, <span class="seriesInfo">DOI 10.17487/RFC9907</span>, <time datetime="2026-03" class="refDate">March 2026</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9907">https://www.rfc-editor.org/rfc/rfc9907</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -3393,7 +3404,7 @@ at 18:00:00 in Pacific Standard Time on December 31, 2026.<a href="#appendix-A.1
    their review and comments.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
 <p id="appendix-B-3">Thanks to Dhruv Dhody for the OPSDIR review, Alexander Pelov for INTDIR review, Valery Smyslov for the SECDIR review, and Acee Lindem for the YANGDOCTORS review.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
 <p id="appendix-B-4">Thanks to Mahesh Jethanandani for the AD review.<a href="#appendix-B-4" class="pilcrow">¶</a></p>
-<p id="appendix-B-5">Thanks to Christopher Inacio, Andy Newton, Charles Eckel, Éric Vyncke, Deb Cooley, Gorry Fairhurst, Gunter Van de Velde, Jim Guichard, and Ketan Talaulikar for the IESG review.<a href="#appendix-B-5" class="pilcrow">¶</a></p>
+<p id="appendix-B-5">Thanks to Christopher Inacio, Andy Newton, Charles Eckel, Éric Vyncke, Deb Cooley, Gorry Fairhurst, Gunter Van de Velde, Jim Guichard, Ketan Talaulikar, and Mike Bishop for the IESG review.<a href="#appendix-B-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">

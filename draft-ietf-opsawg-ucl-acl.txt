@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 3 October 2026                                M. Boucadair, Ed.
+Expires: 4 October 2026                                M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                            1 April 2026
+                                                            2 April 2026
 
 
  A YANG Data Model and RADIUS Extension for Policy-Based Network Access
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 October 2026.
+   This Internet-Draft will expire on 4 October 2026.
 
 Copyright Notice
 
@@ -459,7 +459,7 @@ Table of Contents
    user group.
 
    This document does not make any assumption about how user groups are
-   defined.  Such considerations are deployment specific and are out of
+   defined.  Such considerations are deployment-specific and are out of
    scope.  However, and for illustration purposes, Table 1 shows an
    example of how user group definitions may be characterized.  User
    groups may share several common criteria.  That is, user group
@@ -535,7 +535,7 @@ Table of Contents
 
 4.3.  Relations Between Different Endpoint Groups
 
-   Policies enforcement can be targeted to different endpoint groups in
+   Policy enforcement can be targeted to different endpoint groups in
    different scenarios.  For example, when a user connects to the
    network and accesses an application hosted on one or multiple
    devices, access policies may be applied to different user groups.  In
@@ -635,7 +635,7 @@ Table of Contents
       meant to ease coordination within an administrative domain.  There
       might be cases where a domain needs to tag packets with the group
       they belong to.  The tagging does not need to mirror exactly the
-      "group id" used to populate the policy.  How the "group-id" string
+      "group ID" used to populate the policy.  How the "group-id" string
       is mapped to the tagging or field in the packet header in
       encapsulation scenario is outside the scope of this document.
       Augmentation may be considered in the future to cover
@@ -693,9 +693,9 @@ Table of Contents
                   <mailto:d.king@lancaster.ac.uk>";
      description
        "The User group-based Control List (UCL) YANG module augments
-        the IETF Access Control Lists (ACLs) module and is meant to
+        the IETF Access Control Lists (ACLs) module. UCL is meant to
         ensure consistent enforcement of ACL policies based on
-         the group identity.
+        the group identity.
 
         Copyright (c) 2026 IETF Trust and the persons identified
         as authors of the code. All rights reserved.
@@ -790,12 +790,13 @@ Table of Contents
        base acl:acl-base;
        description
          "An ACL that matches based on an endpoint group identity,
-          which can represent the collective identity of
-          a group of authenticated users, end-devices, or applications.
+          which can represent the collective identity of a group of
+          authenticated users, end-devices, or applications.
           An endpoint group identity may be carried in the outer/inner
-          packet header (e.g., via NVO3 encapsulation), or may not
-          correspond to any field in the packet header. Matching on
-          Layer 4 header fields may also exist in the ACEs.";
+          packet header (e.g., via Network Virtualization over Layer 3
+          (NVO3) encapsulation), or may not correspond to any field in
+          the packet header. Matching on Layer 4 header fields may also
+          exist in the ACEs.";
      }
 
      identity mixed-ipv4-group-type {
@@ -966,7 +967,7 @@ Table of Contents
          leaf source-group-id {
            type group-id-reference;
            description
-             "The matched source endpoint group ID.";
+             "The matched source endpoint group identifier.";
          }
          leaf destination-group-id {
            type group-id-reference;
@@ -984,10 +985,10 @@ Table of Contents
        container effective-schedule {
          description
            "Defines when the access control entry rules
-            are applied based on date and time condition.
+            are applied based on date and time conditions.
 
-            If it is not configured, the access control entry
-            is immediately and always applied.";
+            If it is not configured, the ACE is immediately
+            and always applied.";
          choice schedule-type {
            description
              "Choice based on the type of the time range.";
@@ -1107,7 +1108,7 @@ Table of Contents
    administrative domain level with an SDN controller maintaining the
    dynamical mapping from endpoint group ID to IP/transport fields
    (e.g., the 5-tuple) and programing the PEPs with IP address/5-tuple
-   based ACLs.  In such cases, PEPs do not require to implement specific
+   based ACLs.  In such cases, PEPs do not require implementing specific
    logic (including hardware) compared to the enforcement of
    conventional ACLs.
 
@@ -1134,7 +1135,7 @@ Table of Contents
 8.3.  Mapping Consistency
 
    The specification requires that adequate setup is put in place to map
-   a Group ID to packets fields, typically managed by a controller.
+   a Group ID to packet fields, typically managed by a controller.
    Special care should be taken to ensure that such mapping is
    appropriately enforced when distinct mechanisms (RADIUS, etc.) are
    supported in network.
@@ -1143,8 +1144,8 @@ Table of Contents
 
 9.1.  YANG
 
-   This section is modeled after the template described in Section 3.7
-   of [I-D.ietf-netmod-rfc8407bis].
+   This section is modeled after the template described in Section 3.7.1
+   of [RFC9907].
 
    The "ietf-ucl-acl" YANG module defines a data model that is designed
    to be accessed via YANG-based management protocols such as the
@@ -1299,14 +1300,6 @@ Table of Contents
 
 11.2.  Informative References
 
-   [I-D.ietf-netmod-rfc8407bis]
-              Bierman, A., Boucadair, M., and Q. Wu, "Guidelines for
-              Authors and Reviewers of Documents Containing YANG Data
-              Models", Work in Progress, Internet-Draft, draft-ietf-
-              netmod-rfc8407bis-28, 5 June 2025,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-netmod-
-              rfc8407bis-28>.
-
    [I-D.ietf-radext-deprecating-radius]
               DeKok, A., "Deprecating Insecure Practices in RADIUS",
               Work in Progress, Internet-Draft, draft-ietf-radext-
@@ -1444,6 +1437,11 @@ Table of Contents
               Wu, "Extensions to the YANG Data Model for Access Control
               Lists (ACLs)", RFC 9899, DOI 10.17487/RFC9899, December
               2025, <https://www.rfc-editor.org/rfc/rfc9899>.
+
+   [RFC9907]  Bierman, A., Boucadair, M., Ed., and Q. Wu, "Guidelines
+              for Authors and Reviewers of Documents Containing YANG
+              Data Models", BCP 216, RFC 9907, DOI 10.17487/RFC9907,
+              March 2026, <https://www.rfc-editor.org/rfc/rfc9907>.
 
 Appendix A.  Examples Usage
 
@@ -1947,7 +1945,7 @@ Acknowledgments
 
    Thanks to Christopher Inacio, Andy Newton, Charles Eckel, Éric
    Vyncke, Deb Cooley, Gorry Fairhurst, Gunter Van de Velde, Jim
-   Guichard, and Ketan Talaulikar for the IESG review.
+   Guichard, Ketan Talaulikar, and Mike Bishop for the IESG review.
 
 Authors' Addresses
 
