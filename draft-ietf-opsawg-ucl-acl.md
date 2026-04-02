@@ -13,9 +13,19 @@ area: "Operations and Management"
 workgroup: "OPSAWG"
 keyword:
  - ACL
- - Policy-based
  - BYOD
  - Access control
+ - Policy Enforcement Point
+ - PEP
+ - Policy enforcement
+ - Policy Decision Point
+ - PDP
+ - Network Management
+ - Service Provisioning
+ - Group-Based Policy
+ - GBP
+ - Software-Defined Networking
+ - SDN
 
 author:
  -
