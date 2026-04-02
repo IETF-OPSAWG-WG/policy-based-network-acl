@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 3 October 2026                                M. Boucadair, Ed.
+Expires: 4 October 2026                                M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                            1 April 2026
+                                                            2 April 2026
 
 
  A YANG Data Model and RADIUS Extension for Policy-Based Network Access
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 October 2026.
+   This Internet-Draft will expire on 4 October 2026.
 
 Copyright Notice
 
@@ -693,9 +693,9 @@ Table of Contents
                   <mailto:d.king@lancaster.ac.uk>";
      description
        "The User group-based Control List (UCL) YANG module augments
-        the IETF Access Control Lists (ACLs) module and is meant to
+        the IETF Access Control Lists (ACLs) module. UCL is meant to
         ensure consistent enforcement of ACL policies based on
-         the group identity.
+        the group identity.
 
         Copyright (c) 2026 IETF Trust and the persons identified
         as authors of the code. All rights reserved.
@@ -790,12 +790,13 @@ Table of Contents
        base acl:acl-base;
        description
          "An ACL that matches based on an endpoint group identity,
-          which can represent the collective identity of
-          a group of authenticated users, end-devices, or applications.
+          which can represent the collective identity of a group of
+          authenticated users, end-devices, or applications.
           An endpoint group identity may be carried in the outer/inner
-          packet header (e.g., via NVO3 encapsulation), or may not
-          correspond to any field in the packet header. Matching on
-          Layer 4 header fields may also exist in the ACEs.";
+          packet header (e.g., via Network Virtualization over Layer 3
+          (NVO3) encapsulation), or may not correspond to any field in
+          the packet header. Matching on Layer 4 header fields may also
+          exist in the ACEs.";
      }
 
      identity mixed-ipv4-group-type {
@@ -966,7 +967,7 @@ Table of Contents
          leaf source-group-id {
            type group-id-reference;
            description
-             "The matched source endpoint group ID.";
+             "The matched source endpoint group identifier.";
          }
          leaf destination-group-id {
            type group-id-reference;
@@ -984,10 +985,10 @@ Table of Contents
        container effective-schedule {
          description
            "Defines when the access control entry rules
-            are applied based on date and time condition.
+            are applied based on date and time conditions.
 
-            If it is not configured, the access control entry
-            is immediately and always applied.";
+            If it is not configured, the ACE is immediately
+            and always applied.";
          choice schedule-type {
            description
              "Choice based on the type of the time range.";
