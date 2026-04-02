@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-03-31T03:19:18.196656+00:00",
+  "timestamp": "2026-04-02T02:56:40.623879+00:00",
   "repo": "IETF-OPSAWG-WG/policy-based-network-acl",
   "labels": [
     {
@@ -1197,15 +1197,15 @@
       "id": "I_kwDOI7U4Jc74hS6m",
       "title": "eth naming for features and identities",
       "url": "https://github.com/IETF-OPSAWG-WG/policy-based-network-acl/issues/156",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "QiufangMa",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "why using 'Ethernet' (or rather\n'eth') in several leaves names as most of attachments in 2026 are over Wi-Fi ?\n*STRONGLY* suggest to s/eth/ieee802/ or something similar.\n",
       "createdAt": "2026-03-30T10:17:58Z",
-      "updatedAt": "2026-03-31T03:10:09Z",
-      "closedAt": null,
+      "updatedAt": "2026-04-01T07:16:22Z",
+      "closedAt": "2026-04-01T07:16:22Z",
       "comments": [
         {
           "author": "QiufangMa",
@@ -1227,6 +1227,13 @@
           "body": "I think it might be helpful if some clarifying text could be added in the description statement, e.g.,\nNote that the eth type broadly applies to the IEEE 802 family of Layer 2 technologies (e.g., Ethernet, Wi-Fi, VLAN).",
           "createdAt": "2026-03-31T03:10:09Z",
           "updatedAt": "2026-03-31T03:10:09Z"
+        },
+        {
+          "author": "boucadair",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This would be streatching the definition of both match-on-eth and eth features. The defintion of those is clear this is about Ethernet. \n\nYou are citing VLAN as covered by eth but please note that RFC9899 defines a new feature to cover vlan range. \n\nIs there a specific filtering that you have in mind for Wi-Fi access that can't be covered by the filtering in 8519? Is it really up tp this doc to define those extensions? ",
+          "createdAt": "2026-03-31T05:38:54Z",
+          "updatedAt": "2026-03-31T05:38:54Z"
         }
       ]
     },
@@ -1235,15 +1242,15 @@
       "id": "I_kwDOI7U4Jc74hYA8",
       "title": "formatting issues in sec.2",
       "url": "https://github.com/IETF-OPSAWG-WG/policy-based-network-acl/issues/157",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "QiufangMa",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "nit:  Section 2 bullets in the html version are not quite right.  I'm sure the\neditor will fix this... (the text version seems to be better).\n",
       "createdAt": "2026-03-30T10:20:59Z",
-      "updatedAt": "2026-03-30T11:51:52Z",
-      "closedAt": null,
+      "updatedAt": "2026-04-01T07:16:32Z",
+      "closedAt": "2026-04-01T07:16:32Z",
       "comments": [
         {
           "author": "QiufangMa",
@@ -8787,25 +8794,35 @@
       "id": "PR_kwDOI7U4Jc7OQcYv",
       "title": "IESG review comments",
       "url": "https://github.com/IETF-OPSAWG-WG/policy-based-network-acl/pull/154",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "QiufangMa",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-03-28T10:01:48Z",
-      "updatedAt": "2026-03-31T03:07:19Z",
+      "updatedAt": "2026-04-01T05:36:29Z",
       "baseRepository": "IETF-OPSAWG-WG/policy-based-network-acl",
       "baseRefName": "main",
       "baseRefOid": "ae244a8cc108dc1f558313ae9b4fa53d396f970e",
       "headRepository": "QiufangMa/policy-based-network-acl",
       "headRefName": "main",
-      "headRefOid": "adb543f3e12acbada0aa3ff6c4c263c5c5fb068b",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "headRefOid": "78ef4fb7edec232668b8a0e2d1018a41e3c019d1",
+      "closedAt": "2026-04-01T05:36:29Z",
+      "mergedAt": "2026-04-01T05:36:29Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "c5a5be62fdc255fee7638241c3a1c157f9173268"
+      },
+      "comments": [
+        {
+          "author": "QiufangMa",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@boucadair The merging is blocked now and needs your approval, please re-review this PR.",
+          "createdAt": "2026-04-01T04:52:43Z",
+          "updatedAt": "2026-04-01T04:52:43Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOI7U4Jc7v_yOv",
@@ -8959,6 +8976,39 @@
               "updatedAt": "2026-03-30T09:35:34Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOI7U4Jc7wflZF",
+          "commit": {
+            "abbreviatedOid": "adb543f"
+          },
+          "author": "boucadair",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-03-31T05:42:16Z",
+          "updatedAt": "2026-03-31T05:42:16Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "I disagree with these chnages as this is conflicting with eth definitions.\n\nFuture identities can be defined to cover Wifi speific matches when those are defined in the future. Till then, we should be adhering to how eth si defined so far.",
+              "createdAt": "2026-03-31T05:42:16Z",
+              "updatedAt": "2026-03-31T05:42:16Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOI7U4Jc7w6LDj",
+          "commit": {
+            "abbreviatedOid": "78ef4fb"
+          },
+          "author": "boucadair",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-04-01T05:36:11Z",
+          "updatedAt": "2026-04-01T05:36:11Z",
+          "comments": []
         }
       ]
     },
@@ -8982,6 +9032,261 @@
       "headRefName": "boucadair-patch-5",
       "headRefOid": "d9ee6014ef3aa21ae6aedfa1355f36cbe5b89e5d",
       "closedAt": "2026-03-29T08:47:33Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 158,
+      "id": "PR_kwDOI7U4Jc7PIhco",
+      "title": "IESG comments from Charles and Christopher",
+      "url": "https://github.com/IETF-OPSAWG-WG/policy-based-network-acl/pull/158",
+      "state": "MERGED",
+      "author": "QiufangMa",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-04-01T04:03:05Z",
+      "updatedAt": "2026-04-01T07:56:15Z",
+      "baseRepository": "IETF-OPSAWG-WG/policy-based-network-acl",
+      "baseRefName": "main",
+      "baseRefOid": "ae244a8cc108dc1f558313ae9b4fa53d396f970e",
+      "headRepository": "IETF-OPSAWG-WG/policy-based-network-acl",
+      "headRefName": "Qiufang-1",
+      "headRefOid": "7c831ffa33c7160adc0aeba92a6df50a081032d4",
+      "closedAt": "2026-04-01T07:56:13Z",
+      "mergedAt": "2026-04-01T07:56:13Z",
+      "mergedBy": "QiufangMa",
+      "mergeCommit": {
+        "oid": "1859ca68258e09eeb1c20aa9c87e5eba881e95c7"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOI7U4Jc7w5PFE",
+          "commit": {
+            "abbreviatedOid": "636b8d2"
+          },
+          "author": "github-actions",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-04-01T04:05:01Z",
+          "updatedAt": "2026-04-01T04:05:01Z",
+          "comments": [
+            {
+              "originalPosition": 15,
+              "body": "````suggestion\n  Enterprise device:\n````",
+              "createdAt": "2026-04-01T04:05:01Z",
+              "updatedAt": "2026-04-01T04:05:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOI7U4Jc7w6C0i",
+          "commit": {
+            "abbreviatedOid": "338f72e"
+          },
+          "author": "boucadair",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "* Check overall text consistency\n* Reuse definitions already in the text\n\n",
+          "createdAt": "2026-04-01T05:25:01Z",
+          "updatedAt": "2026-04-01T05:34:40Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "```suggestion\n  : A device\n```",
+              "createdAt": "2026-04-01T05:25:01Z",
+              "updatedAt": "2026-04-01T05:34:40Z"
+            },
+            {
+              "originalPosition": 17,
+              "body": "```suggestion\n that falls under the access control domain of\n```",
+              "createdAt": "2026-04-01T05:25:27Z",
+              "updatedAt": "2026-04-01T05:34:40Z"
+            },
+            {
+              "originalPosition": 18,
+              "body": "```suggestion\n  centrally managed authority (enterprise administrator, typically).\n```",
+              "createdAt": "2026-04-01T05:26:10Z",
+              "updatedAt": "2026-04-01T05:34:40Z"
+            },
+            {
+              "originalPosition": 19,
+              "body": "```suggestion\nAn enterprise device provides compute, memory, storage, and networking capabilities and connects to a network.\n: An enterprise device could be a server that hosts applications or software that deliver services to enterprise users. It could also be an enterprise Internet of Things (IoT) device that serves a limited purpose (e.g., a printer that allows users to scan and print), etc.\n```",
+              "createdAt": "2026-04-01T05:26:35Z",
+              "updatedAt": "2026-04-01T05:34:40Z"
+            },
+            {
+              "originalPosition": 20,
+              "body": "```suggestion\n```",
+              "createdAt": "2026-04-01T05:26:47Z",
+              "updatedAt": "2026-04-01T05:34:40Z"
+            },
+            {
+              "originalPosition": 21,
+              "body": "The BYOD part  is about a user device, not an enterprise device.\n\n",
+              "createdAt": "2026-04-01T05:27:43Z",
+              "updatedAt": "2026-04-01T05:34:40Z"
+            },
+            {
+              "originalPosition": 30,
+              "body": "```suggestion\n   : A collection of enterprise devices that share a common access control policies. Refer to {{sec-dg}} for more details.\n```",
+              "createdAt": "2026-04-01T05:28:48Z",
+              "updatedAt": "2026-04-01T05:34:40Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\n   identity of a group of enterprise end-devices.\n```",
+              "createdAt": "2026-04-01T05:32:06Z",
+              "updatedAt": "2026-04-01T05:34:40Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\n```",
+              "createdAt": "2026-04-01T05:32:15Z",
+              "updatedAt": "2026-04-01T05:34:40Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\n```",
+              "createdAt": "2026-04-01T05:32:24Z",
+              "updatedAt": "2026-04-01T05:34:40Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\n```",
+              "createdAt": "2026-04-01T05:32:35Z",
+              "updatedAt": "2026-04-01T05:34:40Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\n   {{dg-example}} shows an example\n```",
+              "createdAt": "2026-04-01T05:32:44Z",
+              "updatedAt": "2026-04-01T05:34:40Z"
+            },
+            {
+              "originalPosition": 23,
+              "body": "```suggestion\n   : Refers to an entity which could be an end-user, enterprise device, or application that actually connects to a network.\n```",
+              "createdAt": "2026-04-01T05:33:41Z",
+              "updatedAt": "2026-04-01T05:34:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOI7U4Jc7w7q5U",
+          "commit": {
+            "abbreviatedOid": "338f72e"
+          },
+          "author": "QiufangMa",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-04-01T07:12:08Z",
+          "updatedAt": "2026-04-01T07:12:08Z",
+          "comments": [
+            {
+              "originalPosition": 21,
+              "body": "BYOD devices are typically not registered as assets of the enterprise, because it is user-owned. \r\nBut the current definition is from the perspective of being under the scope of network access control management. So i am torn.\r\n\r\nI think it makes some sense if we say enterprise control over BYOD are the permissions and behaviors for those devices to access enterprise networks and resources. I.e., Physically, it is user-owned. Logically, when accessing internal resources, e.g.,  via corporate Wi-Fi or VPN, it is subject to the company's security policies and access controls, effectively acting as an enterprise device...\r\n\r\nThe comment from Christopher is \"I can\u2019t bring together the concepts in the document of BYOD (for example) and\r\n  then the language in section 4.2.2; or I\u2019m missing a distinction by what is\r\n  meant by \u201centerprise device\u201d in 4.2.2.\"\r\nHow about we add the following sentence:\r\nWhile a personal device (BYOD) is not a physical asset of the enterprise, it is subject to the enterprise' access control policies when accessing the enterprise resources.",
+              "createdAt": "2026-04-01T07:12:08Z",
+              "updatedAt": "2026-04-01T07:12:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOI7U4Jc7w7y_r",
+          "commit": {
+            "abbreviatedOid": "338f72e"
+          },
+          "author": "boucadair",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-04-01T07:19:25Z",
+          "updatedAt": "2026-04-01T07:19:25Z",
+          "comments": [
+            {
+              "originalPosition": 21,
+              "body": "> How about we add the following sentence: While a personal device (BYOD) is not a physical asset of the enterprise, it is subject to the enterprise' access control policies when accessing the enterprise resources.\r\n\r\nOK to add that one. Thanks.\r\n",
+              "createdAt": "2026-04-01T07:19:25Z",
+              "updatedAt": "2026-04-01T07:19:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOI7U4Jc7w8aAk",
+          "commit": {
+            "abbreviatedOid": "600e523"
+          },
+          "author": "boucadair",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-04-01T07:51:17Z",
+          "updatedAt": "2026-04-01T07:52:15Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "```suggestion\ndedicated packet fields. Group-Based Policy (GBP), discussed in {{Section 6.2.3 of ?RFC9638}},\n```",
+              "createdAt": "2026-04-01T07:51:17Z",
+              "updatedAt": "2026-04-01T07:52:15Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 159,
+      "id": "PR_kwDOI7U4Jc7PLVpL",
+      "title": "ACK IESG",
+      "url": "https://github.com/IETF-OPSAWG-WG/policy-based-network-acl/pull/159",
+      "state": "MERGED",
+      "author": "QiufangMa",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-04-01T08:04:05Z",
+      "updatedAt": "2026-04-01T08:04:42Z",
+      "baseRepository": "IETF-OPSAWG-WG/policy-based-network-acl",
+      "baseRefName": "main",
+      "baseRefOid": "1859ca68258e09eeb1c20aa9c87e5eba881e95c7",
+      "headRepository": "IETF-OPSAWG-WG/policy-based-network-acl",
+      "headRefName": "QiufangMa-patch-1",
+      "headRefOid": "33fd5fb9d962fcc35f935773c438d40dceb8005f",
+      "closedAt": "2026-04-01T08:04:40Z",
+      "mergedAt": "2026-04-01T08:04:40Z",
+      "mergedBy": "QiufangMa",
+      "mergeCommit": {
+        "oid": "fa77b1009725cdd9b8182090c222b7bef79fa3cc"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 160,
+      "id": "PR_kwDOI7U4Jc7PT1hE",
+      "title": "Nits from Mike",
+      "url": "https://github.com/IETF-OPSAWG-WG/policy-based-network-acl/pull/160",
+      "state": "OPEN",
+      "author": "boucadair",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-04-01T16:16:48Z",
+      "updatedAt": "2026-04-01T16:16:48Z",
+      "baseRepository": "IETF-OPSAWG-WG/policy-based-network-acl",
+      "baseRefName": "main",
+      "baseRefOid": "fa77b1009725cdd9b8182090c222b7bef79fa3cc",
+      "headRepository": "IETF-OPSAWG-WG/policy-based-network-acl",
+      "headRefName": "Nits-from-Mike",
+      "headRefOid": "175cc009b39020ba53374adb539da1fb665d9269",
+      "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
