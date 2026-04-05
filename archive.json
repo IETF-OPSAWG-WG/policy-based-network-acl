@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-04-02T02:56:40.623879+00:00",
+  "timestamp": "2026-04-05T03:27:06.381219+00:00",
   "repo": "IETF-OPSAWG-WG/policy-based-network-acl",
   "labels": [
     {
@@ -9272,26 +9272,57 @@
       "id": "PR_kwDOI7U4Jc7PT1hE",
       "title": "Nits from Mike",
       "url": "https://github.com/IETF-OPSAWG-WG/policy-based-network-acl/pull/160",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "boucadair",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-04-01T16:16:48Z",
-      "updatedAt": "2026-04-01T16:16:48Z",
+      "updatedAt": "2026-04-02T06:53:01Z",
       "baseRepository": "IETF-OPSAWG-WG/policy-based-network-acl",
       "baseRefName": "main",
       "baseRefOid": "fa77b1009725cdd9b8182090c222b7bef79fa3cc",
       "headRepository": "IETF-OPSAWG-WG/policy-based-network-acl",
       "headRefName": "Nits-from-Mike",
-      "headRefOid": "175cc009b39020ba53374adb539da1fb665d9269",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "headRefOid": "3fdf3b2707bc938e00b254afbb209180bb25ff67",
+      "closedAt": "2026-04-02T06:43:30Z",
+      "mergedAt": "2026-04-02T06:43:30Z",
+      "mergedBy": "boucadair",
+      "mergeCommit": {
+        "oid": "638a41bc0eeedd77c4fe93314bdf9a997087f764"
+      },
+      "comments": [
+        {
+          "author": "boucadair",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@QiufangMa, I will merge and release a new version. Please reply to Mike to indicate that we fixed the nits when we think is appropriate.  Thanks.",
+          "createdAt": "2026-04-02T06:43:17Z",
+          "updatedAt": "2026-04-02T06:43:17Z"
+        },
+        {
+          "author": "QiufangMa",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> @QiufangMa, I will merge and release a new version. Please reply to Mike to indicate that we fixed the nits when we think is appropriate. Thanks.\r\n\r\nWill do, thanks, Med.",
+          "createdAt": "2026-04-02T06:53:01Z",
+          "updatedAt": "2026-04-02T06:53:01Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOI7U4Jc7xUBJU",
+          "commit": {
+            "abbreviatedOid": "8df83f3"
+          },
+          "author": "QiufangMa",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-04-02T06:07:58Z",
+          "updatedAt": "2026-04-02T06:07:58Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
