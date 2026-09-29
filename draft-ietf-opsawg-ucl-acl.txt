@@ -5,11 +5,11 @@
 OPSAWG                                                        Q. Ma, Ed.
 Internet-Draft                                                     Q. Wu
 Intended status: Standards Track                                  Huawei
-Expires: 4 October 2026                                M. Boucadair, Ed.
+Expires: 2 April 2027                                  M. Boucadair, Ed.
                                                                   Orange
                                                                  D. King
                                                     Lancaster University
-                                                            2 April 2026
+                                                       29 September 2026
 
 
  A YANG Data Model and RADIUS Extension for Policy-Based Network Access
@@ -60,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 October 2026.
+   This Internet-Draft will expire on 2 April 2027.
 
 Copyright Notice
 
@@ -561,7 +561,6 @@ Table of Contents
    Figure 2 provides the tree structure of the "ietf-ucl-acl" module.
 
     module: ietf-ucl-acl
-
       augment /acl:acls:
         +--rw endpoint-groups {ucl:group}?
            +--rw endpoint-group* [group-id]
@@ -577,7 +576,7 @@ Table of Contents
               +--:(period)
               |  +--rw period
               |     +--rw period-description?     string
-              |     +--rw period-start            yang:date-and-time
+              |     +--rw period-start?           yang:date-and-time
               |     +--rw time-zone-identifier?   sys:timezone-name
               |     +--rw (period-type)?
               |        +--:(explicit)
@@ -587,16 +586,16 @@ Table of Contents
               +--:(recurrence)
                  +--rw recurrence {schedule:icalendar-recurrence}?
                     +--rw recurrence-first
-                    |  +--rw start-time?             yang:date-and-time
-                    |  +--rw duration?               duration
-                    |  +--rw time-zone-identifier?   sys:timezone-name
+                    |  +--rw start-time?   yang:date-and-time
+                    |  +--rw duration?     duration
+                    +--rw time-zone-identifier?     sys:timezone-name
                     +--rw (recurrence-end)?
                     |  +--:(until)
                     |  |  +--rw until?              yang:date-and-time
                     |  +--:(count)
                     |     +--rw count?              uint32
                     +--rw recurrence-description?   string
-                    +--rw frequency                 identityref
+                    +--rw frequency?                identityref
                     +--rw interval?                 uint32
                     +--rw period* [period-start]
                     |  +--rw period-description?     string
@@ -1303,17 +1302,17 @@ Table of Contents
    [I-D.ietf-radext-deprecating-radius]
               DeKok, A., "Deprecating Insecure Practices in RADIUS",
               Work in Progress, Internet-Draft, draft-ietf-radext-
-              deprecating-radius-09, 15 March 2026,
+              deprecating-radius-10, 3 July 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-radext-
-              deprecating-radius-09>.
+              deprecating-radius-10>.
 
    [I-D.ietf-radext-radiusdtls-bis]
               Rieckers, J., Cullen, M., and S. Winter, "RadSec: RADIUS
               over Transport Layer Security (TLS) and Datagram Transport
               Layer Security (DTLS)", Work in Progress, Internet-Draft,
-              draft-ietf-radext-radiusdtls-bis-15, 23 February 2026,
+              draft-ietf-radext-radiusdtls-bis-17, 6 July 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-radext-
-              radiusdtls-bis-15>.
+              radiusdtls-bis-17>.
 
    [I-D.ietf-tls-rfc8446bis]
               Rescorla, E., "The Transport Layer Security (TLS) Protocol
