@@ -1,5 +1,4 @@
 module: ietf-ucl-acl
-
   augment /acl:acls:
     +--rw endpoint-groups {ucl:group}?
        +--rw endpoint-group* [group-id]
@@ -15,7 +14,7 @@ module: ietf-ucl-acl
           +--:(period)
           |  +--rw period
           |     +--rw period-description?     string
-          |     +--rw period-start            yang:date-and-time
+          |     +--rw period-start?           yang:date-and-time
           |     +--rw time-zone-identifier?   sys:timezone-name
           |     +--rw (period-type)?
           |        +--:(explicit)
@@ -25,16 +24,16 @@ module: ietf-ucl-acl
           +--:(recurrence)
              +--rw recurrence {schedule:icalendar-recurrence}?
                 +--rw recurrence-first
-                |  +--rw start-time?             yang:date-and-time
-                |  +--rw duration?               duration
-                |  +--rw time-zone-identifier?   sys:timezone-name
+                |  +--rw start-time?   yang:date-and-time
+                |  +--rw duration?     duration
+                +--rw time-zone-identifier?     sys:timezone-name
                 +--rw (recurrence-end)?
                 |  +--:(until)
                 |  |  +--rw until?              yang:date-and-time
                 |  +--:(count)
                 |     +--rw count?              uint32
                 +--rw recurrence-description?   string
-                +--rw frequency                 identityref
+                +--rw frequency?                identityref
                 +--rw interval?                 uint32
                 +--rw period* [period-start]
                 |  +--rw period-description?     string
